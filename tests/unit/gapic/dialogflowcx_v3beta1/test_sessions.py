@@ -1151,6 +1151,33 @@ def test_sessions_grpc_asyncio_transport_channel_mtls_with_adc(
         assert transport.grpc_channel == mock_grpc_channel
 
 
+def test_intent_path():
+    project = "squid"
+    location = "clam"
+    agent = "whelk"
+    intent = "octopus"
+
+    expected = "projects/{project}/locations/{location}/agents/{agent}/intents/{intent}".format(
+        project=project, location=location, agent=agent, intent=intent,
+    )
+    actual = SessionsClient.intent_path(project, location, agent, intent)
+    assert expected == actual
+
+
+def test_parse_intent_path():
+    expected = {
+        "project": "oyster",
+        "location": "nudibranch",
+        "agent": "cuttlefish",
+        "intent": "mussel",
+    }
+    path = SessionsClient.intent_path(**expected)
+
+    # Check that the path construction is reversible.
+    actual = SessionsClient.parse_intent_path(path)
+    assert expected == actual
+
+
 def test_session_entity_type_path():
     project = "squid"
     location = "clam"
@@ -1183,33 +1210,6 @@ def test_parse_session_entity_type_path():
 
     # Check that the path construction is reversible.
     actual = SessionsClient.parse_session_entity_type_path(path)
-    assert expected == actual
-
-
-def test_intent_path():
-    project = "squid"
-    location = "clam"
-    agent = "whelk"
-    intent = "octopus"
-
-    expected = "projects/{project}/locations/{location}/agents/{agent}/intents/{intent}".format(
-        project=project, location=location, agent=agent, intent=intent,
-    )
-    actual = SessionsClient.intent_path(project, location, agent, intent)
-    assert expected == actual
-
-
-def test_parse_intent_path():
-    expected = {
-        "project": "oyster",
-        "location": "nudibranch",
-        "agent": "cuttlefish",
-        "intent": "mussel",
-    }
-    path = SessionsClient.intent_path(**expected)
-
-    # Check that the path construction is reversible.
-    actual = SessionsClient.parse_intent_path(path)
     assert expected == actual
 
 

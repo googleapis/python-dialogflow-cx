@@ -239,6 +239,7 @@ __all__ = (
     "SessionEntityType",
     "SessionEntityTypesClient",
     "SessionInfo",
+    "SessionsClient",
     "SpeechModelVariant",
     "SpeechToTextSettings",
     "SpeechWordInfo",
@@ -251,7 +252,6 @@ __all__ = (
     "TrainFlowRequest",
     "TransitionRoute",
     "TransitionRouteGroup",
-    "TransitionRouteGroupsClient",
     "UpdateAgentRequest",
     "UpdateEntityTypeRequest",
     "UpdateEnvironmentRequest",
@@ -269,5 +269,5 @@ __all__ = (
     "WebhookRequest",
     "WebhookResponse",
     "WebhooksClient",
-    "SessionsClient",
+    "TransitionRouteGroupsClient",
 )
