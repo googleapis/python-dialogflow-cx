@@ -172,8 +172,8 @@ __all__ = (
     "DetectIntentRequest",
     "DetectIntentResponse",
     "EntityType",
+    "EntityTypesClient",
     "Environment",
-    "EnvironmentsClient",
     "EventHandler",
     "ExportAgentRequest",
     "ExportAgentResponse",
@@ -269,5 +269,5 @@ __all__ = (
     "WebhookRequest",
     "WebhookResponse",
     "WebhooksClient",
-    "EntityTypesClient",
+    "EnvironmentsClient",
 )
