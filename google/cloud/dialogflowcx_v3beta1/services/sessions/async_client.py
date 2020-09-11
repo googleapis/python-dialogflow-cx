@@ -49,9 +49,9 @@ class SessionsAsyncClient:
     DEFAULT_ENDPOINT = SessionsClient.DEFAULT_ENDPOINT
     DEFAULT_MTLS_ENDPOINT = SessionsClient.DEFAULT_MTLS_ENDPOINT
 
-    session_entity_type_path = staticmethod(SessionsClient.session_entity_type_path)
-
     intent_path = staticmethod(SessionsClient.intent_path)
+
+    session_entity_type_path = staticmethod(SessionsClient.session_entity_type_path)
 
     from_service_account_file = SessionsClient.from_service_account_file
     from_service_account_json = from_service_account_file
