@@ -81,16 +81,8 @@ def detect_intent_stream(agent, session_id, audio_file_path, language_code):
     # with the detected content.
     response = response.detect_intent_response
     print("Query text: {}".format(response.query_result.transcript))
-    print(
-        "Response text: {}\n".format(
-            " ".join(
-                [
-                    " ".join(response_message.text.text)
-                    for response_message in response.query_result.response_messages
-                ]
-            )
-        )
-    )
+    response_messages = [" ".join(msg.text.text) for msg in response.query_result.response_messages]
+    print(f"Response text: {" ".join(response_messages}\n")
 
 
 # [END dialogflow_detect_intent_stream]
