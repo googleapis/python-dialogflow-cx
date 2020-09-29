@@ -23,10 +23,11 @@ from detect_intent_audio import detect_intent_audio
 
 DIRNAME = os.path.realpath(os.path.dirname(__file__))
 PROJECT_ID = os.getenv("GOOGLE_CLOUD_PROJECT")
-AGENT_ID = "53516802-3e2a-4016-80b6-a3df0d240240"
-AGENT = "projects/{}/locations/global/agents/{}".format(PROJECT_ID, AGENT_ID)
+AGENT_ID = os.getenv("AGENT_ID")
+AGENT = f"projects/{PROJECT_ID}/locations/global/agents/{AGENT_ID}"
 SESSION_ID = uuid.uuid4()
-AUDIO = "{}/resources/hello.wav".format(DIRNAME)
+AUDIO_PATH = os.getenv("AUDIO_PATH")
+AUDIO = f"{DIRNAME}/{AUDIO_PATH}"
 
 
 def test_detect_intent_texts(capsys):

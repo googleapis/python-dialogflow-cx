@@ -33,6 +33,23 @@ from google.cloud.dialogflowcx_v3beta1.services.sessions import SessionsClient
 from google.cloud.dialogflowcx_v3beta1.types import session
 
 
+def run_sample():
+    # TODO(developer): Replace these values when running the function
+    project_id = "YOUR-PROJECT-ID"
+    location_id = "YOUR-LOCATION-ID"
+    agent_id = (
+        "YOUR-AGENT-ID"  # https://cloud.google.com/dialogflow/cx/docs/concept/agent
+    )
+    agent = f"projects/{project_id}/locations/{location_id}/agents/{agent_id}"
+    session_id = str(
+        uuid.uuid4()
+    )  # https://cloud.google.com/dialogflow/cx/docs/concept/session
+    texts = ["Hello"]
+    language_code = "en-us"
+
+    detect_intent_texts(agent, session_id, texts, language_code)
+
+
 # [START dialogflow_detect_intent_text]
 def detect_intent_texts(agent, session_id, texts, language_code):
     """Returns the result of detect intent with texts as inputs.
@@ -40,8 +57,8 @@ def detect_intent_texts(agent, session_id, texts, language_code):
     Using the same `session_id` between requests allows continuation
     of the conversation."""
     session_client = SessionsClient()
-    session_path = "{}/sessions/{}".format(agent, session_id)
-    print("Session path: {}\n".format(session_path))
+    session_path = f"{agent}/sessions/{session_id}"
+    print(f"Session path: {session_path}\n")
 
     for text in texts:
         text_input = session.TextInput(text=text)
@@ -52,17 +69,11 @@ def detect_intent_texts(agent, session_id, texts, language_code):
         response = session_client.detect_intent(request=request)
 
         print("=" * 20)
-        print("Query text: {}".format(response.query_result.text))
-        print(
-            "Response text: {}\n".format(
-                " ".join(
-                    [
-                        " ".join(response_message.text.text)
-                        for response_message in response.query_result.response_messages
-                    ]
-                )
-            )
-        )
+        print(f"Query text: {response.query_result.text}")
+        response_messages = [
+            " ".join(msg.text.text) for msg in response.query_result.response_messages
+        ]
+        print(f"Response text: {' '.join(response_messages)}\n")
 
 
 # [END dialogflow_detect_intent_text]

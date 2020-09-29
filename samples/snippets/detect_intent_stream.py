@@ -30,6 +30,23 @@ from google.cloud.dialogflowcx_v3beta1.types import audio_config
 from google.cloud.dialogflowcx_v3beta1.types import session
 
 
+def run_sample():
+    # TODO(developer): Replace these values when running the function
+    project_id = "YOUR-PROJECT-ID"
+    location_id = "YOUR-LOCATION-ID"
+    agent_id = (
+        "YOUR-AGENT-ID"  # https://cloud.google.com/dialogflow/cx/docs/concept/agent
+    )
+    agent = f"projects/{project_id}/locations/{location_id}/agents/{agent_id}"
+    session_id = str(
+        uuid.uuid4()
+    )  # https://cloud.google.com/dialogflow/cx/docs/concept/session
+    audio_file_path = "YOUR-AUDIO-FILE-PATH"
+    language_code = "en-us"
+
+    detect_intent_stream(agent, session_id, audio_file_path, language_code)
+
+
 # [START dialogflow_detect_intent_stream]
 def detect_intent_stream(agent, session_id, audio_file_path, language_code):
     """Returns the result of detect intent with streaming audio as input.
@@ -38,7 +55,7 @@ def detect_intent_stream(agent, session_id, audio_file_path, language_code):
     of the conversation."""
     session_client = SessionsClient()
     session_path = f"{agent}/sessions/{session_id}"
-    print("Session path: {}\n".format(session_path))
+    print(f"Session path: {session_path}\n")
 
     input_audio_config = audio_config.InputAudioConfig(
         audio_encoding=audio_config.AudioEncoding.AUDIO_ENCODING_LINEAR_16,
@@ -71,18 +88,16 @@ def detect_intent_stream(agent, session_id, audio_file_path, language_code):
 
     print("=" * 20)
     for response in responses:
-        print(
-            'Intermediate transcript: "{}".'.format(
-                response.recognition_result.transcript
-            )
-        )
+        print(f'Intermediate transcript: "{response.recognition_result.transcript}".')
 
     # Note: The result from the last response is the final transcript along
     # with the detected content.
     response = response.detect_intent_response
-    print("Query text: {}".format(response.query_result.transcript))
-    response_messages = [" ".join(msg.text.text) for msg in response.query_result.response_messages]
-    print(f"Response text: {" ".join(response_messages}\n")
+    print(f"Query text: {response.query_result.transcript}")
+    response_messages = [
+        " ".join(msg.text.text) for msg in response.query_result.response_messages
+    ]
+    print(f"Response text: {' '.join(response_messages)}\n")
 
 
 # [END dialogflow_detect_intent_stream]

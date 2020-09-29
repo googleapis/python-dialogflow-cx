@@ -22,8 +22,8 @@ import uuid
 from detect_intent_texts import detect_intent_texts
 
 PROJECT_ID = os.getenv("GOOGLE_CLOUD_PROJECT")
-AGENT_ID = "53516802-3e2a-4016-80b6-a3df0d240240"
-AGENT = "projects/{}/locations/global/agents/{}".format(PROJECT_ID, AGENT_ID)
+AGENT_ID = os.getenv("AGENT_ID")
+AGENT = f"projects/{PROJECT_ID}/locations/global/agents/{AGENT_ID}"
 SESSION_ID = uuid.uuid4()
 TEXTS = ["hello", "book a flight"]
 
