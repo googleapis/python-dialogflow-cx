@@ -37,7 +37,7 @@ def detect_intent_stream(agent, session_id, audio_file_path, language_code):
     Using the same `session_id` between requests allows continuation
     of the conversation."""
     session_client = SessionsClient()
-    session_path = "{}/sessions/{}".format(agent, session_id)
+    session_path = f"{agent}/sessions/{session_id}"
     print("Session path: {}\n".format(session_path))
 
     input_audio_config = audio_config.InputAudioConfig(
