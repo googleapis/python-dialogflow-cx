@@ -67,8 +67,7 @@ def detect_intent_stream(agent, session_id, audio_file_path, language_code):
                 query_input = session.QueryInput(audio=audio_input)
                 yield session.StreamingDetectIntentRequest(query_input=query_input)
 
-    requests = request_generator()
-    responses = session_client.streaming_detect_intent(requests=requests)
+    responses = session_client.streaming_detect_intent(requests=request_generator())
 
     print("=" * 20)
     for response in responses:
