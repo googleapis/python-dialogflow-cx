@@ -38,9 +38,8 @@ def run_sample():
         "YOUR-AGENT-ID"  # https://cloud.google.com/dialogflow/cx/docs/concept/agent
     )
     agent = f"projects/{project_id}/locations/{location_id}/agents/{agent_id}"
-    session_id = str(
-        uuid.uuid4()
-    )  # https://cloud.google.com/dialogflow/cx/docs/concept/session
+    # For more information on sessions see https://cloud.google.com/dialogflow/cx/docs/concept/session
+    session_id = str(uuid.uuid4())  
     audio_file_path = "YOUR-AUDIO-FILE-PATH"
     language_code = "en-us"
 
