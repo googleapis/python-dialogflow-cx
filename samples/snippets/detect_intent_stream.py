@@ -30,24 +30,23 @@ from google.cloud.dialogflowcx_v3beta1.types import audio_config
 from google.cloud.dialogflowcx_v3beta1.types import session
 
 
+# [START dialogflow_detect_intent_stream]
 def run_sample():
     # TODO(developer): Replace these values when running the function
     project_id = "YOUR-PROJECT-ID"
     location_id = "YOUR-LOCATION-ID"
-    agent_id = (
-        "YOUR-AGENT-ID"  # https://cloud.google.com/dialogflow/cx/docs/concept/agent
-    )
+    # For more info on agents see https://cloud.google.com/dialogflow/cx/docs/concept/agent
+    agent_id = "YOUR-AGENT-ID"
     agent = f"projects/{project_id}/locations/{location_id}/agents/{agent_id}"
-    session_id = str(
-        uuid.uuid4()
-    )  # https://cloud.google.com/dialogflow/cx/docs/concept/session
+    # For more information on sessions see https://cloud.google.com/dialogflow/cx/docs/concept/session
+    session_id = uuid.uuid4()
     audio_file_path = "YOUR-AUDIO-FILE-PATH"
+    # For more supported languages see https://cloud.google.com/dialogflow/es/docs/reference/language
     language_code = "en-us"
 
     detect_intent_stream(agent, session_id, audio_file_path, language_code)
 
 
-# [START dialogflow_detect_intent_stream]
 def detect_intent_stream(agent, session_id, audio_file_path, language_code):
     """Returns the result of detect intent with streaming audio as input.
 
