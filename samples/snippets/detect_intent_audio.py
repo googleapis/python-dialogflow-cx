@@ -34,9 +34,8 @@ def run_sample():
     # TODO(developer): Replace these values when running the function
     project_id = "YOUR-PROJECT-ID"
     location_id = "YOUR-LOCATION-ID"
-    agent_id = (
-        "YOUR-AGENT-ID"  # https://cloud.google.com/dialogflow/cx/docs/concept/agent
-    )
+    # For more info on agents see https://cloud.google.com/dialogflow/cx/docs/concept/agent
+    agent_id = "YOUR-AGENT-ID" 
     agent = f"projects/{project_id}/locations/{location_id}/agents/{agent_id}"
     # For more information on sessions see https://cloud.google.com/dialogflow/cx/docs/concept/session
     session_id = str(uuid.uuid4())  
