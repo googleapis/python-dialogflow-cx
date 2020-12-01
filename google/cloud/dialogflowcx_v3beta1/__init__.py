@@ -198,7 +198,6 @@ __all__ = (
     "Intent",
     "IntentInput",
     "IntentView",
-    "IntentsClient",
     "ListAgentsRequest",
     "ListAgentsResponse",
     "ListEntityTypesRequest",
@@ -252,6 +251,7 @@ __all__ = (
     "TrainFlowRequest",
     "TransitionRoute",
     "TransitionRouteGroup",
+    "TransitionRouteGroupsClient",
     "UpdateAgentRequest",
     "UpdateEntityTypeRequest",
     "UpdateEnvironmentRequest",
@@ -269,5 +269,5 @@ __all__ = (
     "WebhookRequest",
     "WebhookResponse",
     "WebhooksClient",
-    "TransitionRouteGroupsClient",
+    "IntentsClient",
 )
