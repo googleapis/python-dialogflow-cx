@@ -174,6 +174,7 @@ __all__ = (
     "EntityType",
     "EntityTypesClient",
     "Environment",
+    "EnvironmentsClient",
     "EventHandler",
     "ExportAgentRequest",
     "ExportAgentResponse",
@@ -238,7 +239,6 @@ __all__ = (
     "SessionEntityType",
     "SessionEntityTypesClient",
     "SessionInfo",
-    "SessionsClient",
     "SpeechModelVariant",
     "SpeechToTextSettings",
     "SpeechWordInfo",
@@ -269,5 +269,5 @@ __all__ = (
     "WebhookRequest",
     "WebhookResponse",
     "WebhooksClient",
-    "EnvironmentsClient",
+    "SessionsClient",
 )
