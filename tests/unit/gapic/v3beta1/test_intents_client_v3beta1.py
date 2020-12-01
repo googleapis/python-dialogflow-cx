@@ -110,11 +110,13 @@ class TestIntentsClient(object):
         display_name = "displayName1615086568"
         priority = 1165461084
         is_fallback = False
+        description = "description-1724546052"
         expected_response = {
             "name": name_2,
             "display_name": display_name,
             "priority": priority,
             "is_fallback": is_fallback,
+            "description": description,
         }
         expected_response = intent_pb2.Intent(**expected_response)
 
@@ -156,11 +158,13 @@ class TestIntentsClient(object):
         display_name = "displayName1615086568"
         priority = 1165461084
         is_fallback = False
+        description = "description-1724546052"
         expected_response = {
             "name": name,
             "display_name": display_name,
             "priority": priority,
             "is_fallback": is_fallback,
+            "description": description,
         }
         expected_response = intent_pb2.Intent(**expected_response)
 
@@ -204,11 +208,13 @@ class TestIntentsClient(object):
         display_name = "displayName1615086568"
         priority = 1165461084
         is_fallback = False
+        description = "description-1724546052"
         expected_response = {
             "name": name,
             "display_name": display_name,
             "priority": priority,
             "is_fallback": is_fallback,
+            "description": description,
         }
         expected_response = intent_pb2.Intent(**expected_response)
 
