@@ -632,7 +632,7 @@ class AgentsClient(object):
         metadata=None,
     ):
         """
-        Exports the specified agent to a ZIP file.
+        Exports the specified agent to a binary file.
 
         Example:
             >>> from google.cloud import dialogflowcx_v3beta1
@@ -724,10 +724,10 @@ class AgentsClient(object):
         metadata=None,
     ):
         """
-        Restores the specified agent from a ZIP file.
+        Restores the specified agent from a binary file.
 
-        Note that all existing intents, intent routes, entity types, pages and
-        webhooks in the agent will be deleted.
+        Replaces the current agent with a new one. Note that all existing resources
+        in agent (e.g. intents, entity types, flows) will be removed.
 
         Example:
             >>> from google.cloud import dialogflowcx_v3beta1

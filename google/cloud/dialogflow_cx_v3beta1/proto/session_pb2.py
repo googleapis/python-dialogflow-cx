@@ -2526,9 +2526,10 @@ QueryInput = _reflection.GeneratedProtocolMessageType(
     {
         "DESCRIPTOR": _QUERYINPUT,
         "__module__": "google.cloud.dialogflow_cx_v3beta1.proto.session_pb2",
-        "__doc__": """Represents the query input. It can contain either:  1. A
+        "__doc__": """Represents the query input. It can contain one of:  1. A
   conversational query in the form of text.  2. An intent query that
-  specifies which intent to trigger.
+  specifies which intent to trigger.  3. Natural language speech audio
+  to be processed.  4. An event to be triggered.
   
   Attributes:
       input:

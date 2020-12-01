@@ -187,7 +187,7 @@ class AgentsGrpcTransport(object):
     def export_agent(self):
         """Return the gRPC stub for :meth:`AgentsClient.export_agent`.
 
-        Exports the specified agent to a ZIP file.
+        Exports the specified agent to a binary file.
 
         Returns:
             Callable: A callable which accepts the appropriate
@@ -200,10 +200,10 @@ class AgentsGrpcTransport(object):
     def restore_agent(self):
         """Return the gRPC stub for :meth:`AgentsClient.restore_agent`.
 
-        Restores the specified agent from a ZIP file.
+        Restores the specified agent from a binary file.
 
-        Note that all existing intents, intent routes, entity types, pages and
-        webhooks in the agent will be deleted.
+        Replaces the current agent with a new one. Note that all existing resources
+        in agent (e.g. intents, entity types, flows) will be removed.
 
         Returns:
             Callable: A callable which accepts the appropriate

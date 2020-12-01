@@ -98,17 +98,17 @@ class AgentsServicer(object):
         raise NotImplementedError("Method not implemented!")
 
     def ExportAgent(self, request, context):
-        """Exports the specified agent to a ZIP file.
+        """Exports the specified agent to a binary file.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
 
     def RestoreAgent(self, request, context):
-        """Restores the specified agent from a ZIP file.
+        """Restores the specified agent from a binary file.
 
-        Note that all existing intents, intent routes, entity types, pages and
-        webhooks in the agent will be deleted.
+        Replaces the current agent with a new one. Note that all existing resources
+        in agent (e.g. intents, entity types, flows) will be removed.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")

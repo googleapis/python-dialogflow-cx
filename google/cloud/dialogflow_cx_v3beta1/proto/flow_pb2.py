@@ -24,6 +24,7 @@ from google.longrunning import (
 )
 from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
 from google.protobuf import field_mask_pb2 as google_dot_protobuf_dot_field__mask__pb2
+from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -32,7 +33,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     syntax="proto3",
     serialized_options=b'\n&com.google.cloud.dialogflow.cx.v3beta1B\tFlowProtoP\001ZDgoogle.golang.org/genproto/googleapis/cloud/dialogflow/cx/v3beta1;cx\370\001\001\242\002\002DF\252\002"Google.Cloud.Dialogflow.Cx.V3Beta1',
     create_key=_descriptor._internal_create_key,
-    serialized_pb=b'\n3google/cloud/dialogflow_cx_v3beta1/proto/flow.proto\x12"google.cloud.dialogflow.cx.v3beta1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1fgoogle/api/field_behavior.proto\x1a\x19google/api/resource.proto\x1a\x33google/cloud/dialogflow_cx_v3beta1/proto/page.proto\x1a#google/longrunning/operations.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a google/protobuf/field_mask.proto"\xb6\x03\n\x0bNluSettings\x12M\n\nmodel_type\x18\x01 \x01(\x0e\x32\x39.google.cloud.dialogflow.cx.v3beta1.NluSettings.ModelType\x12 \n\x18\x63lassification_threshold\x18\x03 \x01(\x02\x12^\n\x13model_training_mode\x18\x04 \x01(\x0e\x32\x41.google.cloud.dialogflow.cx.v3beta1.NluSettings.ModelTrainingMode"Y\n\tModelType\x12\x1a\n\x16MODEL_TYPE_UNSPECIFIED\x10\x00\x12\x17\n\x13MODEL_TYPE_STANDARD\x10\x01\x12\x17\n\x13MODEL_TYPE_ADVANCED\x10\x03"{\n\x11ModelTrainingMode\x12#\n\x1fMODEL_TRAINING_MODE_UNSPECIFIED\x10\x00\x12!\n\x1dMODEL_TRAINING_MODE_AUTOMATIC\x10\x01\x12\x1e\n\x1aMODEL_TRAINING_MODE_MANUAL\x10\x02"\x8f\x03\n\x04\x46low\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x19\n\x0c\x64isplay_name\x18\x02 \x01(\tB\x03\xe0\x41\x02\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12N\n\x11transition_routes\x18\x04 \x03(\x0b\x32\x33.google.cloud.dialogflow.cx.v3beta1.TransitionRoute\x12H\n\x0e\x65vent_handlers\x18\n \x03(\x0b\x32\x30.google.cloud.dialogflow.cx.v3beta1.EventHandler\x12\x45\n\x0cnlu_settings\x18\x0b \x01(\x0b\x32/.google.cloud.dialogflow.cx.v3beta1.NluSettings:h\xea\x41\x65\n\x1e\x64ialogflow.googleapis.com/Flow\x12\x43projects/{project}/locations/{location}/agents/{agent}/flows/{flow}"\x9f\x01\n\x11\x43reateFlowRequest\x12\x36\n\x06parent\x18\x01 \x01(\tB&\xe0\x41\x02\xfa\x41 \x12\x1e\x64ialogflow.googleapis.com/Flow\x12;\n\x04\x66low\x18\x02 \x01(\x0b\x32(.google.cloud.dialogflow.cx.v3beta1.FlowB\x03\xe0\x41\x02\x12\x15\n\rlanguage_code\x18\x03 \x01(\t"X\n\x11\x44\x65leteFlowRequest\x12\x34\n\x04name\x18\x01 \x01(\tB&\xe0\x41\x02\xfa\x41 \n\x1e\x64ialogflow.googleapis.com/Flow\x12\r\n\x05\x66orce\x18\x02 \x01(\x08"\x88\x01\n\x10ListFlowsRequest\x12\x36\n\x06parent\x18\x01 \x01(\tB&\xe0\x41\x02\xfa\x41 \x12\x1e\x64ialogflow.googleapis.com/Flow\x12\x11\n\tpage_size\x18\x02 \x01(\x05\x12\x12\n\npage_token\x18\x03 \x01(\t\x12\x15\n\rlanguage_code\x18\x04 \x01(\t"e\n\x11ListFlowsResponse\x12\x37\n\x05\x66lows\x18\x01 \x03(\x0b\x32(.google.cloud.dialogflow.cx.v3beta1.Flow\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t"]\n\x0eGetFlowRequest\x12\x34\n\x04name\x18\x01 \x01(\tB&\xe0\x41\x02\xfa\x41 \n\x1e\x64ialogflow.googleapis.com/Flow\x12\x15\n\rlanguage_code\x18\x02 \x01(\t"\x9d\x01\n\x11UpdateFlowRequest\x12;\n\x04\x66low\x18\x01 \x01(\x0b\x32(.google.cloud.dialogflow.cx.v3beta1.FlowB\x03\xe0\x41\x02\x12\x34\n\x0bupdate_mask\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.FieldMaskB\x03\xe0\x41\x02\x12\x15\n\rlanguage_code\x18\x03 \x01(\t"H\n\x10TrainFlowRequest\x12\x34\n\x04name\x18\x01 \x01(\tB&\xe0\x41\x02\xfa\x41 \n\x1e\x64ialogflow.googleapis.com/Flow2\x99\n\n\x05\x46lows\x12\xc2\x01\n\nCreateFlow\x12\x35.google.cloud.dialogflow.cx.v3beta1.CreateFlowRequest\x1a(.google.cloud.dialogflow.cx.v3beta1.Flow"S\x82\xd3\xe4\x93\x02?"7/v3beta1/{parent=projects/*/locations/*/agents/*}/flows:\x04\x66low\xda\x41\x0bparent,flow\x12\xa3\x01\n\nDeleteFlow\x12\x35.google.cloud.dialogflow.cx.v3beta1.DeleteFlowRequest\x1a\x16.google.protobuf.Empty"F\x82\xd3\xe4\x93\x02\x39*7/v3beta1/{name=projects/*/locations/*/agents/*/flows/*}\xda\x41\x04name\x12\xc2\x01\n\tListFlows\x12\x34.google.cloud.dialogflow.cx.v3beta1.ListFlowsRequest\x1a\x35.google.cloud.dialogflow.cx.v3beta1.ListFlowsResponse"H\x82\xd3\xe4\x93\x02\x39\x12\x37/v3beta1/{parent=projects/*/locations/*/agents/*}/flows\xda\x41\x06parent\x12\xaf\x01\n\x07GetFlow\x12\x32.google.cloud.dialogflow.cx.v3beta1.GetFlowRequest\x1a(.google.cloud.dialogflow.cx.v3beta1.Flow"F\x82\xd3\xe4\x93\x02\x39\x12\x37/v3beta1/{name=projects/*/locations/*/agents/*/flows/*}\xda\x41\x04name\x12\xcc\x01\n\nUpdateFlow\x12\x35.google.cloud.dialogflow.cx.v3beta1.UpdateFlowRequest\x1a(.google.cloud.dialogflow.cx.v3beta1.Flow"]\x82\xd3\xe4\x93\x02\x44\x32</v3beta1/{flow.name=projects/*/locations/*/agents/*/flows/*}:\x04\x66low\xda\x41\x10\x66low,update_mask\x12\xe4\x01\n\tTrainFlow\x12\x34.google.cloud.dialogflow.cx.v3beta1.TrainFlowRequest\x1a\x1d.google.longrunning.Operation"\x81\x01\x82\xd3\xe4\x93\x02\x42"=/v3beta1/{name=projects/*/locations/*/agents/*/flows/*}:train:\x01*\xda\x41\x04name\xca\x41/\n\x15google.protobuf.Empty\x12\x16google.protobuf.Struct\x1ax\xca\x41\x19\x64ialogflow.googleapis.com\xd2\x41Yhttps://www.googleapis.com/auth/cloud-platform,https://www.googleapis.com/auth/dialogflowB\xa8\x01\n&com.google.cloud.dialogflow.cx.v3beta1B\tFlowProtoP\x01ZDgoogle.golang.org/genproto/googleapis/cloud/dialogflow/cx/v3beta1;cx\xf8\x01\x01\xa2\x02\x02\x44\x46\xaa\x02"Google.Cloud.Dialogflow.Cx.V3Beta1b\x06proto3',
+    serialized_pb=b'\n3google/cloud/dialogflow_cx_v3beta1/proto/flow.proto\x12"google.cloud.dialogflow.cx.v3beta1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1fgoogle/api/field_behavior.proto\x1a\x19google/api/resource.proto\x1a\x33google/cloud/dialogflow_cx_v3beta1/proto/page.proto\x1a#google/longrunning/operations.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a google/protobuf/field_mask.proto\x1a\x1fgoogle/protobuf/timestamp.proto"\xb6\x03\n\x0bNluSettings\x12M\n\nmodel_type\x18\x01 \x01(\x0e\x32\x39.google.cloud.dialogflow.cx.v3beta1.NluSettings.ModelType\x12 \n\x18\x63lassification_threshold\x18\x03 \x01(\x02\x12^\n\x13model_training_mode\x18\x04 \x01(\x0e\x32\x41.google.cloud.dialogflow.cx.v3beta1.NluSettings.ModelTrainingMode"Y\n\tModelType\x12\x1a\n\x16MODEL_TYPE_UNSPECIFIED\x10\x00\x12\x17\n\x13MODEL_TYPE_STANDARD\x10\x01\x12\x17\n\x13MODEL_TYPE_ADVANCED\x10\x03"{\n\x11ModelTrainingMode\x12#\n\x1fMODEL_TRAINING_MODE_UNSPECIFIED\x10\x00\x12!\n\x1dMODEL_TRAINING_MODE_AUTOMATIC\x10\x01\x12\x1e\n\x1aMODEL_TRAINING_MODE_MANUAL\x10\x02"\x8f\x03\n\x04\x46low\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x19\n\x0c\x64isplay_name\x18\x02 \x01(\tB\x03\xe0\x41\x02\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12N\n\x11transition_routes\x18\x04 \x03(\x0b\x32\x33.google.cloud.dialogflow.cx.v3beta1.TransitionRoute\x12H\n\x0e\x65vent_handlers\x18\n \x03(\x0b\x32\x30.google.cloud.dialogflow.cx.v3beta1.EventHandler\x12\x45\n\x0cnlu_settings\x18\x0b \x01(\x0b\x32/.google.cloud.dialogflow.cx.v3beta1.NluSettings:h\xea\x41\x65\n\x1e\x64ialogflow.googleapis.com/Flow\x12\x43projects/{project}/locations/{location}/agents/{agent}/flows/{flow}"\x9f\x01\n\x11\x43reateFlowRequest\x12\x36\n\x06parent\x18\x01 \x01(\tB&\xe0\x41\x02\xfa\x41 \x12\x1e\x64ialogflow.googleapis.com/Flow\x12;\n\x04\x66low\x18\x02 \x01(\x0b\x32(.google.cloud.dialogflow.cx.v3beta1.FlowB\x03\xe0\x41\x02\x12\x15\n\rlanguage_code\x18\x03 \x01(\t"X\n\x11\x44\x65leteFlowRequest\x12\x34\n\x04name\x18\x01 \x01(\tB&\xe0\x41\x02\xfa\x41 \n\x1e\x64ialogflow.googleapis.com/Flow\x12\r\n\x05\x66orce\x18\x02 \x01(\x08"\x88\x01\n\x10ListFlowsRequest\x12\x36\n\x06parent\x18\x01 \x01(\tB&\xe0\x41\x02\xfa\x41 \x12\x1e\x64ialogflow.googleapis.com/Flow\x12\x11\n\tpage_size\x18\x02 \x01(\x05\x12\x12\n\npage_token\x18\x03 \x01(\t\x12\x15\n\rlanguage_code\x18\x04 \x01(\t"e\n\x11ListFlowsResponse\x12\x37\n\x05\x66lows\x18\x01 \x03(\x0b\x32(.google.cloud.dialogflow.cx.v3beta1.Flow\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t"]\n\x0eGetFlowRequest\x12\x34\n\x04name\x18\x01 \x01(\tB&\xe0\x41\x02\xfa\x41 \n\x1e\x64ialogflow.googleapis.com/Flow\x12\x15\n\rlanguage_code\x18\x02 \x01(\t"\x9d\x01\n\x11UpdateFlowRequest\x12;\n\x04\x66low\x18\x01 \x01(\x0b\x32(.google.cloud.dialogflow.cx.v3beta1.FlowB\x03\xe0\x41\x02\x12\x34\n\x0bupdate_mask\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.FieldMaskB\x03\xe0\x41\x02\x12\x15\n\rlanguage_code\x18\x03 \x01(\t"H\n\x10TrainFlowRequest\x12\x34\n\x04name\x18\x01 \x01(\tB&\xe0\x41\x02\xfa\x41 \n\x1e\x64ialogflow.googleapis.com/Flow2\x99\n\n\x05\x46lows\x12\xc2\x01\n\nCreateFlow\x12\x35.google.cloud.dialogflow.cx.v3beta1.CreateFlowRequest\x1a(.google.cloud.dialogflow.cx.v3beta1.Flow"S\x82\xd3\xe4\x93\x02?"7/v3beta1/{parent=projects/*/locations/*/agents/*}/flows:\x04\x66low\xda\x41\x0bparent,flow\x12\xa3\x01\n\nDeleteFlow\x12\x35.google.cloud.dialogflow.cx.v3beta1.DeleteFlowRequest\x1a\x16.google.protobuf.Empty"F\x82\xd3\xe4\x93\x02\x39*7/v3beta1/{name=projects/*/locations/*/agents/*/flows/*}\xda\x41\x04name\x12\xc2\x01\n\tListFlows\x12\x34.google.cloud.dialogflow.cx.v3beta1.ListFlowsRequest\x1a\x35.google.cloud.dialogflow.cx.v3beta1.ListFlowsResponse"H\x82\xd3\xe4\x93\x02\x39\x12\x37/v3beta1/{parent=projects/*/locations/*/agents/*}/flows\xda\x41\x06parent\x12\xaf\x01\n\x07GetFlow\x12\x32.google.cloud.dialogflow.cx.v3beta1.GetFlowRequest\x1a(.google.cloud.dialogflow.cx.v3beta1.Flow"F\x82\xd3\xe4\x93\x02\x39\x12\x37/v3beta1/{name=projects/*/locations/*/agents/*/flows/*}\xda\x41\x04name\x12\xcc\x01\n\nUpdateFlow\x12\x35.google.cloud.dialogflow.cx.v3beta1.UpdateFlowRequest\x1a(.google.cloud.dialogflow.cx.v3beta1.Flow"]\x82\xd3\xe4\x93\x02\x44\x32</v3beta1/{flow.name=projects/*/locations/*/agents/*/flows/*}:\x04\x66low\xda\x41\x10\x66low,update_mask\x12\xe4\x01\n\tTrainFlow\x12\x34.google.cloud.dialogflow.cx.v3beta1.TrainFlowRequest\x1a\x1d.google.longrunning.Operation"\x81\x01\x82\xd3\xe4\x93\x02\x42"=/v3beta1/{name=projects/*/locations/*/agents/*/flows/*}:train:\x01*\xda\x41\x04name\xca\x41/\n\x15google.protobuf.Empty\x12\x16google.protobuf.Struct\x1ax\xca\x41\x19\x64ialogflow.googleapis.com\xd2\x41Yhttps://www.googleapis.com/auth/cloud-platform,https://www.googleapis.com/auth/dialogflowB\xa8\x01\n&com.google.cloud.dialogflow.cx.v3beta1B\tFlowProtoP\x01ZDgoogle.golang.org/genproto/googleapis/cloud/dialogflow/cx/v3beta1;cx\xf8\x01\x01\xa2\x02\x02\x44\x46\xaa\x02"Google.Cloud.Dialogflow.Cx.V3Beta1b\x06proto3',
     dependencies=[
         google_dot_api_dot_annotations__pb2.DESCRIPTOR,
         google_dot_api_dot_client__pb2.DESCRIPTOR,
@@ -42,6 +43,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
         google_dot_longrunning_dot_operations__pb2.DESCRIPTOR,
         google_dot_protobuf_dot_empty__pb2.DESCRIPTOR,
         google_dot_protobuf_dot_field__mask__pb2.DESCRIPTOR,
+        google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,
     ],
 )
 
@@ -80,8 +82,8 @@ _NLUSETTINGS_MODELTYPE = _descriptor.EnumDescriptor(
     ],
     containing_type=None,
     serialized_options=None,
-    serialized_start=584,
-    serialized_end=673,
+    serialized_start=617,
+    serialized_end=706,
 )
 _sym_db.RegisterEnumDescriptor(_NLUSETTINGS_MODELTYPE)
 
@@ -119,8 +121,8 @@ _NLUSETTINGS_MODELTRAININGMODE = _descriptor.EnumDescriptor(
     ],
     containing_type=None,
     serialized_options=None,
-    serialized_start=675,
-    serialized_end=798,
+    serialized_start=708,
+    serialized_end=831,
 )
 _sym_db.RegisterEnumDescriptor(_NLUSETTINGS_MODELTRAININGMODE)
 
@@ -199,8 +201,8 @@ _NLUSETTINGS = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=360,
-    serialized_end=798,
+    serialized_start=393,
+    serialized_end=831,
 )
 
 
@@ -335,8 +337,8 @@ _FLOW = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=801,
-    serialized_end=1200,
+    serialized_start=834,
+    serialized_end=1233,
 )
 
 
@@ -414,8 +416,8 @@ _CREATEFLOWREQUEST = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=1203,
-    serialized_end=1362,
+    serialized_start=1236,
+    serialized_end=1395,
 )
 
 
@@ -474,8 +476,8 @@ _DELETEFLOWREQUEST = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=1364,
-    serialized_end=1452,
+    serialized_start=1397,
+    serialized_end=1485,
 )
 
 
@@ -572,8 +574,8 @@ _LISTFLOWSREQUEST = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=1455,
-    serialized_end=1591,
+    serialized_start=1488,
+    serialized_end=1624,
 )
 
 
@@ -632,8 +634,8 @@ _LISTFLOWSRESPONSE = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=1593,
-    serialized_end=1694,
+    serialized_start=1626,
+    serialized_end=1727,
 )
 
 
@@ -692,8 +694,8 @@ _GETFLOWREQUEST = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=1696,
-    serialized_end=1789,
+    serialized_start=1729,
+    serialized_end=1822,
 )
 
 
@@ -771,8 +773,8 @@ _UPDATEFLOWREQUEST = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=1792,
-    serialized_end=1949,
+    serialized_start=1825,
+    serialized_end=1982,
 )
 
 
@@ -812,8 +814,8 @@ _TRAINFLOWREQUEST = _descriptor.Descriptor(
     syntax="proto3",
     extension_ranges=[],
     oneofs=[],
-    serialized_start=1951,
-    serialized_end=2023,
+    serialized_start=1984,
+    serialized_end=2056,
 )
 
 _NLUSETTINGS.fields_by_name["model_type"].enum_type = _NLUSETTINGS_MODELTYPE
@@ -1154,8 +1156,8 @@ _FLOWS = _descriptor.ServiceDescriptor(
     index=0,
     serialized_options=b"\312A\031dialogflow.googleapis.com\322AYhttps://www.googleapis.com/auth/cloud-platform,https://www.googleapis.com/auth/dialogflow",
     create_key=_descriptor._internal_create_key,
-    serialized_start=2026,
-    serialized_end=3331,
+    serialized_start=2059,
+    serialized_end=3364,
     methods=[
         _descriptor.MethodDescriptor(
             name="CreateFlow",
