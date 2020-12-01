@@ -11,8 +11,8 @@
       "git": {
         "name": "googleapis",
         "remote": "https://github.com/googleapis/googleapis.git",
-        "sha": "52eaab535740117d17b81a43749cf2a16110c301",
-        "internalRef": "339485389"
+        "sha": "7b75aa906678df83049038de4da79f272b33fc92",
+        "internalRef": "340878170"
       }
     },
     {
@@ -112,12 +112,8 @@
     "google/cloud/dialogflow_cx_v3beta1/proto/flow_pb2_grpc.py",
     "google/cloud/dialogflow_cx_v3beta1/proto/fulfillment_pb2.py",
     "google/cloud/dialogflow_cx_v3beta1/proto/fulfillment_pb2_grpc.py",
-    "google/cloud/dialogflow_cx_v3beta1/proto/gcs_pb2.py",
-    "google/cloud/dialogflow_cx_v3beta1/proto/gcs_pb2_grpc.py",
     "google/cloud/dialogflow_cx_v3beta1/proto/intent_pb2.py",
     "google/cloud/dialogflow_cx_v3beta1/proto/intent_pb2_grpc.py",
-    "google/cloud/dialogflow_cx_v3beta1/proto/ivr_pb2.py",
-    "google/cloud/dialogflow_cx_v3beta1/proto/ivr_pb2_grpc.py",
     "google/cloud/dialogflow_cx_v3beta1/proto/page_pb2.py",
     "google/cloud/dialogflow_cx_v3beta1/proto/page_pb2_grpc.py",
     "google/cloud/dialogflow_cx_v3beta1/proto/response_message_pb2.py",
