@@ -179,6 +179,7 @@ __all__ = (
     "ExportAgentRequest",
     "ExportAgentResponse",
     "Flow",
+    "FlowsClient",
     "Form",
     "FulfillIntentRequest",
     "FulfillIntentResponse",
@@ -229,7 +230,6 @@ __all__ = (
     "OutputAudioEncoding",
     "Page",
     "PageInfo",
-    "PagesClient",
     "QueryInput",
     "QueryParameters",
     "QueryResult",
@@ -269,5 +269,5 @@ __all__ = (
     "WebhookRequest",
     "WebhookResponse",
     "WebhooksClient",
-    "FlowsClient",
+    "PagesClient",
 )
