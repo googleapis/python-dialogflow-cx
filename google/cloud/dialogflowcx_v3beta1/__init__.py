@@ -174,6 +174,7 @@ __all__ = (
     "EntityType",
     "EntityTypesClient",
     "Environment",
+    "EnvironmentsClient",
     "EventHandler",
     "ExportAgentRequest",
     "ExportAgentResponse",
@@ -229,7 +230,6 @@ __all__ = (
     "OutputAudioEncoding",
     "Page",
     "PageInfo",
-    "PagesClient",
     "QueryInput",
     "QueryParameters",
     "QueryResult",
@@ -269,5 +269,5 @@ __all__ = (
     "WebhookRequest",
     "WebhookResponse",
     "WebhooksClient",
-    "EnvironmentsClient",
+    "PagesClient",
 )
