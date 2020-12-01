@@ -236,6 +236,7 @@ class Match(object):
           PARAMETER_FILLING (int): The query was used for parameter filling.
           NO_MATCH (int): No match was found for the query.
           NO_INPUT (int): Indicates an empty query.
+          EVENT (int): The query directly triggered an event.
         """
 
         MATCH_TYPE_UNSPECIFIED = 0
@@ -244,6 +245,7 @@ class Match(object):
         PARAMETER_FILLING = 3
         NO_MATCH = 4
         NO_INPUT = 5
+        EVENT = 6
 
 
 class NluSettings(object):
