@@ -230,7 +230,6 @@ __all__ = (
     "OutputAudioEncoding",
     "Page",
     "PageInfo",
-    "PagesClient",
     "QueryInput",
     "QueryParameters",
     "QueryResult",
@@ -252,6 +251,7 @@ __all__ = (
     "TrainFlowRequest",
     "TransitionRoute",
     "TransitionRouteGroup",
+    "TransitionRouteGroupsClient",
     "UpdateAgentRequest",
     "UpdateEntityTypeRequest",
     "UpdateEnvironmentRequest",
@@ -269,5 +269,5 @@ __all__ = (
     "WebhookRequest",
     "WebhookResponse",
     "WebhooksClient",
-    "TransitionRouteGroupsClient",
+    "PagesClient",
 )
