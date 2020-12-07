@@ -41,7 +41,7 @@ for version in versions:
             "setup.py",
             "docs/index.rst",
             "noxfile.py",
-            f"scripts/fixup_cx_{version}_keywords.py",
+            f"scripts/fixup_dialogflowcx_{version}_keywords.py",
         ],
     )
 
