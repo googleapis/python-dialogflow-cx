@@ -243,6 +243,7 @@ __all__ = (
     "RestoreAgentRequest",
     "SentimentAnalysisResult",
     "SessionEntityType",
+    "SessionEntityTypesClient",
     "SessionInfo",
     "SessionsClient",
     "SpeechModelVariant",
@@ -275,5 +276,4 @@ __all__ = (
     "WebhookRequest",
     "WebhookResponse",
     "WebhooksClient",
-    "SessionEntityTypesClient",
 )
