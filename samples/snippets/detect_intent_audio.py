@@ -58,11 +58,11 @@ def detect_intent_audio(agent, session_id, audio_file_path, language_code):
     print(f"Session path: {session_path}\n")
     client_options = None
     agent_components = AgentsClient.parse_agent_path(agent)
-    location_id = agent_components['location']
-    if location_id != 'global':
-      api_endpoint = f"{location_id}-dialogflow.googleapis.com:443"
-      print(f"API Endpoint: {api_endpoint}\n")
-      client_options = {'api_endpoint': api_endpoint}
+    location_id = agent_components["location"]
+    if location_id != "global":
+        api_endpoint = f"{location_id}-dialogflow.googleapis.com:443"
+        print(f"API Endpoint: {api_endpoint}\n")
+        client_options = {"api_endpoint": api_endpoint}
     session_client = SessionsClient(client_options=client_options)
 
     input_audio_config = audio_config.InputAudioConfig(
