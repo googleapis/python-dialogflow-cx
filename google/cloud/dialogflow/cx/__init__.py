@@ -31,6 +31,12 @@ from google.cloud.dialogflow.cx_v3beta1.services.environments.async_client impor
 from google.cloud.dialogflow.cx_v3beta1.services.environments.client import (
     EnvironmentsClient,
 )
+from google.cloud.dialogflow.cx_v3beta1.services.experiments.async_client import (
+    ExperimentsAsyncClient,
+)
+from google.cloud.dialogflow.cx_v3beta1.services.experiments.client import (
+    ExperimentsClient,
+)
 from google.cloud.dialogflow.cx_v3beta1.services.flows.async_client import (
     FlowsAsyncClient,
 )
@@ -121,6 +127,17 @@ from google.cloud.dialogflow.cx_v3beta1.types.environment import (
 from google.cloud.dialogflow.cx_v3beta1.types.environment import (
     UpdateEnvironmentRequest,
 )
+from google.cloud.dialogflow.cx_v3beta1.types.experiment import CreateExperimentRequest
+from google.cloud.dialogflow.cx_v3beta1.types.experiment import DeleteExperimentRequest
+from google.cloud.dialogflow.cx_v3beta1.types.experiment import Experiment
+from google.cloud.dialogflow.cx_v3beta1.types.experiment import GetExperimentRequest
+from google.cloud.dialogflow.cx_v3beta1.types.experiment import ListExperimentsRequest
+from google.cloud.dialogflow.cx_v3beta1.types.experiment import ListExperimentsResponse
+from google.cloud.dialogflow.cx_v3beta1.types.experiment import StartExperimentRequest
+from google.cloud.dialogflow.cx_v3beta1.types.experiment import StopExperimentRequest
+from google.cloud.dialogflow.cx_v3beta1.types.experiment import UpdateExperimentRequest
+from google.cloud.dialogflow.cx_v3beta1.types.experiment import VariantsHistory
+from google.cloud.dialogflow.cx_v3beta1.types.experiment import VersionVariants
 from google.cloud.dialogflow.cx_v3beta1.types.flow import CreateFlowRequest
 from google.cloud.dialogflow.cx_v3beta1.types.flow import DeleteFlowRequest
 from google.cloud.dialogflow.cx_v3beta1.types.flow import Flow
@@ -266,6 +283,7 @@ __all__ = (
     "CreateAgentRequest",
     "CreateEntityTypeRequest",
     "CreateEnvironmentRequest",
+    "CreateExperimentRequest",
     "CreateFlowRequest",
     "CreateIntentRequest",
     "CreatePageRequest",
@@ -278,6 +296,7 @@ __all__ = (
     "DeleteAgentRequest",
     "DeleteEntityTypeRequest",
     "DeleteEnvironmentRequest",
+    "DeleteExperimentRequest",
     "DeleteFlowRequest",
     "DeleteIntentRequest",
     "DeletePageRequest",
@@ -297,6 +316,9 @@ __all__ = (
     "EnvironmentsClient",
     "EventHandler",
     "EventInput",
+    "Experiment",
+    "ExperimentsAsyncClient",
+    "ExperimentsClient",
     "ExportAgentRequest",
     "ExportAgentResponse",
     "Flow",
@@ -309,6 +331,7 @@ __all__ = (
     "GetAgentRequest",
     "GetEntityTypeRequest",
     "GetEnvironmentRequest",
+    "GetExperimentRequest",
     "GetFlowRequest",
     "GetIntentRequest",
     "GetPageRequest",
@@ -329,6 +352,8 @@ __all__ = (
     "ListEntityTypesResponse",
     "ListEnvironmentsRequest",
     "ListEnvironmentsResponse",
+    "ListExperimentsRequest",
+    "ListExperimentsResponse",
     "ListFlowsRequest",
     "ListFlowsResponse",
     "ListIntentsRequest",
@@ -377,6 +402,8 @@ __all__ = (
     "SpeechToTextSettings",
     "SpeechWordInfo",
     "SsmlVoiceGender",
+    "StartExperimentRequest",
+    "StopExperimentRequest",
     "StreamingDetectIntentRequest",
     "StreamingDetectIntentResponse",
     "StreamingRecognitionResult",
@@ -390,6 +417,7 @@ __all__ = (
     "UpdateAgentRequest",
     "UpdateEntityTypeRequest",
     "UpdateEnvironmentRequest",
+    "UpdateExperimentRequest",
     "UpdateFlowRequest",
     "UpdateIntentRequest",
     "UpdatePageRequest",
@@ -398,7 +426,9 @@ __all__ = (
     "UpdateTransitionRouteGroupRequest",
     "UpdateVersionRequest",
     "UpdateWebhookRequest",
+    "VariantsHistory",
     "Version",
+    "VersionVariants",
     "VersionsAsyncClient",
     "VersionsClient",
     "VoiceSelectionParams",

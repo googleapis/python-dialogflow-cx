@@ -10,6 +10,9 @@ Services for Google Cloud Dialogflow Cx v3beta1 API
 .. automodule:: google.cloud.dialogflow.cx_v3beta1.services.environments
     :members:
     :inherited-members:
+.. automodule:: google.cloud.dialogflow.cx_v3beta1.services.experiments
+    :members:
+    :inherited-members:
 .. automodule:: google.cloud.dialogflow.cx_v3beta1.services.flows
     :members:
     :inherited-members:

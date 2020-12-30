@@ -11,8 +11,8 @@
       "git": {
         "name": "googleapis",
         "remote": "https://github.com/googleapis/googleapis.git",
-        "sha": "34c8140517e18b5fd47d7f5a2ffba72be4ba8506",
-        "internalRef": "348646270"
+        "sha": "36536e21b8eece3e9ed100037c214da99324c957",
+        "internalRef": "348668666"
       }
     },
     {
@@ -137,6 +137,14 @@
     "google/cloud/dialogflow/cx_v3beta1/services/environments/transports/base.py",
     "google/cloud/dialogflow/cx_v3beta1/services/environments/transports/grpc.py",
     "google/cloud/dialogflow/cx_v3beta1/services/environments/transports/grpc_asyncio.py",
+    "google/cloud/dialogflow/cx_v3beta1/services/experiments/__init__.py",
+    "google/cloud/dialogflow/cx_v3beta1/services/experiments/async_client.py",
+    "google/cloud/dialogflow/cx_v3beta1/services/experiments/client.py",
+    "google/cloud/dialogflow/cx_v3beta1/services/experiments/pagers.py",
+    "google/cloud/dialogflow/cx_v3beta1/services/experiments/transports/__init__.py",
+    "google/cloud/dialogflow/cx_v3beta1/services/experiments/transports/base.py",
+    "google/cloud/dialogflow/cx_v3beta1/services/experiments/transports/grpc.py",
+    "google/cloud/dialogflow/cx_v3beta1/services/experiments/transports/grpc_asyncio.py",
     "google/cloud/dialogflow/cx_v3beta1/services/flows/__init__.py",
     "google/cloud/dialogflow/cx_v3beta1/services/flows/async_client.py",
     "google/cloud/dialogflow/cx_v3beta1/services/flows/client.py",
@@ -213,6 +221,7 @@
     "google/cloud/dialogflow/cx_v3beta1/types/audio_config.py",
     "google/cloud/dialogflow/cx_v3beta1/types/entity_type.py",
     "google/cloud/dialogflow/cx_v3beta1/types/environment.py",
+    "google/cloud/dialogflow/cx_v3beta1/types/experiment.py",
     "google/cloud/dialogflow/cx_v3beta1/types/flow.py",
     "google/cloud/dialogflow/cx_v3beta1/types/fulfillment.py",
     "google/cloud/dialogflow/cx_v3beta1/types/intent.py",
@@ -366,6 +375,7 @@
     "tests/unit/gapic/cx_v3beta1/test_agents.py",
     "tests/unit/gapic/cx_v3beta1/test_entity_types.py",
     "tests/unit/gapic/cx_v3beta1/test_environments.py",
+    "tests/unit/gapic/cx_v3beta1/test_experiments.py",
     "tests/unit/gapic/cx_v3beta1/test_flows.py",
     "tests/unit/gapic/cx_v3beta1/test_intents.py",
     "tests/unit/gapic/cx_v3beta1/test_pages.py",
