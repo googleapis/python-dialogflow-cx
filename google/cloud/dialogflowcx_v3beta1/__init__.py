@@ -176,7 +176,6 @@ __all__ = (
     "DetectIntentResponse",
     "DtmfInput",
     "EntityType",
-    "EntityTypesClient",
     "Environment",
     "EnvironmentsClient",
     "EventHandler",
@@ -184,6 +183,7 @@ __all__ = (
     "ExportAgentRequest",
     "ExportAgentResponse",
     "Flow",
+    "FlowsClient",
     "Form",
     "FulfillIntentRequest",
     "FulfillIntentResponse",
@@ -275,5 +275,5 @@ __all__ = (
     "WebhookRequest",
     "WebhookResponse",
     "WebhooksClient",
-    "FlowsClient",
+    "EntityTypesClient",
 )
