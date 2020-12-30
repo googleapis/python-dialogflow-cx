@@ -293,7 +293,6 @@ __all__ = (
     "TrainFlowRequest",
     "TransitionRoute",
     "TransitionRouteGroup",
-    "TransitionRouteGroupsClient",
     "UpdateAgentRequest",
     "UpdateEntityTypeRequest",
     "UpdateEnvironmentRequest",
@@ -316,4 +315,5 @@ __all__ = (
     "WebhookResponse",
     "WebhooksClient",
     "EntityTypesClient",
+    "TransitionRouteGroupsClient",
 )
