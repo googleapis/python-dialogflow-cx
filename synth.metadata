@@ -11,8 +11,8 @@
       "git": {
         "name": "googleapis",
         "remote": "https://github.com/googleapis/googleapis.git",
-        "sha": "089409fd26a0ecace547afed43418d82ad335dcd",
-        "internalRef": "348500118"
+        "sha": "34c8140517e18b5fd47d7f5a2ffba72be4ba8506",
+        "internalRef": "348646270"
       }
     },
     {
@@ -253,6 +253,14 @@
     "google/cloud/dialogflowcx_v3/services/environments/transports/base.py",
     "google/cloud/dialogflowcx_v3/services/environments/transports/grpc.py",
     "google/cloud/dialogflowcx_v3/services/environments/transports/grpc_asyncio.py",
+    "google/cloud/dialogflowcx_v3/services/experiments/__init__.py",
+    "google/cloud/dialogflowcx_v3/services/experiments/async_client.py",
+    "google/cloud/dialogflowcx_v3/services/experiments/client.py",
+    "google/cloud/dialogflowcx_v3/services/experiments/pagers.py",
+    "google/cloud/dialogflowcx_v3/services/experiments/transports/__init__.py",
+    "google/cloud/dialogflowcx_v3/services/experiments/transports/base.py",
+    "google/cloud/dialogflowcx_v3/services/experiments/transports/grpc.py",
+    "google/cloud/dialogflowcx_v3/services/experiments/transports/grpc_asyncio.py",
     "google/cloud/dialogflowcx_v3/services/flows/__init__.py",
     "google/cloud/dialogflowcx_v3/services/flows/async_client.py",
     "google/cloud/dialogflowcx_v3/services/flows/client.py",
@@ -329,6 +337,7 @@
     "google/cloud/dialogflowcx_v3/types/audio_config.py",
     "google/cloud/dialogflowcx_v3/types/entity_type.py",
     "google/cloud/dialogflowcx_v3/types/environment.py",
+    "google/cloud/dialogflowcx_v3/types/experiment.py",
     "google/cloud/dialogflowcx_v3/types/flow.py",
     "google/cloud/dialogflowcx_v3/types/fulfillment.py",
     "google/cloud/dialogflowcx_v3/types/intent.py",
@@ -370,6 +379,7 @@
     "tests/unit/gapic/dialogflowcx_v3/test_agents.py",
     "tests/unit/gapic/dialogflowcx_v3/test_entity_types.py",
     "tests/unit/gapic/dialogflowcx_v3/test_environments.py",
+    "tests/unit/gapic/dialogflowcx_v3/test_experiments.py",
     "tests/unit/gapic/dialogflowcx_v3/test_flows.py",
     "tests/unit/gapic/dialogflowcx_v3/test_intents.py",
     "tests/unit/gapic/dialogflowcx_v3/test_pages.py",
