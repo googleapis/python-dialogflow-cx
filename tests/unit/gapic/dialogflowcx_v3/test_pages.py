@@ -83,7 +83,20 @@ def test__get_default_mtls_endpoint():
     assert PagesClient._get_default_mtls_endpoint(non_googleapi) == non_googleapi
 
 
-@pytest.mark.parametrize("client_class", [PagesClient, PagesAsyncClient])
+def test_pages_client_from_service_account_info():
+    creds = credentials.AnonymousCredentials()
+    with mock.patch.object(
+        service_account.Credentials, "from_service_account_info"
+    ) as factory:
+        factory.return_value = creds
+        info = {"valid": True}
+        client = PagesClient.from_service_account_info(info)
+        assert client.transport._credentials == creds
+
+        assert client.transport._host == "dialogflow.googleapis.com:443"
+
+
+@pytest.mark.parametrize("client_class", [PagesClient, PagesAsyncClient,])
 def test_pages_client_from_service_account_file(client_class):
     creds = credentials.AnonymousCredentials()
     with mock.patch.object(
@@ -101,7 +114,10 @@ def test_pages_client_from_service_account_file(client_class):
 
 def test_pages_client_get_transport_class():
     transport = PagesClient.get_transport_class()
-    assert transport == transports.PagesGrpcTransport
+    available_transports = [
+        transports.PagesGrpcTransport,
+    ]
+    assert transport in available_transports
 
     transport = PagesClient.get_transport_class("grpc")
     assert transport == transports.PagesGrpcTransport
@@ -1566,7 +1582,7 @@ def test_transport_get_channel():
 
 @pytest.mark.parametrize(
     "transport_class",
-    [transports.PagesGrpcTransport, transports.PagesGrpcAsyncIOTransport],
+    [transports.PagesGrpcTransport, transports.PagesGrpcAsyncIOTransport,],
 )
 def test_transport_adc(transport_class):
     # Test default credentials are used if not provided.
@@ -1700,7 +1716,7 @@ def test_pages_host_with_port():
 
 
 def test_pages_grpc_transport_channel():
-    channel = grpc.insecure_channel("http://localhost/")
+    channel = grpc.secure_channel("http://localhost/", grpc.local_channel_credentials())
 
     # Check that channel is used if provided.
     transport = transports.PagesGrpcTransport(host="squid.clam.whelk", channel=channel,)
@@ -1710,7 +1726,7 @@ def test_pages_grpc_transport_channel():
 
 
 def test_pages_grpc_asyncio_transport_channel():
-    channel = aio.insecure_channel("http://localhost/")
+    channel = aio.secure_channel("http://localhost/", grpc.local_channel_credentials())
 
     # Check that channel is used if provided.
     transport = transports.PagesGrpcAsyncIOTransport(
@@ -1730,7 +1746,7 @@ def test_pages_transport_channel_mtls_with_client_cert_source(transport_class):
         "grpc.ssl_channel_credentials", autospec=True
     ) as grpc_ssl_channel_cred:
         with mock.patch.object(
-            transport_class, "create_channel", autospec=True
+            transport_class, "create_channel"
         ) as grpc_create_channel:
             mock_ssl_cred = mock.Mock()
             grpc_ssl_channel_cred.return_value = mock_ssl_cred
@@ -1783,7 +1799,7 @@ def test_pages_transport_channel_mtls_with_adc(transport_class):
         ssl_credentials=mock.PropertyMock(return_value=mock_ssl_cred),
     ):
         with mock.patch.object(
-            transport_class, "create_channel", autospec=True
+            transport_class, "create_channel"
         ) as grpc_create_channel:
             mock_grpc_channel = mock.Mock()
             grpc_create_channel.return_value = mock_grpc_channel

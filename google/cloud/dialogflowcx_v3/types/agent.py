@@ -97,7 +97,7 @@ class Agent(proto.Message):
             the Dialogflow console and in the self-hosted `Web
             Demo <https://cloud.google.com/dialogflow/docs/integrations/web-demo>`__
             integration.
-        speech_to_text_settings (~.gcdc_agent.SpeechToTextSettings):
+        speech_to_text_settings (google.cloud.dialogflowcx_v3.types.SpeechToTextSettings):
             Speech recognition related settings.
         start_flow (str):
             Immutable. Name of the start flow in this agent. A start
@@ -164,7 +164,7 @@ class ListAgentsResponse(proto.Message):
     [Agents.ListAgents][google.cloud.dialogflow.cx.v3.Agents.ListAgents].
 
     Attributes:
-        agents (Sequence[~.gcdc_agent.Agent]):
+        agents (Sequence[google.cloud.dialogflowcx_v3.types.Agent]):
             The list of agents. There will be a maximum number of items
             returned based on the page_size field in the request.
         next_page_token (str):
@@ -203,7 +203,7 @@ class CreateAgentRequest(proto.Message):
         parent (str):
             Required. The location to create a agent for. Format:
             ``projects/<Project ID>/locations/<Location ID>``.
-        agent (~.gcdc_agent.Agent):
+        agent (google.cloud.dialogflowcx_v3.types.Agent):
             Required. The agent to create.
     """
 
@@ -217,9 +217,9 @@ class UpdateAgentRequest(proto.Message):
     [Agents.UpdateAgent][google.cloud.dialogflow.cx.v3.Agents.UpdateAgent].
 
     Attributes:
-        agent (~.gcdc_agent.Agent):
+        agent (google.cloud.dialogflowcx_v3.types.Agent):
             Required. The agent to update.
-        update_mask (~.field_mask.FieldMask):
+        update_mask (google.protobuf.field_mask_pb2.FieldMask):
             The mask to control which fields get updated.
             If the mask is not present, all fields will be
             updated.

@@ -72,10 +72,10 @@ class Page(proto.Message):
         display_name (str):
             Required. The human-readable name of the
             page, unique within the agent.
-        entry_fulfillment (~.fulfillment.Fulfillment):
+        entry_fulfillment (google.cloud.dialogflowcx_v3.types.Fulfillment):
             The fulfillment to call when the session is
             entering the page.
-        form (~.gcdc_page.Form):
+        form (google.cloud.dialogflowcx_v3.types.Form):
             The form associated with the page, used for
             collecting parameters relevant to the page.
         transition_route_groups (Sequence[str]):
@@ -94,7 +94,7 @@ class Page(proto.Message):
                takes precedence.
 
             Format:\ ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/transitionRouteGroups/<TransitionRouteGroup ID>``.
-        transition_routes (Sequence[~.gcdc_page.TransitionRoute]):
+        transition_routes (Sequence[google.cloud.dialogflowcx_v3.types.TransitionRoute]):
             A list of transitions for the transition rules of this page.
             They route the conversation to another page in the same
             flow, or another flow.
@@ -109,7 +109,7 @@ class Page(proto.Message):
             -  TransitionRoutes defined in flow with intent specified.
             -  TransitionRoutes defined in the page with only condition
                specified.
-        event_handlers (Sequence[~.gcdc_page.EventHandler]):
+        event_handlers (Sequence[google.cloud.dialogflowcx_v3.types.EventHandler]):
             Handlers associated with the page to handle
             events such as webhook errors, no match or no
             input.
@@ -146,7 +146,7 @@ class Form(proto.Message):
     [session][google.cloud.dialogflow.cx.v3.SessionInfo.parameters].
 
     Attributes:
-        parameters (Sequence[~.gcdc_page.Form.Parameter]):
+        parameters (Sequence[google.cloud.dialogflowcx_v3.types.Form.Parameter]):
             Parameters to collect from the user.
     """
 
@@ -174,10 +174,10 @@ class Form(proto.Message):
             is_list (bool):
                 Indicates whether the parameter represents a
                 list of values.
-            fill_behavior (~.gcdc_page.Form.Parameter.FillBehavior):
+            fill_behavior (google.cloud.dialogflowcx_v3.types.Form.Parameter.FillBehavior):
                 Required. Defines fill behavior for the
                 parameter.
-            default_value (~.struct.Value):
+            default_value (google.protobuf.struct_pb2.Value):
                 The default value of an optional parameter.
                 If the parameter is required, the default value
                 will be ignored.
@@ -194,11 +194,11 @@ class Form(proto.Message):
             handled.
 
             Attributes:
-                initial_prompt_fulfillment (~.fulfillment.Fulfillment):
+                initial_prompt_fulfillment (google.cloud.dialogflowcx_v3.types.Fulfillment):
                     Required. The fulfillment to provide the
                     initial prompt that the agent can present to the
                     user in order to fill the parameter.
-                reprompt_event_handlers (Sequence[~.gcdc_page.EventHandler]):
+                reprompt_event_handlers (Sequence[google.cloud.dialogflowcx_v3.types.EventHandler]):
                     The handlers for parameter-level events, used to provide
                     reprompt for the parameter or transition to a different
                     page/flow. The supported events are:
@@ -289,7 +289,7 @@ class EventHandler(proto.Message):
             event handler.
         event (str):
             Required. The name of the event to handle.
-        trigger_fulfillment (~.fulfillment.Fulfillment):
+        trigger_fulfillment (google.cloud.dialogflowcx_v3.types.Fulfillment):
             The fulfillment to call when the event
             occurs. Handling webhook errors with a
             fulfillment enabled with webhook could cause
@@ -360,7 +360,7 @@ class TransitionRoute(proto.Message):
             specified. When both ``intent`` and ``condition`` are
             specified, the transition can only happen when both are
             fulfilled.
-        trigger_fulfillment (~.fulfillment.Fulfillment):
+        trigger_fulfillment (google.cloud.dialogflowcx_v3.types.Fulfillment):
             The fulfillment to call when the condition is satisfied. At
             least one of ``trigger_fulfillment`` and ``target`` must be
             specified. When both are defined, ``trigger_fulfillment`` is
@@ -435,7 +435,7 @@ class ListPagesResponse(proto.Message):
     [Pages.ListPages][google.cloud.dialogflow.cx.v3.Pages.ListPages].
 
     Attributes:
-        pages (Sequence[~.gcdc_page.Page]):
+        pages (Sequence[google.cloud.dialogflowcx_v3.types.Page]):
             The list of pages. There will be a maximum number of items
             returned based on the page_size field in the request.
         next_page_token (str):
@@ -493,7 +493,7 @@ class CreatePageRequest(proto.Message):
         parent (str):
             Required. The flow to create a page for. Format:
             ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>``.
-        page (~.gcdc_page.Page):
+        page (google.cloud.dialogflowcx_v3.types.Page):
             Required. The page to create.
         language_code (str):
             The language of the following fields in ``page``:
@@ -525,7 +525,7 @@ class UpdatePageRequest(proto.Message):
     [Pages.UpdatePage][google.cloud.dialogflow.cx.v3.Pages.UpdatePage].
 
     Attributes:
-        page (~.gcdc_page.Page):
+        page (google.cloud.dialogflowcx_v3.types.Page):
             Required. The page to update.
         language_code (str):
             The language of the following fields in ``page``:
@@ -543,7 +543,7 @@ class UpdatePageRequest(proto.Message):
             languages <https://cloud.google.com/dialogflow/docs/reference/language>`__
             are supported. Note: languages must be enabled in the agent
             before they can be used.
-        update_mask (~.field_mask.FieldMask):
+        update_mask (google.protobuf.field_mask_pb2.FieldMask):
             The mask to control which fields get updated.
             If the mask is not present, all fields will be
             updated.

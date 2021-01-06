@@ -116,6 +116,22 @@ class FlowsClient(metaclass=FlowsClientMeta):
     )
 
     @classmethod
+    def from_service_account_info(cls, info: dict, *args, **kwargs):
+        """Creates an instance of this client using the provided credentials info.
+
+        Args:
+            info (dict): The service account private key info.
+            args: Additional arguments to pass to the constructor.
+            kwargs: Additional arguments to pass to the constructor.
+
+        Returns:
+            FlowsClient: The constructed client.
+        """
+        credentials = service_account.Credentials.from_service_account_info(info)
+        kwargs["credentials"] = credentials
+        return cls(*args, **kwargs)
+
+    @classmethod
     def from_service_account_file(cls, filename: str, *args, **kwargs):
         """Creates an instance of this client using the provided credentials
         file.
@@ -127,7 +143,7 @@ class FlowsClient(metaclass=FlowsClientMeta):
             kwargs: Additional arguments to pass to the constructor.
 
         Returns:
-            {@api.name}: The constructed client.
+            FlowsClient: The constructed client.
         """
         credentials = service_account.Credentials.from_service_account_file(filename)
         kwargs["credentials"] = credentials
@@ -285,10 +301,10 @@ class FlowsClient(metaclass=FlowsClientMeta):
                 credentials identify the application to the service; if none
                 are specified, the client will attempt to ascertain the
                 credentials from the environment.
-            transport (Union[str, ~.FlowsTransport]): The
+            transport (Union[str, FlowsTransport]): The
                 transport to use. If set to None, a transport is chosen
                 automatically.
-            client_options (client_options_lib.ClientOptions): Custom options for the
+            client_options (google.api_core.client_options.ClientOptions): Custom options for the
                 client. It won't take effect if a ``transport`` instance is provided.
                 (1) The ``api_endpoint`` property can be used to override the
                 default endpoint provided by the client. GOOGLE_API_USE_MTLS_ENDPOINT
@@ -399,16 +415,17 @@ class FlowsClient(metaclass=FlowsClientMeta):
         r"""Creates a flow in the specified agent.
 
         Args:
-            request (:class:`~.gcdc_flow.CreateFlowRequest`):
+            request (google.cloud.dialogflowcx_v3.types.CreateFlowRequest):
                 The request object. The request message for
                 [Flows.CreateFlow][google.cloud.dialogflow.cx.v3.Flows.CreateFlow].
-            parent (:class:`str`):
+            parent (str):
                 Required. The agent to create a flow for. Format:
                 ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>``.
+
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            flow (:class:`~.gcdc_flow.Flow`):
+            flow (google.cloud.dialogflowcx_v3.types.Flow):
                 Required. The flow to create.
                 This corresponds to the ``flow`` field
                 on the ``request`` instance; if ``request`` is provided, this
@@ -421,7 +438,7 @@ class FlowsClient(metaclass=FlowsClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            ~.gcdc_flow.Flow:
+            google.cloud.dialogflowcx_v3.types.Flow:
                 Flows represents the conversation
                 flows when you build your chatbot agent.
                 A flow consists of many pages connected
@@ -500,12 +517,13 @@ class FlowsClient(metaclass=FlowsClientMeta):
         r"""Deletes a specified flow.
 
         Args:
-            request (:class:`~.flow.DeleteFlowRequest`):
+            request (google.cloud.dialogflowcx_v3.types.DeleteFlowRequest):
                 The request object. The request message for
                 [Flows.DeleteFlow][google.cloud.dialogflow.cx.v3.Flows.DeleteFlow].
-            name (:class:`str`):
+            name (str):
                 Required. The name of the flow to delete. Format:
                 ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>``.
+
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -566,12 +584,13 @@ class FlowsClient(metaclass=FlowsClientMeta):
         r"""Returns the list of all flows in the specified agent.
 
         Args:
-            request (:class:`~.flow.ListFlowsRequest`):
+            request (google.cloud.dialogflowcx_v3.types.ListFlowsRequest):
                 The request object. The request message for
                 [Flows.ListFlows][google.cloud.dialogflow.cx.v3.Flows.ListFlows].
-            parent (:class:`str`):
+            parent (str):
                 Required. The agent containing the flows. Format:
                 ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>``.
+
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -583,7 +602,7 @@ class FlowsClient(metaclass=FlowsClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            ~.pagers.ListFlowsPager:
+            google.cloud.dialogflowcx_v3.services.flows.pagers.ListFlowsPager:
                 The response message for
                 [Flows.ListFlows][google.cloud.dialogflow.cx.v3.Flows.ListFlows].
 
@@ -648,12 +667,13 @@ class FlowsClient(metaclass=FlowsClientMeta):
         r"""Retrieves the specified flow.
 
         Args:
-            request (:class:`~.flow.GetFlowRequest`):
+            request (google.cloud.dialogflowcx_v3.types.GetFlowRequest):
                 The request object. The response message for
                 [Flows.GetFlow][google.cloud.dialogflow.cx.v3.Flows.GetFlow].
-            name (:class:`str`):
+            name (str):
                 Required. The name of the flow to get. Format:
                 ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>``.
+
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -665,7 +685,7 @@ class FlowsClient(metaclass=FlowsClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            ~.flow.Flow:
+            google.cloud.dialogflowcx_v3.types.Flow:
                 Flows represents the conversation
                 flows when you build your chatbot agent.
                 A flow consists of many pages connected
@@ -743,18 +763,19 @@ class FlowsClient(metaclass=FlowsClientMeta):
         r"""Updates the specified flow.
 
         Args:
-            request (:class:`~.gcdc_flow.UpdateFlowRequest`):
+            request (google.cloud.dialogflowcx_v3.types.UpdateFlowRequest):
                 The request object. The request message for
                 [Flows.UpdateFlow][google.cloud.dialogflow.cx.v3.Flows.UpdateFlow].
-            flow (:class:`~.gcdc_flow.Flow`):
+            flow (google.cloud.dialogflowcx_v3.types.Flow):
                 Required. The flow to update.
                 This corresponds to the ``flow`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            update_mask (:class:`~.field_mask.FieldMask`):
+            update_mask (google.protobuf.field_mask_pb2.FieldMask):
                 Required. The mask to control which fields get updated.
                 If ``update_mask`` is not specified, an error will be
                 returned.
+
                 This corresponds to the ``update_mask`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -766,7 +787,7 @@ class FlowsClient(metaclass=FlowsClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            ~.gcdc_flow.Flow:
+            google.cloud.dialogflowcx_v3.types.Flow:
                 Flows represents the conversation
                 flows when you build your chatbot agent.
                 A flow consists of many pages connected
@@ -848,12 +869,13 @@ class FlowsClient(metaclass=FlowsClientMeta):
         'draft' environment is trained.
 
         Args:
-            request (:class:`~.flow.TrainFlowRequest`):
+            request (google.cloud.dialogflowcx_v3.types.TrainFlowRequest):
                 The request object. The request message for
                 [Flows.TrainFlow][google.cloud.dialogflow.cx.v3.Flows.TrainFlow].
-            name (:class:`str`):
+            name (str):
                 Required. The flow to train. Format:
                 ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>``.
+
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -865,24 +887,22 @@ class FlowsClient(metaclass=FlowsClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            ~.operation.Operation:
+            google.api_core.operation.Operation:
                 An object representing a long-running operation.
 
-                The result type for the operation will be
-                :class:``~.empty.Empty``: A generic empty message that
-                you can re-use to avoid defining duplicated empty
-                messages in your APIs. A typical example is to use it as
-                the request or the response type of an API method. For
-                instance:
+                The result type for the operation will be :class:`google.protobuf.empty_pb2.Empty` A generic empty message that you can re-use to avoid defining duplicated
+                   empty messages in your APIs. A typical example is to
+                   use it as the request or the response type of an API
+                   method. For instance:
 
-                ::
+                      service Foo {
+                         rpc Bar(google.protobuf.Empty) returns
+                         (google.protobuf.Empty);
 
-                    service Foo {
-                      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-                    }
+                      }
 
-                The JSON representation for ``Empty`` is empty JSON
-                object ``{}``.
+                   The JSON representation for Empty is empty JSON
+                   object {}.
 
         """
         # Create or coerce a protobuf request object.

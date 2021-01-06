@@ -52,7 +52,7 @@ class TransitionRouteGroup(proto.Message):
             group, unique within the
             [Agent][google.cloud.dialogflow.cx.v3beta1.Agent]. The
             display name can be no longer than 30 characters.
-        transition_routes (Sequence[~.page.TransitionRoute]):
+        transition_routes (Sequence[google.cloud.dialogflowcx_v3beta1.types.TransitionRoute]):
             Transition routes associated with the
             [TransitionRouteGroup][google.cloud.dialogflow.cx.v3beta1.TransitionRouteGroup].
             Duplicate transition routes (i.e. using the same
@@ -116,7 +116,7 @@ class ListTransitionRouteGroupsResponse(proto.Message):
     [TransitionRouteGroups.ListTransitionRouteGroups][google.cloud.dialogflow.cx.v3beta1.TransitionRouteGroups.ListTransitionRouteGroups].
 
     Attributes:
-        transition_route_groups (Sequence[~.gcdc_transition_route_group.TransitionRouteGroup]):
+        transition_route_groups (Sequence[google.cloud.dialogflowcx_v3beta1.types.TransitionRouteGroup]):
             The list of transition route groups. There will be a maximum
             number of items returned based on the page_size field in the
             request. The list may in some cases be empty or contain
@@ -178,7 +178,7 @@ class CreateTransitionRouteGroupRequest(proto.Message):
             [TransitionRouteGroup][google.cloud.dialogflow.cx.v3beta1.TransitionRouteGroup]
             for. Format:
             ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>``.
-        transition_route_group (~.gcdc_transition_route_group.TransitionRouteGroup):
+        transition_route_group (google.cloud.dialogflowcx_v3beta1.types.TransitionRouteGroup):
             Required. The transition route group to
             create.
         language_code (str):
@@ -209,10 +209,10 @@ class UpdateTransitionRouteGroupRequest(proto.Message):
     [TransitionRouteGroups.UpdateTransitionRouteGroup][google.cloud.dialogflow.cx.v3beta1.TransitionRouteGroups.UpdateTransitionRouteGroup].
 
     Attributes:
-        transition_route_group (~.gcdc_transition_route_group.TransitionRouteGroup):
+        transition_route_group (google.cloud.dialogflowcx_v3beta1.types.TransitionRouteGroup):
             Required. The transition route group to
             update.
-        update_mask (~.field_mask.FieldMask):
+        update_mask (google.protobuf.field_mask_pb2.FieldMask):
             The mask to control which fields get updated.
         language_code (str):
             The language to list transition route groups for. The field

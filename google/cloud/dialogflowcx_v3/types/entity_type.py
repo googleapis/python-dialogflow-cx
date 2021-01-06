@@ -77,15 +77,15 @@ class EntityType(proto.Message):
         display_name (str):
             Required. The human-readable name of the
             entity type, unique within the agent.
-        kind (~.gcdc_entity_type.EntityType.Kind):
+        kind (google.cloud.dialogflowcx_v3.types.EntityType.Kind):
             Required. Indicates the kind of entity type.
-        auto_expansion_mode (~.gcdc_entity_type.EntityType.AutoExpansionMode):
+        auto_expansion_mode (google.cloud.dialogflowcx_v3.types.EntityType.AutoExpansionMode):
             Indicates whether the entity type can be
             automatically expanded.
-        entities (Sequence[~.gcdc_entity_type.EntityType.Entity]):
+        entities (Sequence[google.cloud.dialogflowcx_v3.types.EntityType.Entity]):
             The collection of entity entries associated
             with the entity type.
-        excluded_phrases (Sequence[~.gcdc_entity_type.EntityType.ExcludedPhrase]):
+        excluded_phrases (Sequence[google.cloud.dialogflowcx_v3.types.EntityType.ExcludedPhrase]):
             Collection of exceptional words and phrases that shouldn't
             be matched. For example, if you have a size entity type with
             entry ``giant``\ (an adjective), you might consider adding
@@ -215,7 +215,7 @@ class ListEntityTypesResponse(proto.Message):
     [EntityTypes.ListEntityTypes][google.cloud.dialogflow.cx.v3.EntityTypes.ListEntityTypes].
 
     Attributes:
-        entity_types (Sequence[~.gcdc_entity_type.EntityType]):
+        entity_types (Sequence[google.cloud.dialogflowcx_v3.types.EntityType]):
             The list of entity types. There will be a maximum number of
             items returned based on the page_size field in the request.
         next_page_token (str):
@@ -269,7 +269,7 @@ class CreateEntityTypeRequest(proto.Message):
         parent (str):
             Required. The agent to create a entity type for. Format:
             ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>``.
-        entity_type (~.gcdc_entity_type.EntityType):
+        entity_type (google.cloud.dialogflowcx_v3.types.EntityType):
             Required. The entity type to create.
         language_code (str):
             The language of the following fields in ``entity_type``:
@@ -297,7 +297,7 @@ class UpdateEntityTypeRequest(proto.Message):
     [EntityTypes.UpdateEntityType][google.cloud.dialogflow.cx.v3.EntityTypes.UpdateEntityType].
 
     Attributes:
-        entity_type (~.gcdc_entity_type.EntityType):
+        entity_type (google.cloud.dialogflowcx_v3.types.EntityType):
             Required. The entity type to update.
         language_code (str):
             The language of the following fields in ``entity_type``:
@@ -311,7 +311,7 @@ class UpdateEntityTypeRequest(proto.Message):
             languages <https://cloud.google.com/dialogflow/docs/reference/language>`__
             are supported. Note: languages must be enabled in the agent
             before they can be used.
-        update_mask (~.field_mask.FieldMask):
+        update_mask (google.protobuf.field_mask_pb2.FieldMask):
             The mask to control which fields get updated.
     """
 

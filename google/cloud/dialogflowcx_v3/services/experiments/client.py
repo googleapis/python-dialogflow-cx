@@ -115,6 +115,22 @@ class ExperimentsClient(metaclass=ExperimentsClientMeta):
     )
 
     @classmethod
+    def from_service_account_info(cls, info: dict, *args, **kwargs):
+        """Creates an instance of this client using the provided credentials info.
+
+        Args:
+            info (dict): The service account private key info.
+            args: Additional arguments to pass to the constructor.
+            kwargs: Additional arguments to pass to the constructor.
+
+        Returns:
+            ExperimentsClient: The constructed client.
+        """
+        credentials = service_account.Credentials.from_service_account_info(info)
+        kwargs["credentials"] = credentials
+        return cls(*args, **kwargs)
+
+    @classmethod
     def from_service_account_file(cls, filename: str, *args, **kwargs):
         """Creates an instance of this client using the provided credentials
         file.
@@ -126,7 +142,7 @@ class ExperimentsClient(metaclass=ExperimentsClientMeta):
             kwargs: Additional arguments to pass to the constructor.
 
         Returns:
-            {@api.name}: The constructed client.
+            ExperimentsClient: The constructed client.
         """
         credentials = service_account.Credentials.from_service_account_file(filename)
         kwargs["credentials"] = credentials
@@ -258,10 +274,10 @@ class ExperimentsClient(metaclass=ExperimentsClientMeta):
                 credentials identify the application to the service; if none
                 are specified, the client will attempt to ascertain the
                 credentials from the environment.
-            transport (Union[str, ~.ExperimentsTransport]): The
+            transport (Union[str, ExperimentsTransport]): The
                 transport to use. If set to None, a transport is chosen
                 automatically.
-            client_options (client_options_lib.ClientOptions): Custom options for the
+            client_options (google.api_core.client_options.ClientOptions): Custom options for the
                 client. It won't take effect if a ``transport`` instance is provided.
                 (1) The ``api_endpoint`` property can be used to override the
                 default endpoint provided by the client. GOOGLE_API_USE_MTLS_ENDPOINT
@@ -372,14 +388,15 @@ class ExperimentsClient(metaclass=ExperimentsClientMeta):
         [Environment][google.cloud.dialogflow.cx.v3.Environment].
 
         Args:
-            request (:class:`~.experiment.ListExperimentsRequest`):
+            request (google.cloud.dialogflowcx_v3.types.ListExperimentsRequest):
                 The request object. The request message for
                 [Experiments.ListExperiments][google.cloud.dialogflow.cx.v3.Experiments.ListExperiments].
-            parent (:class:`str`):
+            parent (str):
                 Required. The
                 [Environment][google.cloud.dialogflow.cx.v3.Environment]
                 to list all environments for. Format:
                 ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/environments/<Environment ID>``.
+
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -391,7 +408,7 @@ class ExperimentsClient(metaclass=ExperimentsClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            ~.pagers.ListExperimentsPager:
+            google.cloud.dialogflowcx_v3.services.experiments.pagers.ListExperimentsPager:
                 The response message for
                 [Experiments.ListExperiments][google.cloud.dialogflow.cx.v3.Experiments.ListExperiments].
 
@@ -457,14 +474,15 @@ class ExperimentsClient(metaclass=ExperimentsClientMeta):
         [Experiment][google.cloud.dialogflow.cx.v3.Experiment].
 
         Args:
-            request (:class:`~.experiment.GetExperimentRequest`):
+            request (google.cloud.dialogflowcx_v3.types.GetExperimentRequest):
                 The request object. The request message for
                 [Experiments.GetExperiment][google.cloud.dialogflow.cx.v3.Experiments.GetExperiment].
-            name (:class:`str`):
+            name (str):
                 Required. The name of the
                 [Environment][google.cloud.dialogflow.cx.v3.Environment].
                 Format:
                 ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/environments/<Environment ID>/experiments/<Experiment ID>``.
+
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -476,7 +494,7 @@ class ExperimentsClient(metaclass=ExperimentsClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            ~.experiment.Experiment:
+            google.cloud.dialogflowcx_v3.types.Experiment:
                 Represents an experiment in an
                 environment. Next ID: 13
 
@@ -536,20 +554,21 @@ class ExperimentsClient(metaclass=ExperimentsClientMeta):
         [Environment][google.cloud.dialogflow.cx.v3.Environment].
 
         Args:
-            request (:class:`~.gcdc_experiment.CreateExperimentRequest`):
+            request (google.cloud.dialogflowcx_v3.types.CreateExperimentRequest):
                 The request object. The request message for
                 [Experiments.CreateExperiment][google.cloud.dialogflow.cx.v3.Experiments.CreateExperiment].
-            parent (:class:`str`):
+            parent (str):
                 Required. The
                 [Agent][google.cloud.dialogflow.cx.v3.Agent] to create
                 an
                 [Environment][google.cloud.dialogflow.cx.v3.Environment]
                 for. Format:
                 ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/environments/<Environment ID>``.
+
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            experiment (:class:`~.gcdc_experiment.Experiment`):
+            experiment (google.cloud.dialogflowcx_v3.types.Experiment):
                 Required. The experiment to create.
                 This corresponds to the ``experiment`` field
                 on the ``request`` instance; if ``request`` is provided, this
@@ -562,7 +581,7 @@ class ExperimentsClient(metaclass=ExperimentsClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            ~.gcdc_experiment.Experiment:
+            google.cloud.dialogflowcx_v3.types.Experiment:
                 Represents an experiment in an
                 environment. Next ID: 13
 
@@ -622,17 +641,18 @@ class ExperimentsClient(metaclass=ExperimentsClientMeta):
         [Experiment][google.cloud.dialogflow.cx.v3.Experiment].
 
         Args:
-            request (:class:`~.gcdc_experiment.UpdateExperimentRequest`):
+            request (google.cloud.dialogflowcx_v3.types.UpdateExperimentRequest):
                 The request object. The request message for
                 [Experiments.UpdateExperiment][google.cloud.dialogflow.cx.v3.Experiments.UpdateExperiment].
-            experiment (:class:`~.gcdc_experiment.Experiment`):
+            experiment (google.cloud.dialogflowcx_v3.types.Experiment):
                 Required. The experiment to update.
                 This corresponds to the ``experiment`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            update_mask (:class:`~.field_mask.FieldMask`):
+            update_mask (google.protobuf.field_mask_pb2.FieldMask):
                 Required. The mask to control which
                 fields get updated.
+
                 This corresponds to the ``update_mask`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -644,7 +664,7 @@ class ExperimentsClient(metaclass=ExperimentsClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            ~.gcdc_experiment.Experiment:
+            google.cloud.dialogflowcx_v3.types.Experiment:
                 Represents an experiment in an
                 environment. Next ID: 13
 
@@ -705,14 +725,15 @@ class ExperimentsClient(metaclass=ExperimentsClientMeta):
         [Experiment][google.cloud.dialogflow.cx.v3.Experiment].
 
         Args:
-            request (:class:`~.experiment.DeleteExperimentRequest`):
+            request (google.cloud.dialogflowcx_v3.types.DeleteExperimentRequest):
                 The request object. The request message for
                 [Experiments.DeleteExperiment][google.cloud.dialogflow.cx.v3.Experiments.DeleteExperiment].
-            name (:class:`str`):
+            name (str):
                 Required. The name of the
                 [Environment][google.cloud.dialogflow.cx.v3.Environment]
                 to delete. Format:
                 ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/environments/<Environment ID>/experiments/<Experiment ID>``.
+
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -775,13 +796,14 @@ class ExperimentsClient(metaclass=ExperimentsClientMeta):
         only changes the state of experiment from PENDING to RUNNING.
 
         Args:
-            request (:class:`~.experiment.StartExperimentRequest`):
+            request (google.cloud.dialogflowcx_v3.types.StartExperimentRequest):
                 The request object. The request message for
                 [Experiments.StartExperiment][google.cloud.dialogflow.cx.v3.Experiments.StartExperiment].
-            name (:class:`str`):
+            name (str):
                 Required. Resource name of the experiment to start.
                 Format:
                 ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/environments/<Environment ID>/experiments/<Experiment ID>``.
+
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -793,7 +815,7 @@ class ExperimentsClient(metaclass=ExperimentsClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            ~.experiment.Experiment:
+            google.cloud.dialogflowcx_v3.types.Experiment:
                 Represents an experiment in an
                 environment. Next ID: 13
 
@@ -851,13 +873,14 @@ class ExperimentsClient(metaclass=ExperimentsClientMeta):
         only changes the state of experiment from RUNNING to DONE.
 
         Args:
-            request (:class:`~.experiment.StopExperimentRequest`):
+            request (google.cloud.dialogflowcx_v3.types.StopExperimentRequest):
                 The request object. The request message for
                 [Experiments.StopExperiment][google.cloud.dialogflow.cx.v3.Experiments.StopExperiment].
-            name (:class:`str`):
+            name (str):
                 Required. Resource name of the experiment to stop.
                 Format:
                 ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/environments/<Environment ID>/experiments/<Experiment ID>``.
+
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -869,7 +892,7 @@ class ExperimentsClient(metaclass=ExperimentsClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            ~.experiment.Experiment:
+            google.cloud.dialogflowcx_v3.types.Experiment:
                 Represents an experiment in an
                 environment. Next ID: 13
 

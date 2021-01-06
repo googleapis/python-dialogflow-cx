@@ -65,10 +65,10 @@ class Intent(proto.Message):
         display_name (str):
             Required. The human-readable name of the
             intent, unique within the agent.
-        training_phrases (Sequence[~.gcdc_intent.Intent.TrainingPhrase]):
+        training_phrases (Sequence[google.cloud.dialogflowcx_v3beta1.types.Intent.TrainingPhrase]):
             The collection of training phrases the agent
             is trained on to identify the intent.
-        parameters (Sequence[~.gcdc_intent.Intent.Parameter]):
+        parameters (Sequence[google.cloud.dialogflowcx_v3beta1.types.Intent.Parameter]):
             The collection of parameters associated with
             the intent.
         priority (int):
@@ -90,7 +90,7 @@ class Intent(proto.Message):
             mistakenly matched, since training phrases
             assigned to fallback intents act as negative
             examples that triggers no-match event.
-        labels (Sequence[~.gcdc_intent.Intent.LabelsEntry]):
+        labels (Sequence[google.cloud.dialogflowcx_v3beta1.types.Intent.LabelsEntry]):
             Optional. The key/value metadata to label an intent. Labels
             can contain lowercase letters, digits and the symbols '-'
             and '_'. International characters are allowed, including
@@ -120,7 +120,7 @@ class Intent(proto.Message):
             id (str):
                 Output only. The unique identifier of the
                 training phrase.
-            parts (Sequence[~.gcdc_intent.Intent.TrainingPhrase.Part]):
+            parts (Sequence[google.cloud.dialogflowcx_v3beta1.types.Intent.TrainingPhrase.Part]):
                 Required. The ordered list of training phrase parts. The
                 parts are concatenated in order to form the training phrase.
 
@@ -250,7 +250,7 @@ class ListIntentsRequest(proto.Message):
             languages <https://cloud.google.com/dialogflow/docs/reference/language>`__
             are supported. Note: languages must be enabled in the agent
             before they can be used.
-        intent_view (~.gcdc_intent.IntentView):
+        intent_view (google.cloud.dialogflowcx_v3beta1.types.IntentView):
             The resource view to apply to the returned
             intent.
         page_size (int):
@@ -277,7 +277,7 @@ class ListIntentsResponse(proto.Message):
     [Intents.ListIntents][google.cloud.dialogflow.cx.v3beta1.Intents.ListIntents].
 
     Attributes:
-        intents (Sequence[~.gcdc_intent.Intent]):
+        intents (Sequence[google.cloud.dialogflowcx_v3beta1.types.Intent]):
             The list of intents. There will be a maximum number of items
             returned based on the page_size field in the request.
         next_page_token (str):
@@ -329,7 +329,7 @@ class CreateIntentRequest(proto.Message):
         parent (str):
             Required. The agent to create an intent for. Format:
             ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>``.
-        intent (~.gcdc_intent.Intent):
+        intent (google.cloud.dialogflowcx_v3beta1.types.Intent):
             Required. The intent to create.
         language_code (str):
             The language of the following fields in ``intent``:
@@ -355,7 +355,7 @@ class UpdateIntentRequest(proto.Message):
     [Intents.UpdateIntent][google.cloud.dialogflow.cx.v3beta1.Intents.UpdateIntent].
 
     Attributes:
-        intent (~.gcdc_intent.Intent):
+        intent (google.cloud.dialogflowcx_v3beta1.types.Intent):
             Required. The intent to update.
         language_code (str):
             The language of the following fields in ``intent``:
@@ -367,7 +367,7 @@ class UpdateIntentRequest(proto.Message):
             languages <https://cloud.google.com/dialogflow/docs/reference/language>`__
             are supported. Note: languages must be enabled in the agent
             before they can be used.
-        update_mask (~.field_mask.FieldMask):
+        update_mask (google.protobuf.field_mask_pb2.FieldMask):
             The mask to control which fields get updated.
             If the mask is not present, all fields will be
             updated.

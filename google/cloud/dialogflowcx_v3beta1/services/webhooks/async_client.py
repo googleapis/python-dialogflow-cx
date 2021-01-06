@@ -73,6 +73,7 @@ class WebhooksAsyncClient:
     common_location_path = staticmethod(WebhooksClient.common_location_path)
     parse_common_location_path = staticmethod(WebhooksClient.parse_common_location_path)
 
+    from_service_account_info = WebhooksClient.from_service_account_info
     from_service_account_file = WebhooksClient.from_service_account_file
     from_service_account_json = from_service_account_file
 
@@ -150,12 +151,13 @@ class WebhooksAsyncClient:
         agent.
 
         Args:
-            request (:class:`~.webhook.ListWebhooksRequest`):
+            request (:class:`google.cloud.dialogflowcx_v3beta1.types.ListWebhooksRequest`):
                 The request object. The request message for
                 [Webhooks.ListWebhooks][google.cloud.dialogflow.cx.v3beta1.Webhooks.ListWebhooks].
             parent (:class:`str`):
                 Required. The agent to list all webhooks for. Format:
                 ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>``.
+
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -167,7 +169,7 @@ class WebhooksAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            ~.pagers.ListWebhooksAsyncPager:
+            google.cloud.dialogflowcx_v3beta1.services.webhooks.pagers.ListWebhooksAsyncPager:
                 The response message for
                 [Webhooks.ListWebhooks][google.cloud.dialogflow.cx.v3beta1.Webhooks.ListWebhooks].
 
@@ -231,12 +233,13 @@ class WebhooksAsyncClient:
         r"""Retrieves the specified webhook.
 
         Args:
-            request (:class:`~.webhook.GetWebhookRequest`):
+            request (:class:`google.cloud.dialogflowcx_v3beta1.types.GetWebhookRequest`):
                 The request object. The request message for
                 [Webhooks.GetWebhook][google.cloud.dialogflow.cx.v3beta1.Webhooks.GetWebhook].
             name (:class:`str`):
                 Required. The name of the webhook. Format:
                 ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>``.
+
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -248,7 +251,7 @@ class WebhooksAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            ~.webhook.Webhook:
+            google.cloud.dialogflowcx_v3beta1.types.Webhook:
                 Webhooks host the developer's
                 business logic. During a session,
                 webhooks allow the developer to use the
@@ -309,16 +312,17 @@ class WebhooksAsyncClient:
         r"""Creates a webhook in the specified agent.
 
         Args:
-            request (:class:`~.gcdc_webhook.CreateWebhookRequest`):
+            request (:class:`google.cloud.dialogflowcx_v3beta1.types.CreateWebhookRequest`):
                 The request object. The request message for
                 [Webhooks.CreateWebhook][google.cloud.dialogflow.cx.v3beta1.Webhooks.CreateWebhook].
             parent (:class:`str`):
                 Required. The agent to create a webhook for. Format:
                 ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>``.
+
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            webhook (:class:`~.gcdc_webhook.Webhook`):
+            webhook (:class:`google.cloud.dialogflowcx_v3beta1.types.Webhook`):
                 Required. The webhook to create.
                 This corresponds to the ``webhook`` field
                 on the ``request`` instance; if ``request`` is provided, this
@@ -331,7 +335,7 @@ class WebhooksAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            ~.gcdc_webhook.Webhook:
+            google.cloud.dialogflowcx_v3beta1.types.Webhook:
                 Webhooks host the developer's
                 business logic. During a session,
                 webhooks allow the developer to use the
@@ -394,18 +398,19 @@ class WebhooksAsyncClient:
         r"""Updates the specified webhook.
 
         Args:
-            request (:class:`~.gcdc_webhook.UpdateWebhookRequest`):
+            request (:class:`google.cloud.dialogflowcx_v3beta1.types.UpdateWebhookRequest`):
                 The request object. The request message for
                 [Webhooks.UpdateWebhook][google.cloud.dialogflow.cx.v3beta1.Webhooks.UpdateWebhook].
-            webhook (:class:`~.gcdc_webhook.Webhook`):
+            webhook (:class:`google.cloud.dialogflowcx_v3beta1.types.Webhook`):
                 Required. The webhook to update.
                 This corresponds to the ``webhook`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            update_mask (:class:`~.field_mask.FieldMask`):
+            update_mask (:class:`google.protobuf.field_mask_pb2.FieldMask`):
                 The mask to control which fields get
                 updated. If the mask is not present, all
                 fields will be updated.
+
                 This corresponds to the ``update_mask`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -417,7 +422,7 @@ class WebhooksAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            ~.gcdc_webhook.Webhook:
+            google.cloud.dialogflowcx_v3beta1.types.Webhook:
                 Webhooks host the developer's
                 business logic. During a session,
                 webhooks allow the developer to use the
@@ -481,12 +486,13 @@ class WebhooksAsyncClient:
         r"""Deletes the specified webhook.
 
         Args:
-            request (:class:`~.webhook.DeleteWebhookRequest`):
+            request (:class:`google.cloud.dialogflowcx_v3beta1.types.DeleteWebhookRequest`):
                 The request object. The request message for
                 [Webhooks.DeleteWebhook][google.cloud.dialogflow.cx.v3beta1.Webhooks.DeleteWebhook].
             name (:class:`str`):
                 Required. The name of the webhook to delete. Format:
                 ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>``.
+
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.

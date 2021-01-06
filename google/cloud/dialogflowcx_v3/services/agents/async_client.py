@@ -74,6 +74,7 @@ class AgentsAsyncClient:
     common_location_path = staticmethod(AgentsClient.common_location_path)
     parse_common_location_path = staticmethod(AgentsClient.parse_common_location_path)
 
+    from_service_account_info = AgentsClient.from_service_account_info
     from_service_account_file = AgentsClient.from_service_account_file
     from_service_account_json = from_service_account_file
 
@@ -151,12 +152,13 @@ class AgentsAsyncClient:
         location.
 
         Args:
-            request (:class:`~.agent.ListAgentsRequest`):
+            request (:class:`google.cloud.dialogflowcx_v3.types.ListAgentsRequest`):
                 The request object. The request message for
                 [Agents.ListAgents][google.cloud.dialogflow.cx.v3.Agents.ListAgents].
             parent (:class:`str`):
                 Required. The location to list all agents for. Format:
                 ``projects/<Project ID>/locations/<Location ID>``.
+
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -168,7 +170,7 @@ class AgentsAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            ~.pagers.ListAgentsAsyncPager:
+            google.cloud.dialogflowcx_v3.services.agents.pagers.ListAgentsAsyncPager:
                 The response message for
                 [Agents.ListAgents][google.cloud.dialogflow.cx.v3.Agents.ListAgents].
 
@@ -232,12 +234,13 @@ class AgentsAsyncClient:
         r"""Retrieves the specified agent.
 
         Args:
-            request (:class:`~.agent.GetAgentRequest`):
+            request (:class:`google.cloud.dialogflowcx_v3.types.GetAgentRequest`):
                 The request object. The request message for
                 [Agents.GetAgent][google.cloud.dialogflow.cx.v3.Agents.GetAgent].
             name (:class:`str`):
                 Required. The name of the agent. Format:
                 ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>``.
+
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -249,20 +252,21 @@ class AgentsAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            ~.agent.Agent:
-                Agents are best described as Natural Language
-                Understanding (NLU) modules that transform user requests
-                into actionable data. You can include agents in your
-                app, product, or service to determine user intent and
-                respond to the user in a natural way.
+            google.cloud.dialogflowcx_v3.types.Agent:
+                Agents are best described as Natural Language Understanding (NLU) modules
+                   that transform user requests into actionable data.
+                   You can include agents in your app, product, or
+                   service to determine user intent and respond to the
+                   user in a natural way.
 
-                After you create an agent, you can add
-                [Intents][google.cloud.dialogflow.cx.v3.Intent], [Entity
-                Types][google.cloud.dialogflow.cx.v3.EntityType],
-                [Flows][google.cloud.dialogflow.cx.v3.Flow],
-                [Fulfillments][google.cloud.dialogflow.cx.v3.Fulfillment],
-                [Webhooks][google.cloud.dialogflow.cx.v3.Webhook], and
-                so on to manage the conversation flows..
+                   After you create an agent, you can add
+                   [Intents][google.cloud.dialogflow.cx.v3.Intent],
+                   [Entity
+                   Types][google.cloud.dialogflow.cx.v3.EntityType],
+                   [Flows][google.cloud.dialogflow.cx.v3.Flow],
+                   [Fulfillments][google.cloud.dialogflow.cx.v3.Fulfillment],
+                   [Webhooks][google.cloud.dialogflow.cx.v3.Webhook],
+                   and so on to manage the conversation flows..
 
         """
         # Create or coerce a protobuf request object.
@@ -316,16 +320,17 @@ class AgentsAsyncClient:
         r"""Creates an agent in the specified location.
 
         Args:
-            request (:class:`~.gcdc_agent.CreateAgentRequest`):
+            request (:class:`google.cloud.dialogflowcx_v3.types.CreateAgentRequest`):
                 The request object. The request message for
                 [Agents.CreateAgent][google.cloud.dialogflow.cx.v3.Agents.CreateAgent].
             parent (:class:`str`):
                 Required. The location to create a agent for. Format:
                 ``projects/<Project ID>/locations/<Location ID>``.
+
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            agent (:class:`~.gcdc_agent.Agent`):
+            agent (:class:`google.cloud.dialogflowcx_v3.types.Agent`):
                 Required. The agent to create.
                 This corresponds to the ``agent`` field
                 on the ``request`` instance; if ``request`` is provided, this
@@ -338,20 +343,21 @@ class AgentsAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            ~.gcdc_agent.Agent:
-                Agents are best described as Natural Language
-                Understanding (NLU) modules that transform user requests
-                into actionable data. You can include agents in your
-                app, product, or service to determine user intent and
-                respond to the user in a natural way.
+            google.cloud.dialogflowcx_v3.types.Agent:
+                Agents are best described as Natural Language Understanding (NLU) modules
+                   that transform user requests into actionable data.
+                   You can include agents in your app, product, or
+                   service to determine user intent and respond to the
+                   user in a natural way.
 
-                After you create an agent, you can add
-                [Intents][google.cloud.dialogflow.cx.v3.Intent], [Entity
-                Types][google.cloud.dialogflow.cx.v3.EntityType],
-                [Flows][google.cloud.dialogflow.cx.v3.Flow],
-                [Fulfillments][google.cloud.dialogflow.cx.v3.Fulfillment],
-                [Webhooks][google.cloud.dialogflow.cx.v3.Webhook], and
-                so on to manage the conversation flows..
+                   After you create an agent, you can add
+                   [Intents][google.cloud.dialogflow.cx.v3.Intent],
+                   [Entity
+                   Types][google.cloud.dialogflow.cx.v3.EntityType],
+                   [Flows][google.cloud.dialogflow.cx.v3.Flow],
+                   [Fulfillments][google.cloud.dialogflow.cx.v3.Fulfillment],
+                   [Webhooks][google.cloud.dialogflow.cx.v3.Webhook],
+                   and so on to manage the conversation flows..
 
         """
         # Create or coerce a protobuf request object.
@@ -407,18 +413,19 @@ class AgentsAsyncClient:
         r"""Updates the specified agent.
 
         Args:
-            request (:class:`~.gcdc_agent.UpdateAgentRequest`):
+            request (:class:`google.cloud.dialogflowcx_v3.types.UpdateAgentRequest`):
                 The request object. The request message for
                 [Agents.UpdateAgent][google.cloud.dialogflow.cx.v3.Agents.UpdateAgent].
-            agent (:class:`~.gcdc_agent.Agent`):
+            agent (:class:`google.cloud.dialogflowcx_v3.types.Agent`):
                 Required. The agent to update.
                 This corresponds to the ``agent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            update_mask (:class:`~.field_mask.FieldMask`):
+            update_mask (:class:`google.protobuf.field_mask_pb2.FieldMask`):
                 The mask to control which fields get
                 updated. If the mask is not present, all
                 fields will be updated.
+
                 This corresponds to the ``update_mask`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -430,20 +437,21 @@ class AgentsAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            ~.gcdc_agent.Agent:
-                Agents are best described as Natural Language
-                Understanding (NLU) modules that transform user requests
-                into actionable data. You can include agents in your
-                app, product, or service to determine user intent and
-                respond to the user in a natural way.
+            google.cloud.dialogflowcx_v3.types.Agent:
+                Agents are best described as Natural Language Understanding (NLU) modules
+                   that transform user requests into actionable data.
+                   You can include agents in your app, product, or
+                   service to determine user intent and respond to the
+                   user in a natural way.
 
-                After you create an agent, you can add
-                [Intents][google.cloud.dialogflow.cx.v3.Intent], [Entity
-                Types][google.cloud.dialogflow.cx.v3.EntityType],
-                [Flows][google.cloud.dialogflow.cx.v3.Flow],
-                [Fulfillments][google.cloud.dialogflow.cx.v3.Fulfillment],
-                [Webhooks][google.cloud.dialogflow.cx.v3.Webhook], and
-                so on to manage the conversation flows..
+                   After you create an agent, you can add
+                   [Intents][google.cloud.dialogflow.cx.v3.Intent],
+                   [Entity
+                   Types][google.cloud.dialogflow.cx.v3.EntityType],
+                   [Flows][google.cloud.dialogflow.cx.v3.Flow],
+                   [Fulfillments][google.cloud.dialogflow.cx.v3.Fulfillment],
+                   [Webhooks][google.cloud.dialogflow.cx.v3.Webhook],
+                   and so on to manage the conversation flows..
 
         """
         # Create or coerce a protobuf request object.
@@ -500,12 +508,13 @@ class AgentsAsyncClient:
         r"""Deletes the specified agent.
 
         Args:
-            request (:class:`~.agent.DeleteAgentRequest`):
+            request (:class:`google.cloud.dialogflowcx_v3.types.DeleteAgentRequest`):
                 The request object. The request message for
                 [Agents.DeleteAgent][google.cloud.dialogflow.cx.v3.Agents.DeleteAgent].
             name (:class:`str`):
                 Required. The name of the agent to delete. Format:
                 ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>``.
+
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -564,7 +573,7 @@ class AgentsAsyncClient:
         r"""Exports the specified agent to a binary file.
 
         Args:
-            request (:class:`~.agent.ExportAgentRequest`):
+            request (:class:`google.cloud.dialogflowcx_v3.types.ExportAgentRequest`):
                 The request object. The request message for
                 [Agents.ExportAgent][google.cloud.dialogflow.cx.v3.Agents.ExportAgent].
 
@@ -575,12 +584,12 @@ class AgentsAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            ~.operation_async.AsyncOperation:
+            google.api_core.operation_async.AsyncOperation:
                 An object representing a long-running operation.
 
                 The result type for the operation will be
-                :class:``~.agent.ExportAgentResponse``: The response
-                message for
+                :class:`google.cloud.dialogflowcx_v3.types.ExportAgentResponse`
+                The response message for
                 [Agents.ExportAgent][google.cloud.dialogflow.cx.v3.Agents.ExportAgent].
 
         """
@@ -630,7 +639,7 @@ class AgentsAsyncClient:
         flows) will be removed.
 
         Args:
-            request (:class:`~.agent.RestoreAgentRequest`):
+            request (:class:`google.cloud.dialogflowcx_v3.types.RestoreAgentRequest`):
                 The request object. The request message for
                 [Agents.RestoreAgent][google.cloud.dialogflow.cx.v3.Agents.RestoreAgent].
 
@@ -641,24 +650,22 @@ class AgentsAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            ~.operation_async.AsyncOperation:
+            google.api_core.operation_async.AsyncOperation:
                 An object representing a long-running operation.
 
-                The result type for the operation will be
-                :class:``~.empty.Empty``: A generic empty message that
-                you can re-use to avoid defining duplicated empty
-                messages in your APIs. A typical example is to use it as
-                the request or the response type of an API method. For
-                instance:
+                The result type for the operation will be :class:`google.protobuf.empty_pb2.Empty` A generic empty message that you can re-use to avoid defining duplicated
+                   empty messages in your APIs. A typical example is to
+                   use it as the request or the response type of an API
+                   method. For instance:
 
-                ::
+                      service Foo {
+                         rpc Bar(google.protobuf.Empty) returns
+                         (google.protobuf.Empty);
 
-                    service Foo {
-                      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-                    }
+                      }
 
-                The JSON representation for ``Empty`` is empty JSON
-                object ``{}``.
+                   The JSON representation for Empty is empty JSON
+                   object {}.
 
         """
         # Create or coerce a protobuf request object.

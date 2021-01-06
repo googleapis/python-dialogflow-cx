@@ -42,7 +42,7 @@ class NluSettings(proto.Message):
     r"""Settings related to NLU.
 
     Attributes:
-        model_type (~.gcdc_flow.NluSettings.ModelType):
+        model_type (google.cloud.dialogflowcx_v3beta1.types.NluSettings.ModelType):
             Indicates the type of NLU model.
         classification_threshold (float):
             To filter out false positive results and
@@ -54,7 +54,7 @@ class NluSettings(proto.Message):
             The score values range from 0.0 (completely
             uncertain) to 1.0 (completely certain). If set
             to 0.0, the default of 0.3 is used.
-        model_training_mode (~.gcdc_flow.NluSettings.ModelTrainingMode):
+        model_training_mode (google.cloud.dialogflowcx_v3beta1.types.NluSettings.ModelTrainingMode):
             Indicates NLU model training mode.
     """
 
@@ -106,7 +106,7 @@ class Flow(proto.Message):
             The description of the flow. The maximum
             length is 500 characters. If exceeded, the
             request is rejected.
-        transition_routes (Sequence[~.page.TransitionRoute]):
+        transition_routes (Sequence[google.cloud.dialogflowcx_v3beta1.types.TransitionRoute]):
             A flow's transition routes serve two purposes:
 
             -  They are responsible for matching the user's first
@@ -125,7 +125,7 @@ class Flow(proto.Message):
 
             TransitionRoutes with intent specified are inherited by
             pages in the flow.
-        event_handlers (Sequence[~.page.EventHandler]):
+        event_handlers (Sequence[google.cloud.dialogflowcx_v3beta1.types.EventHandler]):
             A flow's event handlers serve two purposes:
 
             -  They are responsible for handling events (e.g. no match,
@@ -141,7 +141,7 @@ class Flow(proto.Message):
             these handlers are evaluated on a first-match basis. The
             first one that matches the event get executed, with the rest
             being ignored.
-        nlu_settings (~.gcdc_flow.NluSettings):
+        nlu_settings (google.cloud.dialogflowcx_v3beta1.types.NluSettings):
             NLU related settings of the flow.
     """
 
@@ -170,7 +170,7 @@ class CreateFlowRequest(proto.Message):
         parent (str):
             Required. The agent to create a flow for. Format:
             ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>``.
-        flow (~.gcdc_flow.Flow):
+        flow (google.cloud.dialogflowcx_v3beta1.types.Flow):
             Required. The flow to create.
         language_code (str):
             The language of the following fields in ``flow``:
@@ -261,7 +261,7 @@ class ListFlowsResponse(proto.Message):
     [Flows.ListFlows][google.cloud.dialogflow.cx.v3beta1.Flows.ListFlows].
 
     Attributes:
-        flows (Sequence[~.gcdc_flow.Flow]):
+        flows (Sequence[google.cloud.dialogflowcx_v3beta1.types.Flow]):
             The list of flows. There will be a maximum number of items
             returned based on the page_size field in the request.
         next_page_token (str):
@@ -311,9 +311,9 @@ class UpdateFlowRequest(proto.Message):
     [Flows.UpdateFlow][google.cloud.dialogflow.cx.v3beta1.Flows.UpdateFlow].
 
     Attributes:
-        flow (~.gcdc_flow.Flow):
+        flow (google.cloud.dialogflowcx_v3beta1.types.Flow):
             Required. The flow to update.
-        update_mask (~.field_mask.FieldMask):
+        update_mask (google.protobuf.field_mask_pb2.FieldMask):
             Required. The mask to control which fields get updated. If
             ``update_mask`` is not specified, an error will be returned.
         language_code (str):

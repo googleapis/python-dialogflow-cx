@@ -117,6 +117,22 @@ class AgentsClient(metaclass=AgentsClientMeta):
     )
 
     @classmethod
+    def from_service_account_info(cls, info: dict, *args, **kwargs):
+        """Creates an instance of this client using the provided credentials info.
+
+        Args:
+            info (dict): The service account private key info.
+            args: Additional arguments to pass to the constructor.
+            kwargs: Additional arguments to pass to the constructor.
+
+        Returns:
+            AgentsClient: The constructed client.
+        """
+        credentials = service_account.Credentials.from_service_account_info(info)
+        kwargs["credentials"] = credentials
+        return cls(*args, **kwargs)
+
+    @classmethod
     def from_service_account_file(cls, filename: str, *args, **kwargs):
         """Creates an instance of this client using the provided credentials
         file.
@@ -128,7 +144,7 @@ class AgentsClient(metaclass=AgentsClientMeta):
             kwargs: Additional arguments to pass to the constructor.
 
         Returns:
-            {@api.name}: The constructed client.
+            AgentsClient: The constructed client.
         """
         credentials = service_account.Credentials.from_service_account_file(filename)
         kwargs["credentials"] = credentials
@@ -252,10 +268,10 @@ class AgentsClient(metaclass=AgentsClientMeta):
                 credentials identify the application to the service; if none
                 are specified, the client will attempt to ascertain the
                 credentials from the environment.
-            transport (Union[str, ~.AgentsTransport]): The
+            transport (Union[str, AgentsTransport]): The
                 transport to use. If set to None, a transport is chosen
                 automatically.
-            client_options (client_options_lib.ClientOptions): Custom options for the
+            client_options (google.api_core.client_options.ClientOptions): Custom options for the
                 client. It won't take effect if a ``transport`` instance is provided.
                 (1) The ``api_endpoint`` property can be used to override the
                 default endpoint provided by the client. GOOGLE_API_USE_MTLS_ENDPOINT
@@ -366,12 +382,13 @@ class AgentsClient(metaclass=AgentsClientMeta):
         location.
 
         Args:
-            request (:class:`~.agent.ListAgentsRequest`):
+            request (google.cloud.dialogflowcx_v3beta1.types.ListAgentsRequest):
                 The request object. The request message for
                 [Agents.ListAgents][google.cloud.dialogflow.cx.v3beta1.Agents.ListAgents].
-            parent (:class:`str`):
+            parent (str):
                 Required. The location to list all agents for. Format:
                 ``projects/<Project ID>/locations/<Location ID>``.
+
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -383,9 +400,9 @@ class AgentsClient(metaclass=AgentsClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            ~.pagers.ListAgentsPager:
+            google.cloud.dialogflowcx_v3beta1.services.agents.pagers.ListAgentsPager:
                 The response message for
-                [Agents.ListAgents][google.cloud.dialogflow.cx.v3beta1.Agents.ListAgents].
+                   [Agents.ListAgents][google.cloud.dialogflow.cx.v3beta1.Agents.ListAgents].
 
                 Iterating over this object will yield results and
                 resolve additional pages automatically.
@@ -448,12 +465,13 @@ class AgentsClient(metaclass=AgentsClientMeta):
         r"""Retrieves the specified agent.
 
         Args:
-            request (:class:`~.agent.GetAgentRequest`):
+            request (google.cloud.dialogflowcx_v3beta1.types.GetAgentRequest):
                 The request object. The request message for
                 [Agents.GetAgent][google.cloud.dialogflow.cx.v3beta1.Agents.GetAgent].
-            name (:class:`str`):
+            name (str):
                 Required. The name of the agent. Format:
                 ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>``.
+
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -465,21 +483,21 @@ class AgentsClient(metaclass=AgentsClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            ~.agent.Agent:
-                Agents are best described as Natural Language
-                Understanding (NLU) modules that transform user requests
-                into actionable data. You can include agents in your
-                app, product, or service to determine user intent and
-                respond to the user in a natural way.
+            google.cloud.dialogflowcx_v3beta1.types.Agent:
+                Agents are best described as Natural Language Understanding (NLU) modules
+                   that transform user requests into actionable data.
+                   You can include agents in your app, product, or
+                   service to determine user intent and respond to the
+                   user in a natural way.
 
-                After you create an agent, you can add
-                [Intents][google.cloud.dialogflow.cx.v3beta1.Intent],
-                [Entity
-                Types][google.cloud.dialogflow.cx.v3beta1.EntityType],
-                [Flows][google.cloud.dialogflow.cx.v3beta1.Flow],
-                [Fulfillments][google.cloud.dialogflow.cx.v3beta1.Fulfillment],
-                [Webhooks][google.cloud.dialogflow.cx.v3beta1.Webhook],
-                and so on to manage the conversation flows..
+                   After you create an agent, you can add
+                   [Intents][google.cloud.dialogflow.cx.v3beta1.Intent],
+                   [Entity
+                   Types][google.cloud.dialogflow.cx.v3beta1.EntityType],
+                   [Flows][google.cloud.dialogflow.cx.v3beta1.Flow],
+                   [Fulfillments][google.cloud.dialogflow.cx.v3beta1.Fulfillment],
+                   [Webhooks][google.cloud.dialogflow.cx.v3beta1.Webhook],
+                   and so on to manage the conversation flows..
 
         """
         # Create or coerce a protobuf request object.
@@ -534,16 +552,17 @@ class AgentsClient(metaclass=AgentsClientMeta):
         r"""Creates an agent in the specified location.
 
         Args:
-            request (:class:`~.gcdc_agent.CreateAgentRequest`):
+            request (google.cloud.dialogflowcx_v3beta1.types.CreateAgentRequest):
                 The request object. The request message for
                 [Agents.CreateAgent][google.cloud.dialogflow.cx.v3beta1.Agents.CreateAgent].
-            parent (:class:`str`):
+            parent (str):
                 Required. The location to create a agent for. Format:
                 ``projects/<Project ID>/locations/<Location ID>``.
+
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            agent (:class:`~.gcdc_agent.Agent`):
+            agent (google.cloud.dialogflowcx_v3beta1.types.Agent):
                 Required. The agent to create.
                 This corresponds to the ``agent`` field
                 on the ``request`` instance; if ``request`` is provided, this
@@ -556,21 +575,21 @@ class AgentsClient(metaclass=AgentsClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            ~.gcdc_agent.Agent:
-                Agents are best described as Natural Language
-                Understanding (NLU) modules that transform user requests
-                into actionable data. You can include agents in your
-                app, product, or service to determine user intent and
-                respond to the user in a natural way.
+            google.cloud.dialogflowcx_v3beta1.types.Agent:
+                Agents are best described as Natural Language Understanding (NLU) modules
+                   that transform user requests into actionable data.
+                   You can include agents in your app, product, or
+                   service to determine user intent and respond to the
+                   user in a natural way.
 
-                After you create an agent, you can add
-                [Intents][google.cloud.dialogflow.cx.v3beta1.Intent],
-                [Entity
-                Types][google.cloud.dialogflow.cx.v3beta1.EntityType],
-                [Flows][google.cloud.dialogflow.cx.v3beta1.Flow],
-                [Fulfillments][google.cloud.dialogflow.cx.v3beta1.Fulfillment],
-                [Webhooks][google.cloud.dialogflow.cx.v3beta1.Webhook],
-                and so on to manage the conversation flows..
+                   After you create an agent, you can add
+                   [Intents][google.cloud.dialogflow.cx.v3beta1.Intent],
+                   [Entity
+                   Types][google.cloud.dialogflow.cx.v3beta1.EntityType],
+                   [Flows][google.cloud.dialogflow.cx.v3beta1.Flow],
+                   [Fulfillments][google.cloud.dialogflow.cx.v3beta1.Fulfillment],
+                   [Webhooks][google.cloud.dialogflow.cx.v3beta1.Webhook],
+                   and so on to manage the conversation flows..
 
         """
         # Create or coerce a protobuf request object.
@@ -627,18 +646,19 @@ class AgentsClient(metaclass=AgentsClientMeta):
         r"""Updates the specified agent.
 
         Args:
-            request (:class:`~.gcdc_agent.UpdateAgentRequest`):
+            request (google.cloud.dialogflowcx_v3beta1.types.UpdateAgentRequest):
                 The request object. The request message for
                 [Agents.UpdateAgent][google.cloud.dialogflow.cx.v3beta1.Agents.UpdateAgent].
-            agent (:class:`~.gcdc_agent.Agent`):
+            agent (google.cloud.dialogflowcx_v3beta1.types.Agent):
                 Required. The agent to update.
                 This corresponds to the ``agent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            update_mask (:class:`~.field_mask.FieldMask`):
+            update_mask (google.protobuf.field_mask_pb2.FieldMask):
                 The mask to control which fields get
                 updated. If the mask is not present, all
                 fields will be updated.
+
                 This corresponds to the ``update_mask`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -650,21 +670,21 @@ class AgentsClient(metaclass=AgentsClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            ~.gcdc_agent.Agent:
-                Agents are best described as Natural Language
-                Understanding (NLU) modules that transform user requests
-                into actionable data. You can include agents in your
-                app, product, or service to determine user intent and
-                respond to the user in a natural way.
+            google.cloud.dialogflowcx_v3beta1.types.Agent:
+                Agents are best described as Natural Language Understanding (NLU) modules
+                   that transform user requests into actionable data.
+                   You can include agents in your app, product, or
+                   service to determine user intent and respond to the
+                   user in a natural way.
 
-                After you create an agent, you can add
-                [Intents][google.cloud.dialogflow.cx.v3beta1.Intent],
-                [Entity
-                Types][google.cloud.dialogflow.cx.v3beta1.EntityType],
-                [Flows][google.cloud.dialogflow.cx.v3beta1.Flow],
-                [Fulfillments][google.cloud.dialogflow.cx.v3beta1.Fulfillment],
-                [Webhooks][google.cloud.dialogflow.cx.v3beta1.Webhook],
-                and so on to manage the conversation flows..
+                   After you create an agent, you can add
+                   [Intents][google.cloud.dialogflow.cx.v3beta1.Intent],
+                   [Entity
+                   Types][google.cloud.dialogflow.cx.v3beta1.EntityType],
+                   [Flows][google.cloud.dialogflow.cx.v3beta1.Flow],
+                   [Fulfillments][google.cloud.dialogflow.cx.v3beta1.Fulfillment],
+                   [Webhooks][google.cloud.dialogflow.cx.v3beta1.Webhook],
+                   and so on to manage the conversation flows..
 
         """
         # Create or coerce a protobuf request object.
@@ -722,12 +742,13 @@ class AgentsClient(metaclass=AgentsClientMeta):
         r"""Deletes the specified agent.
 
         Args:
-            request (:class:`~.agent.DeleteAgentRequest`):
+            request (google.cloud.dialogflowcx_v3beta1.types.DeleteAgentRequest):
                 The request object. The request message for
                 [Agents.DeleteAgent][google.cloud.dialogflow.cx.v3beta1.Agents.DeleteAgent].
-            name (:class:`str`):
+            name (str):
                 Required. The name of the agent to delete. Format:
                 ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>``.
+
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -787,7 +808,7 @@ class AgentsClient(metaclass=AgentsClientMeta):
         r"""Exports the specified agent to a binary file.
 
         Args:
-            request (:class:`~.agent.ExportAgentRequest`):
+            request (google.cloud.dialogflowcx_v3beta1.types.ExportAgentRequest):
                 The request object. The request message for
                 [Agents.ExportAgent][google.cloud.dialogflow.cx.v3beta1.Agents.ExportAgent].
 
@@ -798,13 +819,11 @@ class AgentsClient(metaclass=AgentsClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            ~.operation.Operation:
+            google.api_core.operation.Operation:
                 An object representing a long-running operation.
 
-                The result type for the operation will be
-                :class:``~.agent.ExportAgentResponse``: The response
-                message for
-                [Agents.ExportAgent][google.cloud.dialogflow.cx.v3beta1.Agents.ExportAgent].
+                The result type for the operation will be :class:`google.cloud.dialogflowcx_v3beta1.types.ExportAgentResponse` The response message for
+                   [Agents.ExportAgent][google.cloud.dialogflow.cx.v3beta1.Agents.ExportAgent].
 
         """
         # Create or coerce a protobuf request object.
@@ -854,7 +873,7 @@ class AgentsClient(metaclass=AgentsClientMeta):
         flows) will be removed.
 
         Args:
-            request (:class:`~.agent.RestoreAgentRequest`):
+            request (google.cloud.dialogflowcx_v3beta1.types.RestoreAgentRequest):
                 The request object. The request message for
                 [Agents.RestoreAgent][google.cloud.dialogflow.cx.v3beta1.Agents.RestoreAgent].
 
@@ -865,24 +884,22 @@ class AgentsClient(metaclass=AgentsClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            ~.operation.Operation:
+            google.api_core.operation.Operation:
                 An object representing a long-running operation.
 
-                The result type for the operation will be
-                :class:``~.empty.Empty``: A generic empty message that
-                you can re-use to avoid defining duplicated empty
-                messages in your APIs. A typical example is to use it as
-                the request or the response type of an API method. For
-                instance:
+                The result type for the operation will be :class:`google.protobuf.empty_pb2.Empty` A generic empty message that you can re-use to avoid defining duplicated
+                   empty messages in your APIs. A typical example is to
+                   use it as the request or the response type of an API
+                   method. For instance:
 
-                ::
+                      service Foo {
+                         rpc Bar(google.protobuf.Empty) returns
+                         (google.protobuf.Empty);
 
-                    service Foo {
-                      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-                    }
+                      }
 
-                The JSON representation for ``Empty`` is empty JSON
-                object ``{}``.
+                   The JSON representation for Empty is empty JSON
+                   object {}.
 
         """
         # Create or coerce a protobuf request object.

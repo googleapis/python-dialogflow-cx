@@ -119,6 +119,22 @@ class VersionsClient(metaclass=VersionsClientMeta):
     )
 
     @classmethod
+    def from_service_account_info(cls, info: dict, *args, **kwargs):
+        """Creates an instance of this client using the provided credentials info.
+
+        Args:
+            info (dict): The service account private key info.
+            args: Additional arguments to pass to the constructor.
+            kwargs: Additional arguments to pass to the constructor.
+
+        Returns:
+            VersionsClient: The constructed client.
+        """
+        credentials = service_account.Credentials.from_service_account_info(info)
+        kwargs["credentials"] = credentials
+        return cls(*args, **kwargs)
+
+    @classmethod
     def from_service_account_file(cls, filename: str, *args, **kwargs):
         """Creates an instance of this client using the provided credentials
         file.
@@ -130,7 +146,7 @@ class VersionsClient(metaclass=VersionsClientMeta):
             kwargs: Additional arguments to pass to the constructor.
 
         Returns:
-            {@api.name}: The constructed client.
+            VersionsClient: The constructed client.
         """
         credentials = service_account.Credentials.from_service_account_file(filename)
         kwargs["credentials"] = credentials
@@ -240,10 +256,10 @@ class VersionsClient(metaclass=VersionsClientMeta):
                 credentials identify the application to the service; if none
                 are specified, the client will attempt to ascertain the
                 credentials from the environment.
-            transport (Union[str, ~.VersionsTransport]): The
+            transport (Union[str, VersionsTransport]): The
                 transport to use. If set to None, a transport is chosen
                 automatically.
-            client_options (client_options_lib.ClientOptions): Custom options for the
+            client_options (google.api_core.client_options.ClientOptions): Custom options for the
                 client. It won't take effect if a ``transport`` instance is provided.
                 (1) The ``api_endpoint`` property can be used to override the
                 default endpoint provided by the client. GOOGLE_API_USE_MTLS_ENDPOINT
@@ -354,13 +370,14 @@ class VersionsClient(metaclass=VersionsClientMeta):
         [Flow][google.cloud.dialogflow.cx.v3.Flow].
 
         Args:
-            request (:class:`~.version.ListVersionsRequest`):
+            request (google.cloud.dialogflowcx_v3.types.ListVersionsRequest):
                 The request object. The request message for
                 [Versions.ListVersions][google.cloud.dialogflow.cx.v3.Versions.ListVersions].
-            parent (:class:`str`):
+            parent (str):
                 Required. The [Flow][google.cloud.dialogflow.cx.v3.Flow]
                 to list all versions for. Format:
                 ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>``.
+
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -372,7 +389,7 @@ class VersionsClient(metaclass=VersionsClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            ~.pagers.ListVersionsPager:
+            google.cloud.dialogflowcx_v3.services.versions.pagers.ListVersionsPager:
                 The response message for
                 [Versions.ListVersions][google.cloud.dialogflow.cx.v3.Versions.ListVersions].
 
@@ -438,14 +455,15 @@ class VersionsClient(metaclass=VersionsClientMeta):
         [Version][google.cloud.dialogflow.cx.v3.Version].
 
         Args:
-            request (:class:`~.version.GetVersionRequest`):
+            request (google.cloud.dialogflowcx_v3.types.GetVersionRequest):
                 The request object. The request message for
                 [Versions.GetVersion][google.cloud.dialogflow.cx.v3.Versions.GetVersion].
-            name (:class:`str`):
+            name (str):
                 Required. The name of the
                 [Version][google.cloud.dialogflow.cx.v3.Version].
                 Format:
                 ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/versions/<Version ID>``.
+
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -457,7 +475,7 @@ class VersionsClient(metaclass=VersionsClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            ~.version.Version:
+            google.cloud.dialogflowcx_v3.types.Version:
                 Represents a version of a flow.
         """
         # Create or coerce a protobuf request object.
@@ -513,19 +531,20 @@ class VersionsClient(metaclass=VersionsClientMeta):
         the specified [Flow][google.cloud.dialogflow.cx.v3.Flow].
 
         Args:
-            request (:class:`~.gcdc_version.CreateVersionRequest`):
+            request (google.cloud.dialogflowcx_v3.types.CreateVersionRequest):
                 The request object. The request message for
                 [Versions.CreateVersion][google.cloud.dialogflow.cx.v3.Versions.CreateVersion].
-            parent (:class:`str`):
+            parent (str):
                 Required. The [Flow][google.cloud.dialogflow.cx.v3.Flow]
                 to create an
                 [Version][google.cloud.dialogflow.cx.v3.Version] for.
                 Format:
                 ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>``.
+
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            version (:class:`~.gcdc_version.Version`):
+            version (google.cloud.dialogflowcx_v3.types.Version):
                 Required. The version to create.
                 This corresponds to the ``version`` field
                 on the ``request`` instance; if ``request`` is provided, this
@@ -538,12 +557,12 @@ class VersionsClient(metaclass=VersionsClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            ~.operation.Operation:
+            google.api_core.operation.Operation:
                 An object representing a long-running operation.
 
                 The result type for the operation will be
-                :class:``~.gcdc_version.Version``: Represents a version
-                of a flow.
+                :class:`google.cloud.dialogflowcx_v3.types.Version`
+                Represents a version of a flow.
 
         """
         # Create or coerce a protobuf request object.
@@ -609,18 +628,19 @@ class VersionsClient(metaclass=VersionsClientMeta):
         [Version][google.cloud.dialogflow.cx.v3.Version].
 
         Args:
-            request (:class:`~.gcdc_version.UpdateVersionRequest`):
+            request (google.cloud.dialogflowcx_v3.types.UpdateVersionRequest):
                 The request object. The request message for
                 [Versions.UpdateVersion][google.cloud.dialogflow.cx.v3.Versions.UpdateVersion].
-            version (:class:`~.gcdc_version.Version`):
+            version (google.cloud.dialogflowcx_v3.types.Version):
                 Required. The version to update.
                 This corresponds to the ``version`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            update_mask (:class:`~.field_mask.FieldMask`):
+            update_mask (google.protobuf.field_mask_pb2.FieldMask):
                 Required. The mask to control which fields get updated.
                 Currently only ``description`` and ``display_name`` can
                 be updated.
+
                 This corresponds to the ``update_mask`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -632,7 +652,7 @@ class VersionsClient(metaclass=VersionsClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            ~.gcdc_version.Version:
+            google.cloud.dialogflowcx_v3.types.Version:
                 Represents a version of a flow.
         """
         # Create or coerce a protobuf request object.
@@ -691,14 +711,15 @@ class VersionsClient(metaclass=VersionsClientMeta):
         [Version][google.cloud.dialogflow.cx.v3.Version].
 
         Args:
-            request (:class:`~.version.DeleteVersionRequest`):
+            request (google.cloud.dialogflowcx_v3.types.DeleteVersionRequest):
                 The request object. The request message for
                 [Versions.DeleteVersion][google.cloud.dialogflow.cx.v3.Versions.DeleteVersion].
-            name (:class:`str`):
+            name (str):
                 Required. The name of the
                 [Version][google.cloud.dialogflow.cx.v3.Version] to
                 delete. Format:
                 ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/versions/<Version ID>``.
+
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -759,14 +780,15 @@ class VersionsClient(metaclass=VersionsClientMeta):
         r"""Loads a specified version to draft version.
 
         Args:
-            request (:class:`~.version.LoadVersionRequest`):
+            request (google.cloud.dialogflowcx_v3.types.LoadVersionRequest):
                 The request object. The request message for
                 [Versions.LoadVersion][google.cloud.dialogflow.cx.v3.Versions.LoadVersion].
-            name (:class:`str`):
+            name (str):
                 Required. The
                 [Version][google.cloud.dialogflow.cx.v3.Version] to be
                 loaded to draft version. Format:
                 ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/versions/<Version ID>``.
+
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -778,24 +800,22 @@ class VersionsClient(metaclass=VersionsClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            ~.operation.Operation:
+            google.api_core.operation.Operation:
                 An object representing a long-running operation.
 
-                The result type for the operation will be
-                :class:``~.empty.Empty``: A generic empty message that
-                you can re-use to avoid defining duplicated empty
-                messages in your APIs. A typical example is to use it as
-                the request or the response type of an API method. For
-                instance:
+                The result type for the operation will be :class:`google.protobuf.empty_pb2.Empty` A generic empty message that you can re-use to avoid defining duplicated
+                   empty messages in your APIs. A typical example is to
+                   use it as the request or the response type of an API
+                   method. For instance:
 
-                ::
+                      service Foo {
+                         rpc Bar(google.protobuf.Empty) returns
+                         (google.protobuf.Empty);
 
-                    service Foo {
-                      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-                    }
+                      }
 
-                The JSON representation for ``Empty`` is empty JSON
-                object ``{}``.
+                   The JSON representation for Empty is empty JSON
+                   object {}.
 
         """
         # Create or coerce a protobuf request object.

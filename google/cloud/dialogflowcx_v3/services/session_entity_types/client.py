@@ -120,6 +120,22 @@ class SessionEntityTypesClient(metaclass=SessionEntityTypesClientMeta):
     )
 
     @classmethod
+    def from_service_account_info(cls, info: dict, *args, **kwargs):
+        """Creates an instance of this client using the provided credentials info.
+
+        Args:
+            info (dict): The service account private key info.
+            args: Additional arguments to pass to the constructor.
+            kwargs: Additional arguments to pass to the constructor.
+
+        Returns:
+            SessionEntityTypesClient: The constructed client.
+        """
+        credentials = service_account.Credentials.from_service_account_info(info)
+        kwargs["credentials"] = credentials
+        return cls(*args, **kwargs)
+
+    @classmethod
     def from_service_account_file(cls, filename: str, *args, **kwargs):
         """Creates an instance of this client using the provided credentials
         file.
@@ -131,7 +147,7 @@ class SessionEntityTypesClient(metaclass=SessionEntityTypesClientMeta):
             kwargs: Additional arguments to pass to the constructor.
 
         Returns:
-            {@api.name}: The constructed client.
+            SessionEntityTypesClient: The constructed client.
         """
         credentials = service_account.Credentials.from_service_account_file(filename)
         kwargs["credentials"] = credentials
@@ -245,10 +261,10 @@ class SessionEntityTypesClient(metaclass=SessionEntityTypesClientMeta):
                 credentials identify the application to the service; if none
                 are specified, the client will attempt to ascertain the
                 credentials from the environment.
-            transport (Union[str, ~.SessionEntityTypesTransport]): The
+            transport (Union[str, SessionEntityTypesTransport]): The
                 transport to use. If set to None, a transport is chosen
                 automatically.
-            client_options (client_options_lib.ClientOptions): Custom options for the
+            client_options (google.api_core.client_options.ClientOptions): Custom options for the
                 client. It won't take effect if a ``transport`` instance is provided.
                 (1) The ``api_endpoint`` property can be used to override the
                 default endpoint provided by the client. GOOGLE_API_USE_MTLS_ENDPOINT
@@ -359,10 +375,10 @@ class SessionEntityTypesClient(metaclass=SessionEntityTypesClientMeta):
         specified session.
 
         Args:
-            request (:class:`~.session_entity_type.ListSessionEntityTypesRequest`):
+            request (google.cloud.dialogflowcx_v3.types.ListSessionEntityTypesRequest):
                 The request object. The request message for
                 [SessionEntityTypes.ListSessionEntityTypes][google.cloud.dialogflow.cx.v3.SessionEntityTypes.ListSessionEntityTypes].
-            parent (:class:`str`):
+            parent (str):
                 Required. The session to list all session entity types
                 from. Format:
                 ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/sessions/<Session ID>``
@@ -370,6 +386,7 @@ class SessionEntityTypesClient(metaclass=SessionEntityTypesClientMeta):
                 ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/environments/<Environment ID>/sessions/<Session ID>``.
                 If ``Environment ID`` is not specified, we assume
                 default 'draft' environment.
+
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -381,7 +398,7 @@ class SessionEntityTypesClient(metaclass=SessionEntityTypesClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            ~.pagers.ListSessionEntityTypesPager:
+            google.cloud.dialogflowcx_v3.services.session_entity_types.pagers.ListSessionEntityTypesPager:
                 The response message for
                 [SessionEntityTypes.ListSessionEntityTypes][google.cloud.dialogflow.cx.v3.SessionEntityTypes.ListSessionEntityTypes].
 
@@ -448,16 +465,17 @@ class SessionEntityTypesClient(metaclass=SessionEntityTypesClientMeta):
         r"""Retrieves the specified session entity type.
 
         Args:
-            request (:class:`~.session_entity_type.GetSessionEntityTypeRequest`):
+            request (google.cloud.dialogflowcx_v3.types.GetSessionEntityTypeRequest):
                 The request object. The request message for
                 [SessionEntityTypes.GetSessionEntityType][google.cloud.dialogflow.cx.v3.SessionEntityTypes.GetSessionEntityType].
-            name (:class:`str`):
+            name (str):
                 Required. The name of the session entity type. Format:
                 ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/sessions/<Session ID>/entityTypes/<Entity Type ID>``
                 or
                 ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/environments/<Environment ID>/sessions/<Session ID>/entityTypes/<Entity Type ID>``.
                 If ``Environment ID`` is not specified, we assume
                 default 'draft' environment.
+
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -469,24 +487,23 @@ class SessionEntityTypesClient(metaclass=SessionEntityTypesClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            ~.session_entity_type.SessionEntityType:
-                Session entity types are referred to as **User** entity
-                types and are entities that are built for an individual
-                user such as favorites, preferences, playlists, and so
-                on.
+            google.cloud.dialogflowcx_v3.types.SessionEntityType:
+                Session entity types are referred to as **User** entity types and are
+                   entities that are built for an individual user such
+                   as favorites, preferences, playlists, and so on.
 
-                You can redefine a session entity type at the session
-                level to extend or replace a [custom entity
-                type][google.cloud.dialogflow.cx.v3.EntityType] at the
-                user session level (we refer to the entity types defined
-                at the agent level as "custom entity types").
+                   You can redefine a session entity type at the session
+                   level to extend or replace a [custom entity
+                   type][google.cloud.dialogflow.cx.v3.EntityType] at
+                   the user session level (we refer to the entity types
+                   defined at the agent level as "custom entity types").
 
-                Note: session entity types apply to all queries,
-                regardless of the language.
+                   Note: session entity types apply to all queries,
+                   regardless of the language.
 
-                For more information about entity types, see the
-                `Dialogflow
-                documentation <https://cloud.google.com/dialogflow/docs/entities-overview>`__.
+                   For more information about entity types, see the
+                   [Dialogflow
+                   documentation](\ https://cloud.google.com/dialogflow/docs/entities-overview).
 
         """
         # Create or coerce a protobuf request object.
@@ -543,10 +560,10 @@ class SessionEntityTypesClient(metaclass=SessionEntityTypesClientMeta):
         overrides the session entity type.
 
         Args:
-            request (:class:`~.gcdc_session_entity_type.CreateSessionEntityTypeRequest`):
+            request (google.cloud.dialogflowcx_v3.types.CreateSessionEntityTypeRequest):
                 The request object. The request message for
                 [SessionEntityTypes.CreateSessionEntityType][google.cloud.dialogflow.cx.v3.SessionEntityTypes.CreateSessionEntityType].
-            parent (:class:`str`):
+            parent (str):
                 Required. The session to create a session entity type
                 for. Format:
                 ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/sessions/<Session ID>``
@@ -554,12 +571,14 @@ class SessionEntityTypesClient(metaclass=SessionEntityTypesClientMeta):
                 ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/environments/<Environment ID>/sessions/<Session ID>``.
                 If ``Environment ID`` is not specified, we assume
                 default 'draft' environment.
+
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            session_entity_type (:class:`~.gcdc_session_entity_type.SessionEntityType`):
+            session_entity_type (google.cloud.dialogflowcx_v3.types.SessionEntityType):
                 Required. The session entity type to
                 create.
+
                 This corresponds to the ``session_entity_type`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -571,24 +590,23 @@ class SessionEntityTypesClient(metaclass=SessionEntityTypesClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            ~.gcdc_session_entity_type.SessionEntityType:
-                Session entity types are referred to as **User** entity
-                types and are entities that are built for an individual
-                user such as favorites, preferences, playlists, and so
-                on.
+            google.cloud.dialogflowcx_v3.types.SessionEntityType:
+                Session entity types are referred to as **User** entity types and are
+                   entities that are built for an individual user such
+                   as favorites, preferences, playlists, and so on.
 
-                You can redefine a session entity type at the session
-                level to extend or replace a [custom entity
-                type][google.cloud.dialogflow.cx.v3.EntityType] at the
-                user session level (we refer to the entity types defined
-                at the agent level as "custom entity types").
+                   You can redefine a session entity type at the session
+                   level to extend or replace a [custom entity
+                   type][google.cloud.dialogflow.cx.v3.EntityType] at
+                   the user session level (we refer to the entity types
+                   defined at the agent level as "custom entity types").
 
-                Note: session entity types apply to all queries,
-                regardless of the language.
+                   Note: session entity types apply to all queries,
+                   regardless of the language.
 
-                For more information about entity types, see the
-                `Dialogflow
-                documentation <https://cloud.google.com/dialogflow/docs/entities-overview>`__.
+                   For more information about entity types, see the
+                   [Dialogflow
+                   documentation](\ https://cloud.google.com/dialogflow/docs/entities-overview).
 
         """
         # Create or coerce a protobuf request object.
@@ -649,22 +667,24 @@ class SessionEntityTypesClient(metaclass=SessionEntityTypesClientMeta):
         r"""Updates the specified session entity type.
 
         Args:
-            request (:class:`~.gcdc_session_entity_type.UpdateSessionEntityTypeRequest`):
+            request (google.cloud.dialogflowcx_v3.types.UpdateSessionEntityTypeRequest):
                 The request object. The request message for
                 [SessionEntityTypes.UpdateSessionEntityType][google.cloud.dialogflow.cx.v3.SessionEntityTypes.UpdateSessionEntityType].
-            session_entity_type (:class:`~.gcdc_session_entity_type.SessionEntityType`):
+            session_entity_type (google.cloud.dialogflowcx_v3.types.SessionEntityType):
                 Required. The session entity type to update. Format:
                 ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/sessions/<Session ID>/entityTypes/<Entity Type ID>``
                 or
                 ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/environments/<Environment ID>/sessions/<Session ID>/entityTypes/<Entity Type ID>``.
                 If ``Environment ID`` is not specified, we assume
                 default 'draft' environment.
+
                 This corresponds to the ``session_entity_type`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            update_mask (:class:`~.field_mask.FieldMask`):
+            update_mask (google.protobuf.field_mask_pb2.FieldMask):
                 The mask to control which fields get
                 updated.
+
                 This corresponds to the ``update_mask`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -676,24 +696,23 @@ class SessionEntityTypesClient(metaclass=SessionEntityTypesClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            ~.gcdc_session_entity_type.SessionEntityType:
-                Session entity types are referred to as **User** entity
-                types and are entities that are built for an individual
-                user such as favorites, preferences, playlists, and so
-                on.
+            google.cloud.dialogflowcx_v3.types.SessionEntityType:
+                Session entity types are referred to as **User** entity types and are
+                   entities that are built for an individual user such
+                   as favorites, preferences, playlists, and so on.
 
-                You can redefine a session entity type at the session
-                level to extend or replace a [custom entity
-                type][google.cloud.dialogflow.cx.v3.EntityType] at the
-                user session level (we refer to the entity types defined
-                at the agent level as "custom entity types").
+                   You can redefine a session entity type at the session
+                   level to extend or replace a [custom entity
+                   type][google.cloud.dialogflow.cx.v3.EntityType] at
+                   the user session level (we refer to the entity types
+                   defined at the agent level as "custom entity types").
 
-                Note: session entity types apply to all queries,
-                regardless of the language.
+                   Note: session entity types apply to all queries,
+                   regardless of the language.
 
-                For more information about entity types, see the
-                `Dialogflow
-                documentation <https://cloud.google.com/dialogflow/docs/entities-overview>`__.
+                   For more information about entity types, see the
+                   [Dialogflow
+                   documentation](\ https://cloud.google.com/dialogflow/docs/entities-overview).
 
         """
         # Create or coerce a protobuf request object.
@@ -755,10 +774,10 @@ class SessionEntityTypesClient(metaclass=SessionEntityTypesClientMeta):
         r"""Deletes the specified session entity type.
 
         Args:
-            request (:class:`~.session_entity_type.DeleteSessionEntityTypeRequest`):
+            request (google.cloud.dialogflowcx_v3.types.DeleteSessionEntityTypeRequest):
                 The request object. The request message for
                 [SessionEntityTypes.DeleteSessionEntityType][google.cloud.dialogflow.cx.v3.SessionEntityTypes.DeleteSessionEntityType].
-            name (:class:`str`):
+            name (str):
                 Required. The name of the session entity type to delete.
                 Format:
                 ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/sessions/<Session ID>/entityTypes/<Entity Type ID>``
@@ -766,6 +785,7 @@ class SessionEntityTypesClient(metaclass=SessionEntityTypesClientMeta):
                 ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/environments/<Environment ID>/sessions/<Session ID>/entityTypes/<Entity Type ID>``.
                 If ``Environment ID`` is not specified, we assume
                 default 'draft' environment.
+
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.

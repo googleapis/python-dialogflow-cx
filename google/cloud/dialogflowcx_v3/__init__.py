@@ -202,10 +202,10 @@ __all__ = (
     "EntityType",
     "EntityTypesClient",
     "Environment",
+    "EnvironmentsClient",
     "EventHandler",
     "EventInput",
     "Experiment",
-    "ExperimentsClient",
     "ExportAgentRequest",
     "ExportAgentResponse",
     "Flow",
@@ -315,5 +315,5 @@ __all__ = (
     "WebhookRequest",
     "WebhookResponse",
     "WebhooksClient",
-    "EnvironmentsClient",
+    "ExperimentsClient",
 )
