@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.3.0](https://www.github.com/googleapis/python-dialogflow-cx/compare/v0.2.0...v0.3.0) (2021-03-01)
+
+
+### Features
+
+* add experiments API ([#36](https://www.github.com/googleapis/python-dialogflow-cx/issues/36)) ([5381512](https://www.github.com/googleapis/python-dialogflow-cx/commit/5381512872ca2492ddabcbdd7ccde5f054aed011))
+* allowed custom to specify webhook headers through query parameters ([#32](https://www.github.com/googleapis/python-dialogflow-cx/issues/32)) ([09919b0](https://www.github.com/googleapis/python-dialogflow-cx/commit/09919b0e45517cedcbb1d8b5b931c7317be549b2))
+* allowed custom to specify webhook headers through query parameters ([#32](https://www.github.com/googleapis/python-dialogflow-cx/issues/32)) ([09919b0](https://www.github.com/googleapis/python-dialogflow-cx/commit/09919b0e45517cedcbb1d8b5b931c7317be549b2))
+
+
+### Bug Fixes
+
+* remove gRPC send/recv limit; add enums to `types/__init__.py` ([09919b0](https://www.github.com/googleapis/python-dialogflow-cx/commit/09919b0e45517cedcbb1d8b5b931c7317be549b2))
+
 ## [0.3.0](https://www.github.com/googleapis/python-dialogflow-cx/compare/v0.2.0...v0.3.0) (2021-01-29)
 
 
