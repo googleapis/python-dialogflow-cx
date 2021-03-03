@@ -40,6 +40,15 @@ from .flow import (
     UpdateFlowRequest,
     TrainFlowRequest,
 )
+from .security_settings import (
+    GetSecuritySettingsRequest,
+    UpdateSecuritySettingsRequest,
+    ListSecuritySettingsRequest,
+    ListSecuritySettingsResponse,
+    CreateSecuritySettingsRequest,
+    DeleteSecuritySettingsRequest,
+    SecuritySettings,
+)
 from .agent import (
     SpeechToTextSettings,
     Agent,
@@ -59,6 +68,10 @@ from .audio_config import (
     VoiceSelectionParams,
     SynthesizeSpeechConfig,
     OutputAudioConfig,
+    AudioEncoding,
+    SpeechModelVariant,
+    SsmlVoiceGender,
+    OutputAudioEncoding,
 )
 from .entity_type import (
     EntityType,
@@ -80,6 +93,19 @@ from .environment import (
     LookupEnvironmentHistoryRequest,
     LookupEnvironmentHistoryResponse,
 )
+from .experiment import (
+    Experiment,
+    VersionVariants,
+    VariantsHistory,
+    ListExperimentsRequest,
+    ListExperimentsResponse,
+    GetExperimentRequest,
+    CreateExperimentRequest,
+    UpdateExperimentRequest,
+    DeleteExperimentRequest,
+    StartExperimentRequest,
+    StopExperimentRequest,
+)
 from .intent import (
     Intent,
     ListIntentsRequest,
@@ -88,6 +114,7 @@ from .intent import (
     CreateIntentRequest,
     UpdateIntentRequest,
     DeleteIntentRequest,
+    IntentView,
 )
 from .session_entity_type import (
     SessionEntityType,
@@ -110,11 +137,14 @@ from .session import (
     TextInput,
     IntentInput,
     AudioInput,
+    EventInput,
+    DtmfInput,
     Match,
     MatchIntentRequest,
     MatchIntentResponse,
     FulfillIntentRequest,
     FulfillIntentResponse,
+    SentimentAnalysisResult,
 )
 from .transition_route_group import (
     TransitionRouteGroup,
@@ -150,7 +180,6 @@ from .webhook import (
     SessionInfo,
 )
 
-
 __all__ = (
     "ResponseMessage",
     "Fulfillment",
@@ -173,6 +202,13 @@ __all__ = (
     "GetFlowRequest",
     "UpdateFlowRequest",
     "TrainFlowRequest",
+    "GetSecuritySettingsRequest",
+    "UpdateSecuritySettingsRequest",
+    "ListSecuritySettingsRequest",
+    "ListSecuritySettingsResponse",
+    "CreateSecuritySettingsRequest",
+    "DeleteSecuritySettingsRequest",
+    "SecuritySettings",
     "SpeechToTextSettings",
     "Agent",
     "ListAgentsRequest",
@@ -189,6 +225,10 @@ __all__ = (
     "VoiceSelectionParams",
     "SynthesizeSpeechConfig",
     "OutputAudioConfig",
+    "AudioEncoding",
+    "SpeechModelVariant",
+    "SsmlVoiceGender",
+    "OutputAudioEncoding",
     "EntityType",
     "ListEntityTypesRequest",
     "ListEntityTypesResponse",
@@ -205,6 +245,17 @@ __all__ = (
     "DeleteEnvironmentRequest",
     "LookupEnvironmentHistoryRequest",
     "LookupEnvironmentHistoryResponse",
+    "Experiment",
+    "VersionVariants",
+    "VariantsHistory",
+    "ListExperimentsRequest",
+    "ListExperimentsResponse",
+    "GetExperimentRequest",
+    "CreateExperimentRequest",
+    "UpdateExperimentRequest",
+    "DeleteExperimentRequest",
+    "StartExperimentRequest",
+    "StopExperimentRequest",
     "Intent",
     "ListIntentsRequest",
     "ListIntentsResponse",
@@ -212,6 +263,7 @@ __all__ = (
     "CreateIntentRequest",
     "UpdateIntentRequest",
     "DeleteIntentRequest",
+    "IntentView",
     "SessionEntityType",
     "ListSessionEntityTypesRequest",
     "ListSessionEntityTypesResponse",
@@ -230,11 +282,14 @@ __all__ = (
     "TextInput",
     "IntentInput",
     "AudioInput",
+    "EventInput",
+    "DtmfInput",
     "Match",
     "MatchIntentRequest",
     "MatchIntentResponse",
     "FulfillIntentRequest",
     "FulfillIntentResponse",
+    "SentimentAnalysisResult",
     "TransitionRouteGroup",
     "ListTransitionRouteGroupsRequest",
     "ListTransitionRouteGroupsResponse",

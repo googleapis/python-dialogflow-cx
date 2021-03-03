@@ -15,8 +15,10 @@
 # limitations under the License.
 #
 
+from .client import WebhooksClient
+from .async_client import WebhooksAsyncClient
 
-__protobuf__ = proto.module(package="google.cloud.dialogflow.cx.v3beta1", manifest={},)
-
-
-__all__ = tuple(sorted(__protobuf__.manifest))
+__all__ = (
+    "WebhooksClient",
+    "WebhooksAsyncClient",
+)
