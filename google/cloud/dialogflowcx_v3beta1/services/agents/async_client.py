@@ -33,6 +33,7 @@ from google.api_core import operation_async  # type: ignore
 from google.cloud.dialogflowcx_v3beta1.services.agents import pagers
 from google.cloud.dialogflowcx_v3beta1.types import agent
 from google.cloud.dialogflowcx_v3beta1.types import agent as gcdc_agent
+from google.cloud.dialogflowcx_v3beta1.types import flow
 from google.protobuf import empty_pb2 as empty  # type: ignore
 from google.protobuf import field_mask_pb2 as field_mask  # type: ignore
 from google.protobuf import struct_pb2 as struct  # type: ignore
@@ -54,8 +55,22 @@ class AgentsAsyncClient:
 
     agent_path = staticmethod(AgentsClient.agent_path)
     parse_agent_path = staticmethod(AgentsClient.parse_agent_path)
+    agent_validation_result_path = staticmethod(
+        AgentsClient.agent_validation_result_path
+    )
+    parse_agent_validation_result_path = staticmethod(
+        AgentsClient.parse_agent_validation_result_path
+    )
     flow_path = staticmethod(AgentsClient.flow_path)
     parse_flow_path = staticmethod(AgentsClient.parse_flow_path)
+    flow_validation_result_path = staticmethod(AgentsClient.flow_validation_result_path)
+    parse_flow_validation_result_path = staticmethod(
+        AgentsClient.parse_flow_validation_result_path
+    )
+    security_settings_path = staticmethod(AgentsClient.security_settings_path)
+    parse_security_settings_path = staticmethod(
+        AgentsClient.parse_security_settings_path
+    )
 
     common_billing_account_path = staticmethod(AgentsClient.common_billing_account_path)
     parse_common_billing_account_path = staticmethod(
@@ -76,8 +91,36 @@ class AgentsAsyncClient:
     common_location_path = staticmethod(AgentsClient.common_location_path)
     parse_common_location_path = staticmethod(AgentsClient.parse_common_location_path)
 
-    from_service_account_info = AgentsClient.from_service_account_info
-    from_service_account_file = AgentsClient.from_service_account_file
+    @classmethod
+    def from_service_account_info(cls, info: dict, *args, **kwargs):
+        """Creates an instance of this client using the provided credentials info.
+
+        Args:
+            info (dict): The service account private key info.
+            args: Additional arguments to pass to the constructor.
+            kwargs: Additional arguments to pass to the constructor.
+
+        Returns:
+            AgentsAsyncClient: The constructed client.
+        """
+        return AgentsClient.from_service_account_info.__func__(AgentsAsyncClient, info, *args, **kwargs)  # type: ignore
+
+    @classmethod
+    def from_service_account_file(cls, filename: str, *args, **kwargs):
+        """Creates an instance of this client using the provided credentials
+        file.
+
+        Args:
+            filename (str): The path to the service account private key json
+                file.
+            args: Additional arguments to pass to the constructor.
+            kwargs: Additional arguments to pass to the constructor.
+
+        Returns:
+            AgentsAsyncClient: The constructed client.
+        """
+        return AgentsClient.from_service_account_file.__func__(AgentsAsyncClient, filename, *args, **kwargs)  # type: ignore
+
     from_service_account_json = from_service_account_file
 
     @property
@@ -174,7 +217,7 @@ class AgentsAsyncClient:
         Returns:
             google.cloud.dialogflowcx_v3beta1.services.agents.pagers.ListAgentsAsyncPager:
                 The response message for
-                   [Agents.ListAgents][google.cloud.dialogflow.cx.v3beta1.Agents.ListAgents].
+                [Agents.ListAgents][google.cloud.dialogflow.cx.v3beta1.Agents.ListAgents].
 
                 Iterating over this object will yield results and
                 resolve additional pages automatically.
@@ -589,8 +632,10 @@ class AgentsAsyncClient:
             google.api_core.operation_async.AsyncOperation:
                 An object representing a long-running operation.
 
-                The result type for the operation will be :class:`google.cloud.dialogflowcx_v3beta1.types.ExportAgentResponse` The response message for
-                   [Agents.ExportAgent][google.cloud.dialogflow.cx.v3beta1.Agents.ExportAgent].
+                The result type for the operation will be
+                :class:`google.cloud.dialogflowcx_v3beta1.types.ExportAgentResponse`
+                The response message for
+                [Agents.ExportAgent][google.cloud.dialogflow.cx.v3beta1.Agents.ExportAgent].
 
         """
         # Create or coerce a protobuf request object.
@@ -696,6 +741,134 @@ class AgentsAsyncClient:
             empty.Empty,
             metadata_type=struct.Struct,
         )
+
+        # Done; return the response.
+        return response
+
+    async def validate_agent(
+        self,
+        request: agent.ValidateAgentRequest = None,
+        *,
+        retry: retries.Retry = gapic_v1.method.DEFAULT,
+        timeout: float = None,
+        metadata: Sequence[Tuple[str, str]] = (),
+    ) -> agent.AgentValidationResult:
+        r"""Validates the specified agent and creates or updates
+        validation results. The agent in draft version is
+        validated. Please call this API after the training is
+        completed to get the complete validation results.
+
+        Args:
+            request (:class:`google.cloud.dialogflowcx_v3beta1.types.ValidateAgentRequest`):
+                The request object. The request message for
+                [Agents.ValidateAgent][google.cloud.dialogflow.cx.v3beta1.Agents.ValidateAgent].
+
+            retry (google.api_core.retry.Retry): Designation of what errors, if any,
+                should be retried.
+            timeout (float): The timeout for this request.
+            metadata (Sequence[Tuple[str, str]]): Strings which should be
+                sent along with the request as metadata.
+
+        Returns:
+            google.cloud.dialogflowcx_v3beta1.types.AgentValidationResult:
+                The response message for
+                [Agents.GetAgentValidationResult][google.cloud.dialogflow.cx.v3beta1.Agents.GetAgentValidationResult].
+
+        """
+        # Create or coerce a protobuf request object.
+
+        request = agent.ValidateAgentRequest(request)
+
+        # Wrap the RPC method; this adds retry and timeout information,
+        # and friendly error handling.
+        rpc = gapic_v1.method_async.wrap_method(
+            self._client._transport.validate_agent,
+            default_timeout=None,
+            client_info=DEFAULT_CLIENT_INFO,
+        )
+
+        # Certain fields should be provided within the metadata header;
+        # add these here.
+        metadata = tuple(metadata) + (
+            gapic_v1.routing_header.to_grpc_metadata((("name", request.name),)),
+        )
+
+        # Send the request.
+        response = await rpc(request, retry=retry, timeout=timeout, metadata=metadata,)
+
+        # Done; return the response.
+        return response
+
+    async def get_agent_validation_result(
+        self,
+        request: agent.GetAgentValidationResultRequest = None,
+        *,
+        name: str = None,
+        retry: retries.Retry = gapic_v1.method.DEFAULT,
+        timeout: float = None,
+        metadata: Sequence[Tuple[str, str]] = (),
+    ) -> agent.AgentValidationResult:
+        r"""Gets the latest agent validation result. Agent
+        validation is performed when ValidateAgent is called.
+
+        Args:
+            request (:class:`google.cloud.dialogflowcx_v3beta1.types.GetAgentValidationResultRequest`):
+                The request object. The request message for
+                [Agents.GetAgentValidationResult][google.cloud.dialogflow.cx.v3beta1.Agents.GetAgentValidationResult].
+            name (:class:`str`):
+                Required. The agent name. Format:
+                ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/validationResult``.
+
+                This corresponds to the ``name`` field
+                on the ``request`` instance; if ``request`` is provided, this
+                should not be set.
+
+            retry (google.api_core.retry.Retry): Designation of what errors, if any,
+                should be retried.
+            timeout (float): The timeout for this request.
+            metadata (Sequence[Tuple[str, str]]): Strings which should be
+                sent along with the request as metadata.
+
+        Returns:
+            google.cloud.dialogflowcx_v3beta1.types.AgentValidationResult:
+                The response message for
+                [Agents.GetAgentValidationResult][google.cloud.dialogflow.cx.v3beta1.Agents.GetAgentValidationResult].
+
+        """
+        # Create or coerce a protobuf request object.
+        # Sanity check: If we got a request object, we should *not* have
+        # gotten any keyword arguments that map to the request.
+        has_flattened_params = any([name])
+        if request is not None and has_flattened_params:
+            raise ValueError(
+                "If the `request` argument is set, then none of "
+                "the individual field arguments should be set."
+            )
+
+        request = agent.GetAgentValidationResultRequest(request)
+
+        # If we have keyword arguments corresponding to fields on the
+        # request, apply these.
+
+        if name is not None:
+            request.name = name
+
+        # Wrap the RPC method; this adds retry and timeout information,
+        # and friendly error handling.
+        rpc = gapic_v1.method_async.wrap_method(
+            self._client._transport.get_agent_validation_result,
+            default_timeout=None,
+            client_info=DEFAULT_CLIENT_INFO,
+        )
+
+        # Certain fields should be provided within the metadata header;
+        # add these here.
+        metadata = tuple(metadata) + (
+            gapic_v1.routing_header.to_grpc_metadata((("name", request.name),)),
+        )
+
+        # Send the request.
+        response = await rpc(request, retry=retry, timeout=timeout, metadata=metadata,)
 
         # Done; return the response.
         return response

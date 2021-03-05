@@ -43,7 +43,6 @@ __protobuf__ = proto.module(
 
 class Experiment(proto.Message):
     r"""Represents an experiment in an environment.
-    Next ID: 13
 
     Attributes:
         name (str):
@@ -94,7 +93,6 @@ class Experiment(proto.Message):
 
     class Definition(proto.Message):
         r"""Definition of the experiment.
-        Next ID: 3
 
         Attributes:
             condition (str):
@@ -128,13 +126,20 @@ class Experiment(proto.Message):
         """
 
         class MetricType(proto.Enum):
-            r"""Types of metric for Dialogflow experiment."""
+            r"""Types of ratio-based metric for Dialogflow experiment."""
             METRIC_UNSPECIFIED = 0
             CONTAINED_SESSION_NO_CALLBACK_RATE = 1
             LIVE_AGENT_HANDOFF_RATE = 2
             CALLBACK_SESSION_RATE = 3
             ABANDONED_SESSION_RATE = 4
             SESSION_END_RATE = 5
+
+        class CountType(proto.Enum):
+            r"""Types of count-based metric for Dialogflow experiment."""
+            COUNT_TYPE_UNSPECIFIED = 0
+            TOTAL_NO_MATCH_COUNT = 1
+            TOTAL_TURN_COUNT = 2
+            AVERAGE_TURN_COUNT = 3
 
         class ConfidenceInterval(proto.Message):
             r"""A confidence interval is a range of possible values for the
@@ -167,9 +172,15 @@ class Experiment(proto.Message):
 
             Attributes:
                 type_ (google.cloud.dialogflowcx_v3.types.Experiment.Result.MetricType):
-                    The type of the metric.
+                    Ratio-based metric type. Only one of type or count_type is
+                    specified in each Metric.
+                count_type (google.cloud.dialogflowcx_v3.types.Experiment.Result.CountType):
+                    Count-based metric type. Only one of type or count_type is
+                    specified in each Metric.
                 ratio (float):
                     Ratio value of a metric.
+                count (float):
+                    Count value of a metric.
                 confidence_interval (google.cloud.dialogflowcx_v3.types.Experiment.Result.ConfidenceInterval):
                     The probability that the treatment is better
                     than all other treatments in the experiment
@@ -179,7 +190,13 @@ class Experiment(proto.Message):
                 proto.ENUM, number=1, enum="Experiment.Result.MetricType",
             )
 
+            count_type = proto.Field(
+                proto.ENUM, number=5, enum="Experiment.Result.CountType",
+            )
+
             ratio = proto.Field(proto.DOUBLE, number=2, oneof="value")
+
+            count = proto.Field(proto.DOUBLE, number=4, oneof="value")
 
             confidence_interval = proto.Field(
                 proto.MESSAGE, number=3, message="Experiment.Result.ConfidenceInterval",

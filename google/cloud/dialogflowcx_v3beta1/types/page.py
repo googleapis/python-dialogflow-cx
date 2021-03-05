@@ -105,10 +105,17 @@ class Page(proto.Message):
             -  TransitionRoutes defined in the page with intent
                specified.
             -  TransitionRoutes defined in the [transition route
-               groups][google.cloud.dialogflow.cx.v3beta1.Page.transition_route_groups].
+               groups][google.cloud.dialogflow.cx.v3beta1.Page.transition_route_groups]
+               with intent specified.
             -  TransitionRoutes defined in flow with intent specified.
+            -  TransitionRoutes defined in the [transition route
+               groups][google.cloud.dialogflow.cx.v3beta1.Flow.transition_route_groups]
+               with intent specified.
             -  TransitionRoutes defined in the page with only condition
                specified.
+            -  TransitionRoutes defined in the [transition route
+               groups][google.cloud.dialogflow.cx.v3beta1.Page.transition_route_groups]
+               with only condition specified.
         event_handlers (Sequence[google.cloud.dialogflowcx_v3beta1.types.EventHandler]):
             Handlers associated with the page to handle
             events such as webhook errors, no match or no
@@ -182,11 +189,13 @@ class Form(proto.Message):
                 If the parameter is required, the default value
                 will be ignored.
             redact (bool):
-                Indicates whether the parameter content is
-                logged in text and audio. If it is set to true,
-                the parameter content will be replaced to
-                parameter name in both request and response. The
-                default value is false.
+                Indicates whether the parameter content should be redacted
+                in log. If redaction is enabled, the parameter content will
+                be replaced by parameter name during logging. Note: the
+                parameter content is subject to redaction if either
+                parameter level redaction or [entity type level
+                redaction][google.cloud.dialogflow.cx.v3beta1.EntityType.redact]
+                is enabled.
         """
 
         class FillBehavior(proto.Message):
@@ -410,7 +419,7 @@ class ListPagesRequest(proto.Message):
 
             If not specified, the agent's default language is used.
             `Many
-            languages <https://cloud.google.com/dialogflow/docs/reference/language>`__
+            languages <https://cloud.google.com/dialogflow/cx/docs/reference/language>`__
             are supported. Note: languages must be enabled in the agent
             before they can be used.
         page_size (int):
@@ -475,7 +484,7 @@ class GetPageRequest(proto.Message):
 
             If not specified, the agent's default language is used.
             `Many
-            languages <https://cloud.google.com/dialogflow/docs/reference/language>`__
+            languages <https://cloud.google.com/dialogflow/cx/docs/reference/language>`__
             are supported. Note: languages must be enabled in the agent
             before they can be used.
     """
@@ -508,7 +517,7 @@ class CreatePageRequest(proto.Message):
 
             If not specified, the agent's default language is used.
             `Many
-            languages <https://cloud.google.com/dialogflow/docs/reference/language>`__
+            languages <https://cloud.google.com/dialogflow/cx/docs/reference/language>`__
             are supported. Note: languages must be enabled in the agent
             before they can be used.
     """
@@ -540,7 +549,7 @@ class UpdatePageRequest(proto.Message):
 
             If not specified, the agent's default language is used.
             `Many
-            languages <https://cloud.google.com/dialogflow/docs/reference/language>`__
+            languages <https://cloud.google.com/dialogflow/cx/docs/reference/language>`__
             are supported. Note: languages must be enabled in the agent
             before they can be used.
         update_mask (google.protobuf.field_mask_pb2.FieldMask):

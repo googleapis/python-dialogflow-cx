@@ -19,7 +19,9 @@ import proto  # type: ignore
 
 
 from google.cloud.dialogflowcx_v3.types import page
+from google.cloud.dialogflowcx_v3.types import validation_message
 from google.protobuf import field_mask_pb2 as field_mask  # type: ignore
+from google.protobuf import timestamp_pb2 as timestamp  # type: ignore
 
 
 __protobuf__ = proto.module(
@@ -34,6 +36,9 @@ __protobuf__ = proto.module(
         "GetFlowRequest",
         "UpdateFlowRequest",
         "TrainFlowRequest",
+        "ValidateFlowRequest",
+        "GetFlowValidationResultRequest",
+        "FlowValidationResult",
     },
 )
 
@@ -180,7 +185,7 @@ class CreateFlowRequest(proto.Message):
 
             If not specified, the agent's default language is used.
             `Many
-            languages <https://cloud.google.com/dialogflow/docs/reference/language>`__
+            languages <https://cloud.google.com/dialogflow/cx/docs/reference/language>`__
             are supported. Note: languages must be enabled in the agent
             before they can be used.
     """
@@ -242,7 +247,7 @@ class ListFlowsRequest(proto.Message):
 
             If not specified, the agent's default language is used.
             `Many
-            languages <https://cloud.google.com/dialogflow/docs/reference/language>`__
+            languages <https://cloud.google.com/dialogflow/cx/docs/reference/language>`__
             are supported. Note: languages must be enabled in the agent
             before they can be used.
     """
@@ -296,7 +301,7 @@ class GetFlowRequest(proto.Message):
 
             If not specified, the agent's default language is used.
             `Many
-            languages <https://cloud.google.com/dialogflow/docs/reference/language>`__
+            languages <https://cloud.google.com/dialogflow/cx/docs/reference/language>`__
             are supported. Note: languages must be enabled in the agent
             before they can be used.
     """
@@ -324,7 +329,7 @@ class UpdateFlowRequest(proto.Message):
 
             If not specified, the agent's default language is used.
             `Many
-            languages <https://cloud.google.com/dialogflow/docs/reference/language>`__
+            languages <https://cloud.google.com/dialogflow/cx/docs/reference/language>`__
             are supported. Note: languages must be enabled in the agent
             before they can be used.
     """
@@ -347,6 +352,65 @@ class TrainFlowRequest(proto.Message):
     """
 
     name = proto.Field(proto.STRING, number=1)
+
+
+class ValidateFlowRequest(proto.Message):
+    r"""The request message for
+    [Flows.ValidateFlow][google.cloud.dialogflow.cx.v3.Flows.ValidateFlow].
+
+    Attributes:
+        name (str):
+            Required. The flow to validate. Format:
+            ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>``.
+        language_code (str):
+            If not specified, the agent's default
+            language is used.
+    """
+
+    name = proto.Field(proto.STRING, number=1)
+
+    language_code = proto.Field(proto.STRING, number=2)
+
+
+class GetFlowValidationResultRequest(proto.Message):
+    r"""The request message for
+    [Flows.GetFlowValidationResult][google.cloud.dialogflow.cx.v3.Flows.GetFlowValidationResult].
+
+    Attributes:
+        name (str):
+            Required. The flow name. Format:
+            ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/validationResult``.
+        language_code (str):
+            If not specified, the agent's default
+            language is used.
+    """
+
+    name = proto.Field(proto.STRING, number=1)
+
+    language_code = proto.Field(proto.STRING, number=2)
+
+
+class FlowValidationResult(proto.Message):
+    r"""The response message for
+    [Flows.GetFlowValidationResult][google.cloud.dialogflow.cx.v3.Flows.GetFlowValidationResult].
+
+    Attributes:
+        name (str):
+            The unique identifier of the flow validation result. Format:
+            ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/validationResult``.
+        validation_messages (Sequence[google.cloud.dialogflowcx_v3.types.ValidationMessage]):
+            Contains all validation messages.
+        update_time (google.protobuf.timestamp_pb2.Timestamp):
+            Last time the flow was validated.
+    """
+
+    name = proto.Field(proto.STRING, number=1)
+
+    validation_messages = proto.RepeatedField(
+        proto.MESSAGE, number=2, message=validation_message.ValidationMessage,
+    )
+
+    update_time = proto.Field(proto.MESSAGE, number=3, message=timestamp.Timestamp,)
 
 
 __all__ = tuple(sorted(__protobuf__.manifest))

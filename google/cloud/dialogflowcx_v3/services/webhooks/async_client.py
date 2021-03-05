@@ -73,8 +73,36 @@ class WebhooksAsyncClient:
     common_location_path = staticmethod(WebhooksClient.common_location_path)
     parse_common_location_path = staticmethod(WebhooksClient.parse_common_location_path)
 
-    from_service_account_info = WebhooksClient.from_service_account_info
-    from_service_account_file = WebhooksClient.from_service_account_file
+    @classmethod
+    def from_service_account_info(cls, info: dict, *args, **kwargs):
+        """Creates an instance of this client using the provided credentials info.
+
+        Args:
+            info (dict): The service account private key info.
+            args: Additional arguments to pass to the constructor.
+            kwargs: Additional arguments to pass to the constructor.
+
+        Returns:
+            WebhooksAsyncClient: The constructed client.
+        """
+        return WebhooksClient.from_service_account_info.__func__(WebhooksAsyncClient, info, *args, **kwargs)  # type: ignore
+
+    @classmethod
+    def from_service_account_file(cls, filename: str, *args, **kwargs):
+        """Creates an instance of this client using the provided credentials
+        file.
+
+        Args:
+            filename (str): The path to the service account private key json
+                file.
+            args: Additional arguments to pass to the constructor.
+            kwargs: Additional arguments to pass to the constructor.
+
+        Returns:
+            WebhooksAsyncClient: The constructed client.
+        """
+        return WebhooksClient.from_service_account_file.__func__(WebhooksAsyncClient, filename, *args, **kwargs)  # type: ignore
+
     from_service_account_json = from_service_account_file
 
     @property

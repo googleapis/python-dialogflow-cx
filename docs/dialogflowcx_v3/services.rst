@@ -13,6 +13,7 @@ Services for Google Cloud Dialogflowcx v3 API
     security_settings_service
     session_entity_types
     sessions
+    test_cases
     transition_route_groups
     versions
     webhooks

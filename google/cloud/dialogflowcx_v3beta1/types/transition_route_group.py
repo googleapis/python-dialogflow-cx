@@ -55,13 +55,6 @@ class TransitionRouteGroup(proto.Message):
         transition_routes (Sequence[google.cloud.dialogflowcx_v3beta1.types.TransitionRoute]):
             Transition routes associated with the
             [TransitionRouteGroup][google.cloud.dialogflow.cx.v3beta1.TransitionRouteGroup].
-            Duplicate transition routes (i.e. using the same
-            [``intent``][google.cloud.dialogflow.cx.v3beta1.TransitionRoute.intent])
-            are not allowed.
-
-            Note that the
-            [``name``][google.cloud.dialogflow.cx.v3beta1.TransitionRoute.name]
-            field is not used in the transition route group scope.
     """
 
     name = proto.Field(proto.STRING, number=1)
@@ -97,7 +90,7 @@ class ListTransitionRouteGroupsRequest(proto.Message):
 
             If not specified, the agent's default language is used.
             `Many
-            languages <https://cloud.google.com/dialogflow/docs/reference/language>`__
+            languages <https://cloud.google.com/dialogflow/cx/docs/reference/language>`__
             are supported. Note: languages must be enabled in the agent
             before they can be used.
     """
@@ -158,7 +151,7 @@ class GetTransitionRouteGroupRequest(proto.Message):
 
             If not specified, the agent's default language is used.
             `Many
-            languages <https://cloud.google.com/dialogflow/docs/reference/language>`__
+            languages <https://cloud.google.com/dialogflow/cx/docs/reference/language>`__
             are supported. Note: languages must be enabled in the agent
             before they can be used.
     """
@@ -190,7 +183,7 @@ class CreateTransitionRouteGroupRequest(proto.Message):
 
             If not specified, the agent's default language is used.
             `Many
-            languages <https://cloud.google.com/dialogflow/docs/reference/language>`__
+            languages <https://cloud.google.com/dialogflow/cx/docs/reference/language>`__
             are supported. Note: languages must be enabled in the agent
             before they can be used.
     """
@@ -223,7 +216,7 @@ class UpdateTransitionRouteGroupRequest(proto.Message):
 
             If not specified, the agent's default language is used.
             `Many
-            languages <https://cloud.google.com/dialogflow/docs/reference/language>`__
+            languages <https://cloud.google.com/dialogflow/cx/docs/reference/language>`__
             are supported. Note: languages must be enabled in the agent
             before they can be used.
     """

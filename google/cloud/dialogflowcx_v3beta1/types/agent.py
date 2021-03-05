@@ -18,6 +18,7 @@
 import proto  # type: ignore
 
 
+from google.cloud.dialogflowcx_v3beta1.types import flow
 from google.protobuf import field_mask_pb2 as field_mask  # type: ignore
 
 
@@ -35,6 +36,9 @@ __protobuf__ = proto.module(
         "ExportAgentRequest",
         "ExportAgentResponse",
         "RestoreAgentRequest",
+        "ValidateAgentRequest",
+        "GetAgentValidationResultRequest",
+        "AgentValidationResult",
     },
 )
 
@@ -79,7 +83,7 @@ class Agent(proto.Message):
         default_language_code (str):
             Immutable. The default language of the agent as a language
             tag. See `Language
-            Support <https://cloud.google.com/dialogflow/docs/reference/language>`__
+            Support <https://cloud.google.com/dialogflow/cx/docs/reference/language>`__
             for a list of the currently supported language codes. This
             field cannot be set by the
             [Agents.UpdateAgent][google.cloud.dialogflow.cx.v3beta1.Agents.UpdateAgent]
@@ -105,6 +109,11 @@ class Agent(proto.Message):
             created, and can only be deleted by deleting the agent.
             Format:
             ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>``.
+        security_settings (str):
+            Name of the
+            [SecuritySettings][google.cloud.dialogflow.cx.v3beta1.SecuritySettings]
+            reference for the agent. Format:
+            ``projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>``.
         enable_stackdriver_logging (bool):
             Indicates if stackdriver logging is enabled
             for the agent.
@@ -130,6 +139,8 @@ class Agent(proto.Message):
     )
 
     start_flow = proto.Field(proto.STRING, number=16)
+
+    security_settings = proto.Field(proto.STRING, number=17)
 
     enable_stackdriver_logging = proto.Field(proto.BOOL, number=18)
 
@@ -304,6 +315,62 @@ class RestoreAgentRequest(proto.Message):
     agent_uri = proto.Field(proto.STRING, number=2, oneof="agent")
 
     agent_content = proto.Field(proto.BYTES, number=3, oneof="agent")
+
+
+class ValidateAgentRequest(proto.Message):
+    r"""The request message for
+    [Agents.ValidateAgent][google.cloud.dialogflow.cx.v3beta1.Agents.ValidateAgent].
+
+    Attributes:
+        name (str):
+            Required. The agent to validate. Format:
+            ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>``.
+        language_code (str):
+            If not specified, the agent's default
+            language is used.
+    """
+
+    name = proto.Field(proto.STRING, number=1)
+
+    language_code = proto.Field(proto.STRING, number=2)
+
+
+class GetAgentValidationResultRequest(proto.Message):
+    r"""The request message for
+    [Agents.GetAgentValidationResult][google.cloud.dialogflow.cx.v3beta1.Agents.GetAgentValidationResult].
+
+    Attributes:
+        name (str):
+            Required. The agent name. Format:
+            ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/validationResult``.
+        language_code (str):
+            If not specified, the agent's default
+            language is used.
+    """
+
+    name = proto.Field(proto.STRING, number=1)
+
+    language_code = proto.Field(proto.STRING, number=2)
+
+
+class AgentValidationResult(proto.Message):
+    r"""The response message for
+    [Agents.GetAgentValidationResult][google.cloud.dialogflow.cx.v3beta1.Agents.GetAgentValidationResult].
+
+    Attributes:
+        name (str):
+            The unique identifier of the agent validation result.
+            Format:
+            ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/validationResult``.
+        flow_validation_results (Sequence[google.cloud.dialogflowcx_v3beta1.types.FlowValidationResult]):
+            Contains all flow validation results.
+    """
+
+    name = proto.Field(proto.STRING, number=1)
+
+    flow_validation_results = proto.RepeatedField(
+        proto.MESSAGE, number=2, message=flow.FlowValidationResult,
+    )
 
 
 __all__ = tuple(sorted(__protobuf__.manifest))

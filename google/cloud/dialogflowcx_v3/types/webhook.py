@@ -255,6 +255,11 @@ class WebhookRequest(proto.Message):
         payload (google.protobuf.struct_pb2.Struct):
             Custom data set in
             [QueryParameters.payload][google.cloud.dialogflow.cx.v3.QueryParameters.payload].
+        sentiment_analysis_result (google.cloud.dialogflowcx_v3.types.WebhookRequest.SentimentAnalysisResult):
+            The sentiment analysis result of the current
+            user request. The field is filled when sentiment
+            analysis is configured to be enabled for the
+            request.
     """
 
     class FulfillmentInfo(proto.Message):
@@ -277,6 +282,9 @@ class WebhookRequest(proto.Message):
                 Always present. The unique identifier of the last matched
                 [intent][google.cloud.dialogflow.cx.v3.Intent]. Format:
                 ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>``.
+            display_name (str):
+                Always present. The display name of the last matched
+                [intent][google.cloud.dialogflow.cx.v3.Intent].
             parameters (Sequence[google.cloud.dialogflowcx_v3.types.WebhookRequest.IntentInfo.ParametersEntry]):
                 Parameters identified as a result of intent
                 matching. This is a map of the name of the
@@ -284,6 +292,10 @@ class WebhookRequest(proto.Message):
                 parameter identified from the user's utterance.
                 All parameters defined in the matched intent
                 that are identified will be surfaced here.
+            confidence (float):
+                The confidence of the matched intent. Values
+                range from 0.0 (completely uncertain) to 1.0
+                (completely certain).
         """
 
         class IntentParameterValue(proto.Message):
@@ -304,12 +316,33 @@ class WebhookRequest(proto.Message):
 
         last_matched_intent = proto.Field(proto.STRING, number=1)
 
+        display_name = proto.Field(proto.STRING, number=3)
+
         parameters = proto.MapField(
             proto.STRING,
             proto.MESSAGE,
             number=2,
             message="WebhookRequest.IntentInfo.IntentParameterValue",
         )
+
+        confidence = proto.Field(proto.FLOAT, number=4)
+
+    class SentimentAnalysisResult(proto.Message):
+        r"""Represents the result of sentiment analysis.
+
+        Attributes:
+            score (float):
+                Sentiment score between -1.0 (negative
+                sentiment) and 1.0 (positive sentiment).
+            magnitude (float):
+                A non-negative number in the [0, +inf) range, which
+                represents the absolute magnitude of sentiment, regardless
+                of score (positive or negative).
+        """
+
+        score = proto.Field(proto.FLOAT, number=1)
+
+        magnitude = proto.Field(proto.FLOAT, number=2)
 
     detect_intent_response_id = proto.Field(proto.STRING, number=1)
 
@@ -326,6 +359,10 @@ class WebhookRequest(proto.Message):
     )
 
     payload = proto.Field(proto.MESSAGE, number=8, message=struct.Struct,)
+
+    sentiment_analysis_result = proto.Field(
+        proto.MESSAGE, number=9, message=SentimentAnalysisResult,
+    )
 
 
 class WebhookResponse(proto.Message):
@@ -518,9 +555,12 @@ class SessionInfo(proto.Message):
             [WebhookResponse][google.cloud.dialogflow.cx.v3.WebhookResponse].
             The unique identifier of the
             [session][google.cloud.dialogflow.cx.v3.DetectIntentRequest.session].
-            This field can be used by the webhook to identify a user.
+            This field can be used by the webhook to identify a session.
             Format:
-            ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/sessions/<Session ID>``.
+            ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/sessions/<Session ID>``
+            or
+            ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/environments/<Environment ID>/sessions/<Session ID>``
+            if environment is specified.
         parameters (Sequence[google.cloud.dialogflowcx_v3.types.SessionInfo.ParametersEntry]):
             Optional for
             [WebhookRequest][google.cloud.dialogflow.cx.v3.WebhookRequest].

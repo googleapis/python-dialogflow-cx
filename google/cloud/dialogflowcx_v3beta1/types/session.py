@@ -390,6 +390,9 @@ class QueryParameters(proto.Message):
                   from composite entity property names to property
                   values
                -  Else: parameter value
+        disable_webhook (bool):
+            Whether to disable webhook calls for this
+            request.
         analyze_query_text_sentiment (bool):
             Configures whether sentiment analysis should
             be performed. If not provided, sentiment
@@ -421,6 +424,8 @@ class QueryParameters(proto.Message):
 
     parameters = proto.Field(proto.MESSAGE, number=5, message=struct.Struct,)
 
+    disable_webhook = proto.Field(proto.BOOL, number=7)
+
     analyze_query_text_sentiment = proto.Field(proto.BOOL, number=8)
 
     webhook_headers = proto.MapField(proto.STRING, proto.STRING, number=10)
@@ -449,7 +454,7 @@ class QueryInput(proto.Message):
             The DTMF event to be handled.
         language_code (str):
             Required. The language of the input. See `Language
-            Support <https://cloud.google.com/dialogflow/docs/reference/language>`__
+            Support <https://cloud.google.com/dialogflow/cx/docs/reference/language>`__
             for a list of the currently supported language codes. Note
             that queries in the same session do not necessarily need to
             specify the same language.
@@ -494,7 +499,7 @@ class QueryResult(proto.Message):
         language_code (str):
             The language that was triggered during intent detection. See
             `Language
-            Support <https://cloud.google.com/dialogflow/docs/reference/language>`__
+            Support <https://cloud.google.com/dialogflow/cx/docs/reference/language>`__
             for a list of the currently supported language codes.
         parameters (google.protobuf.struct_pb2.Struct):
             The collected [session
