@@ -251,6 +251,7 @@ __all__ = (
     "DetectIntentResponse",
     "DtmfInput",
     "EntityType",
+    "EntityTypesClient",
     "Environment",
     "EnvironmentsClient",
     "EventHandler",
@@ -343,7 +344,6 @@ __all__ = (
     "RunTestCaseRequest",
     "RunTestCaseResponse",
     "SecuritySettings",
-    "SecuritySettingsServiceClient",
     "SentimentAnalysisResult",
     "SessionEntityType",
     "SessionEntityTypesClient",
@@ -399,5 +399,5 @@ __all__ = (
     "WebhookRequest",
     "WebhookResponse",
     "WebhooksClient",
-    "EntityTypesClient",
+    "SecuritySettingsServiceClient",
 )
