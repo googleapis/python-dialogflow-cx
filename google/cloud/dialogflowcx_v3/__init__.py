@@ -293,7 +293,6 @@ __all__ = (
     "IntentCoverage",
     "IntentInput",
     "IntentView",
-    "IntentsClient",
     "ListAgentsRequest",
     "ListAgentsResponse",
     "ListEntityTypesRequest",
@@ -333,6 +332,7 @@ __all__ = (
     "OutputAudioEncoding",
     "Page",
     "PageInfo",
+    "PagesClient",
     "QueryInput",
     "QueryParameters",
     "QueryResult",
@@ -399,5 +399,5 @@ __all__ = (
     "WebhookRequest",
     "WebhookResponse",
     "WebhooksClient",
-    "PagesClient",
+    "IntentsClient",
 )
