@@ -253,6 +253,7 @@ __all__ = (
     "EntityType",
     "EntityTypesClient",
     "Environment",
+    "EnvironmentsClient",
     "EventHandler",
     "EventInput",
     "Experiment",
@@ -362,7 +363,6 @@ __all__ = (
     "TestCase",
     "TestCaseError",
     "TestCaseResult",
-    "TestCasesClient",
     "TestConfig",
     "TestError",
     "TestResult",
@@ -399,5 +399,5 @@ __all__ = (
     "WebhookRequest",
     "WebhookResponse",
     "WebhooksClient",
-    "EnvironmentsClient",
+    "TestCasesClient",
 )
