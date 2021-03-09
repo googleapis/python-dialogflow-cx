@@ -257,7 +257,6 @@ __all__ = (
     "EventHandler",
     "EventInput",
     "Experiment",
-    "ExperimentsClient",
     "ExportAgentRequest",
     "ExportAgentResponse",
     "ExportTestCasesMetadata",
@@ -333,6 +332,7 @@ __all__ = (
     "OutputAudioEncoding",
     "Page",
     "PageInfo",
+    "PagesClient",
     "QueryInput",
     "QueryParameters",
     "QueryResult",
@@ -399,5 +399,5 @@ __all__ = (
     "WebhookRequest",
     "WebhookResponse",
     "WebhooksClient",
-    "PagesClient",
+    "ExperimentsClient",
 )
