@@ -293,7 +293,6 @@ __all__ = (
     "IntentCoverage",
     "IntentInput",
     "IntentView",
-    "IntentsClient",
     "ListAgentsRequest",
     "ListAgentsResponse",
     "ListEntityTypesRequest",
@@ -363,6 +362,7 @@ __all__ = (
     "TestCase",
     "TestCaseError",
     "TestCaseResult",
+    "TestCasesClient",
     "TestConfig",
     "TestError",
     "TestResult",
@@ -399,5 +399,5 @@ __all__ = (
     "WebhookRequest",
     "WebhookResponse",
     "WebhooksClient",
-    "TestCasesClient",
+    "IntentsClient",
 )
