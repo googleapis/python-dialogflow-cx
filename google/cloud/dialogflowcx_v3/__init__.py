@@ -265,7 +265,6 @@ __all__ = (
     "ExportTestCasesResponse",
     "Flow",
     "FlowValidationResult",
-    "FlowsClient",
     "Form",
     "FulfillIntentRequest",
     "FulfillIntentResponse",
@@ -400,4 +399,5 @@ __all__ = (
     "WebhookRequest",
     "WebhookResponse",
     "WebhooksClient",
+    "FlowsClient",
 )
