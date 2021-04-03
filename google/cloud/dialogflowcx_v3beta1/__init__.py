@@ -394,10 +394,10 @@ __all__ = (
     "VariantsHistory",
     "Version",
     "VersionVariants",
-    "VersionsClient",
     "VoiceSelectionParams",
     "Webhook",
     "WebhookRequest",
     "WebhookResponse",
     "WebhooksClient",
+    "VersionsClient",
 )
