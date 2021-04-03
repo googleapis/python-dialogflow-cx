@@ -254,7 +254,6 @@ __all__ = (
     "EntityType",
     "EntityTypesClient",
     "Environment",
-    "EnvironmentsClient",
     "EventHandler",
     "EventInput",
     "Experiment",
@@ -349,6 +348,7 @@ __all__ = (
     "SecuritySettingsServiceClient",
     "SentimentAnalysisResult",
     "SessionEntityType",
+    "SessionEntityTypesClient",
     "SessionInfo",
     "SessionsClient",
     "SpeechModelVariant",
@@ -401,5 +401,5 @@ __all__ = (
     "WebhookRequest",
     "WebhookResponse",
     "WebhooksClient",
-    "SessionEntityTypesClient",
+    "EnvironmentsClient",
 )

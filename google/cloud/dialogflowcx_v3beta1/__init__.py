@@ -254,6 +254,7 @@ __all__ = (
     "EntityType",
     "EntityTypesClient",
     "Environment",
+    "EnvironmentsClient",
     "EventHandler",
     "EventInput",
     "Experiment",
@@ -265,7 +266,6 @@ __all__ = (
     "ExportTestCasesResponse",
     "Flow",
     "FlowValidationResult",
-    "FlowsClient",
     "Form",
     "FulfillIntentRequest",
     "FulfillIntentResponse",
@@ -401,5 +401,5 @@ __all__ = (
     "WebhookRequest",
     "WebhookResponse",
     "WebhooksClient",
-    "EnvironmentsClient",
+    "FlowsClient",
 )
