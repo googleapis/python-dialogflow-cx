@@ -347,7 +347,6 @@ __all__ = (
     "SecuritySettingsServiceClient",
     "SentimentAnalysisResult",
     "SessionEntityType",
-    "SessionEntityTypesClient",
     "SessionInfo",
     "SessionsClient",
     "SpeechModelVariant",
@@ -374,6 +373,7 @@ __all__ = (
     "TransitionRoute",
     "TransitionRouteGroup",
     "TransitionRouteGroupCoverage",
+    "TransitionRouteGroupsClient",
     "UpdateAgentRequest",
     "UpdateEntityTypeRequest",
     "UpdateEnvironmentRequest",
@@ -399,5 +399,5 @@ __all__ = (
     "WebhookRequest",
     "WebhookResponse",
     "WebhooksClient",
-    "TransitionRouteGroupsClient",
+    "SessionEntityTypesClient",
 )
