@@ -372,8 +372,6 @@ class SessionEntityTypesAsyncClient:
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> gcdc_session_entity_type.SessionEntityType:
         r"""Creates a session entity type.
-        If the specified session entity type already exists,
-        overrides the session entity type.
 
         Args:
             request (:class:`google.cloud.dialogflowcx_v3beta1.types.CreateSessionEntityTypeRequest`):

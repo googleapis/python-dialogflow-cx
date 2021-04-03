@@ -156,6 +156,7 @@ from .types.test_case import ExportTestCasesMetadata
 from .types.test_case import ExportTestCasesRequest
 from .types.test_case import ExportTestCasesResponse
 from .types.test_case import GetTestCaseRequest
+from .types.test_case import GetTestCaseResultRequest
 from .types.test_case import ImportTestCasesMetadata
 from .types.test_case import ImportTestCasesRequest
 from .types.test_case import ImportTestCasesResponse
@@ -282,6 +283,7 @@ __all__ = (
     "GetSecuritySettingsRequest",
     "GetSessionEntityTypeRequest",
     "GetTestCaseRequest",
+    "GetTestCaseResultRequest",
     "GetTransitionRouteGroupRequest",
     "GetVersionRequest",
     "GetWebhookRequest",
@@ -333,6 +335,7 @@ __all__ = (
     "OutputAudioEncoding",
     "Page",
     "PageInfo",
+    "PagesClient",
     "QueryInput",
     "QueryParameters",
     "QueryResult",
@@ -348,7 +351,6 @@ __all__ = (
     "SessionEntityType",
     "SessionEntityTypesClient",
     "SessionInfo",
-    "SessionsClient",
     "SpeechModelVariant",
     "SpeechToTextSettings",
     "SpeechWordInfo",
@@ -399,5 +401,5 @@ __all__ = (
     "WebhookRequest",
     "WebhookResponse",
     "WebhooksClient",
-    "PagesClient",
+    "SessionsClient",
 )
