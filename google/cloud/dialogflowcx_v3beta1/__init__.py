@@ -257,6 +257,7 @@ __all__ = (
     "EventHandler",
     "EventInput",
     "Experiment",
+    "ExperimentsClient",
     "ExportAgentRequest",
     "ExportAgentResponse",
     "ExportTestCasesMetadata",
@@ -373,7 +374,6 @@ __all__ = (
     "TransitionRoute",
     "TransitionRouteGroup",
     "TransitionRouteGroupCoverage",
-    "TransitionRouteGroupsClient",
     "UpdateAgentRequest",
     "UpdateEntityTypeRequest",
     "UpdateEnvironmentRequest",
@@ -399,5 +399,5 @@ __all__ = (
     "WebhookRequest",
     "WebhookResponse",
     "WebhooksClient",
-    "ExperimentsClient",
+    "TransitionRouteGroupsClient",
 )
