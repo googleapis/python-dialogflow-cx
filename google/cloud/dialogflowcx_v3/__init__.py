@@ -156,6 +156,7 @@ from .types.test_case import ExportTestCasesMetadata
 from .types.test_case import ExportTestCasesRequest
 from .types.test_case import ExportTestCasesResponse
 from .types.test_case import GetTestCaseRequest
+from .types.test_case import GetTestCaseResultRequest
 from .types.test_case import ImportTestCasesMetadata
 from .types.test_case import ImportTestCasesRequest
 from .types.test_case import ImportTestCasesResponse
@@ -257,7 +258,6 @@ __all__ = (
     "EventHandler",
     "EventInput",
     "Experiment",
-    "ExperimentsClient",
     "ExportAgentRequest",
     "ExportAgentResponse",
     "ExportTestCasesMetadata",
@@ -282,6 +282,7 @@ __all__ = (
     "GetSecuritySettingsRequest",
     "GetSessionEntityTypeRequest",
     "GetTestCaseRequest",
+    "GetTestCaseResultRequest",
     "GetTransitionRouteGroupRequest",
     "GetVersionRequest",
     "GetWebhookRequest",
@@ -293,6 +294,7 @@ __all__ = (
     "IntentCoverage",
     "IntentInput",
     "IntentView",
+    "IntentsClient",
     "ListAgentsRequest",
     "ListAgentsResponse",
     "ListEntityTypesRequest",
@@ -399,5 +401,5 @@ __all__ = (
     "WebhookRequest",
     "WebhookResponse",
     "WebhooksClient",
-    "IntentsClient",
+    "ExperimentsClient",
 )

@@ -66,6 +66,7 @@ __protobuf__ = proto.module(
         "ExportTestCasesMetadata",
         "ListTestCaseResultsRequest",
         "ListTestCaseResultsResponse",
+        "GetTestCaseResultRequest",
     },
 )
 
@@ -998,6 +999,19 @@ class ListTestCaseResultsResponse(proto.Message):
     )
 
     next_page_token = proto.Field(proto.STRING, number=2)
+
+
+class GetTestCaseResultRequest(proto.Message):
+    r"""The request message for
+    [TestCases.GetTestCaseResult][google.cloud.dialogflow.cx.v3beta1.TestCases.GetTestCaseResult].
+
+    Attributes:
+        name (str):
+            Required. The name of the testcase. Format:
+            ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/testCases/<TestCase ID>/results/<TestCaseResult ID>``.
+    """
+
+    name = proto.Field(proto.STRING, number=1)
 
 
 __all__ = tuple(sorted(__protobuf__.manifest))

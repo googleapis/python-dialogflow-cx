@@ -79,6 +79,10 @@ class Experiment(proto.Message):
             Last update time of this experiment.
         experiment_length (google.protobuf.duration_pb2.Duration):
             Maximum number of days to run the experiment.
+            If auto-rollout is not enabled, default value
+            and maximum will be 30 days. If auto-rollout is
+            enabled, default value and maximum will be 6
+            days.
         variants_history (Sequence[google.cloud.dialogflowcx_v3beta1.types.VariantsHistory]):
             The history of updates to the experiment
             variants.

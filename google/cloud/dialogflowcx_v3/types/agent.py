@@ -308,13 +308,23 @@ class RestoreAgentRequest(proto.Message):
             ``gs://<bucket-name>/<object-name>``.
         agent_content (bytes):
             Uncompressed raw byte content for agent.
+        restore_option (google.cloud.dialogflowcx_v3.types.RestoreAgentRequest.RestoreOption):
+            Agent restore mode. If not specified, ``KEEP`` is assumed.
     """
+
+    class RestoreOption(proto.Enum):
+        r"""Restore option."""
+        RESTORE_OPTION_UNSPECIFIED = 0
+        KEEP = 1
+        FALLBACK = 2
 
     name = proto.Field(proto.STRING, number=1)
 
     agent_uri = proto.Field(proto.STRING, number=2, oneof="agent")
 
     agent_content = proto.Field(proto.BYTES, number=3, oneof="agent")
+
+    restore_option = proto.Field(proto.ENUM, number=5, enum=RestoreOption,)
 
 
 class ValidateAgentRequest(proto.Message):

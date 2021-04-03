@@ -156,6 +156,7 @@ from .types.test_case import ExportTestCasesMetadata
 from .types.test_case import ExportTestCasesRequest
 from .types.test_case import ExportTestCasesResponse
 from .types.test_case import GetTestCaseRequest
+from .types.test_case import GetTestCaseResultRequest
 from .types.test_case import ImportTestCasesMetadata
 from .types.test_case import ImportTestCasesRequest
 from .types.test_case import ImportTestCasesResponse
@@ -211,6 +212,7 @@ from .types.webhook import WebhookResponse
 __all__ = (
     "Agent",
     "AgentValidationResult",
+    "AgentsClient",
     "AudioEncoding",
     "AudioInput",
     "BatchDeleteTestCasesRequest",
@@ -250,7 +252,6 @@ __all__ = (
     "DetectIntentResponse",
     "DtmfInput",
     "EntityType",
-    "EntityTypesClient",
     "Environment",
     "EnvironmentsClient",
     "EventHandler",
@@ -281,6 +282,7 @@ __all__ = (
     "GetSecuritySettingsRequest",
     "GetSessionEntityTypeRequest",
     "GetTestCaseRequest",
+    "GetTestCaseResultRequest",
     "GetTransitionRouteGroupRequest",
     "GetVersionRequest",
     "GetWebhookRequest",
@@ -399,5 +401,5 @@ __all__ = (
     "WebhookRequest",
     "WebhookResponse",
     "WebhooksClient",
-    "AgentsClient",
+    "EntityTypesClient",
 )
