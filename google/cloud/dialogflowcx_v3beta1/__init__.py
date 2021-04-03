@@ -333,7 +333,6 @@ __all__ = (
     "OutputAudioEncoding",
     "Page",
     "PageInfo",
-    "PagesClient",
     "QueryInput",
     "QueryParameters",
     "QueryResult",
@@ -347,6 +346,7 @@ __all__ = (
     "SecuritySettingsServiceClient",
     "SentimentAnalysisResult",
     "SessionEntityType",
+    "SessionEntityTypesClient",
     "SessionInfo",
     "SessionsClient",
     "SpeechModelVariant",
@@ -399,5 +399,5 @@ __all__ = (
     "WebhookRequest",
     "WebhookResponse",
     "WebhooksClient",
-    "SessionEntityTypesClient",
+    "PagesClient",
 )
