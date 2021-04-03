@@ -211,7 +211,6 @@ from .types.webhook import WebhookResponse
 __all__ = (
     "Agent",
     "AgentValidationResult",
-    "AgentsClient",
     "AudioEncoding",
     "AudioInput",
     "BatchDeleteTestCasesRequest",
@@ -344,6 +343,7 @@ __all__ = (
     "RunTestCaseRequest",
     "RunTestCaseResponse",
     "SecuritySettings",
+    "SecuritySettingsServiceClient",
     "SentimentAnalysisResult",
     "SessionEntityType",
     "SessionEntityTypesClient",
@@ -399,5 +399,5 @@ __all__ = (
     "WebhookRequest",
     "WebhookResponse",
     "WebhooksClient",
-    "SecuritySettingsServiceClient",
+    "AgentsClient",
 )
