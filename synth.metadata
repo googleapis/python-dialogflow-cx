@@ -11,8 +11,8 @@
       "git": {
         "name": "googleapis",
         "remote": "https://github.com/googleapis/googleapis.git",
-        "sha": "d78dc2e0cb627d3e48e910abf4b991264affcb56",
-        "internalRef": "366838867"
+        "sha": "fa7915f8d43926de5effb815129a274579fa84df",
+        "internalRef": "366869955"
       }
     },
     {
@@ -107,6 +107,7 @@
     "CONTRIBUTING.rst",
     "LICENSE",
     "MANIFEST.in",
+    "dialogflow-cx-v3-py.tar.gz",
     "docs/_static/custom.css",
     "docs/_templates/layout.html",
     "docs/conf.py",
