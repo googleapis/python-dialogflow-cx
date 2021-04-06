@@ -257,6 +257,7 @@ __all__ = (
     "EventHandler",
     "EventInput",
     "Experiment",
+    "ExperimentsClient",
     "ExportAgentRequest",
     "ExportAgentResponse",
     "ExportTestCasesMetadata",
@@ -399,5 +400,4 @@ __all__ = (
     "WebhookRequest",
     "WebhookResponse",
     "WebhooksClient",
-    "ExperimentsClient",
 )
