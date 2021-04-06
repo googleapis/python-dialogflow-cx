@@ -251,6 +251,7 @@ __all__ = (
     "DetectIntentResponse",
     "DtmfInput",
     "EntityType",
+    "EntityTypesClient",
     "Environment",
     "EnvironmentsClient",
     "EventHandler",
@@ -373,7 +374,6 @@ __all__ = (
     "TransitionRoute",
     "TransitionRouteGroup",
     "TransitionRouteGroupCoverage",
-    "TransitionRouteGroupsClient",
     "UpdateAgentRequest",
     "UpdateEntityTypeRequest",
     "UpdateEnvironmentRequest",
@@ -399,5 +399,5 @@ __all__ = (
     "WebhookRequest",
     "WebhookResponse",
     "WebhooksClient",
-    "EntityTypesClient",
+    "TransitionRouteGroupsClient",
 )
