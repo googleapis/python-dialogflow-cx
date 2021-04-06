@@ -232,13 +232,33 @@ class DeleteWebhookRequest(proto.Message):
 
 
 class WebhookRequest(proto.Message):
-    r"""The request message for a webhook call.
+    r"""The request message for a webhook call. The request is sent
+    as a JSON object and the field names will be presented in camel
+    cases.
 
     Attributes:
         detect_intent_response_id (str):
             Always present. The unique identifier of the
             [DetectIntentResponse][google.cloud.dialogflow.cx.v3.DetectIntentResponse]
             that will be returned to the API caller.
+        text (str):
+            If [natural language
+            text][google.cloud.dialogflow.cx.v3.TextInput] was provided
+            as input, this field will contain a copy of the text.
+        trigger_intent (str):
+            If an [intent][google.cloud.dialogflow.cx.v3.IntentInput]
+            was provided as input, this field will contain a copy of the
+            intent identifier. Format:
+            ``projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>``.
+        transcript (str):
+            If [natural language speech
+            audio][google.cloud.dialogflow.cx.v3.AudioInput] was
+            provided as input, this field will contain the transcript
+            for the audio.
+        trigger_event (str):
+            If an [event][google.cloud.dialogflow.cx.v3.EventInput] was
+            provided as input, this field will contain the name of the
+            event.
         fulfillment_info (google.cloud.dialogflowcx_v3.types.WebhookRequest.FulfillmentInfo):
             Always present. Information about the
             fulfillment that triggered this webhook call.
@@ -345,6 +365,14 @@ class WebhookRequest(proto.Message):
         magnitude = proto.Field(proto.FLOAT, number=2)
 
     detect_intent_response_id = proto.Field(proto.STRING, number=1)
+
+    text = proto.Field(proto.STRING, number=10, oneof="query")
+
+    trigger_intent = proto.Field(proto.STRING, number=11, oneof="query")
+
+    transcript = proto.Field(proto.STRING, number=12, oneof="query")
+
+    trigger_event = proto.Field(proto.STRING, number=14, oneof="query")
 
     fulfillment_info = proto.Field(proto.MESSAGE, number=6, message=FulfillmentInfo,)
 
