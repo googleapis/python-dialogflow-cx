@@ -2829,6 +2829,243 @@ async def test_list_test_case_results_async_pages():
             assert page_.raw_page.next_page_token == token
 
 
+def test_get_test_case_result(
+    transport: str = "grpc", request_type=test_case.GetTestCaseResultRequest
+):
+    client = TestCasesClient(
+        credentials=credentials.AnonymousCredentials(), transport=transport,
+    )
+
+    # Everything is optional in proto3 as far as the runtime is concerned,
+    # and we are mocking out the actual API, so just send an empty request.
+    request = request_type()
+
+    # Mock the actual call within the gRPC stub, and fake the request.
+    with mock.patch.object(
+        type(client.transport.get_test_case_result), "__call__"
+    ) as call:
+        # Designate an appropriate return value for the call.
+        call.return_value = test_case.TestCaseResult(
+            name="name_value",
+            environment="environment_value",
+            test_result=test_case.TestResult.PASSED,
+        )
+
+        response = client.get_test_case_result(request)
+
+        # Establish that the underlying gRPC stub method was called.
+        assert len(call.mock_calls) == 1
+        _, args, _ = call.mock_calls[0]
+
+        assert args[0] == test_case.GetTestCaseResultRequest()
+
+    # Establish that the response is the type that we expect.
+
+    assert isinstance(response, test_case.TestCaseResult)
+
+    assert response.name == "name_value"
+
+    assert response.environment == "environment_value"
+
+    assert response.test_result == test_case.TestResult.PASSED
+
+
+def test_get_test_case_result_from_dict():
+    test_get_test_case_result(request_type=dict)
+
+
+def test_get_test_case_result_empty_call():
+    # This test is a coverage failsafe to make sure that totally empty calls,
+    # i.e. request == None and no flattened fields passed, work.
+    client = TestCasesClient(
+        credentials=credentials.AnonymousCredentials(), transport="grpc",
+    )
+
+    # Mock the actual call within the gRPC stub, and fake the request.
+    with mock.patch.object(
+        type(client.transport.get_test_case_result), "__call__"
+    ) as call:
+        client.get_test_case_result()
+        call.assert_called()
+        _, args, _ = call.mock_calls[0]
+
+        assert args[0] == test_case.GetTestCaseResultRequest()
+
+
+@pytest.mark.asyncio
+async def test_get_test_case_result_async(
+    transport: str = "grpc_asyncio", request_type=test_case.GetTestCaseResultRequest
+):
+    client = TestCasesAsyncClient(
+        credentials=credentials.AnonymousCredentials(), transport=transport,
+    )
+
+    # Everything is optional in proto3 as far as the runtime is concerned,
+    # and we are mocking out the actual API, so just send an empty request.
+    request = request_type()
+
+    # Mock the actual call within the gRPC stub, and fake the request.
+    with mock.patch.object(
+        type(client.transport.get_test_case_result), "__call__"
+    ) as call:
+        # Designate an appropriate return value for the call.
+        call.return_value = grpc_helpers_async.FakeUnaryUnaryCall(
+            test_case.TestCaseResult(
+                name="name_value",
+                environment="environment_value",
+                test_result=test_case.TestResult.PASSED,
+            )
+        )
+
+        response = await client.get_test_case_result(request)
+
+        # Establish that the underlying gRPC stub method was called.
+        assert len(call.mock_calls)
+        _, args, _ = call.mock_calls[0]
+
+        assert args[0] == test_case.GetTestCaseResultRequest()
+
+    # Establish that the response is the type that we expect.
+    assert isinstance(response, test_case.TestCaseResult)
+
+    assert response.name == "name_value"
+
+    assert response.environment == "environment_value"
+
+    assert response.test_result == test_case.TestResult.PASSED
+
+
+@pytest.mark.asyncio
+async def test_get_test_case_result_async_from_dict():
+    await test_get_test_case_result_async(request_type=dict)
+
+
+def test_get_test_case_result_field_headers():
+    client = TestCasesClient(credentials=credentials.AnonymousCredentials(),)
+
+    # Any value that is part of the HTTP/1.1 URI should be sent as
+    # a field header. Set these to a non-empty value.
+    request = test_case.GetTestCaseResultRequest()
+    request.name = "name/value"
+
+    # Mock the actual call within the gRPC stub, and fake the request.
+    with mock.patch.object(
+        type(client.transport.get_test_case_result), "__call__"
+    ) as call:
+        call.return_value = test_case.TestCaseResult()
+
+        client.get_test_case_result(request)
+
+        # Establish that the underlying gRPC stub method was called.
+        assert len(call.mock_calls) == 1
+        _, args, _ = call.mock_calls[0]
+        assert args[0] == request
+
+    # Establish that the field header was sent.
+    _, _, kw = call.mock_calls[0]
+    assert ("x-goog-request-params", "name=name/value",) in kw["metadata"]
+
+
+@pytest.mark.asyncio
+async def test_get_test_case_result_field_headers_async():
+    client = TestCasesAsyncClient(credentials=credentials.AnonymousCredentials(),)
+
+    # Any value that is part of the HTTP/1.1 URI should be sent as
+    # a field header. Set these to a non-empty value.
+    request = test_case.GetTestCaseResultRequest()
+    request.name = "name/value"
+
+    # Mock the actual call within the gRPC stub, and fake the request.
+    with mock.patch.object(
+        type(client.transport.get_test_case_result), "__call__"
+    ) as call:
+        call.return_value = grpc_helpers_async.FakeUnaryUnaryCall(
+            test_case.TestCaseResult()
+        )
+
+        await client.get_test_case_result(request)
+
+        # Establish that the underlying gRPC stub method was called.
+        assert len(call.mock_calls)
+        _, args, _ = call.mock_calls[0]
+        assert args[0] == request
+
+    # Establish that the field header was sent.
+    _, _, kw = call.mock_calls[0]
+    assert ("x-goog-request-params", "name=name/value",) in kw["metadata"]
+
+
+def test_get_test_case_result_flattened():
+    client = TestCasesClient(credentials=credentials.AnonymousCredentials(),)
+
+    # Mock the actual call within the gRPC stub, and fake the request.
+    with mock.patch.object(
+        type(client.transport.get_test_case_result), "__call__"
+    ) as call:
+        # Designate an appropriate return value for the call.
+        call.return_value = test_case.TestCaseResult()
+
+        # Call the method with a truthy value for each flattened field,
+        # using the keyword arguments to the method.
+        client.get_test_case_result(name="name_value",)
+
+        # Establish that the underlying call was made with the expected
+        # request object values.
+        assert len(call.mock_calls) == 1
+        _, args, _ = call.mock_calls[0]
+
+        assert args[0].name == "name_value"
+
+
+def test_get_test_case_result_flattened_error():
+    client = TestCasesClient(credentials=credentials.AnonymousCredentials(),)
+
+    # Attempting to call a method with both a request object and flattened
+    # fields is an error.
+    with pytest.raises(ValueError):
+        client.get_test_case_result(
+            test_case.GetTestCaseResultRequest(), name="name_value",
+        )
+
+
+@pytest.mark.asyncio
+async def test_get_test_case_result_flattened_async():
+    client = TestCasesAsyncClient(credentials=credentials.AnonymousCredentials(),)
+
+    # Mock the actual call within the gRPC stub, and fake the request.
+    with mock.patch.object(
+        type(client.transport.get_test_case_result), "__call__"
+    ) as call:
+        # Designate an appropriate return value for the call.
+        call.return_value = test_case.TestCaseResult()
+
+        call.return_value = grpc_helpers_async.FakeUnaryUnaryCall(
+            test_case.TestCaseResult()
+        )
+        # Call the method with a truthy value for each flattened field,
+        # using the keyword arguments to the method.
+        response = await client.get_test_case_result(name="name_value",)
+
+        # Establish that the underlying call was made with the expected
+        # request object values.
+        assert len(call.mock_calls)
+        _, args, _ = call.mock_calls[0]
+
+        assert args[0].name == "name_value"
+
+
+@pytest.mark.asyncio
+async def test_get_test_case_result_flattened_error_async():
+    client = TestCasesAsyncClient(credentials=credentials.AnonymousCredentials(),)
+
+    # Attempting to call a method with both a request object and flattened
+    # fields is an error.
+    with pytest.raises(ValueError):
+        await client.get_test_case_result(
+            test_case.GetTestCaseResultRequest(), name="name_value",
+        )
+
+
 def test_credentials_transport_error():
     # It is an error to provide credentials and a transport instance.
     transport = transports.TestCasesGrpcTransport(
@@ -2934,6 +3171,7 @@ def test_test_cases_base_transport():
         "import_test_cases",
         "export_test_cases",
         "list_test_case_results",
+        "get_test_case_result",
     )
     for method in methods:
         with pytest.raises(NotImplementedError):

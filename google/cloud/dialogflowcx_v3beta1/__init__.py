@@ -156,6 +156,7 @@ from .types.test_case import ExportTestCasesMetadata
 from .types.test_case import ExportTestCasesRequest
 from .types.test_case import ExportTestCasesResponse
 from .types.test_case import GetTestCaseRequest
+from .types.test_case import GetTestCaseResultRequest
 from .types.test_case import ImportTestCasesMetadata
 from .types.test_case import ImportTestCasesRequest
 from .types.test_case import ImportTestCasesResponse
@@ -253,7 +254,6 @@ __all__ = (
     "EntityType",
     "EntityTypesClient",
     "Environment",
-    "EnvironmentsClient",
     "EventHandler",
     "EventInput",
     "Experiment",
@@ -265,6 +265,7 @@ __all__ = (
     "ExportTestCasesResponse",
     "Flow",
     "FlowValidationResult",
+    "FlowsClient",
     "Form",
     "FulfillIntentRequest",
     "FulfillIntentResponse",
@@ -281,6 +282,7 @@ __all__ = (
     "GetSecuritySettingsRequest",
     "GetSessionEntityTypeRequest",
     "GetTestCaseRequest",
+    "GetTestCaseResultRequest",
     "GetTransitionRouteGroupRequest",
     "GetVersionRequest",
     "GetWebhookRequest",
@@ -399,5 +401,5 @@ __all__ = (
     "WebhookRequest",
     "WebhookResponse",
     "WebhooksClient",
-    "FlowsClient",
+    "EnvironmentsClient",
 )

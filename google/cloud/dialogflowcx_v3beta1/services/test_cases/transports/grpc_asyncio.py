@@ -553,5 +553,33 @@ class TestCasesGrpcAsyncIOTransport(TestCasesTransport):
             )
         return self._stubs["list_test_case_results"]
 
+    @property
+    def get_test_case_result(
+        self,
+    ) -> Callable[
+        [test_case.GetTestCaseResultRequest], Awaitable[test_case.TestCaseResult]
+    ]:
+        r"""Return a callable for the get test case result method over gRPC.
+
+        Gets a test case result.
+
+        Returns:
+            Callable[[~.GetTestCaseResultRequest],
+                    Awaitable[~.TestCaseResult]]:
+                A function that, when called, will call the underlying RPC
+                on the server.
+        """
+        # Generate a "stub function" on-the-fly which will actually make
+        # the request.
+        # gRPC handles serialization and deserialization, so we just need
+        # to pass in the functions for each.
+        if "get_test_case_result" not in self._stubs:
+            self._stubs["get_test_case_result"] = self.grpc_channel.unary_unary(
+                "/google.cloud.dialogflow.cx.v3beta1.TestCases/GetTestCaseResult",
+                request_serializer=test_case.GetTestCaseResultRequest.serialize,
+                response_deserializer=test_case.TestCaseResult.deserialize,
+            )
+        return self._stubs["get_test_case_result"]
+
 
 __all__ = ("TestCasesGrpcAsyncIOTransport",)
