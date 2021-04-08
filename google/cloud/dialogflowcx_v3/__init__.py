@@ -211,6 +211,7 @@ from .types.webhook import WebhookResponse
 __all__ = (
     "Agent",
     "AgentValidationResult",
+    "AgentsClient",
     "AudioEncoding",
     "AudioInput",
     "BatchDeleteTestCasesRequest",
@@ -332,7 +333,6 @@ __all__ = (
     "OutputAudioEncoding",
     "Page",
     "PageInfo",
-    "PagesClient",
     "QueryInput",
     "QueryParameters",
     "QueryResult",
@@ -399,5 +399,5 @@ __all__ = (
     "WebhookRequest",
     "WebhookResponse",
     "WebhooksClient",
-    "AgentsClient",
+    "PagesClient",
 )
