@@ -4,7 +4,7 @@
       "git": {
         "name": ".",
         "remote": "https://github.com/googleapis/python-dialogflow-cx.git",
-        "sha": "2220c5dbc814ed66d80ff211e86035eca223f8bc"
+        "sha": "34f84ddecf3e32ea5b9d6fc161a0c9beb31d7be2"
       }
     },
     {
@@ -107,6 +107,7 @@
     "CONTRIBUTING.rst",
     "LICENSE",
     "MANIFEST.in",
+    "dialogflow-cx-v3-py.tar.gz",
     "dialogflow-cx-v3beta1-py.tar.gz",
     "docs/_static/custom.css",
     "docs/_templates/layout.html",

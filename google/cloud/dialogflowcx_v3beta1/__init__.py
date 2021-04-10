@@ -344,6 +344,7 @@ __all__ = (
     "RunTestCaseRequest",
     "RunTestCaseResponse",
     "SecuritySettings",
+    "SecuritySettingsServiceClient",
     "SentimentAnalysisResult",
     "SessionEntityType",
     "SessionEntityTypesClient",
@@ -362,7 +363,6 @@ __all__ = (
     "TestCase",
     "TestCaseError",
     "TestCaseResult",
-    "TestCasesClient",
     "TestConfig",
     "TestError",
     "TestResult",
@@ -399,5 +399,5 @@ __all__ = (
     "WebhookRequest",
     "WebhookResponse",
     "WebhooksClient",
-    "SecuritySettingsServiceClient",
+    "TestCasesClient",
 )
