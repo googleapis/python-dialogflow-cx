@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 # Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
 from collections import OrderedDict
 import functools
 import re
@@ -22,10 +20,10 @@ from typing import Dict, Sequence, Tuple, Type, Union
 import pkg_resources
 
 import google.api_core.client_options as ClientOptions  # type: ignore
-from google.api_core import exceptions  # type: ignore
+from google.api_core import exceptions as core_exceptions  # type: ignore
 from google.api_core import gapic_v1  # type: ignore
 from google.api_core import retry as retries  # type: ignore
-from google.auth import credentials  # type: ignore
+from google.auth import credentials as ga_credentials  # type: ignore
 from google.oauth2 import service_account  # type: ignore
 
 from google.api_core import operation  # type: ignore
@@ -34,10 +32,9 @@ from google.cloud.dialogflowcx_v3beta1.services.agents import pagers
 from google.cloud.dialogflowcx_v3beta1.types import agent
 from google.cloud.dialogflowcx_v3beta1.types import agent as gcdc_agent
 from google.cloud.dialogflowcx_v3beta1.types import flow
-from google.protobuf import empty_pb2 as empty  # type: ignore
-from google.protobuf import field_mask_pb2 as field_mask  # type: ignore
-from google.protobuf import struct_pb2 as struct  # type: ignore
-
+from google.protobuf import empty_pb2  # type: ignore
+from google.protobuf import field_mask_pb2  # type: ignore
+from google.protobuf import struct_pb2  # type: ignore
 from .transports.base import AgentsTransport, DEFAULT_CLIENT_INFO
 from .transports.grpc_asyncio import AgentsGrpcAsyncIOTransport
 from .client import AgentsClient
@@ -61,6 +58,8 @@ class AgentsAsyncClient:
     parse_agent_validation_result_path = staticmethod(
         AgentsClient.parse_agent_validation_result_path
     )
+    environment_path = staticmethod(AgentsClient.environment_path)
+    parse_environment_path = staticmethod(AgentsClient.parse_environment_path)
     flow_path = staticmethod(AgentsClient.flow_path)
     parse_flow_path = staticmethod(AgentsClient.parse_flow_path)
     flow_validation_result_path = staticmethod(AgentsClient.flow_validation_result_path)
@@ -71,23 +70,18 @@ class AgentsAsyncClient:
     parse_security_settings_path = staticmethod(
         AgentsClient.parse_security_settings_path
     )
-
     common_billing_account_path = staticmethod(AgentsClient.common_billing_account_path)
     parse_common_billing_account_path = staticmethod(
         AgentsClient.parse_common_billing_account_path
     )
-
     common_folder_path = staticmethod(AgentsClient.common_folder_path)
     parse_common_folder_path = staticmethod(AgentsClient.parse_common_folder_path)
-
     common_organization_path = staticmethod(AgentsClient.common_organization_path)
     parse_common_organization_path = staticmethod(
         AgentsClient.parse_common_organization_path
     )
-
     common_project_path = staticmethod(AgentsClient.common_project_path)
     parse_common_project_path = staticmethod(AgentsClient.parse_common_project_path)
-
     common_location_path = staticmethod(AgentsClient.common_location_path)
     parse_common_location_path = staticmethod(AgentsClient.parse_common_location_path)
 
@@ -139,7 +133,7 @@ class AgentsAsyncClient:
     def __init__(
         self,
         *,
-        credentials: credentials.Credentials = None,
+        credentials: ga_credentials.Credentials = None,
         transport: Union[str, AgentsTransport] = "grpc_asyncio",
         client_options: ClientOptions = None,
         client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
@@ -176,7 +170,6 @@ class AgentsAsyncClient:
             google.auth.exceptions.MutualTlsChannelError: If mutual TLS transport
                 creation failed for any reason.
         """
-
         self._client = AgentsClient(
             credentials=credentials,
             transport=transport,
@@ -207,7 +200,6 @@ class AgentsAsyncClient:
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -237,7 +229,6 @@ class AgentsAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
-
         if parent is not None:
             request.parent = parent
 
@@ -289,7 +280,6 @@ class AgentsAsyncClient:
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -328,7 +318,6 @@ class AgentsAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
-
         if name is not None:
             request.name = name
 
@@ -380,7 +369,6 @@ class AgentsAsyncClient:
                 This corresponds to the ``agent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -419,7 +407,6 @@ class AgentsAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
-
         if parent is not None:
             request.parent = parent
         if agent is not None:
@@ -450,7 +437,7 @@ class AgentsAsyncClient:
         request: gcdc_agent.UpdateAgentRequest = None,
         *,
         agent: gcdc_agent.Agent = None,
-        update_mask: field_mask.FieldMask = None,
+        update_mask: field_mask_pb2.FieldMask = None,
         retry: retries.Retry = gapic_v1.method.DEFAULT,
         timeout: float = None,
         metadata: Sequence[Tuple[str, str]] = (),
@@ -474,7 +461,6 @@ class AgentsAsyncClient:
                 This corresponds to the ``update_mask`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -513,7 +499,6 @@ class AgentsAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
-
         if agent is not None:
             request.agent = agent
         if update_mask is not None:
@@ -563,7 +548,6 @@ class AgentsAsyncClient:
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -584,7 +568,6 @@ class AgentsAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
-
         if name is not None:
             request.name = name
 
@@ -621,7 +604,6 @@ class AgentsAsyncClient:
             request (:class:`google.cloud.dialogflowcx_v3beta1.types.ExportAgentRequest`):
                 The request object. The request message for
                 [Agents.ExportAgent][google.cloud.dialogflow.cx.v3beta1.Agents.ExportAgent].
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -639,7 +621,6 @@ class AgentsAsyncClient:
 
         """
         # Create or coerce a protobuf request object.
-
         request = agent.ExportAgentRequest(request)
 
         # Wrap the RPC method; this adds retry and timeout information,
@@ -664,7 +645,7 @@ class AgentsAsyncClient:
             response,
             self._client._transport.operations_client,
             agent.ExportAgentResponse,
-            metadata_type=struct.Struct,
+            metadata_type=struct_pb2.Struct,
         )
 
         # Done; return the response.
@@ -687,7 +668,6 @@ class AgentsAsyncClient:
             request (:class:`google.cloud.dialogflowcx_v3beta1.types.RestoreAgentRequest`):
                 The request object. The request message for
                 [Agents.RestoreAgent][google.cloud.dialogflow.cx.v3beta1.Agents.RestoreAgent].
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -714,7 +694,6 @@ class AgentsAsyncClient:
 
         """
         # Create or coerce a protobuf request object.
-
         request = agent.RestoreAgentRequest(request)
 
         # Wrap the RPC method; this adds retry and timeout information,
@@ -738,8 +717,8 @@ class AgentsAsyncClient:
         response = operation_async.from_gapic(
             response,
             self._client._transport.operations_client,
-            empty.Empty,
-            metadata_type=struct.Struct,
+            empty_pb2.Empty,
+            metadata_type=struct_pb2.Struct,
         )
 
         # Done; return the response.
@@ -762,7 +741,6 @@ class AgentsAsyncClient:
             request (:class:`google.cloud.dialogflowcx_v3beta1.types.ValidateAgentRequest`):
                 The request object. The request message for
                 [Agents.ValidateAgent][google.cloud.dialogflow.cx.v3beta1.Agents.ValidateAgent].
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -776,7 +754,6 @@ class AgentsAsyncClient:
 
         """
         # Create or coerce a protobuf request object.
-
         request = agent.ValidateAgentRequest(request)
 
         # Wrap the RPC method; this adds retry and timeout information,
@@ -822,7 +799,6 @@ class AgentsAsyncClient:
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -849,7 +825,6 @@ class AgentsAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
-
         if name is not None:
             request.name = name
 

@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 # Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
 from collections import OrderedDict
 from distutils import util
 import os
@@ -23,10 +21,10 @@ from typing import Callable, Dict, Optional, Sequence, Tuple, Type, Union
 import pkg_resources
 
 from google.api_core import client_options as client_options_lib  # type: ignore
-from google.api_core import exceptions  # type: ignore
+from google.api_core import exceptions as core_exceptions  # type: ignore
 from google.api_core import gapic_v1  # type: ignore
 from google.api_core import retry as retries  # type: ignore
-from google.auth import credentials  # type: ignore
+from google.auth import credentials as ga_credentials  # type: ignore
 from google.auth.transport import mtls  # type: ignore
 from google.auth.transport.grpc import SslCredentials  # type: ignore
 from google.auth.exceptions import MutualTLSChannelError  # type: ignore
@@ -35,8 +33,7 @@ from google.oauth2 import service_account  # type: ignore
 from google.cloud.dialogflowcx_v3beta1.services.entity_types import pagers
 from google.cloud.dialogflowcx_v3beta1.types import entity_type
 from google.cloud.dialogflowcx_v3beta1.types import entity_type as gcdc_entity_type
-from google.protobuf import field_mask_pb2 as field_mask  # type: ignore
-
+from google.protobuf import field_mask_pb2  # type: ignore
 from .transports.base import EntityTypesTransport, DEFAULT_CLIENT_INFO
 from .transports.grpc import EntityTypesGrpcTransport
 from .transports.grpc_asyncio import EntityTypesGrpcAsyncIOTransport
@@ -237,7 +234,7 @@ class EntityTypesClient(metaclass=EntityTypesClientMeta):
     def __init__(
         self,
         *,
-        credentials: Optional[credentials.Credentials] = None,
+        credentials: Optional[ga_credentials.Credentials] = None,
         transport: Union[str, EntityTypesTransport, None] = None,
         client_options: Optional[client_options_lib.ClientOptions] = None,
         client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
@@ -371,7 +368,6 @@ class EntityTypesClient(metaclass=EntityTypesClientMeta):
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -403,10 +399,8 @@ class EntityTypesClient(metaclass=EntityTypesClientMeta):
         # there are no flattened fields.
         if not isinstance(request, entity_type.ListEntityTypesRequest):
             request = entity_type.ListEntityTypesRequest(request)
-
             # If we have keyword arguments corresponding to fields on the
             # request, apply these.
-
             if parent is not None:
                 request.parent = parent
 
@@ -454,7 +448,6 @@ class EntityTypesClient(metaclass=EntityTypesClientMeta):
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -515,10 +508,8 @@ class EntityTypesClient(metaclass=EntityTypesClientMeta):
         # there are no flattened fields.
         if not isinstance(request, entity_type.GetEntityTypeRequest):
             request = entity_type.GetEntityTypeRequest(request)
-
             # If we have keyword arguments corresponding to fields on the
             # request, apply these.
-
             if name is not None:
                 request.name = name
 
@@ -566,7 +557,6 @@ class EntityTypesClient(metaclass=EntityTypesClientMeta):
                 This corresponds to the ``entity_type`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -627,10 +617,8 @@ class EntityTypesClient(metaclass=EntityTypesClientMeta):
         # there are no flattened fields.
         if not isinstance(request, gcdc_entity_type.CreateEntityTypeRequest):
             request = gcdc_entity_type.CreateEntityTypeRequest(request)
-
             # If we have keyword arguments corresponding to fields on the
             # request, apply these.
-
             if parent is not None:
                 request.parent = parent
             if entity_type is not None:
@@ -657,7 +645,7 @@ class EntityTypesClient(metaclass=EntityTypesClientMeta):
         request: gcdc_entity_type.UpdateEntityTypeRequest = None,
         *,
         entity_type: gcdc_entity_type.EntityType = None,
-        update_mask: field_mask.FieldMask = None,
+        update_mask: field_mask_pb2.FieldMask = None,
         retry: retries.Retry = gapic_v1.method.DEFAULT,
         timeout: float = None,
         metadata: Sequence[Tuple[str, str]] = (),
@@ -680,7 +668,6 @@ class EntityTypesClient(metaclass=EntityTypesClientMeta):
                 This corresponds to the ``update_mask`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -741,10 +728,8 @@ class EntityTypesClient(metaclass=EntityTypesClientMeta):
         # there are no flattened fields.
         if not isinstance(request, gcdc_entity_type.UpdateEntityTypeRequest):
             request = gcdc_entity_type.UpdateEntityTypeRequest(request)
-
             # If we have keyword arguments corresponding to fields on the
             # request, apply these.
-
             if entity_type is not None:
                 request.entity_type = entity_type
             if update_mask is not None:
@@ -790,7 +775,6 @@ class EntityTypesClient(metaclass=EntityTypesClientMeta):
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -813,10 +797,8 @@ class EntityTypesClient(metaclass=EntityTypesClientMeta):
         # there are no flattened fields.
         if not isinstance(request, entity_type.DeleteEntityTypeRequest):
             request = entity_type.DeleteEntityTypeRequest(request)
-
             # If we have keyword arguments corresponding to fields on the
             # request, apply these.
-
             if name is not None:
                 request.name = name
 

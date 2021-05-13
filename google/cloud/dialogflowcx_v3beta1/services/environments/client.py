@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 # Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
 from collections import OrderedDict
 from distutils import util
 import os
@@ -23,10 +21,10 @@ from typing import Callable, Dict, Optional, Sequence, Tuple, Type, Union
 import pkg_resources
 
 from google.api_core import client_options as client_options_lib  # type: ignore
-from google.api_core import exceptions  # type: ignore
+from google.api_core import exceptions as core_exceptions  # type: ignore
 from google.api_core import gapic_v1  # type: ignore
 from google.api_core import retry as retries  # type: ignore
-from google.auth import credentials  # type: ignore
+from google.auth import credentials as ga_credentials  # type: ignore
 from google.auth.transport import mtls  # type: ignore
 from google.auth.transport.grpc import SslCredentials  # type: ignore
 from google.auth.exceptions import MutualTLSChannelError  # type: ignore
@@ -37,10 +35,9 @@ from google.api_core import operation_async  # type: ignore
 from google.cloud.dialogflowcx_v3beta1.services.environments import pagers
 from google.cloud.dialogflowcx_v3beta1.types import environment
 from google.cloud.dialogflowcx_v3beta1.types import environment as gcdc_environment
-from google.protobuf import field_mask_pb2 as field_mask  # type: ignore
-from google.protobuf import struct_pb2 as struct  # type: ignore
-from google.protobuf import timestamp_pb2 as timestamp  # type: ignore
-
+from google.protobuf import field_mask_pb2  # type: ignore
+from google.protobuf import struct_pb2  # type: ignore
+from google.protobuf import timestamp_pb2  # type: ignore
 from .transports.base import EnvironmentsTransport, DEFAULT_CLIENT_INFO
 from .transports.grpc import EnvironmentsGrpcTransport
 from .transports.grpc_asyncio import EnvironmentsGrpcAsyncIOTransport
@@ -259,7 +256,7 @@ class EnvironmentsClient(metaclass=EnvironmentsClientMeta):
     def __init__(
         self,
         *,
-        credentials: Optional[credentials.Credentials] = None,
+        credentials: Optional[ga_credentials.Credentials] = None,
         transport: Union[str, EnvironmentsTransport, None] = None,
         client_options: Optional[client_options_lib.ClientOptions] = None,
         client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
@@ -394,7 +391,6 @@ class EnvironmentsClient(metaclass=EnvironmentsClientMeta):
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -426,10 +422,8 @@ class EnvironmentsClient(metaclass=EnvironmentsClientMeta):
         # there are no flattened fields.
         if not isinstance(request, environment.ListEnvironmentsRequest):
             request = environment.ListEnvironmentsRequest(request)
-
             # If we have keyword arguments corresponding to fields on the
             # request, apply these.
-
             if parent is not None:
                 request.parent = parent
 
@@ -480,7 +474,6 @@ class EnvironmentsClient(metaclass=EnvironmentsClientMeta):
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -522,10 +515,8 @@ class EnvironmentsClient(metaclass=EnvironmentsClientMeta):
         # there are no flattened fields.
         if not isinstance(request, environment.GetEnvironmentRequest):
             request = environment.GetEnvironmentRequest(request)
-
             # If we have keyword arguments corresponding to fields on the
             # request, apply these.
-
             if name is not None:
                 request.name = name
 
@@ -579,7 +570,6 @@ class EnvironmentsClient(metaclass=EnvironmentsClientMeta):
                 This corresponds to the ``environment`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -619,10 +609,8 @@ class EnvironmentsClient(metaclass=EnvironmentsClientMeta):
         # there are no flattened fields.
         if not isinstance(request, gcdc_environment.CreateEnvironmentRequest):
             request = gcdc_environment.CreateEnvironmentRequest(request)
-
             # If we have keyword arguments corresponding to fields on the
             # request, apply these.
-
             if parent is not None:
                 request.parent = parent
             if environment is not None:
@@ -646,7 +634,7 @@ class EnvironmentsClient(metaclass=EnvironmentsClientMeta):
             response,
             self._transport.operations_client,
             gcdc_environment.Environment,
-            metadata_type=struct.Struct,
+            metadata_type=struct_pb2.Struct,
         )
 
         # Done; return the response.
@@ -657,7 +645,7 @@ class EnvironmentsClient(metaclass=EnvironmentsClientMeta):
         request: gcdc_environment.UpdateEnvironmentRequest = None,
         *,
         environment: gcdc_environment.Environment = None,
-        update_mask: field_mask.FieldMask = None,
+        update_mask: field_mask_pb2.FieldMask = None,
         retry: retries.Retry = gapic_v1.method.DEFAULT,
         timeout: float = None,
         metadata: Sequence[Tuple[str, str]] = (),
@@ -681,7 +669,6 @@ class EnvironmentsClient(metaclass=EnvironmentsClientMeta):
                 This corresponds to the ``update_mask`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -721,10 +708,8 @@ class EnvironmentsClient(metaclass=EnvironmentsClientMeta):
         # there are no flattened fields.
         if not isinstance(request, gcdc_environment.UpdateEnvironmentRequest):
             request = gcdc_environment.UpdateEnvironmentRequest(request)
-
             # If we have keyword arguments corresponding to fields on the
             # request, apply these.
-
             if environment is not None:
                 request.environment = environment
             if update_mask is not None:
@@ -750,7 +735,7 @@ class EnvironmentsClient(metaclass=EnvironmentsClientMeta):
             response,
             self._transport.operations_client,
             gcdc_environment.Environment,
-            metadata_type=struct.Struct,
+            metadata_type=struct_pb2.Struct,
         )
 
         # Done; return the response.
@@ -781,7 +766,6 @@ class EnvironmentsClient(metaclass=EnvironmentsClientMeta):
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -804,10 +788,8 @@ class EnvironmentsClient(metaclass=EnvironmentsClientMeta):
         # there are no flattened fields.
         if not isinstance(request, environment.DeleteEnvironmentRequest):
             request = environment.DeleteEnvironmentRequest(request)
-
             # If we have keyword arguments corresponding to fields on the
             # request, apply these.
-
             if name is not None:
                 request.name = name
 
@@ -850,7 +832,6 @@ class EnvironmentsClient(metaclass=EnvironmentsClientMeta):
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -882,10 +863,8 @@ class EnvironmentsClient(metaclass=EnvironmentsClientMeta):
         # there are no flattened fields.
         if not isinstance(request, environment.LookupEnvironmentHistoryRequest):
             request = environment.LookupEnvironmentHistoryRequest(request)
-
             # If we have keyword arguments corresponding to fields on the
             # request, apply these.
-
             if name is not None:
                 request.name = name
 

@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 # Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
 from collections import OrderedDict
 import functools
 import re
@@ -31,16 +29,15 @@ from typing import (
 import pkg_resources
 
 import google.api_core.client_options as ClientOptions  # type: ignore
-from google.api_core import exceptions  # type: ignore
+from google.api_core import exceptions as core_exceptions  # type: ignore
 from google.api_core import gapic_v1  # type: ignore
 from google.api_core import retry as retries  # type: ignore
-from google.auth import credentials  # type: ignore
+from google.auth import credentials as ga_credentials  # type: ignore
 from google.oauth2 import service_account  # type: ignore
 
 from google.cloud.dialogflowcx_v3beta1.types import audio_config
 from google.cloud.dialogflowcx_v3beta1.types import page
 from google.cloud.dialogflowcx_v3beta1.types import session
-
 from .transports.base import SessionsTransport, DEFAULT_CLIENT_INFO
 from .transports.grpc_asyncio import SessionsGrpcAsyncIOTransport
 from .client import SessionsClient
@@ -80,25 +77,20 @@ class SessionsAsyncClient:
     )
     webhook_path = staticmethod(SessionsClient.webhook_path)
     parse_webhook_path = staticmethod(SessionsClient.parse_webhook_path)
-
     common_billing_account_path = staticmethod(
         SessionsClient.common_billing_account_path
     )
     parse_common_billing_account_path = staticmethod(
         SessionsClient.parse_common_billing_account_path
     )
-
     common_folder_path = staticmethod(SessionsClient.common_folder_path)
     parse_common_folder_path = staticmethod(SessionsClient.parse_common_folder_path)
-
     common_organization_path = staticmethod(SessionsClient.common_organization_path)
     parse_common_organization_path = staticmethod(
         SessionsClient.parse_common_organization_path
     )
-
     common_project_path = staticmethod(SessionsClient.common_project_path)
     parse_common_project_path = staticmethod(SessionsClient.parse_common_project_path)
-
     common_location_path = staticmethod(SessionsClient.common_location_path)
     parse_common_location_path = staticmethod(SessionsClient.parse_common_location_path)
 
@@ -150,7 +142,7 @@ class SessionsAsyncClient:
     def __init__(
         self,
         *,
-        credentials: credentials.Credentials = None,
+        credentials: ga_credentials.Credentials = None,
         transport: Union[str, SessionsTransport] = "grpc_asyncio",
         client_options: ClientOptions = None,
         client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
@@ -187,7 +179,6 @@ class SessionsAsyncClient:
             google.auth.exceptions.MutualTlsChannelError: If mutual TLS transport
                 creation failed for any reason.
         """
-
         self._client = SessionsClient(
             credentials=credentials,
             transport=transport,
@@ -215,7 +206,6 @@ class SessionsAsyncClient:
         Args:
             request (:class:`google.cloud.dialogflowcx_v3beta1.types.DetectIntentRequest`):
                 The request object. The request to detect user's intent.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -229,7 +219,6 @@ class SessionsAsyncClient:
 
         """
         # Create or coerce a protobuf request object.
-
         request = session.DetectIntentRequest(request)
 
         # Wrap the RPC method; this adds retry and timeout information,
@@ -241,6 +230,7 @@ class SessionsAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(exceptions.ServiceUnavailable,),
+                deadline=220.0,
             ),
             default_timeout=220.0,
             client_info=DEFAULT_CLIENT_INFO,
@@ -329,7 +319,14 @@ class SessionsAsyncClient:
                       Each recognition_result represents a more complete
                       transcript of what the user said. The last
                       recognition_result has is_final set to true.
-                   2. The last message contains detect_intent_response.
+                   2. If enable_partial_response is true, the following
+                      N messages (currently 1 <= N <= 4) contain
+                      detect_intent_response. The first (N-1)
+                      detect_intent_responses will have response_type
+                      set to PARTIAL. The last detect_intent_response
+                      has response_type set to FINAL. If response_type
+                      is false, response stream only contains the final
+                      detect_intent_response.
 
         """
 
@@ -361,7 +358,6 @@ class SessionsAsyncClient:
         Args:
             request (:class:`google.cloud.dialogflowcx_v3beta1.types.MatchIntentRequest`):
                 The request object. Request of [MatchIntent][].
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -373,7 +369,6 @@ class SessionsAsyncClient:
                 Response of [MatchIntent][].
         """
         # Create or coerce a protobuf request object.
-
         request = session.MatchIntentRequest(request)
 
         # Wrap the RPC method; this adds retry and timeout information,
@@ -415,7 +410,6 @@ class SessionsAsyncClient:
         Args:
             request (:class:`google.cloud.dialogflowcx_v3beta1.types.FulfillIntentRequest`):
                 The request object. Request of [FulfillIntent][]
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -427,7 +421,6 @@ class SessionsAsyncClient:
                 Response of [FulfillIntent][]
         """
         # Create or coerce a protobuf request object.
-
         request = session.FulfillIntentRequest(request)
 
         # Wrap the RPC method; this adds retry and timeout information,
