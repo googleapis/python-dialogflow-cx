@@ -1,5 +1,13 @@
 # Changelog
 
+### [0.4.2](https://www.github.com/googleapis/python-dialogflow-cx/compare/v0.4.1...v0.4.2) (2021-05-13)
+
+
+### Bug Fixes
+
+* require google-api-core>=1.22.2 ([3440f18](https://www.github.com/googleapis/python-dialogflow-cx/commit/3440f186cd879fd4ddc9b3442bf857a4f286698e))
+* **v3:** BREAKING rename `UserInput.input_` to `UserInput.input` ([#58](https://www.github.com/googleapis/python-dialogflow-cx/issues/58)) ([3440f18](https://www.github.com/googleapis/python-dialogflow-cx/commit/3440f186cd879fd4ddc9b3442bf857a4f286698e))
+
 ### [0.4.1](https://www.github.com/googleapis/python-dialogflow-cx/compare/v0.4.0...v0.4.1) (2021-03-07)
 
 
