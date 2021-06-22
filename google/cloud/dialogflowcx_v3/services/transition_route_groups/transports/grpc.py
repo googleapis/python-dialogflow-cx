@@ -154,6 +154,7 @@ class TransitionRouteGroupsGrpcTransport(TransitionRouteGroupsTransport):
             scopes=scopes,
             quota_project_id=quota_project_id,
             client_info=client_info,
+            always_use_jwt_access=True,
         )
 
         if not self._grpc_channel:
@@ -209,14 +210,14 @@ class TransitionRouteGroupsGrpcTransport(TransitionRouteGroupsTransport):
               and ``credentials_file`` are passed.
         """
 
-        self_signed_jwt_kwargs = cls._get_self_signed_jwt_kwargs(host, scopes)
-
         return grpc_helpers.create_channel(
             host,
             credentials=credentials,
             credentials_file=credentials_file,
             quota_project_id=quota_project_id,
-            **self_signed_jwt_kwargs,
+            default_scopes=cls.AUTH_SCOPES,
+            scopes=scopes,
+            default_host=cls.DEFAULT_HOST,
             **kwargs,
         )
 
@@ -299,6 +300,10 @@ class TransitionRouteGroupsGrpcTransport(TransitionRouteGroupsTransport):
         [TransitionRouteGroup][google.cloud.dialogflow.cx.v3.TransitionRouteGroup]
         in the specified flow.
 
+        Note: You should always train a flow prior to sending it
+        queries. See the `training
+        documentation <https://cloud.google.com/dialogflow/cx/docs/concept/training>`__.
+
         Returns:
             Callable[[~.CreateTransitionRouteGroupRequest],
                     ~.TransitionRouteGroup]:
@@ -331,6 +336,10 @@ class TransitionRouteGroupsGrpcTransport(TransitionRouteGroupsTransport):
         Updates the specified
         [TransitionRouteGroup][google.cloud.dialogflow.cx.v3.TransitionRouteGroup].
 
+        Note: You should always train a flow prior to sending it
+        queries. See the `training
+        documentation <https://cloud.google.com/dialogflow/cx/docs/concept/training>`__.
+
         Returns:
             Callable[[~.UpdateTransitionRouteGroupRequest],
                     ~.TransitionRouteGroup]:
@@ -361,6 +370,10 @@ class TransitionRouteGroupsGrpcTransport(TransitionRouteGroupsTransport):
 
         Deletes the specified
         [TransitionRouteGroup][google.cloud.dialogflow.cx.v3.TransitionRouteGroup].
+
+        Note: You should always train a flow prior to sending it
+        queries. See the `training
+        documentation <https://cloud.google.com/dialogflow/cx/docs/concept/training>`__.
 
         Returns:
             Callable[[~.DeleteTransitionRouteGroupRequest],

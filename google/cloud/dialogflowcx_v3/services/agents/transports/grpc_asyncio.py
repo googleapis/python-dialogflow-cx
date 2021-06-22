@@ -82,14 +82,14 @@ class AgentsGrpcAsyncIOTransport(AgentsTransport):
             aio.Channel: A gRPC AsyncIO channel object.
         """
 
-        self_signed_jwt_kwargs = cls._get_self_signed_jwt_kwargs(host, scopes)
-
         return grpc_helpers_async.create_channel(
             host,
             credentials=credentials,
             credentials_file=credentials_file,
             quota_project_id=quota_project_id,
-            **self_signed_jwt_kwargs,
+            default_scopes=cls.AUTH_SCOPES,
+            scopes=scopes,
+            default_host=cls.DEFAULT_HOST,
             **kwargs,
         )
 
@@ -200,6 +200,7 @@ class AgentsGrpcAsyncIOTransport(AgentsTransport):
             scopes=scopes,
             quota_project_id=quota_project_id,
             client_info=client_info,
+            always_use_jwt_access=True,
         )
 
         if not self._grpc_channel:
@@ -304,6 +305,10 @@ class AgentsGrpcAsyncIOTransport(AgentsTransport):
 
         Creates an agent in the specified location.
 
+        Note: You should always train flows prior to sending them
+        queries. See the `training
+        documentation <https://cloud.google.com/dialogflow/cx/docs/concept/training>`__.
+
         Returns:
             Callable[[~.CreateAgentRequest],
                     Awaitable[~.Agent]]:
@@ -329,6 +334,10 @@ class AgentsGrpcAsyncIOTransport(AgentsTransport):
         r"""Return a callable for the update agent method over gRPC.
 
         Updates the specified agent.
+
+        Note: You should always train flows prior to sending them
+        queries. See the `training
+        documentation <https://cloud.google.com/dialogflow/cx/docs/concept/training>`__.
 
         Returns:
             Callable[[~.UpdateAgentRequest],
@@ -407,9 +416,14 @@ class AgentsGrpcAsyncIOTransport(AgentsTransport):
         r"""Return a callable for the restore agent method over gRPC.
 
         Restores the specified agent from a binary file.
+
         Replaces the current agent with a new one. Note that all
-        existing resources in agent (e.g. intents, entity types,
-        flows) will be removed.
+        existing resources in agent (e.g. intents, entity types, flows)
+        will be removed.
+
+        Note: You should always train flows prior to sending them
+        queries. See the `training
+        documentation <https://cloud.google.com/dialogflow/cx/docs/concept/training>`__.
 
         Returns:
             Callable[[~.RestoreAgentRequest],
