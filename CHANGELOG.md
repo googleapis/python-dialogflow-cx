@@ -1,5 +1,13 @@
 # Changelog
 
+### [0.7.2](https://www.github.com/googleapis/python-dialogflow-cx/compare/v0.7.1...v0.7.2) (2021-06-26)
+
+
+### Documentation
+
+* added notes to train agent before sending queries ([#111](https://www.github.com/googleapis/python-dialogflow-cx/issues/111)) ([8a53800](https://www.github.com/googleapis/python-dialogflow-cx/commit/8a5380055dfa7d58f83be5ce0da310318b54fc51))
+* omit mention of Python 2.7 in 'CONTRIBUTING.rst' ([#1127](https://www.github.com/googleapis/python-dialogflow-cx/issues/1127)) ([#110](https://www.github.com/googleapis/python-dialogflow-cx/issues/110)) ([40974f5](https://www.github.com/googleapis/python-dialogflow-cx/commit/40974f56c27833ab23575426f75d0868e1a10d94)), closes [#1126](https://www.github.com/googleapis/python-dialogflow-cx/issues/1126)
+
 ### [0.7.1](https://www.github.com/googleapis/python-dialogflow-cx/compare/v0.7.0...v0.7.1) (2021-06-16)
 
 
