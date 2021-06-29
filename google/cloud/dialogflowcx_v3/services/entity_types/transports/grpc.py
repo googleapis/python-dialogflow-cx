@@ -152,6 +152,7 @@ class EntityTypesGrpcTransport(EntityTypesTransport):
             scopes=scopes,
             quota_project_id=quota_project_id,
             client_info=client_info,
+            always_use_jwt_access=True,
         )
 
         if not self._grpc_channel:
@@ -207,14 +208,14 @@ class EntityTypesGrpcTransport(EntityTypesTransport):
               and ``credentials_file`` are passed.
         """
 
-        self_signed_jwt_kwargs = cls._get_self_signed_jwt_kwargs(host, scopes)
-
         return grpc_helpers.create_channel(
             host,
             credentials=credentials,
             credentials_file=credentials_file,
             quota_project_id=quota_project_id,
-            **self_signed_jwt_kwargs,
+            default_scopes=cls.AUTH_SCOPES,
+            scopes=scopes,
+            default_host=cls.DEFAULT_HOST,
             **kwargs,
         )
 
@@ -289,6 +290,10 @@ class EntityTypesGrpcTransport(EntityTypesTransport):
 
         Creates an entity type in the specified agent.
 
+        Note: You should always train a flow prior to sending it
+        queries. See the `training
+        documentation <https://cloud.google.com/dialogflow/cx/docs/concept/training>`__.
+
         Returns:
             Callable[[~.CreateEntityTypeRequest],
                     ~.EntityType]:
@@ -317,6 +322,10 @@ class EntityTypesGrpcTransport(EntityTypesTransport):
 
         Updates the specified entity type.
 
+        Note: You should always train a flow prior to sending it
+        queries. See the `training
+        documentation <https://cloud.google.com/dialogflow/cx/docs/concept/training>`__.
+
         Returns:
             Callable[[~.UpdateEntityTypeRequest],
                     ~.EntityType]:
@@ -342,6 +351,10 @@ class EntityTypesGrpcTransport(EntityTypesTransport):
         r"""Return a callable for the delete entity type method over gRPC.
 
         Deletes the specified entity type.
+
+        Note: You should always train a flow prior to sending it
+        queries. See the `training
+        documentation <https://cloud.google.com/dialogflow/cx/docs/concept/training>`__.
 
         Returns:
             Callable[[~.DeleteEntityTypeRequest],

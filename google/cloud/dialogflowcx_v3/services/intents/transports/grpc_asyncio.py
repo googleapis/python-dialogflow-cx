@@ -81,14 +81,14 @@ class IntentsGrpcAsyncIOTransport(IntentsTransport):
             aio.Channel: A gRPC AsyncIO channel object.
         """
 
-        self_signed_jwt_kwargs = cls._get_self_signed_jwt_kwargs(host, scopes)
-
         return grpc_helpers_async.create_channel(
             host,
             credentials=credentials,
             credentials_file=credentials_file,
             quota_project_id=quota_project_id,
-            **self_signed_jwt_kwargs,
+            default_scopes=cls.AUTH_SCOPES,
+            scopes=scopes,
+            default_host=cls.DEFAULT_HOST,
             **kwargs,
         )
 
@@ -198,6 +198,7 @@ class IntentsGrpcAsyncIOTransport(IntentsTransport):
             scopes=scopes,
             quota_project_id=quota_project_id,
             client_info=client_info,
+            always_use_jwt_access=True,
         )
 
         if not self._grpc_channel:
@@ -288,6 +289,10 @@ class IntentsGrpcAsyncIOTransport(IntentsTransport):
 
         Creates an intent in the specified agent.
 
+        Note: You should always train a flow prior to sending it
+        queries. See the `training
+        documentation <https://cloud.google.com/dialogflow/cx/docs/concept/training>`__.
+
         Returns:
             Callable[[~.CreateIntentRequest],
                     Awaitable[~.Intent]]:
@@ -314,6 +319,10 @@ class IntentsGrpcAsyncIOTransport(IntentsTransport):
 
         Updates the specified intent.
 
+        Note: You should always train a flow prior to sending it
+        queries. See the `training
+        documentation <https://cloud.google.com/dialogflow/cx/docs/concept/training>`__.
+
         Returns:
             Callable[[~.UpdateIntentRequest],
                     Awaitable[~.Intent]]:
@@ -339,6 +348,10 @@ class IntentsGrpcAsyncIOTransport(IntentsTransport):
         r"""Return a callable for the delete intent method over gRPC.
 
         Deletes the specified intent.
+
+        Note: You should always train a flow prior to sending it
+        queries. See the `training
+        documentation <https://cloud.google.com/dialogflow/cx/docs/concept/training>`__.
 
         Returns:
             Callable[[~.DeleteIntentRequest],

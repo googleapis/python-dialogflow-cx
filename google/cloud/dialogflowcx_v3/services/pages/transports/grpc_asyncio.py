@@ -80,14 +80,14 @@ class PagesGrpcAsyncIOTransport(PagesTransport):
             aio.Channel: A gRPC AsyncIO channel object.
         """
 
-        self_signed_jwt_kwargs = cls._get_self_signed_jwt_kwargs(host, scopes)
-
         return grpc_helpers_async.create_channel(
             host,
             credentials=credentials,
             credentials_file=credentials_file,
             quota_project_id=quota_project_id,
-            **self_signed_jwt_kwargs,
+            default_scopes=cls.AUTH_SCOPES,
+            scopes=scopes,
+            default_host=cls.DEFAULT_HOST,
             **kwargs,
         )
 
@@ -197,6 +197,7 @@ class PagesGrpcAsyncIOTransport(PagesTransport):
             scopes=scopes,
             quota_project_id=quota_project_id,
             client_info=client_info,
+            always_use_jwt_access=True,
         )
 
         if not self._grpc_channel:
@@ -284,6 +285,10 @@ class PagesGrpcAsyncIOTransport(PagesTransport):
 
         Creates a page in the specified flow.
 
+        Note: You should always train a flow prior to sending it
+        queries. See the `training
+        documentation <https://cloud.google.com/dialogflow/cx/docs/concept/training>`__.
+
         Returns:
             Callable[[~.CreatePageRequest],
                     Awaitable[~.Page]]:
@@ -310,6 +315,10 @@ class PagesGrpcAsyncIOTransport(PagesTransport):
 
         Updates the specified page.
 
+        Note: You should always train a flow prior to sending it
+        queries. See the `training
+        documentation <https://cloud.google.com/dialogflow/cx/docs/concept/training>`__.
+
         Returns:
             Callable[[~.UpdatePageRequest],
                     Awaitable[~.Page]]:
@@ -335,6 +344,10 @@ class PagesGrpcAsyncIOTransport(PagesTransport):
         r"""Return a callable for the delete page method over gRPC.
 
         Deletes the specified page.
+
+        Note: You should always train a flow prior to sending it
+        queries. See the `training
+        documentation <https://cloud.google.com/dialogflow/cx/docs/concept/training>`__.
 
         Returns:
             Callable[[~.DeletePageRequest],
