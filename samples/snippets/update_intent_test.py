@@ -53,7 +53,7 @@ def delete_agent(name):
 
 @pytest.fixture(scope="function", autouse=True)
 def setup_teardown():
-    agentName = "temp_agent_" + uuid.uuid4()
+    agentName = "temp_agent_" + str(uuid.uuid4())
     pytest.PARENT = create_agent(PROJECT_ID, agentName).name
     pytest.AGENT_ID = pytest.PARENT.split("/")[5]
     print("Created Agent in setUp")
