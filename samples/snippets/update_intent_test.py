@@ -11,7 +11,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from datetime import date
 import os
 import uuid
 
@@ -54,9 +53,7 @@ def delete_agent(name):
 
 @pytest.fixture(scope="function", autouse=True)
 def setup_teardown():
-    print("Deleted in setUp")
-    today = date.today()
-    agentName = "tempAgent." + today.strftime("%d.%m.%Y")
+    agentName = "temp_agent_" + uuid.uuid4()
     pytest.PARENT = create_agent(PROJECT_ID, agentName).name
     pytest.AGENT_ID = pytest.PARENT.split("/")[5]
     print("Created Agent in setUp")
