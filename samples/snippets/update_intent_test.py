@@ -11,11 +11,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from datetime import date
 import os
 import uuid
 
+from google.cloud.dialogflowcx_v3.services import agents
 from google.cloud.dialogflowcx_v3.services.agents.client import AgentsClient
 from google.cloud.dialogflowcx_v3.services.intents.client import IntentsClient
+from google.cloud.dialogflowcx_v3.types.agent import DeleteAgentRequest
 from google.cloud.dialogflowcx_v3.types.intent import Intent
 
 import pytest
@@ -24,37 +27,53 @@ from update_intent import update_intent
 
 PROJECT_ID = os.getenv("GOOGLE_CLOUD_PROJECT")
 pytest.INTENT_ID = None
+pytest.AGENT_ID = None
+pytest.PARENT = None
 
 
-def create_intent(project_id):
-    intents_client = IntentsClient()
+def create_agent(project_id, display_name):
+    parent = "projects/" + project_id + "/locations/global"
 
-    parent = AgentsClient.agent_path(project_id)
+    agents_client = AgentsClient()
 
+    agent = agents(
+        display_name=display_name,
+        default_language_code="en",
+        time_zone="America/Los_Angeles",
+    )
+
+    response = agents_client.create_agent(request={"agent": agent, "parent": parent})
+
+    return response.name
+
+def delete_agent(name):
+    agents_client = AgentsClient()
+    agent = DeleteAgentRequest(name=name)
+    agents_client.delete_agent(request=agent)
+
+@pytest.fixture(scope="function", autouse=True)
+def setup_teardown():
+    print("Deleted in setUp")
+    today = date.today()
+    agentName = "tempAgent." + today.strftime("%d.%m.%Y")
+    pytest.PARENT = create_agent(PROJECT_ID, agentName).name
+    pytest.AGENT_ID = pytest.PARENT.split("/")[5]
+    print("Created Agent in setUp")
     intent = Intent()
 
     intent.display_name = "fake_intent"
 
-    intents = intents_client.create_intent(request={"parent": parent,  "intent": intent})
+    pytest.INTENT_ID = IntentsClient.create_intent(request={"parent": pytest.PARENT,  "intent": intent}).name.split("/")[7]
 
-    return intents.name.split("/")[4]
+    yield
 
-
-@pytest.fixture(scope="function", autouse=True)
-def setup_teardown():
-    pytest.INTENT_ID = create_intent(project_id=PROJECT_ID)
-    print("Created Intent in setUp")
+    delete_agent(pytest.PARENT)
 
 
-def test_update_intent():
-
+def test_fieldmaskTest(self):
     fake_intent = "fake_intent_{}".format(uuid.uuid4())
-
-    actualResponse = update_intent(PROJECT_ID, pytest.INTENT_ID, fake_intent)
-    expectedResponse = fake_intent
-
-    intents_client = IntentsClient()
-
-    intents_client.delete_intent(name=actualResponse.name)
-
-    assert actualResponse.display_name == expectedResponse
+    actualResponse = update_intent(
+        PROJECT_ID, pytest.AGENT_ID, pytest.INTENT_ID, "global", fake_intent
+    )
+  
+    assert actualResponse.display_name == fake_intent
