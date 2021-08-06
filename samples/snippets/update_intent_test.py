@@ -15,10 +15,9 @@ from datetime import date
 import os
 import uuid
 
-from google.cloud.dialogflowcx_v3.services import agents
 from google.cloud.dialogflowcx_v3.services.agents.client import AgentsClient
 from google.cloud.dialogflowcx_v3.services.intents.client import IntentsClient
-from google.cloud.dialogflowcx_v3.types.agent import DeleteAgentRequest
+from google.cloud.dialogflowcx_v3.types.agent import Agent, DeleteAgentRequest
 from google.cloud.dialogflowcx_v3.types.intent import Intent
 
 import pytest
@@ -36,7 +35,7 @@ def create_agent(project_id, display_name):
 
     agents_client = AgentsClient()
 
-    agent = agents(
+    agent = Agent(
         display_name=display_name,
         default_language_code="en",
         time_zone="America/Los_Angeles",
@@ -46,10 +45,12 @@ def create_agent(project_id, display_name):
 
     return response.name
 
+
 def delete_agent(name):
     agents_client = AgentsClient()
     agent = DeleteAgentRequest(name=name)
     agents_client.delete_agent(request=agent)
+
 
 @pytest.fixture(scope="function", autouse=True)
 def setup_teardown():
@@ -75,5 +76,5 @@ def test_fieldmaskTest(self):
     actualResponse = update_intent(
         PROJECT_ID, pytest.AGENT_ID, pytest.INTENT_ID, "global", fake_intent
     )
-  
+
     assert actualResponse.display_name == fake_intent
