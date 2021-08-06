@@ -15,8 +15,8 @@ import os
 import uuid
 
 from google.cloud.dialogflowcx_v3.services.agents.client import AgentsClient
-from google.cloud.dialogflowcx_v3.types.intent import Intent
 from google.cloud.dialogflowcx_v3.services.intents.client import IntentsClient
+from google.cloud.dialogflowcx_v3.types.intent import Intent
 
 import pytest
 
