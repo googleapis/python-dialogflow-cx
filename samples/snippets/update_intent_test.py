@@ -17,7 +17,7 @@ import uuid
 from google.cloud.dialogflowcx_v3.services.agents.client import AgentsClient
 from google.cloud.dialogflowcx_v3.services.intents.client import IntentsClient
 from google.cloud.dialogflowcx_v3.types.agent import Agent, DeleteAgentRequest
-from google.cloud.dialogflowcx_v3.types.intent import Intent
+from google.cloud.dialogflowcx_v3.types.intent import CreateIntentRequest, Intent
 
 import pytest
 
@@ -57,11 +57,16 @@ def setup_teardown():
     pytest.PARENT = create_agent(PROJECT_ID, agentName).name
     pytest.AGENT_ID = pytest.PARENT.split("/")[5]
     print("Created Agent in setUp")
+    intentClient = IntentsClient()
     intent = Intent()
 
     intent.display_name = "fake_intent"
+    
+    req = CreateIntentRequest()
+    req.parent = pytest.PARENT
+    req.intent = intent
 
-    pytest.INTENT_ID = IntentsClient.create_intent(request={"parent": pytest.PARENT,  "intent": intent}).name.split("/")[7]
+    pytest.INTENT_ID = intentClient.create_intent(request=req).name.split("/")[7]
 
     yield
 
