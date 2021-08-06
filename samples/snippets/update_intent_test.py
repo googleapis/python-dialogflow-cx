@@ -73,7 +73,7 @@ def setup_teardown():
     delete_agent(pytest.PARENT)
 
 
-def test_fieldmaskTest(self):
+def test_fieldmaskTest():
     fake_intent = "fake_intent_{}".format(uuid.uuid4())
     actualResponse = update_intent(
         PROJECT_ID, pytest.AGENT_ID, pytest.INTENT_ID, "global", fake_intent
