@@ -42,7 +42,7 @@ def create_agent(project_id, display_name):
 
     response = agents_client.create_agent(request={"agent": agent, "parent": parent})
 
-    return response.name
+    return response
 
 
 def delete_agent(name):
