@@ -61,7 +61,7 @@ def setup_teardown():
     intent = Intent()
 
     intent.display_name = "fake_intent"
-    
+
     req = CreateIntentRequest()
     req.parent = pytest.PARENT
     req.intent = intent
