@@ -22,8 +22,6 @@ def test_create_agent():
     today = date.today()
     agentName = "tempAgent." + today.strftime("%d.%m.%Y")
     response = create_agent(PROJECT_ID, agentName)
-    pytest.AGENT_PATH = response.name
+    delete_agent(response.name)
 
     assert response.display_name == agentName
-
-    delete_agent(pytest.AGENT_PATH)
