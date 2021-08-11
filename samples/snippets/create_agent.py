@@ -13,20 +13,17 @@
 
 """DialogFlow API Create Agent Sample"""
 
-from google.cloud.dialogflowcx_v3.services import agents
+from google.cloud.dialogflowcx_v3.types.agent import Agent
 from google.cloud.dialogflowcx_v3.services.agents.client import AgentsClient
 
 
 def create_agent(project_id, display_name):
 
-    parent = "projects/" + project_id + "/locations/us-west1"
+    parent = "projects/" + project_id + "/locations/global"
 
-    api_endpoint = "us-west1-dialogflow.googleapis.com:443"
-    client_options = {"api_endpoint": api_endpoint}
+    agents_client = AgentsClient()
 
-    agents_client = AgentsClient(client_options=client_options)
-
-    agent = agents(
+    agent = Agent(
         display_name=display_name,
         default_language_code="en",
         time_zone="America/Los_Angeles",
