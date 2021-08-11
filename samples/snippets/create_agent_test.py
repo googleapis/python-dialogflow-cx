@@ -18,12 +18,6 @@ def delete_agent(name):
     agents_client.delete_agent(request=request)
 
 
-@pytest.fixture(scope="function", autouse=True)
-def setup_teardown():
-    yield
-    delete_agent(pytest.AGENT_PATH)
-
-
 def test_create_agent():
     today = date.today()
     agentName = "tempAgent." + today.strftime("%d.%m.%Y")
@@ -31,3 +25,5 @@ def test_create_agent():
     pytest.AGENT_PATH = response.name
 
     assert response.display_name == agentName
+
+    delete_agent(pytest.AGENT_PATH)
