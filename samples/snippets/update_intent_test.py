@@ -74,7 +74,7 @@ def setup_teardown():
 
 
 def test_fieldmaskTest():
-    fake_intent = "fake_intent_{}".format(uuid.uuid4())
+    fake_intent = f"fake_intent_{uuid.uuid4()}"
     actualResponse = update_intent(
         PROJECT_ID, pytest.AGENT_ID, pytest.INTENT_ID, "global", fake_intent
     )
