@@ -11,6 +11,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+
 # [START dialogflow_cx_update_intent]
 from google.cloud.dialogflowcx_v3.services.intents import IntentsClient
 from google.protobuf import field_mask_pb2
