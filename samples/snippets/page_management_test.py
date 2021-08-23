@@ -62,7 +62,7 @@ def setup_teardown():
     delete_agent(pytest.PARENT)
 
 
-def test_create_page():
+async def test_create_page():
     pytest.CREATED_PAGE = f"fake_page_{uuid.uuid4()}"
     actualResponse = create_page(
         PROJECT_ID,
@@ -71,21 +71,22 @@ def test_create_page():
         "global",
         pytest.CREATED_PAGE,
     )
-    pytest.PAGE_ID = actualResponse.name.split("/")[9]
+
+    pytest.PAGE_ID = await actualResponse.name.split("/")[9]
     assert actualResponse.display_name == pytest.CREATED_PAGE
 
 
-def test_list_page():
-    actualResponse = list_page(
+async def test_list_page():
+    actualResponse = await list_page(
         PROJECT_ID, pytest.AGENT_ID, "00000000-0000-0000-0000-000000000000", "global"
     )
 
     assert pytest.CREATED_PAGE in actualResponse
 
 
-def test_list_page():
+async def test_list_page():
     try:
-        delete_page(
+        await delete_page(
             PROJECT_ID,
             pytest.AGENT_ID,
             "00000000-0000-0000-0000-000000000000",
