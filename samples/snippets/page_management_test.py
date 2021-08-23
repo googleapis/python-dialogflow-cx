@@ -62,9 +62,9 @@ def setup_teardown():
     delete_agent(pytest.PARENT)
 
 
-async def test_create_page():
+def test_create_page():
     pytest.CREATED_PAGE = f"fake_page_{uuid.uuid4()}"
-    actualResponse = await create_page(
+    actualResponse = create_page(
         PROJECT_ID,
         pytest.AGENT_ID,
         "00000000-0000-0000-0000-000000000000",
