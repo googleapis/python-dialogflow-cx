@@ -11,6 +11,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from copy import Error
 import os
 import uuid
 
@@ -96,5 +97,5 @@ async def test_list_page():
             pytest.PAGE_ID,
             "global",
         )
-    except:
+    except Error:
         pytest.fail("Unexpected MyError ..")
