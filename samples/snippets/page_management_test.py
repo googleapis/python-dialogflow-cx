@@ -88,7 +88,7 @@ async def test_list_page():
 
 
 @pytest.mark.asyncio
-async def test_list_page():
+async def test_delete_page():
     try:
         await delete_page(
             PROJECT_ID,
