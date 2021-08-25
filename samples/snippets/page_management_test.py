@@ -29,22 +29,6 @@ pytest.CREATED_PAGE = None
 pytest.PAGE_ID = None
 
 
-def create_agent(project_id, display_name):
-    parent = "projects/" + project_id + "/locations/global"
-
-    agents_client = AgentsClient()
-
-    agent = Agent(
-        display_name=display_name,
-        default_language_code="en",
-        time_zone="America/Los_Angeles",
-    )
-
-    response = agents_client.create_agent(request={"agent": agent, "parent": parent})
-
-    return response
-
-
 def delete_agent(name):
     agents_client = AgentsClient()
     agent = DeleteAgentRequest(name=name)
@@ -54,7 +38,20 @@ def delete_agent(name):
 @pytest.fixture(scope="function", autouse=True)
 def setup_teardown():
     agentName = "temp_agent_" + str(uuid.uuid4())
-    pytest.PARENT = create_agent(PROJECT_ID, agentName).name
+
+    parent = "projects/" + PROJECT_ID + "/locations/global"
+
+    agents_client = AgentsClient()
+
+    agent = Agent(
+        display_name=agentName,
+        default_language_code="en",
+        time_zone="America/Los_Angeles",
+    )
+
+    response = agents_client.create_agent(request={"agent": agent, "parent": parent})
+    pytest.PARENT = response.name
+
     pytest.AGENT_ID = pytest.PARENT.split("/")[5]
     print("Created Agent in setUp")
 
