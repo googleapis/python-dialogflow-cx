@@ -69,7 +69,7 @@ def setup_teardown():
     loop.close()
 
 
-async def test_create_page(loop: asyncio.AbstractEventLoop):
+def test_create_page(loop: asyncio.AbstractEventLoop):
     pytest.CREATED_PAGE = f"fake_page_{uuid.uuid4()}"
     actualResponse = loop.run_until_complete(create_page(
         PROJECT_ID,
@@ -83,7 +83,7 @@ async def test_create_page(loop: asyncio.AbstractEventLoop):
     assert actualResponse.display_name == pytest.CREATED_PAGE
 
 
-async def test_list_page(loop: asyncio.AbstractEventLoop):
+def test_list_page(loop: asyncio.AbstractEventLoop):
     actualResponse = loop.run_until_complete(list_page(
         PROJECT_ID, pytest.AGENT_ID, "00000000-0000-0000-0000-000000000000", "global"
     ))
@@ -91,7 +91,7 @@ async def test_list_page(loop: asyncio.AbstractEventLoop):
     assert pytest.CREATED_PAGE in actualResponse
 
 
-async def test_delete_page(loop: asyncio.AbstractEventLoop):
+def test_delete_page(loop: asyncio.AbstractEventLoop):
     try:
          loop.run_until_complete(delete_page(
             PROJECT_ID,
