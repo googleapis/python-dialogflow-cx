@@ -42,6 +42,8 @@ async def create_page(project_id, agent_id, flow_id, location, displayName):
 
     response = await pages_client.create_page(request=request)
     return response
+
+
 # [END dialogflow_cx_create_page]
 
 
@@ -64,6 +66,8 @@ async def list_page(project_id, agent_id, flow_id, location):
 
     response = await pages_client.list_pages(request=request)
     return response
+
+
 # [END dialogflow_cx_list_page]
 
 
@@ -87,4 +91,6 @@ async def delete_page(project_id, agent_id, flow_id, page_id, location):
 
     response = await pages_client.delete_page(request=request)
     return response
+
+
 # [END dialogflow_cx_delete_page]

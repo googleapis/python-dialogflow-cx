@@ -35,6 +35,7 @@ def delete_agent(name):
     agent = DeleteAgentRequest(name=name)
     agents_client.delete_agent(request=agent)
 
+
 @pytest.fixture
 def loop():
     loop = asyncio.new_event_loop()
@@ -71,34 +72,43 @@ def setup_teardown():
 
 def test_create_page(loop: asyncio.AbstractEventLoop):
     pytest.CREATED_PAGE = f"fake_page_{uuid.uuid4()}"
-    actualResponse = loop.run_until_complete(create_page(
-        PROJECT_ID,
-        pytest.AGENT_ID,
-        "00000000-0000-0000-0000-000000000000",
-        "global",
-        pytest.CREATED_PAGE,
-    ))
+    actualResponse = loop.run_until_complete(
+        create_page(
+            PROJECT_ID,
+            pytest.AGENT_ID,
+            "00000000-0000-0000-0000-000000000000",
+            "global",
+            pytest.CREATED_PAGE,
+        )
+    )
 
     pytest.PAGE_ID = actualResponse.name.split("/")[9]
     assert actualResponse.display_name == pytest.CREATED_PAGE
 
 
 def test_list_page(loop: asyncio.AbstractEventLoop):
-    actualResponse = loop.run_until_complete(list_page(
-        PROJECT_ID, pytest.AGENT_ID, "00000000-0000-0000-0000-000000000000", "global"
-    ))
+    actualResponse = loop.run_until_complete(
+        list_page(
+            PROJECT_ID,
+            pytest.AGENT_ID,
+            "00000000-0000-0000-0000-000000000000",
+            "global",
+        )
+    )
 
     assert pytest.PAGE_ID in str(actualResponse)
 
 
 def test_delete_page(loop: asyncio.AbstractEventLoop):
     try:
-         loop.run_until_complete(delete_page(
-            PROJECT_ID,
-            pytest.AGENT_ID,
-            "00000000-0000-0000-0000-000000000000",
-            pytest.PAGE_ID,
-            "global",
-        ))
+        loop.run_until_complete(
+            delete_page(
+                PROJECT_ID,
+                pytest.AGENT_ID,
+                "00000000-0000-0000-0000-000000000000",
+                pytest.PAGE_ID,
+                "global",
+            )
+        )
     except Error:
         pytest.fail("Unexpected MyError ..")

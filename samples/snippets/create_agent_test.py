@@ -13,7 +13,6 @@
 
 """Test for create_agent"""
 
-from datetime import date
 import os
 import uuid
 
@@ -35,7 +34,6 @@ def delete_agent(name):
 
 
 def test_create_agent():
-    today = date.today()
     agentName = f"fake_agent_{uuid.uuid4()}"
     response = create_agent(PROJECT_ID, agentName)
     delete_agent(response.name)
