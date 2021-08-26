@@ -35,6 +35,12 @@ def delete_agent(name):
     agent = DeleteAgentRequest(name=name)
     agents_client.delete_agent(request=agent)
 
+@pytest.fixture
+def loop():
+    loop = asyncio.new_event_loop()
+    yield loop
+    loop.close()
+
 
 @pytest.fixture(scope="function", autouse=True)
 def setup_teardown():
