@@ -88,7 +88,7 @@ def test_list_page(loop: asyncio.AbstractEventLoop):
         PROJECT_ID, pytest.AGENT_ID, "00000000-0000-0000-0000-000000000000", "global"
     ))
 
-    assert pytest.CREATED_PAGE in actualResponse
+    assert actualResponse == ""
 
 
 def test_delete_page(loop: asyncio.AbstractEventLoop):
