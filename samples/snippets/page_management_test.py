@@ -37,7 +37,7 @@ def delete_agent(name):
 
 @pytest.fixture(scope="function", autouse=True)
 def setup_teardown():
-    agentName = "temp_agent_" + str(uuid.uuid5())
+    agentName = "temp_agent_" + str(uuid.uuid4())
 
     parent = "projects/" + PROJECT_ID + "/locations/global"
 
