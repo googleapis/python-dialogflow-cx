@@ -42,7 +42,7 @@ def loop():
     loop.close()
 
 
-@pytest.fixture(scope="session", autouse=True)
+@pytest.fixture(scope="module", autouse=True)
 def setup_teardown():
     loop = asyncio.new_event_loop()
     agentName = "temp_agent_" + str(uuid.uuid4())
