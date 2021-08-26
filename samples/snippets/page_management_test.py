@@ -11,6 +11,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import asyncio
 from copy import Error
 import os
 import uuid
@@ -37,6 +38,7 @@ def delete_agent(name):
 
 @pytest.fixture(scope="function", autouse=True)
 def setup_teardown():
+    loop = asyncio.new_event_loop()
     agentName = "temp_agent_" + str(uuid.uuid4())
 
     parent = "projects/" + PROJECT_ID + "/locations/global"
@@ -58,38 +60,39 @@ def setup_teardown():
     yield
 
     delete_agent(pytest.PARENT)
+    loop.close()
 
 
-async def test_create_page():
+async def test_create_page(loop: asyncio.AbstractEventLoop):
     pytest.CREATED_PAGE = f"fake_page_{uuid.uuid4()}"
-    actualResponse = create_page(
+    actualResponse = loop.run_until_complete(create_page(
         PROJECT_ID,
         pytest.AGENT_ID,
         "00000000-0000-0000-0000-000000000000",
         "global",
         pytest.CREATED_PAGE,
-    )
+    ))
 
-    pytest.PAGE_ID = await actualResponse.name.split("/")[9]
+    pytest.PAGE_ID = actualResponse.name.split("/")[9]
     assert actualResponse.display_name == pytest.CREATED_PAGE
 
 
-async def test_list_page():
-    actualResponse = await list_page(
+async def test_list_page(loop: asyncio.AbstractEventLoop):
+    actualResponse = loop.run_until_complete(list_page(
         PROJECT_ID, pytest.AGENT_ID, "00000000-0000-0000-0000-000000000000", "global"
-    )
+    ))
 
     assert pytest.CREATED_PAGE in actualResponse
 
 
-async def test_delete_page():
+async def test_delete_page(loop: asyncio.AbstractEventLoop):
     try:
-        await delete_page(
+         loop.run_until_complete(delete_page(
             PROJECT_ID,
             pytest.AGENT_ID,
             "00000000-0000-0000-0000-000000000000",
             pytest.PAGE_ID,
             "global",
-        )
+        ))
     except Error:
         pytest.fail("Unexpected MyError ..")
