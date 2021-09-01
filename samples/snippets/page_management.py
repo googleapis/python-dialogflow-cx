@@ -53,15 +53,9 @@ async def list_page(project_id, agent_id, flow_id, location):
 
     request = ListPagesRequest()
     request.parent = (
-        "projects/"
-        + project_id
-        + "/locations/"
-        + location
-        + "/agents/"
-        + agent_id
-        + "/flows/"
-        + flow_id
+        f"projects/{project_id}/locations/{location}/agents/{agent_id}/flows/{flow_id}"
     )
+
     request.language_code = "en"
 
     response = await pages_client.list_pages(request=request)
@@ -76,18 +70,7 @@ async def delete_page(project_id, agent_id, flow_id, page_id, location):
     pages_client = PagesAsyncClient()
 
     request = DeletePageRequest()
-    request.name = (
-        "projects/"
-        + project_id
-        + "/locations/"
-        + location
-        + "/agents/"
-        + agent_id
-        + "/flows/"
-        + flow_id
-        + "/pages/"
-        + page_id
-    )
+    request.name = f"projects/{project_id}/locations/{location}/agents/{agent_id}/flows/{flow_id}/pages/{page_id}"
 
     response = await pages_client.delete_page(request=request)
     return response
