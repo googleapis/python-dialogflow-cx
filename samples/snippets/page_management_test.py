@@ -96,7 +96,7 @@ def test_list_page(loop: asyncio.AbstractEventLoop):
         )
     )
 
-    assert pytest.PAGE_ID in str(actualResponse)
+    assert pytest.PAGE_ID in actualResponse
 
 
 def test_delete_page(loop: asyncio.AbstractEventLoop):
