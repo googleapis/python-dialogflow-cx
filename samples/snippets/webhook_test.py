@@ -40,4 +40,4 @@ requestJson = {
 def test_handleWebhook():
     res = handleWebhook(requestJson)
 
-    assert "Hi from a GCF Webhook" in res.responseMessages.text.redactedText
+    assert "Hi from a GCF Webhook" in res
