@@ -21,14 +21,16 @@ def handleWebhook(request):
     string_req = json.dumps(request)
     req = json.loads(string_req)
 
-    if req["fulfillmentInfo"]["tag"] == "Default Welcome Intent":
+    tag = req["fulfillmentInfo"]["tag"]
+
+    if tag == "Default Welcome Intent":
         # You can also use the google.cloud.dialogflowcx_v3.types.WebhookRequest protos instead of manually writing the json object
         res = {
             "fulfillment_response": {
                 "messages": [{"text": {"text": ["Hi from a GCF Webhook"]}}]
             }
         }
-    elif req["fulfillmentInfo"]["tag"] == "get-name":
+    elif tag == "get-name":
         res = {
             "fulfillment_response": {
                 "messages": [{"text": {"text": ["My name is Phlowhook"]}}]
@@ -37,7 +39,15 @@ def handleWebhook(request):
     else:
         res = {
             "fulfillment_response": {
-                "messages": [{"text": {"text": ["Sorry I didn't get that"]}}]
+                "messages": [
+                    {
+                        "text": {
+                            "text": [
+                                f"There are no fulfillment responses defined for {tag} tag"
+                            ]
+                        }
+                    }
+                ]
             }
         }
 
