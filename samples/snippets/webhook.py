@@ -13,11 +13,11 @@
 
 # [START dialogflow_cx_webhook]
 
-import json
+import flask
 
 def handleWebhook(request):
 
-    req = json.dump(request)
+    req = request.get_json()
 
     if req["fulfillmentInfo"]["tag"] == "welcome":
         #You can also use the google.cloud.dialogflowcx_v3.types.WebhookRequest protos instead of manually writing the json object
