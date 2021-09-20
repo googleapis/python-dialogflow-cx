@@ -14,18 +14,15 @@
 
 import os
 
-import pytest
-
 from list_testcase_results import list_test_case
 
 LOCATION = 'global'
 PROJECT_ID = os.getenv("GOOGLE_CLOUD_PROJECT")
-pytest.AGENT_ID = "143dee60-56fe-4191-a8d8-095f569f6cd8"
-pytest.TEST_ID = "7dbf182b-875f-4858-ae2a-d5e76b02454c"
+AGENT_ID = "143dee60-56fe-4191-a8d8-095f569f6cd8"
+TEST_ID = "7dbf182b-875f-4858-ae2a-d5e76b02454c"
 
 
 def test_list_testcase_results():
-    result = list_test_case(PROJECT_ID, pytest.AGENT_ID, pytest.TEST_ID, LOCATION)
+    result = list_test_case(PROJECT_ID, AGENT_ID, TEST_ID, LOCATION)
 
     assert "Hello! How can I help you?" in str(result)
-    
