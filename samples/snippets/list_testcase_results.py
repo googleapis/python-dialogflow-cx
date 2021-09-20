@@ -20,8 +20,6 @@ from google.cloud.dialogflowcx_v3.types.test_case import ListTestCaseResultsRequ
 
 def list_test_case(project_id, agent_id, test_id, location):
 
-    parent = "projects/" + project_id
-
     req = ListTestCaseResultsRequest()
     req.parent = (
         "projects/"
