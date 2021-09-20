@@ -19,7 +19,7 @@ from list_testcase_results import list_test_case
 LOCATION = 'global'
 PROJECT_ID = os.getenv("GOOGLE_CLOUD_PROJECT")
 AGENT_ID = "143dee60-56fe-4191-a8d8-095f569f6cd8"
-TEST_ID = "7dbf182b-875f-4858-ae2a-d5e76b02454c"
+TEST_ID = "3c48d39e-71c0-4cb0-b974-3d5c596d347e"
 
 
 def test_list_testcase_results():
