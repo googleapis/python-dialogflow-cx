@@ -17,7 +17,9 @@ import os
 from list_testcase_results import list_test_case
 
 LOCATION = 'global'
-PROJECT_ID = os.getenv("GOOGLE_CLOUD_PROJECT")
+import google.auth
+
+_, PROJECT_ID = google.auth.default()
 AGENT_ID = "143dee60-56fe-4191-a8d8-095f569f6cd8"
 TEST_ID = "3c48d39e-71c0-4cb0-b974-3d5c596d347e"
 
