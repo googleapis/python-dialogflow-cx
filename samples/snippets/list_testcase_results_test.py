@@ -12,12 +12,10 @@
 # limitations under the License.
 
 
-import os
-
+import google.auth
 from list_testcase_results import list_test_case
 
 LOCATION = "global"
-import google.auth
 
 _, PROJECT_ID = google.auth.default()
 AGENT_ID = "143dee60-56fe-4191-a8d8-095f569f6cd8"
