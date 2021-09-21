@@ -26,9 +26,10 @@ def list_test_case(project_id, agent_id, test_id, location):
     client = TestCasesClient(
         client_options={"api_endpoint": f"{location}-dialogflow.googleapis.com"}
     )
-    #Makes a call to list all test case results that mathc filter
-    result = client.list_test_case_results(request=req)    
+    # Makes a call to list all test case results that mathc filter
+    result = client.list_test_case_results(request=req)
     print(result)
     return result
+
 
 # [END dialogflow_list_test_case_results_sample]

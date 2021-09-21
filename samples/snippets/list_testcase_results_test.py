@@ -16,7 +16,7 @@ import os
 
 from list_testcase_results import list_test_case
 
-LOCATION = 'global'
+LOCATION = "global"
 import google.auth
 
 _, PROJECT_ID = google.auth.default()
