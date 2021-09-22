@@ -1,10 +1,9 @@
-# Copyright 2021 Google LLC
-#
+# Copyright 2021, Google LLC
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
-#     http://www.apache.org/licenses/LICENSE-2.0
+#    http://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
@@ -12,15 +11,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-docker:
-  image: gcr.io/cloud-devrel-public-resources/owlbot-python:latest
 
-deep-remove-regex:
-  - /owl-bot-staging
+import google.auth
 
-deep-copy-regex:
-  - source: /google/cloud/dialogflow/cx/(v.*)/.*-py/(.*)
-    dest: /owl-bot-staging/$1/$2
+from list_testcase_results import list_test_case
 
-begin-after-commit-hash: be977610daf8d4ae6259ed2baf5e5e36c4d32f0b
+LOCATION = "global"
 
+_, PROJECT_ID = google.auth.default()
+AGENT_ID = "143dee60-56fe-4191-a8d8-095f569f6cd8"
+TEST_ID = "3c48d39e-71c0-4cb0-b974-3d5c596d347e"
+
+
+def test_list_testcase_results():
+    result = list_test_case(PROJECT_ID, AGENT_ID, TEST_ID, LOCATION)
+
+    assert "Hello! How can I help you?" in str(result)
