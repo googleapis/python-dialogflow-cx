@@ -13,11 +13,9 @@
 
 # [START dialogflow_cx_webhook]
 
-from flask import request
-
 def handleWebhook(request):
 
-    req = request.get_json()
+    req = request.get_json
 
     tag = req["fulfillmentInfo"]["tag"]
 
@@ -51,6 +49,5 @@ def handleWebhook(request):
 
     # Returns json
     return res
-
 
 # [END dialogflow_cx_webhook]
