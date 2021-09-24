@@ -35,7 +35,6 @@ requestJson = {
     "languageCode": "en",
 }
 
-@pytest.fixture
 def test_handleWebhook(mocker):
     mocker.patch('request.get_json', return_value=requestJson)
     res = handleWebhook(None)
