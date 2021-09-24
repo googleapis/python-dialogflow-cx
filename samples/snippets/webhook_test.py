@@ -14,6 +14,8 @@
 """Test webhook"""
 
 from webhook import handleWebhook
+import pytest
+
 
 requestJson = {
     "detectIntentResponseId": "0a190188-37e9-400a-89e3-f3e878c86916",
@@ -33,7 +35,8 @@ requestJson = {
     "languageCode": "en",
 }
 
-def test_handleWebhook():
+@pytest.fixture
+def test_handleWebhook(mocker):
     mocker.patch('request.get_json', return_value=requestJson)
     res = handleWebhook(None)
 
