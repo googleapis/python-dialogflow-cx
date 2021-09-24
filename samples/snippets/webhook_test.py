@@ -15,6 +15,7 @@
 
 from webhook import handleWebhook
 
+from flask import Request
 
 requestJson = {
     "detectIntentResponseId": "0a190188-37e9-400a-89e3-f3e878c86916",
@@ -34,8 +35,10 @@ requestJson = {
     "languageCode": "en",
 }
 
-
 def test_handleWebhook():
-    res = handleWebhook(requestJson)
+    r = Request()
+    r.json = requestJson
+
+    res = handleWebhook(r)
 
     assert "Hi from a GCF Webhook" in str(res)
