@@ -15,8 +15,6 @@
 
 from webhook import handleWebhook
 
-from flask import Request
-
 requestJson = {
     "detectIntentResponseId": "0a190188-37e9-400a-89e3-f3e878c86916",
     "intentInfo": {
@@ -36,9 +34,7 @@ requestJson = {
 }
 
 def test_handleWebhook():
-    r = Request()
-    r.json = requestJson
-
-    res = handleWebhook(r)
+    mocker.patch('request.get_json', return_value=requestJson)
+    res = handleWebhook(None)
 
     assert "Hi from a GCF Webhook" in str(res)
