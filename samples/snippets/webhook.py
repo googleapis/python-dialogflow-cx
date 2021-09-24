@@ -13,8 +13,6 @@
 
 # [START dialogflow_cx_webhook]
 
-from flask import get_json
-
 def handleWebhook(request):
 
     req = request.get_json()
