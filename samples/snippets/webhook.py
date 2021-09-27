@@ -15,7 +15,7 @@
 
 def handleWebhook(request):
 
-    req = request.get_json
+    req = request.get_json()
 
     tag = req["fulfillmentInfo"]["tag"]
 
