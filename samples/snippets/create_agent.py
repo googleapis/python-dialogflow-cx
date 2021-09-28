@@ -13,7 +13,7 @@
 # limitations under the License.
 
 
-"""DialogFlow API Create Agent Sample"""
+"""DialogFlow CX API Create Agent Sample"""
 
 ## [START dialogflow_cx_create_agent_sample]
 from google.cloud.dialogflowcx_v3.services.agents.client import AgentsClient
