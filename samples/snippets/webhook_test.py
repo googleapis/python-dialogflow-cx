@@ -16,7 +16,7 @@
 import flask
 import pytest
 
-from webhook import handleWebhook
+from webhook import handle_webhook
 
 # Create a fake 'app' for generating test request contexts.
 
@@ -30,7 +30,7 @@ def app():
     return flask.Flask(__name__)
 
 
-def test_handleWebhook(app):
+def test_handle_webhook(app):
     with app.test_request_context(json=request):
-        res = handleWebhook(flask.request)
+        res = handle_webhook(flask.request)
         assert 'Hi from a GCF Webhook' in str(res)
