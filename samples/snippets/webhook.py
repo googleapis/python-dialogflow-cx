@@ -13,7 +13,7 @@
 
 # [START dialogflow_cx_webhook]
 
-#Returns fullfillment response for dialogflow detect_intent call 
+# returns fullfillment response for dialogflow detect_intent call
 def handle_webhook(request):
 
     req = request.get_json()
