@@ -80,7 +80,7 @@ def detect_intent_stream(agent, session_id, audio_file_path, language_code):
         # Sets the voice name and gender
         voice_selection.name = "en-GB-Standard-A"
         voice_selection.ssml_gender = "SSML_VOICE_GENDER_FEMALE"
-        
+
         synthesize_speech_config.voice = voice_selection
 
         # Sets the audio encoding
