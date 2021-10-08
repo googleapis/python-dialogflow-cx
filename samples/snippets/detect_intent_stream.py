@@ -84,7 +84,7 @@ def detect_intent_stream(agent, session_id, audio_file_path, language_code):
         synthesize_speech_config.voice = voice_selection
 
         # Sets the audio encoding
-        output_audio_config.audio_encoding = "OUTPUT_AUDIO_ENCODING_UNSPECIFIED"
+        output_audio_config.audio_encoding = audio_config.OutputAudioEncoding.OUTPUT_AUDIO_ENCODING_UNSPECIFIED
         output_audio_config.synthesize_speech_config = synthesize_speech_config
 
         # The first request contains the configuration.
