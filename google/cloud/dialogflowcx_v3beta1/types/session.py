@@ -54,6 +54,7 @@ __protobuf__ = proto.module(
 
 class DetectIntentRequest(proto.Message):
     r"""The request to detect user's intent.
+
     Attributes:
         session (str):
             Required. The name of the session this query is sent to.
@@ -92,6 +93,7 @@ class DetectIntentRequest(proto.Message):
 
 class DetectIntentResponse(proto.Message):
     r"""The message returned from the DetectIntent method.
+
     Attributes:
         response_id (str):
             Output only. The unique identifier of the
@@ -357,6 +359,7 @@ class StreamingRecognitionResult(proto.Message):
 
 class QueryParameters(proto.Message):
     r"""Represents the parameters of a conversational query.
+
     Attributes:
         time_zone (str):
             The time zone of this conversational query from the `time
@@ -513,6 +516,7 @@ class QueryInput(proto.Message):
 
 class QueryResult(proto.Message):
     r"""Represents the result of a conversational query.
+
     Attributes:
         text (str):
             If [natural language
@@ -534,6 +538,9 @@ class QueryResult(proto.Message):
             If an [event][google.cloud.dialogflow.cx.v3beta1.EventInput]
             was provided as input, this field will contain the name of
             the event.
+        dtmf (google.cloud.dialogflowcx_v3beta1.types.DtmfInput):
+            If a [DTMF][DTMFInput] was provided as input, this field
+            will contain a copy of the [DTMFInput][].
         language_code (str):
             The language that was triggered during intent detection. See
             `Language
@@ -617,6 +624,7 @@ class QueryResult(proto.Message):
     trigger_intent = proto.Field(proto.STRING, number=11, oneof="query",)
     transcript = proto.Field(proto.STRING, number=12, oneof="query",)
     trigger_event = proto.Field(proto.STRING, number=14, oneof="query",)
+    dtmf = proto.Field(proto.MESSAGE, number=23, oneof="query", message="DtmfInput",)
     language_code = proto.Field(proto.STRING, number=2,)
     parameters = proto.Field(proto.MESSAGE, number=3, message=struct_pb2.Struct,)
     response_messages = proto.RepeatedField(
@@ -640,6 +648,7 @@ class QueryResult(proto.Message):
 
 class TextInput(proto.Message):
     r"""Represents the natural language text to be processed.
+
     Attributes:
         text (str):
             Required. The UTF-8 encoded natural language
@@ -665,6 +674,7 @@ class IntentInput(proto.Message):
 
 class AudioInput(proto.Message):
     r"""Represents the natural speech audio to be processed.
+
     Attributes:
         config (google.cloud.dialogflowcx_v3beta1.types.InputAudioConfig):
             Required. Instructs the speech recognizer how
@@ -690,6 +700,7 @@ class AudioInput(proto.Message):
 
 class EventInput(proto.Message):
     r"""Represents the event to trigger.
+
     Attributes:
         event (str):
             Name of the event.
@@ -700,6 +711,7 @@ class EventInput(proto.Message):
 
 class DtmfInput(proto.Message):
     r"""Represents the input for dtmf event.
+
     Attributes:
         digits (str):
             The dtmf digits.
@@ -713,6 +725,7 @@ class DtmfInput(proto.Message):
 
 class Match(proto.Message):
     r"""Represents one match result of [MatchIntent][].
+
     Attributes:
         intent (google.cloud.dialogflowcx_v3beta1.types.Intent):
             The [Intent][google.cloud.dialogflow.cx.v3beta1.Intent] that
@@ -785,6 +798,7 @@ class Match(proto.Message):
 
 class MatchIntentRequest(proto.Message):
     r"""Request of [MatchIntent][].
+
     Attributes:
         session (str):
             Required. The name of the session this query is sent to.
@@ -813,6 +827,7 @@ class MatchIntentRequest(proto.Message):
 
 class MatchIntentResponse(proto.Message):
     r"""Response of [MatchIntent][].
+
     Attributes:
         text (str):
             If [natural language
@@ -854,6 +869,7 @@ class MatchIntentResponse(proto.Message):
 
 class FulfillIntentRequest(proto.Message):
     r"""Request of [FulfillIntent][]
+
     Attributes:
         match_intent_request (google.cloud.dialogflowcx_v3beta1.types.MatchIntentRequest):
             Must be same as the corresponding MatchIntent
@@ -876,6 +892,7 @@ class FulfillIntentRequest(proto.Message):
 
 class FulfillIntentResponse(proto.Message):
     r"""Response of [FulfillIntent][]
+
     Attributes:
         response_id (str):
             Output only. The unique identifier of the

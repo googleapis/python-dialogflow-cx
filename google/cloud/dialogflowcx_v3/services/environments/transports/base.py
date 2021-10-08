@@ -189,7 +189,19 @@ class EnvironmentsTransport(abc.ABC):
                 default_timeout=None,
                 client_info=client_info,
             ),
+            self.deploy_flow: gapic_v1.method.wrap_method(
+                self.deploy_flow, default_timeout=None, client_info=client_info,
+            ),
         }
+
+    def close(self):
+        """Closes resources associated with the transport.
+
+       .. warning::
+            Only call this method if the transport is NOT shared
+            with other clients - this may cause errors in other clients!
+        """
+        raise NotImplementedError()
 
     @property
     def operations_client(self) -> operations_v1.OperationsClient:
@@ -274,6 +286,15 @@ class EnvironmentsTransport(abc.ABC):
             environment.ListContinuousTestResultsResponse,
             Awaitable[environment.ListContinuousTestResultsResponse],
         ],
+    ]:
+        raise NotImplementedError()
+
+    @property
+    def deploy_flow(
+        self,
+    ) -> Callable[
+        [environment.DeployFlowRequest],
+        Union[operations_pb2.Operation, Awaitable[operations_pb2.Operation]],
     ]:
         raise NotImplementedError()
 
