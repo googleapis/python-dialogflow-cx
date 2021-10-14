@@ -11,9 +11,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
 ''' handle_webhook will return the correct fullfilment response dependong the tag that is sent in the request'''
+
 # [START dialogflow_cx_webhook]
+
+
 def handle_webhook(request):
 
     req = request.get_json()
