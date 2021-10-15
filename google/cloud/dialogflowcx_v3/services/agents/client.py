@@ -436,10 +436,7 @@ class AgentsClient(metaclass=AgentsClientMeta):
                 client_cert_source_for_mtls=client_cert_source_func,
                 quota_project_id=client_options.quota_project_id,
                 client_info=client_info,
-                always_use_jwt_access=(
-                    Transport == type(self).get_transport_class("grpc")
-                    or Transport == type(self).get_transport_class("grpc_asyncio")
-                ),
+                always_use_jwt_access=True,
             )
 
     def list_agents(
@@ -871,8 +868,9 @@ class AgentsClient(metaclass=AgentsClientMeta):
         timeout: float = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
-        r"""Exports the specified agent to a binary file. This method is a
-        `long-running
+        r"""Exports the specified agent to a binary file.
+
+        This method is a `long-running
         operation <https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation>`__.
         The returned ``Operation`` type has the following
         method-specific fields:
@@ -947,6 +945,16 @@ class AgentsClient(metaclass=AgentsClientMeta):
         Replaces the current agent with a new one. Note that all
         existing resources in agent (e.g. intents, entity types, flows)
         will be removed.
+
+        This method is a `long-running
+        operation <https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation>`__.
+        The returned ``Operation`` type has the following
+        method-specific fields:
+
+        -  ``metadata``: An empty `Struct
+           message <https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct>`__
+        -  ``response``: An `Empty
+           message <https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty>`__
 
         Note: You should always train flows prior to sending them
         queries. See the `training
@@ -1139,6 +1147,19 @@ class AgentsClient(metaclass=AgentsClientMeta):
 
         # Done; return the response.
         return response
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, type, value, traceback):
+        """Releases underlying transport's resources.
+
+        .. warning::
+            ONLY use as a context manager if the transport is NOT shared
+            with other clients! Exiting the with block will CLOSE the transport
+            and may cause errors in other clients!
+        """
+        self.transport.close()
 
 
 try:

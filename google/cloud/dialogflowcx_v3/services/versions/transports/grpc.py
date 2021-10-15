@@ -306,6 +306,16 @@ class VersionsGrpcTransport(VersionsTransport):
         Creates a [Version][google.cloud.dialogflow.cx.v3.Version] in
         the specified [Flow][google.cloud.dialogflow.cx.v3.Flow].
 
+        This method is a `long-running
+        operation <https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation>`__.
+        The returned ``Operation`` type has the following
+        method-specific fields:
+
+        -  ``metadata``:
+           [CreateVersionOperationMetadata][google.cloud.dialogflow.cx.v3.CreateVersionOperationMetadata]
+        -  ``response``:
+           [Version][google.cloud.dialogflow.cx.v3.Version]
+
         Returns:
             Callable[[~.CreateVersionRequest],
                     ~.Operation]:
@@ -384,8 +394,17 @@ class VersionsGrpcTransport(VersionsTransport):
     ) -> Callable[[version.LoadVersionRequest], operations_pb2.Operation]:
         r"""Return a callable for the load version method over gRPC.
 
-        Loads resources in the specified version to the draft
-        flow.
+        Loads resources in the specified version to the draft flow.
+
+        This method is a `long-running
+        operation <https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation>`__.
+        The returned ``Operation`` type has the following
+        method-specific fields:
+
+        -  ``metadata``: An empty `Struct
+           message <https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct>`__
+        -  ``response``: An `Empty
+           message <https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty>`__
 
         Returns:
             Callable[[~.LoadVersionRequest],
@@ -404,6 +423,9 @@ class VersionsGrpcTransport(VersionsTransport):
                 response_deserializer=operations_pb2.Operation.FromString,
             )
         return self._stubs["load_version"]
+
+    def close(self):
+        self.grpc_channel.close()
 
 
 __all__ = ("VersionsGrpcTransport",)

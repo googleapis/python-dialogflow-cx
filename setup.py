@@ -19,7 +19,7 @@ import io
 import os
 import setuptools  # type: ignore
 
-version = "1.3.2"
+version = "1.5.0"
 
 package_root = os.path.abspath(os.path.dirname(__file__))
 
@@ -60,6 +60,8 @@ setuptools.setup(
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
         "Topic :: Internet",
         "Topic :: Software Development :: Libraries :: Python Modules",
     ],
