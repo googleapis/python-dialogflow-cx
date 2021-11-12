@@ -15,7 +15,7 @@
 
 # [START dialogflow_cx_webhook]
 
-# TODO: change entry point to handle_webhook in cloud function
+# TODO(developer): change entry point to handle_webhook in cloud function
 
 
 def handle_webhook(request):
