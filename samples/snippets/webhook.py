@@ -17,6 +17,7 @@
 
 # TODO: change entry point to handle_webhook in cloud function
 
+
 def handle_webhook(request):
 
     req = request.get_json()
