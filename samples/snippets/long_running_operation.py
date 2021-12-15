@@ -20,8 +20,7 @@ from google.cloud.dialogflowcx_v3.services.agents.client import AgentsClient
 from google.cloud.dialogflowcx_v3.types.agent import ExportAgentRequest
 
 
-def export_agent(project_id,agent_id,location):
-    parent = f'projects/{project_id}/locations/{location}'
+def export_agent(project_id, agent_id, location):
 
     api_endpoint = f'{location}-dialogflow.googleapis.com:443'
     client_options = {"api_endpoint": api_endpoint}
@@ -30,7 +29,7 @@ def export_agent(project_id,agent_id,location):
 
     export_request = ExportAgentRequest()
 
-    export_request.name = f'projects/valiant-marker-319718/locations/{location}/agents/{agent_id}'
+    export_request.name = f'projects/{project_id}/locations/{location}/agents/{agent_id}'
 
     # export_agent returns a log running operation
     operation = agents_client.export_agent(request=export_request)
