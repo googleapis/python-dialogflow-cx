@@ -63,4 +63,4 @@ def setup_teardown():
 def test_export_agent():
     actualResponse = export_agent(PROJECT_ID, pytest.AGENT_ID, "global")
 
-    assert pytest.AGENT_ID in actualResponse
+    assert pytest.AGENT_ID in str(actualResponse)
