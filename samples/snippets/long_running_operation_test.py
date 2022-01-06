@@ -19,7 +19,7 @@ from google.cloud.dialogflowcx_v3.types.agent import Agent, DeleteAgentRequest
 
 import pytest
 
-from long_running_operation import export_agent
+from long_running_operation import export_long_running_agent
 
 PROJECT_ID = os.getenv("GOOGLE_CLOUD_PROJECT")
 pytest.AGENT_ID = None
@@ -61,6 +61,6 @@ def setup_teardown():
 
 
 def test_export_agent():
-    actualResponse = export_agent(PROJECT_ID, pytest.AGENT_ID, "global")
+    actualResponse = export_long_running_agent(PROJECT_ID, pytest.AGENT_ID, "global")
 
     assert pytest.AGENT_ID in str(actualResponse)
