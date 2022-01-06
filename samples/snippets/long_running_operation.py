@@ -31,7 +31,7 @@ def export_agent(project_id, agent_id, location):
 
     export_request.name = f'projects/{project_id}/locations/{location}/agents/{agent_id}'
 
-    # export_agent returns a log running operation
+    # export_agent returns a long running operation
     operation = agents_client.export_agent(request=export_request)
 
     # Returns the result of the operation when the operation is done
