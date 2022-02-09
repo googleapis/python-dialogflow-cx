@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2020 Google LLC
+# Copyright 2022 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -24,21 +24,22 @@
 
 
 # [START dialogflow_generated_dialogflowcx_v3_Agents_CreateAgent_sync]
+import google.auth
 from google.cloud import dialogflowcx_v3
 
+def sample_create_agent(project_id):
 
-def sample_create_agent():
     # Create a client
     client = dialogflowcx_v3.AgentsClient()
 
     # Initialize request argument(s)
     agent = dialogflowcx_v3.Agent()
     agent.display_name = "display_name_value"
-    agent.default_language_code = "default_language_code_value"
-    agent.time_zone = "time_zone_value"
+    agent.default_language_code = "en"
+    agent.time_zone = "America/Los_Angeles"
 
     request = dialogflowcx_v3.CreateAgentRequest(
-        parent="parent_value",
+        parent=client.common_location_path(project_id, 'global'),
         agent=agent,
     )
 
