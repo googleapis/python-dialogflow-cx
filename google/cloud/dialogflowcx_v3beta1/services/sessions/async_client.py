@@ -18,6 +18,7 @@ import functools
 import re
 from typing import (
     Dict,
+    Mapping,
     Optional,
     AsyncIterable,
     Awaitable,
@@ -248,7 +249,6 @@ class SessionsAsyncClient:
         `Versions and
         environments <https://cloud.google.com/dialogflow/cx/docs/concept/version>`__.
 
-
         .. code-block:: python
 
             from google.cloud import dialogflowcx_v3beta1
@@ -300,7 +300,7 @@ class SessionsAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    core_exceptions.ServiceUnavailable,
+                    core_exceptions.GoogleAPICallError,
                 ),
                 deadline=220.0,
             ),
@@ -341,7 +341,6 @@ class SessionsAsyncClient:
         Note: Always use agent versions for production traffic. See
         `Versions and
         environments <https://cloud.google.com/dialogflow/cx/docs/concept/version>`__.
-
 
         .. code-block:: python
 
@@ -486,7 +485,6 @@ class SessionsAsyncClient:
         r"""Returns preliminary intent match results, doesn't
         change the session status.
 
-
         .. code-block:: python
 
             from google.cloud import dialogflowcx_v3beta1
@@ -567,7 +565,6 @@ class SessionsAsyncClient:
         with input from
         [MatchIntentResponse][google.cloud.dialogflow.cx.v3beta1.MatchIntentResponse].
         Otherwise, the behavior is undefined.
-
 
         .. code-block:: python
 
