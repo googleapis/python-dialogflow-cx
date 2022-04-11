@@ -16,7 +16,7 @@
 from collections import OrderedDict
 import os
 import re
-from typing import Dict, Optional, Sequence, Tuple, Type, Union
+from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union
 import pkg_resources
 
 from google.api_core import client_options as client_options_lib
@@ -667,7 +667,7 @@ class TestCasesClient(metaclass=TestCasesClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import dialogflowcx_v3beta1
+                    from google.cloud import dialogflowcx_v3beta1
 
             def sample_list_test_cases():
                 # Create a client
@@ -775,7 +775,7 @@ class TestCasesClient(metaclass=TestCasesClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import dialogflowcx_v3beta1
+                    from google.cloud import dialogflowcx_v3beta1
 
             def sample_batch_delete_test_cases():
                 # Create a client
@@ -859,7 +859,7 @@ class TestCasesClient(metaclass=TestCasesClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import dialogflowcx_v3beta1
+                    from google.cloud import dialogflowcx_v3beta1
 
             def sample_get_test_case():
                 # Create a client
@@ -953,7 +953,7 @@ class TestCasesClient(metaclass=TestCasesClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import dialogflowcx_v3beta1
+                    from google.cloud import dialogflowcx_v3beta1
 
             def sample_create_test_case():
                 # Create a client
@@ -1058,7 +1058,7 @@ class TestCasesClient(metaclass=TestCasesClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import dialogflowcx_v3beta1
+                    from google.cloud import dialogflowcx_v3beta1
 
             def sample_update_test_case():
                 # Create a client
@@ -1177,7 +1177,7 @@ class TestCasesClient(metaclass=TestCasesClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import dialogflowcx_v3beta1
+                    from google.cloud import dialogflowcx_v3beta1
 
             def sample_run_test_case():
                 # Create a client
@@ -1278,7 +1278,7 @@ class TestCasesClient(metaclass=TestCasesClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import dialogflowcx_v3beta1
+                    from google.cloud import dialogflowcx_v3beta1
 
             def sample_batch_run_test_cases():
                 # Create a client
@@ -1369,7 +1369,7 @@ class TestCasesClient(metaclass=TestCasesClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import dialogflowcx_v3beta1
+                    from google.cloud import dialogflowcx_v3beta1
 
             def sample_calculate_coverage():
                 # Create a client
@@ -1458,7 +1458,7 @@ class TestCasesClient(metaclass=TestCasesClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import dialogflowcx_v3beta1
+                    from google.cloud import dialogflowcx_v3beta1
 
             def sample_import_test_cases():
                 # Create a client
@@ -1562,7 +1562,7 @@ class TestCasesClient(metaclass=TestCasesClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import dialogflowcx_v3beta1
+                    from google.cloud import dialogflowcx_v3beta1
 
             def sample_export_test_cases():
                 # Create a client
@@ -1654,7 +1654,7 @@ class TestCasesClient(metaclass=TestCasesClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import dialogflowcx_v3beta1
+                    from google.cloud import dialogflowcx_v3beta1
 
             def sample_list_test_case_results():
                 # Create a client
@@ -1764,7 +1764,7 @@ class TestCasesClient(metaclass=TestCasesClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import dialogflowcx_v3beta1
+                    from google.cloud import dialogflowcx_v3beta1
 
             def sample_get_test_case_result():
                 # Create a client

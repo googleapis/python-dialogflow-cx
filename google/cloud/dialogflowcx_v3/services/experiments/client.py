@@ -16,7 +16,7 @@
 from collections import OrderedDict
 import os
 import re
-from typing import Dict, Optional, Sequence, Tuple, Type, Union
+from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union
 import pkg_resources
 
 from google.api_core import client_options as client_options_lib
@@ -475,7 +475,7 @@ class ExperimentsClient(metaclass=ExperimentsClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import dialogflowcx_v3
+                    from google.cloud import dialogflowcx_v3
 
             def sample_list_experiments():
                 # Create a client
@@ -587,7 +587,7 @@ class ExperimentsClient(metaclass=ExperimentsClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import dialogflowcx_v3
+                    from google.cloud import dialogflowcx_v3
 
             def sample_get_experiment():
                 # Create a client
@@ -689,7 +689,7 @@ class ExperimentsClient(metaclass=ExperimentsClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import dialogflowcx_v3
+                    from google.cloud import dialogflowcx_v3
 
             def sample_create_experiment():
                 # Create a client
@@ -802,7 +802,7 @@ class ExperimentsClient(metaclass=ExperimentsClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import dialogflowcx_v3
+                    from google.cloud import dialogflowcx_v3
 
             def sample_update_experiment():
                 # Create a client
@@ -911,7 +911,7 @@ class ExperimentsClient(metaclass=ExperimentsClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import dialogflowcx_v3
+                    from google.cloud import dialogflowcx_v3
 
             def sample_delete_experiment():
                 # Create a client
@@ -999,7 +999,7 @@ class ExperimentsClient(metaclass=ExperimentsClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import dialogflowcx_v3
+                    from google.cloud import dialogflowcx_v3
 
             def sample_start_experiment():
                 # Create a client
@@ -1098,7 +1098,7 @@ class ExperimentsClient(metaclass=ExperimentsClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import dialogflowcx_v3
+                    from google.cloud import dialogflowcx_v3
 
             def sample_stop_experiment():
                 # Create a client

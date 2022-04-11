@@ -16,7 +16,7 @@
 from collections import OrderedDict
 import os
 import re
-from typing import Dict, Optional, Sequence, Tuple, Type, Union
+from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union
 import pkg_resources
 
 from google.api_core import client_options as client_options_lib
@@ -580,7 +580,7 @@ class FlowsClient(metaclass=FlowsClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import dialogflowcx_v3beta1
+                    from google.cloud import dialogflowcx_v3beta1
 
             def sample_create_flow():
                 # Create a client
@@ -707,7 +707,7 @@ class FlowsClient(metaclass=FlowsClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import dialogflowcx_v3beta1
+                    from google.cloud import dialogflowcx_v3beta1
 
             def sample_delete_flow():
                 # Create a client
@@ -790,7 +790,7 @@ class FlowsClient(metaclass=FlowsClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import dialogflowcx_v3beta1
+                    from google.cloud import dialogflowcx_v3beta1
 
             def sample_list_flows():
                 # Create a client
@@ -898,7 +898,7 @@ class FlowsClient(metaclass=FlowsClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import dialogflowcx_v3beta1
+                    from google.cloud import dialogflowcx_v3beta1
 
             def sample_get_flow():
                 # Create a client
@@ -1020,7 +1020,7 @@ class FlowsClient(metaclass=FlowsClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import dialogflowcx_v3beta1
+                    from google.cloud import dialogflowcx_v3beta1
 
             def sample_update_flow():
                 # Create a client
@@ -1165,7 +1165,7 @@ class FlowsClient(metaclass=FlowsClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import dialogflowcx_v3beta1
+                    from google.cloud import dialogflowcx_v3beta1
 
             def sample_train_flow():
                 # Create a client
@@ -1288,7 +1288,7 @@ class FlowsClient(metaclass=FlowsClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import dialogflowcx_v3beta1
+                    from google.cloud import dialogflowcx_v3beta1
 
             def sample_validate_flow():
                 # Create a client
@@ -1365,7 +1365,7 @@ class FlowsClient(metaclass=FlowsClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import dialogflowcx_v3beta1
+                    from google.cloud import dialogflowcx_v3beta1
 
             def sample_get_flow_validation_result():
                 # Create a client
@@ -1477,7 +1477,7 @@ class FlowsClient(metaclass=FlowsClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import dialogflowcx_v3beta1
+                    from google.cloud import dialogflowcx_v3beta1
 
             def sample_import_flow():
                 # Create a client
@@ -1582,7 +1582,7 @@ class FlowsClient(metaclass=FlowsClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import dialogflowcx_v3beta1
+                    from google.cloud import dialogflowcx_v3beta1
 
             def sample_export_flow():
                 # Create a client

@@ -16,7 +16,7 @@
 from collections import OrderedDict
 import os
 import re
-from typing import Dict, Optional, Sequence, Tuple, Type, Union
+from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union
 import pkg_resources
 
 from google.api_core import client_options as client_options_lib
@@ -563,7 +563,7 @@ class AgentsClient(metaclass=AgentsClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import dialogflowcx_v3
+                    from google.cloud import dialogflowcx_v3
 
             def sample_list_agents():
                 # Create a client
@@ -671,7 +671,7 @@ class AgentsClient(metaclass=AgentsClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import dialogflowcx_v3
+                    from google.cloud import dialogflowcx_v3
 
             def sample_get_agent():
                 # Create a client
@@ -784,7 +784,7 @@ class AgentsClient(metaclass=AgentsClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import dialogflowcx_v3
+                    from google.cloud import dialogflowcx_v3
 
             def sample_create_agent():
                 # Create a client
@@ -910,7 +910,7 @@ class AgentsClient(metaclass=AgentsClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import dialogflowcx_v3
+                    from google.cloud import dialogflowcx_v3
 
             def sample_update_agent():
                 # Create a client
@@ -1032,7 +1032,7 @@ class AgentsClient(metaclass=AgentsClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import dialogflowcx_v3
+                    from google.cloud import dialogflowcx_v3
 
             def sample_delete_agent():
                 # Create a client
@@ -1125,7 +1125,7 @@ class AgentsClient(metaclass=AgentsClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import dialogflowcx_v3
+                    from google.cloud import dialogflowcx_v3
 
             def sample_export_agent():
                 # Create a client
@@ -1234,7 +1234,7 @@ class AgentsClient(metaclass=AgentsClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import dialogflowcx_v3
+                    from google.cloud import dialogflowcx_v3
 
             def sample_restore_agent():
                 # Create a client
@@ -1338,7 +1338,7 @@ class AgentsClient(metaclass=AgentsClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import dialogflowcx_v3
+                    from google.cloud import dialogflowcx_v3
 
             def sample_validate_agent():
                 # Create a client
@@ -1415,7 +1415,7 @@ class AgentsClient(metaclass=AgentsClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import dialogflowcx_v3
+                    from google.cloud import dialogflowcx_v3
 
             def sample_get_agent_validation_result():
                 # Create a client

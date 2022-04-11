@@ -16,7 +16,7 @@
 from collections import OrderedDict
 import os
 import re
-from typing import Dict, Optional, Sequence, Tuple, Type, Union
+from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union
 import pkg_resources
 
 from google.api_core import client_options as client_options_lib
@@ -524,7 +524,7 @@ class DeploymentsClient(metaclass=DeploymentsClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import dialogflowcx_v3beta1
+                    from google.cloud import dialogflowcx_v3beta1
 
             def sample_list_deployments():
                 # Create a client
@@ -636,7 +636,7 @@ class DeploymentsClient(metaclass=DeploymentsClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import dialogflowcx_v3beta1
+                    from google.cloud import dialogflowcx_v3beta1
 
             def sample_get_deployment():
                 # Create a client
