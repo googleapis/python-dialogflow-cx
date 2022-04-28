@@ -12,7 +12,7 @@
 # limitations under the License.
 
 
-""" DialogFlow CX: webhook to to configure new session parameters."""
+""" DialogFlow CX: webhook to configure new session parameters."""
 
 # [START dialogflow_v3beta1_webhook_configure_session_parameters]
 
