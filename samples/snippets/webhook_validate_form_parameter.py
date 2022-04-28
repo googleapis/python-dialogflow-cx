@@ -20,7 +20,7 @@
 
 
 def validate_parameter(request):
-    """# Webhook to validate or invalidate parameter based on conditions configured by the user."""
+    """Webhook to validate or invalidate parameter based on conditions configured by the user."""
 
     request_dict = request.get_json()
     param_to_validate = request_dict["pageInfo"]["formInfo"]["parameterInfo"][0][
