@@ -485,7 +485,7 @@ class TestCasesGrpcTransport(TestCasesTransport):
         r"""Return a callable for the import test cases method over gRPC.
 
         Imports the test cases from a Cloud Storage bucket or a local
-        file. It always creates new test cases and won't overwite any
+        file. It always creates new test cases and won't overwrite any
         existing ones. The provided ID in the imported test case is
         neglected.
 
@@ -611,6 +611,10 @@ class TestCasesGrpcTransport(TestCasesTransport):
 
     def close(self):
         self.grpc_channel.close()
+
+    @property
+    def kind(self) -> str:
+        return "grpc"
 
 
 __all__ = ("TestCasesGrpcTransport",)

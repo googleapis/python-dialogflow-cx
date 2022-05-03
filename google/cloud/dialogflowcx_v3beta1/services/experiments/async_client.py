@@ -16,7 +16,7 @@
 from collections import OrderedDict
 import functools
 import re
-from typing import Dict, Optional, Sequence, Tuple, Type, Union
+from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union
 import pkg_resources
 
 from google.api_core.client_options import ClientOptions
@@ -218,14 +218,13 @@ class ExperimentsAsyncClient:
         r"""Returns the list of all experiments in the specified
         [Environment][google.cloud.dialogflow.cx.v3beta1.Environment].
 
-
         .. code-block:: python
 
             from google.cloud import dialogflowcx_v3beta1
 
-            def sample_list_experiments():
+            async def sample_list_experiments():
                 # Create a client
-                client = dialogflowcx_v3beta1.ExperimentsClient()
+                client = dialogflowcx_v3beta1.ExperimentsAsyncClient()
 
                 # Initialize request argument(s)
                 request = dialogflowcx_v3beta1.ListExperimentsRequest(
@@ -236,7 +235,7 @@ class ExperimentsAsyncClient:
                 page_result = client.list_experiments(request=request)
 
                 # Handle the response
-                for response in page_result:
+                async for response in page_result:
                     print(response)
 
         Args:
@@ -330,14 +329,13 @@ class ExperimentsAsyncClient:
         r"""Retrieves the specified
         [Experiment][google.cloud.dialogflow.cx.v3beta1.Experiment].
 
-
         .. code-block:: python
 
             from google.cloud import dialogflowcx_v3beta1
 
-            def sample_get_experiment():
+            async def sample_get_experiment():
                 # Create a client
-                client = dialogflowcx_v3beta1.ExperimentsClient()
+                client = dialogflowcx_v3beta1.ExperimentsAsyncClient()
 
                 # Initialize request argument(s)
                 request = dialogflowcx_v3beta1.GetExperimentRequest(
@@ -345,7 +343,7 @@ class ExperimentsAsyncClient:
                 )
 
                 # Make the request
-                response = client.get_experiment(request=request)
+                response = await client.get_experiment(request=request)
 
                 # Handle the response
                 print(response)
@@ -432,14 +430,13 @@ class ExperimentsAsyncClient:
         the specified
         [Environment][google.cloud.dialogflow.cx.v3beta1.Environment].
 
-
         .. code-block:: python
 
             from google.cloud import dialogflowcx_v3beta1
 
-            def sample_create_experiment():
+            async def sample_create_experiment():
                 # Create a client
-                client = dialogflowcx_v3beta1.ExperimentsClient()
+                client = dialogflowcx_v3beta1.ExperimentsAsyncClient()
 
                 # Initialize request argument(s)
                 experiment = dialogflowcx_v3beta1.Experiment()
@@ -451,7 +448,7 @@ class ExperimentsAsyncClient:
                 )
 
                 # Make the request
-                response = client.create_experiment(request=request)
+                response = await client.create_experiment(request=request)
 
                 # Handle the response
                 print(response)
@@ -545,14 +542,13 @@ class ExperimentsAsyncClient:
         r"""Updates the specified
         [Experiment][google.cloud.dialogflow.cx.v3beta1.Experiment].
 
-
         .. code-block:: python
 
             from google.cloud import dialogflowcx_v3beta1
 
-            def sample_update_experiment():
+            async def sample_update_experiment():
                 # Create a client
-                client = dialogflowcx_v3beta1.ExperimentsClient()
+                client = dialogflowcx_v3beta1.ExperimentsAsyncClient()
 
                 # Initialize request argument(s)
                 experiment = dialogflowcx_v3beta1.Experiment()
@@ -563,7 +559,7 @@ class ExperimentsAsyncClient:
                 )
 
                 # Make the request
-                response = client.update_experiment(request=request)
+                response = await client.update_experiment(request=request)
 
                 # Handle the response
                 print(response)
@@ -654,14 +650,13 @@ class ExperimentsAsyncClient:
         r"""Deletes the specified
         [Experiment][google.cloud.dialogflow.cx.v3beta1.Experiment].
 
-
         .. code-block:: python
 
             from google.cloud import dialogflowcx_v3beta1
 
-            def sample_delete_experiment():
+            async def sample_delete_experiment():
                 # Create a client
-                client = dialogflowcx_v3beta1.ExperimentsClient()
+                client = dialogflowcx_v3beta1.ExperimentsAsyncClient()
 
                 # Initialize request argument(s)
                 request = dialogflowcx_v3beta1.DeleteExperimentRequest(
@@ -669,7 +664,7 @@ class ExperimentsAsyncClient:
                 )
 
                 # Make the request
-                client.delete_experiment(request=request)
+                await client.delete_experiment(request=request)
 
         Args:
             request (Union[google.cloud.dialogflowcx_v3beta1.types.DeleteExperimentRequest, dict]):
@@ -743,14 +738,13 @@ class ExperimentsAsyncClient:
         This rpc only changes the state of experiment from PENDING to
         RUNNING.
 
-
         .. code-block:: python
 
             from google.cloud import dialogflowcx_v3beta1
 
-            def sample_start_experiment():
+            async def sample_start_experiment():
                 # Create a client
-                client = dialogflowcx_v3beta1.ExperimentsClient()
+                client = dialogflowcx_v3beta1.ExperimentsAsyncClient()
 
                 # Initialize request argument(s)
                 request = dialogflowcx_v3beta1.StartExperimentRequest(
@@ -758,7 +752,7 @@ class ExperimentsAsyncClient:
                 )
 
                 # Make the request
-                response = client.start_experiment(request=request)
+                response = await client.start_experiment(request=request)
 
                 # Handle the response
                 print(response)
@@ -843,14 +837,13 @@ class ExperimentsAsyncClient:
         This rpc only changes the state of experiment from RUNNING to
         DONE.
 
-
         .. code-block:: python
 
             from google.cloud import dialogflowcx_v3beta1
 
-            def sample_stop_experiment():
+            async def sample_stop_experiment():
                 # Create a client
-                client = dialogflowcx_v3beta1.ExperimentsClient()
+                client = dialogflowcx_v3beta1.ExperimentsAsyncClient()
 
                 # Initialize request argument(s)
                 request = dialogflowcx_v3beta1.StopExperimentRequest(
@@ -858,7 +851,7 @@ class ExperimentsAsyncClient:
                 )
 
                 # Make the request
-                response = client.stop_experiment(request=request)
+                response = await client.stop_experiment(request=request)
 
                 # Handle the response
                 print(response)

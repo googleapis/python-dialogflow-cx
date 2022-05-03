@@ -16,7 +16,7 @@
 from collections import OrderedDict
 import functools
 import re
-from typing import Dict, Optional, Sequence, Tuple, Type, Union
+from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union
 import pkg_resources
 
 from google.api_core.client_options import ClientOptions
@@ -232,14 +232,13 @@ class AgentsAsyncClient:
         r"""Returns the list of all agents in the specified
         location.
 
-
         .. code-block:: python
 
             from google.cloud import dialogflowcx_v3beta1
 
-            def sample_list_agents():
+            async def sample_list_agents():
                 # Create a client
-                client = dialogflowcx_v3beta1.AgentsClient()
+                client = dialogflowcx_v3beta1.AgentsAsyncClient()
 
                 # Initialize request argument(s)
                 request = dialogflowcx_v3beta1.ListAgentsRequest(
@@ -250,7 +249,7 @@ class AgentsAsyncClient:
                 page_result = client.list_agents(request=request)
 
                 # Handle the response
-                for response in page_result:
+                async for response in page_result:
                     print(response)
 
         Args:
@@ -345,9 +344,9 @@ class AgentsAsyncClient:
 
             from google.cloud import dialogflowcx_v3beta1
 
-            def sample_get_agent():
+            async def sample_get_agent():
                 # Create a client
-                client = dialogflowcx_v3beta1.AgentsClient()
+                client = dialogflowcx_v3beta1.AgentsAsyncClient()
 
                 # Initialize request argument(s)
                 request = dialogflowcx_v3beta1.GetAgentRequest(
@@ -355,7 +354,7 @@ class AgentsAsyncClient:
                 )
 
                 # Make the request
-                response = client.get_agent(request=request)
+                response = await client.get_agent(request=request)
 
                 # Handle the response
                 print(response)
@@ -453,14 +452,13 @@ class AgentsAsyncClient:
         queries. See the `training
         documentation <https://cloud.google.com/dialogflow/cx/docs/concept/training>`__.
 
-
         .. code-block:: python
 
             from google.cloud import dialogflowcx_v3beta1
 
-            def sample_create_agent():
+            async def sample_create_agent():
                 # Create a client
-                client = dialogflowcx_v3beta1.AgentsClient()
+                client = dialogflowcx_v3beta1.AgentsAsyncClient()
 
                 # Initialize request argument(s)
                 agent = dialogflowcx_v3beta1.Agent()
@@ -474,7 +472,7 @@ class AgentsAsyncClient:
                 )
 
                 # Make the request
-                response = client.create_agent(request=request)
+                response = await client.create_agent(request=request)
 
                 # Handle the response
                 print(response)
@@ -579,14 +577,13 @@ class AgentsAsyncClient:
         queries. See the `training
         documentation <https://cloud.google.com/dialogflow/cx/docs/concept/training>`__.
 
-
         .. code-block:: python
 
             from google.cloud import dialogflowcx_v3beta1
 
-            def sample_update_agent():
+            async def sample_update_agent():
                 # Create a client
-                client = dialogflowcx_v3beta1.AgentsClient()
+                client = dialogflowcx_v3beta1.AgentsAsyncClient()
 
                 # Initialize request argument(s)
                 agent = dialogflowcx_v3beta1.Agent()
@@ -599,7 +596,7 @@ class AgentsAsyncClient:
                 )
 
                 # Make the request
-                response = client.update_agent(request=request)
+                response = await client.update_agent(request=request)
 
                 # Handle the response
                 print(response)
@@ -706,9 +703,9 @@ class AgentsAsyncClient:
 
             from google.cloud import dialogflowcx_v3beta1
 
-            def sample_delete_agent():
+            async def sample_delete_agent():
                 # Create a client
-                client = dialogflowcx_v3beta1.AgentsClient()
+                client = dialogflowcx_v3beta1.AgentsAsyncClient()
 
                 # Initialize request argument(s)
                 request = dialogflowcx_v3beta1.DeleteAgentRequest(
@@ -716,7 +713,7 @@ class AgentsAsyncClient:
                 )
 
                 # Make the request
-                client.delete_agent(request=request)
+                await client.delete_agent(request=request)
 
         Args:
             request (Union[google.cloud.dialogflowcx_v3beta1.types.DeleteAgentRequest, dict]):
@@ -794,14 +791,13 @@ class AgentsAsyncClient:
         -  ``response``:
            [ExportAgentResponse][google.cloud.dialogflow.cx.v3beta1.ExportAgentResponse]
 
-
         .. code-block:: python
 
             from google.cloud import dialogflowcx_v3beta1
 
-            def sample_export_agent():
+            async def sample_export_agent():
                 # Create a client
-                client = dialogflowcx_v3beta1.AgentsClient()
+                client = dialogflowcx_v3beta1.AgentsAsyncClient()
 
                 # Initialize request argument(s)
                 request = dialogflowcx_v3beta1.ExportAgentRequest(
@@ -813,7 +809,7 @@ class AgentsAsyncClient:
 
                 print("Waiting for operation to complete...")
 
-                response = operation.result()
+                response = await operation.result()
 
                 # Handle the response
                 print(response)
@@ -902,14 +898,13 @@ class AgentsAsyncClient:
         queries. See the `training
         documentation <https://cloud.google.com/dialogflow/cx/docs/concept/training>`__.
 
-
         .. code-block:: python
 
             from google.cloud import dialogflowcx_v3beta1
 
-            def sample_restore_agent():
+            async def sample_restore_agent():
                 # Create a client
-                client = dialogflowcx_v3beta1.AgentsClient()
+                client = dialogflowcx_v3beta1.AgentsAsyncClient()
 
                 # Initialize request argument(s)
                 request = dialogflowcx_v3beta1.RestoreAgentRequest(
@@ -922,7 +917,7 @@ class AgentsAsyncClient:
 
                 print("Waiting for operation to complete...")
 
-                response = operation.result()
+                response = await operation.result()
 
                 # Handle the response
                 print(response)
@@ -1005,14 +1000,13 @@ class AgentsAsyncClient:
         validated. Please call this API after the training is
         completed to get the complete validation results.
 
-
         .. code-block:: python
 
             from google.cloud import dialogflowcx_v3beta1
 
-            def sample_validate_agent():
+            async def sample_validate_agent():
                 # Create a client
-                client = dialogflowcx_v3beta1.AgentsClient()
+                client = dialogflowcx_v3beta1.AgentsAsyncClient()
 
                 # Initialize request argument(s)
                 request = dialogflowcx_v3beta1.ValidateAgentRequest(
@@ -1020,7 +1014,7 @@ class AgentsAsyncClient:
                 )
 
                 # Make the request
-                response = client.validate_agent(request=request)
+                response = await client.validate_agent(request=request)
 
                 # Handle the response
                 print(response)
@@ -1081,14 +1075,13 @@ class AgentsAsyncClient:
         r"""Gets the latest agent validation result. Agent
         validation is performed when ValidateAgent is called.
 
-
         .. code-block:: python
 
             from google.cloud import dialogflowcx_v3beta1
 
-            def sample_get_agent_validation_result():
+            async def sample_get_agent_validation_result():
                 # Create a client
-                client = dialogflowcx_v3beta1.AgentsClient()
+                client = dialogflowcx_v3beta1.AgentsAsyncClient()
 
                 # Initialize request argument(s)
                 request = dialogflowcx_v3beta1.GetAgentValidationResultRequest(
@@ -1096,7 +1089,7 @@ class AgentsAsyncClient:
                 )
 
                 # Make the request
-                response = client.get_agent_validation_result(request=request)
+                response = await client.get_agent_validation_result(request=request)
 
                 # Handle the response
                 print(response)

@@ -16,7 +16,7 @@
 from collections import OrderedDict
 import functools
 import re
-from typing import Dict, Optional, Sequence, Tuple, Type, Union
+from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union
 import pkg_resources
 
 from google.api_core.client_options import ClientOptions
@@ -221,14 +221,13 @@ class DeploymentsAsyncClient:
         r"""Returns the list of all deployments in the specified
         [Environment][google.cloud.dialogflow.cx.v3beta1.Environment].
 
-
         .. code-block:: python
 
             from google.cloud import dialogflowcx_v3beta1
 
-            def sample_list_deployments():
+            async def sample_list_deployments():
                 # Create a client
-                client = dialogflowcx_v3beta1.DeploymentsClient()
+                client = dialogflowcx_v3beta1.DeploymentsAsyncClient()
 
                 # Initialize request argument(s)
                 request = dialogflowcx_v3beta1.ListDeploymentsRequest(
@@ -239,7 +238,7 @@ class DeploymentsAsyncClient:
                 page_result = client.list_deployments(request=request)
 
                 # Handle the response
-                for response in page_result:
+                async for response in page_result:
                     print(response)
 
         Args:
@@ -333,14 +332,13 @@ class DeploymentsAsyncClient:
         r"""Retrieves the specified
         [Deployment][google.cloud.dialogflow.cx.v3beta1.Deployment].
 
-
         .. code-block:: python
 
             from google.cloud import dialogflowcx_v3beta1
 
-            def sample_get_deployment():
+            async def sample_get_deployment():
                 # Create a client
-                client = dialogflowcx_v3beta1.DeploymentsClient()
+                client = dialogflowcx_v3beta1.DeploymentsAsyncClient()
 
                 # Initialize request argument(s)
                 request = dialogflowcx_v3beta1.GetDeploymentRequest(
@@ -348,7 +346,7 @@ class DeploymentsAsyncClient:
                 )
 
                 # Make the request
-                response = client.get_deployment(request=request)
+                response = await client.get_deployment(request=request)
 
                 # Handle the response
                 print(response)

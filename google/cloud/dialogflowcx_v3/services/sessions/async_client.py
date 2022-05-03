@@ -18,6 +18,7 @@ import functools
 import re
 from typing import (
     Dict,
+    Mapping,
     Optional,
     AsyncIterable,
     Awaitable,
@@ -248,14 +249,13 @@ class SessionsAsyncClient:
         `Versions and
         environments <https://cloud.google.com/dialogflow/cx/docs/concept/version>`__.
 
-
         .. code-block:: python
 
             from google.cloud import dialogflowcx_v3
 
-            def sample_detect_intent():
+            async def sample_detect_intent():
                 # Create a client
-                client = dialogflowcx_v3.SessionsClient()
+                client = dialogflowcx_v3.SessionsAsyncClient()
 
                 # Initialize request argument(s)
                 query_input = dialogflowcx_v3.QueryInput()
@@ -268,7 +268,7 @@ class SessionsAsyncClient:
                 )
 
                 # Make the request
-                response = client.detect_intent(request=request)
+                response = await client.detect_intent(request=request)
 
                 # Handle the response
                 print(response)
@@ -342,14 +342,13 @@ class SessionsAsyncClient:
         `Versions and
         environments <https://cloud.google.com/dialogflow/cx/docs/concept/version>`__.
 
-
         .. code-block:: python
 
             from google.cloud import dialogflowcx_v3
 
-            def sample_streaming_detect_intent():
+            async def sample_streaming_detect_intent():
                 # Create a client
-                client = dialogflowcx_v3.SessionsClient()
+                client = dialogflowcx_v3.SessionsAsyncClient()
 
                 # Initialize request argument(s)
                 query_input = dialogflowcx_v3.QueryInput()
@@ -371,10 +370,10 @@ class SessionsAsyncClient:
                         yield request
 
                 # Make the request
-                stream = client.streaming_detect_intent(requests=request_generator())
+                stream = await client.streaming_detect_intent(requests=request_generator())
 
                 # Handle the response
-                for response in stream:
+                async for response in stream:
                     print(response)
 
         Args:
@@ -486,14 +485,13 @@ class SessionsAsyncClient:
         r"""Returns preliminary intent match results, doesn't
         change the session status.
 
-
         .. code-block:: python
 
             from google.cloud import dialogflowcx_v3
 
-            def sample_match_intent():
+            async def sample_match_intent():
                 # Create a client
-                client = dialogflowcx_v3.SessionsClient()
+                client = dialogflowcx_v3.SessionsAsyncClient()
 
                 # Initialize request argument(s)
                 query_input = dialogflowcx_v3.QueryInput()
@@ -506,7 +504,7 @@ class SessionsAsyncClient:
                 )
 
                 # Make the request
-                response = client.match_intent(request=request)
+                response = await client.match_intent(request=request)
 
                 # Handle the response
                 print(response)
@@ -568,21 +566,20 @@ class SessionsAsyncClient:
         [MatchIntentResponse][google.cloud.dialogflow.cx.v3.MatchIntentResponse].
         Otherwise, the behavior is undefined.
 
-
         .. code-block:: python
 
             from google.cloud import dialogflowcx_v3
 
-            def sample_fulfill_intent():
+            async def sample_fulfill_intent():
                 # Create a client
-                client = dialogflowcx_v3.SessionsClient()
+                client = dialogflowcx_v3.SessionsAsyncClient()
 
                 # Initialize request argument(s)
                 request = dialogflowcx_v3.FulfillIntentRequest(
                 )
 
                 # Make the request
-                response = client.fulfill_intent(request=request)
+                response = await client.fulfill_intent(request=request)
 
                 # Handle the response
                 print(response)

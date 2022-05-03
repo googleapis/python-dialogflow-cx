@@ -16,7 +16,7 @@
 from collections import OrderedDict
 import functools
 import re
-from typing import Dict, Optional, Sequence, Tuple, Type, Union
+from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union
 import pkg_resources
 
 from google.api_core.client_options import ClientOptions
@@ -232,14 +232,13 @@ class EnvironmentsAsyncClient:
         r"""Returns the list of all environments in the specified
         [Agent][google.cloud.dialogflow.cx.v3.Agent].
 
-
         .. code-block:: python
 
             from google.cloud import dialogflowcx_v3
 
-            def sample_list_environments():
+            async def sample_list_environments():
                 # Create a client
-                client = dialogflowcx_v3.EnvironmentsClient()
+                client = dialogflowcx_v3.EnvironmentsAsyncClient()
 
                 # Initialize request argument(s)
                 request = dialogflowcx_v3.ListEnvironmentsRequest(
@@ -250,7 +249,7 @@ class EnvironmentsAsyncClient:
                 page_result = client.list_environments(request=request)
 
                 # Handle the response
-                for response in page_result:
+                async for response in page_result:
                     print(response)
 
         Args:
@@ -344,14 +343,13 @@ class EnvironmentsAsyncClient:
         r"""Retrieves the specified
         [Environment][google.cloud.dialogflow.cx.v3.Environment].
 
-
         .. code-block:: python
 
             from google.cloud import dialogflowcx_v3
 
-            def sample_get_environment():
+            async def sample_get_environment():
                 # Create a client
-                client = dialogflowcx_v3.EnvironmentsClient()
+                client = dialogflowcx_v3.EnvironmentsAsyncClient()
 
                 # Initialize request argument(s)
                 request = dialogflowcx_v3.GetEnvironmentRequest(
@@ -359,7 +357,7 @@ class EnvironmentsAsyncClient:
                 )
 
                 # Make the request
-                response = client.get_environment(request=request)
+                response = await client.get_environment(request=request)
 
                 # Handle the response
                 print(response)
@@ -468,14 +466,13 @@ class EnvironmentsAsyncClient:
         -  ``response``:
            [Environment][google.cloud.dialogflow.cx.v3.Environment]
 
-
         .. code-block:: python
 
             from google.cloud import dialogflowcx_v3
 
-            def sample_create_environment():
+            async def sample_create_environment():
                 # Create a client
-                client = dialogflowcx_v3.EnvironmentsClient()
+                client = dialogflowcx_v3.EnvironmentsAsyncClient()
 
                 # Initialize request argument(s)
                 environment = dialogflowcx_v3.Environment()
@@ -492,7 +489,7 @@ class EnvironmentsAsyncClient:
 
                 print("Waiting for operation to complete...")
 
-                response = operation.result()
+                response = await operation.result()
 
                 # Handle the response
                 print(response)
@@ -615,14 +612,13 @@ class EnvironmentsAsyncClient:
         -  ``response``:
            [Environment][google.cloud.dialogflow.cx.v3.Environment]
 
-
         .. code-block:: python
 
             from google.cloud import dialogflowcx_v3
 
-            def sample_update_environment():
+            async def sample_update_environment():
                 # Create a client
-                client = dialogflowcx_v3.EnvironmentsClient()
+                client = dialogflowcx_v3.EnvironmentsAsyncClient()
 
                 # Initialize request argument(s)
                 environment = dialogflowcx_v3.Environment()
@@ -638,7 +634,7 @@ class EnvironmentsAsyncClient:
 
                 print("Waiting for operation to complete...")
 
-                response = operation.result()
+                response = await operation.result()
 
                 # Handle the response
                 print(response)
@@ -748,14 +744,13 @@ class EnvironmentsAsyncClient:
         r"""Deletes the specified
         [Environment][google.cloud.dialogflow.cx.v3.Environment].
 
-
         .. code-block:: python
 
             from google.cloud import dialogflowcx_v3
 
-            def sample_delete_environment():
+            async def sample_delete_environment():
                 # Create a client
-                client = dialogflowcx_v3.EnvironmentsClient()
+                client = dialogflowcx_v3.EnvironmentsAsyncClient()
 
                 # Initialize request argument(s)
                 request = dialogflowcx_v3.DeleteEnvironmentRequest(
@@ -763,7 +758,7 @@ class EnvironmentsAsyncClient:
                 )
 
                 # Make the request
-                client.delete_environment(request=request)
+                await client.delete_environment(request=request)
 
         Args:
             request (Union[google.cloud.dialogflowcx_v3.types.DeleteEnvironmentRequest, dict]):
@@ -835,14 +830,13 @@ class EnvironmentsAsyncClient:
         r"""Looks up the history of the specified
         [Environment][google.cloud.dialogflow.cx.v3.Environment].
 
-
         .. code-block:: python
 
             from google.cloud import dialogflowcx_v3
 
-            def sample_lookup_environment_history():
+            async def sample_lookup_environment_history():
                 # Create a client
-                client = dialogflowcx_v3.EnvironmentsClient()
+                client = dialogflowcx_v3.EnvironmentsAsyncClient()
 
                 # Initialize request argument(s)
                 request = dialogflowcx_v3.LookupEnvironmentHistoryRequest(
@@ -853,7 +847,7 @@ class EnvironmentsAsyncClient:
                 page_result = client.lookup_environment_history(request=request)
 
                 # Handle the response
-                for response in page_result:
+                async for response in page_result:
                     print(response)
 
         Args:
@@ -955,14 +949,13 @@ class EnvironmentsAsyncClient:
         -  ``response``:
            [RunContinuousTestResponse][google.cloud.dialogflow.cx.v3.RunContinuousTestResponse]
 
-
         .. code-block:: python
 
             from google.cloud import dialogflowcx_v3
 
-            def sample_run_continuous_test():
+            async def sample_run_continuous_test():
                 # Create a client
-                client = dialogflowcx_v3.EnvironmentsClient()
+                client = dialogflowcx_v3.EnvironmentsAsyncClient()
 
                 # Initialize request argument(s)
                 request = dialogflowcx_v3.RunContinuousTestRequest(
@@ -974,7 +967,7 @@ class EnvironmentsAsyncClient:
 
                 print("Waiting for operation to complete...")
 
-                response = operation.result()
+                response = await operation.result()
 
                 # Handle the response
                 print(response)
@@ -1049,14 +1042,13 @@ class EnvironmentsAsyncClient:
         r"""Fetches a list of continuous test results for a given
         environment.
 
-
         .. code-block:: python
 
             from google.cloud import dialogflowcx_v3
 
-            def sample_list_continuous_test_results():
+            async def sample_list_continuous_test_results():
                 # Create a client
-                client = dialogflowcx_v3.EnvironmentsClient()
+                client = dialogflowcx_v3.EnvironmentsAsyncClient()
 
                 # Initialize request argument(s)
                 request = dialogflowcx_v3.ListContinuousTestResultsRequest(
@@ -1067,7 +1059,7 @@ class EnvironmentsAsyncClient:
                 page_result = client.list_continuous_test_results(request=request)
 
                 # Handle the response
-                for response in page_result:
+                async for response in page_result:
                     print(response)
 
         Args:
@@ -1168,14 +1160,13 @@ class EnvironmentsAsyncClient:
         -  ``response``:
            [DeployFlowResponse][google.cloud.dialogflow.cx.v3.DeployFlowResponse]
 
-
         .. code-block:: python
 
             from google.cloud import dialogflowcx_v3
 
-            def sample_deploy_flow():
+            async def sample_deploy_flow():
                 # Create a client
-                client = dialogflowcx_v3.EnvironmentsClient()
+                client = dialogflowcx_v3.EnvironmentsAsyncClient()
 
                 # Initialize request argument(s)
                 request = dialogflowcx_v3.DeployFlowRequest(
@@ -1188,7 +1179,7 @@ class EnvironmentsAsyncClient:
 
                 print("Waiting for operation to complete...")
 
-                response = operation.result()
+                response = await operation.result()
 
                 # Handle the response
                 print(response)
