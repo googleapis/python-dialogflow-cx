@@ -18,26 +18,26 @@
 # [START dialogflow_cx_v3_webhook_validate_form_parameter]
 
 def validate_parameter(request):
-  """Webhook will validate or invalidate parameter based on logic configured by the user."""
-  return {
-    "page_info": {
-      "form_info": {
-        "parameter_info": [
-          {
-            "displayName": 'orderNumber',
-            "required": True,
-            "state": 'INVALID',
-            "value": 123,
-          },
-        ],
-      },
-    },
-    "sessionInfo": {
-      "parameters": {
-        # Set session parameter to None if the form parameter is 'INVALID' and your agent needs to reprompt the user
-        "orderNumber": None,
-      },
-    },
-  }
+    """Webhook will validate or invalidate parameter based on logic configured by the user."""
+    return {
+        "page_info": {
+            "form_info": {
+                "parameter_info": [
+                    {
+                        "displayName": 'orderNumber',
+                        "required": True,
+                        "state": 'INVALID',
+                        "value": 123,
+                    },
+                ],
+            },
+        },
+        "sessionInfo": {
+            "parameters": {
+                # Set session parameter to None if the form parameter is 'INVALID' and your agent needs to reprompt the user
+                "orderNumber": None,
+            },
+        },
+    }
 
 # [END dialogflow_cx_v3_webhook_validate_form_parameter]
