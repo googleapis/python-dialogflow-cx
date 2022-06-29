@@ -14,7 +14,8 @@
 
 """ DialogFlow CX: webhook to validate or invalidate form parameters snippet."""
 
-# [START dialogflow_v3beta1_webhook_validate_form_parameter]
+
+# [START dialogflow_cx_v3_webhook_validate_form_parameter]
 
 # TODO (developer): change entry point to validate_parameter in Cloud Function
 
@@ -68,4 +69,4 @@ def validate_parameter(request):
     return json_response
 
 
-# [END dialogflow_v3beta1_webhook_validate_form_parameter]
+# [END dialogflow_cx_v3_webhook_validate_form_parameter]
