@@ -12,38 +12,36 @@
 # limitations under the License.
 
 
-
 # [START dialogflow_cx_streaming_detect_intent_enable_partial_response]
 import uuid
-from google.cloud.dialogflowcx_v3beta1.services import sessions
 
-from google.cloud.dialogflowcx_v3beta1.services.sessions import SessionsClient
-from google.cloud.dialogflowcx_v3beta1.types import session
+from google.cloud.dialogflowcx_v3.services.sessions import SessionsClient
 from google.cloud.dialogflowcx_v3.types import audio_config
-from google.cloud.dialogflowcx_v3beta1.types import InputAudioConfig
+from google.cloud.dialogflowcx_v3.types import InputAudioConfig
+from google.cloud.dialogflowcx_v3.types import session
 
-def run_sample(): 
-  """
-  TODO(developer): Uncomment these variables before running the sample.
-  """
-  project_id = 'dialogflow-cx-demo-1-348717'
-  location = 'global'
-  agent_id = '8caa6b47-5dd7-4380-b86e-ea4301d565b0'
-  # audio_file_name = '/usr/local/google/home/nicholascain/python-dialogflow-cx/samples/snippets/resources/hello.wav'
-  audio_file_name = '/usr/local/google/home/nicholascain/nodejs-dialogflow-cx/samples/resources/book_a_room.wav'
-  encoding = 'AUDIO_ENCODING_LINEAR_16'
-  sample_rate_hertz = 16000
-  language_code = 'en'
 
-  streaming_detect_intent_partial_response(
-    project_id,
-    location,
-    agent_id,
-    audio_file_name,
-    encoding,
-    sample_rate_hertz,
-    language_code,
-  )
+def run_sample():
+    """
+    TODO(developer): Modify these variables before running the sample.
+    """
+    project_id = "YOUR-PROJECT-ID"
+    location = "YOUR-LOCATION-ID"
+    agent_id = "YOUR-AGENT-ID"
+    audio_file_name = "YOUR-AUDIO-FILE-PATH"
+    encoding = 'AUDIO_ENCODING_LINEAR_16'
+    sample_rate_hertz = 16000
+    language_code = 'en'
+
+    streaming_detect_intent_partial_response(
+        project_id,
+        location,
+        agent_id,
+        audio_file_name,
+        encoding,
+        sample_rate_hertz,
+        language_code,
+    )
 
 
 def streaming_detect_intent_partial_response(
@@ -57,8 +55,6 @@ def streaming_detect_intent_partial_response(
 ):
 
     client_options = None
-    # agent_components = AgentsClient.parse_agent_path(f'projects/{project_id}/locations/{location}/agents/{agent_id}')
-    # location = agent_components["location"]
     if location != "global":
         api_endpoint = f"{location}-dialogflow.googleapis.com:443"
         print(f"API Endpoint: {api_endpoint}\n")
@@ -76,10 +72,10 @@ def streaming_detect_intent_partial_response(
     def request_generator():
         audio_encoding = audio_config.AudioEncoding[encoding]
         config = InputAudioConfig(
-          audio_encoding=audio_encoding,
-          sample_rate_hertz=sample_rate_hertz,
-          single_utterance=True,
-          )
+            audio_encoding=audio_encoding,
+            sample_rate_hertz=sample_rate_hertz,
+            single_utterance=True,
+        )
         audio_input = session.AudioInput(config=config)
         query_input = session.QueryInput(audio=audio_input, language_code=language_code)
         yield session.StreamingDetectIntentRequest(
@@ -105,7 +101,7 @@ def streaming_detect_intent_partial_response(
                 )
 
     responses = session_client.streaming_detect_intent(
-      requests=request_generator()
+        requests=request_generator()
     )
 
     print("=" * 20)
@@ -119,10 +115,9 @@ def streaming_detect_intent_partial_response(
     response_messages = [
         " ".join(msg.text.text) for msg in response.query_result.response_messages
     ]
-    print(f"Response text: {' '.join(response_messages)}\n")  
+    print(f"Response text: {' '.join(response_messages)}\n")
 # [END dialogflow_cx_streaming_detect_intent_enable_partial_response]
 
 
 if __name__ == "__main__":
-
-  run_sample()
+    run_sample()

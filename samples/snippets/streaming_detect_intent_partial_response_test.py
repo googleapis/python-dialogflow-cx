@@ -16,10 +16,9 @@
 from __future__ import absolute_import
 
 import os
-import uuid
-
 
 from streaming_detect_intent_partial_response import streaming_detect_intent_partial_response
+
 
 DIRNAME = os.path.realpath(os.path.dirname(__file__))
 PROJECT_ID = os.getenv("GOOGLE_CLOUD_PROJECT")
@@ -31,7 +30,7 @@ AUDIO = f"{DIRNAME}/{AUDIO_PATH}"
 def test_streaming_detect_intent_partial_response(capsys):
 
     encoding = 'AUDIO_ENCODING_LINEAR_16'
-    sample_rate_hertz = 16000
+    sample_rate_hertz = 24000
 
     streaming_detect_intent_partial_response(
       PROJECT_ID,
@@ -46,4 +45,3 @@ def test_streaming_detect_intent_partial_response(capsys):
 
     assert "Intermediate transcript:" in out
     assert "Response text: Hi! I'm the virtual flights agent." in out
-
