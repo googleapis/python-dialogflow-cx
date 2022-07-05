@@ -2274,7 +2274,6 @@ def test_webhooks_transport_auth_adc(transport_class):
     [
         transports.WebhooksGrpcTransport,
         transports.WebhooksGrpcAsyncIOTransport,
-        transports.WebhooksRestTransport,
     ],
 )
 def test_webhooks_transport_auth_gdch_credentials(transport_class):

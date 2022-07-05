@@ -3195,7 +3195,6 @@ def test_flows_transport_auth_adc(transport_class):
     [
         transports.FlowsGrpcTransport,
         transports.FlowsGrpcAsyncIOTransport,
-        transports.FlowsRestTransport,
     ],
 )
 def test_flows_transport_auth_gdch_credentials(transport_class):

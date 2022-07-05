@@ -2256,7 +2256,6 @@ def test_pages_transport_auth_adc(transport_class):
     [
         transports.PagesGrpcTransport,
         transports.PagesGrpcAsyncIOTransport,
-        transports.PagesRestTransport,
     ],
 )
 def test_pages_transport_auth_gdch_credentials(transport_class):

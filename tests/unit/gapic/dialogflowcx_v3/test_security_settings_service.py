@@ -2550,7 +2550,6 @@ def test_security_settings_service_transport_auth_adc(transport_class):
     [
         transports.SecuritySettingsServiceGrpcTransport,
         transports.SecuritySettingsServiceGrpcAsyncIOTransport,
-        transports.SecuritySettingsServiceRestTransport,
     ],
 )
 def test_security_settings_service_transport_auth_gdch_credentials(transport_class):

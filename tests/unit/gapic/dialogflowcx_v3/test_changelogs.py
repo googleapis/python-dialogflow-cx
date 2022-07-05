@@ -1570,7 +1570,6 @@ def test_changelogs_transport_auth_adc(transport_class):
     [
         transports.ChangelogsGrpcTransport,
         transports.ChangelogsGrpcAsyncIOTransport,
-        transports.ChangelogsRestTransport,
     ],
 )
 def test_changelogs_transport_auth_gdch_credentials(transport_class):

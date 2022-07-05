@@ -2446,7 +2446,6 @@ def test_transition_route_groups_transport_auth_adc(transport_class):
     [
         transports.TransitionRouteGroupsGrpcTransport,
         transports.TransitionRouteGroupsGrpcAsyncIOTransport,
-        transports.TransitionRouteGroupsRestTransport,
     ],
 )
 def test_transition_route_groups_transport_auth_gdch_credentials(transport_class):

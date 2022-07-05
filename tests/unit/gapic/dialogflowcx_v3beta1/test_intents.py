@@ -2277,7 +2277,6 @@ def test_intents_transport_auth_adc(transport_class):
     [
         transports.IntentsGrpcTransport,
         transports.IntentsGrpcAsyncIOTransport,
-        transports.IntentsRestTransport,
     ],
 )
 def test_intents_transport_auth_gdch_credentials(transport_class):

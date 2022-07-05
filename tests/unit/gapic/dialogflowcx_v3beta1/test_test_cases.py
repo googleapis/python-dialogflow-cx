@@ -3797,7 +3797,6 @@ def test_test_cases_transport_auth_adc(transport_class):
     [
         transports.TestCasesGrpcTransport,
         transports.TestCasesGrpcAsyncIOTransport,
-        transports.TestCasesRestTransport,
     ],
 )
 def test_test_cases_transport_auth_gdch_credentials(transport_class):
