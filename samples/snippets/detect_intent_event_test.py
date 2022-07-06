@@ -29,7 +29,7 @@ def test_detect_intent_positive():
         PROJECT_ID,
         'global',
         AGENT_ID,
-        "sys.no-match-default",
+        'sys.no-match-default',
         'en-us',
     )
     assert response_text in [
