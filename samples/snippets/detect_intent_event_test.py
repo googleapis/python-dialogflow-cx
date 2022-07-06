@@ -17,7 +17,7 @@ from __future__ import absolute_import
 
 import os
 
-from detect_intent_disabled_webhook import detect_intent_disabled_webhook
+from detect_intent_event import detect_intent_with_event_input
 
 
 PROJECT_ID = os.getenv("GOOGLE_CLOUD_PROJECT")
@@ -25,18 +25,24 @@ AGENT_ID = os.getenv("AGENT_ID")
 
 
 def test_detect_intent_positive():
-    response_text_list = detect_intent_disabled_webhook(
+    response_text = detect_intent_with_event_input(
         PROJECT_ID,
         'global',
         AGENT_ID,
-        'Perfect!',
+        'sys.no-match-default',
         'en-us',
     )
-    for response_text in response_text_list:
-        assert response_text[0] in [
-          'You are welcome!',
-          'It\'s my pleasure.',
-          'Anytime.',
-          'Of course.',
-          'It\'s my pleasure to serve you.',
-        ]
+    assert response_text in [
+      'Can you say that again?',
+      'I didn\'t get that. Can you repeat?',
+      'I didn\'t get that. Can you say it again?',
+      'I missed that, say that again?',
+      'I missed what you said. What was that?',
+      'One more time?',
+      'Say that one more time?',
+      'Sorry, can you say that again?',
+      'Sorry, could you say that again?',
+      'Sorry, I didn\'t get that. Can you rephrase?',
+      'Sorry, what was that?',
+      'What was that?',
+    ]
