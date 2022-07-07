@@ -12,5 +12,6 @@
     "api_id": "dialogflow.googleapis.com",
     "default_version": "v3",
     "codeowner_team": "@googleapis/cdpe-cloudai",
-    "api_shortname": "dialogflow"
+    "api_shortname": "dialogflow",
+    "api_description": "provides a new way of designing agents, taking a state machine approach to agent design. This gives you clear and explicit control over a conversation, a better end-user experience, and a better development workflow."
 }
