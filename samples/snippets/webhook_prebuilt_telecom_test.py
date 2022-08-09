@@ -25,7 +25,7 @@ def fixture_app():
     return flask.Flask(__name__)
 
 
-def test_validate_parameter(app):
+def test_validate_phoneline(app):
     """Parameterized test for validate form parameter webhook snippet."""
 
     request = {"fulfillmentInfo": {"tag": "validatePhoneLine"},
@@ -36,5 +36,19 @@ def test_validate_parameter(app):
         print(res)
         assert (
             res["sessionInfo"]["parameters"]["phone_line_verified"]
+            == 'true'
+        )
+
+def test_validate_cruiseplan(app):
+    """Parameterized test for validate form parameter webhook snippet."""
+
+    request = {"fulfillmentInfo": {"tag": "cruisePlanCoverage"},
+               "pageInfo": {"formInfo": {"parameterInfo": [{"displayName": "destination", "value": 'mexico'}]}}}
+
+    with app.test_request_context(json=request):
+        res = cxPrebuiltAgentsTelecom(flask.request)
+        print(res)
+        assert (
+            res["sessionInfo"]["parameters"]["port_is_covered"]
             == 'true'
         )
