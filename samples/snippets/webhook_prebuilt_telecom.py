@@ -53,7 +53,7 @@ def cxPrebuiltAgentsTelecom(request):
         # December, December 1st, November
 
         # Only 999999 will have anomaly detection
-        if phone_number.toString() == '999999':
+        if str(phone_number) == '999999':
             anomaly_detect = "true"
             product_line = "phone"
             purchase = "device protection"
@@ -85,26 +85,26 @@ def cxPrebuiltAgentsTelecom(request):
     elif tag == 'validatePhoneLine':
         print(tag + ' was triggered.')
         phone = parameter_dict["phone_number"]
-        phone_line_verified = None
+        phone_line_verified = 'false'
         line_index = None
-        domestic_coverage = None
+        domestic_coverage = 'false'
         covered_lines = ['5555555555', '5105105100', '1231231234', '9999999999']
 
         # Loop over the covered lines array
         for index, line in enumerate(covered_lines):
             # For each phone line in the array, check if the last 4 digits are
             # included in the string. when true, update the line_index variable
-            if phone is line:
+            if phone == line:
                 line_index = index
-                print('This is the index ' + line_index)
+                print('This is the index ' + str(line_index))
 
-        # Only 9999 will fail
+        # Only 9999999999 will fail
         if line_index == 3:
             phone_line_verified = 'false'
         else:
             phone_line_verified = 'true'
 
-        # Only 1234 will have domestic coverage
+        # Only 1231231234 will have domestic coverage
         if line_index == 2:
             domestic_coverage = 'true'
         else:
@@ -169,11 +169,11 @@ def cxPrebuiltAgentsTelecom(request):
             'anguilla', 'australia', 'brazil', 'canada', 'chile', 'england',
             'france', 'india', 'japan', 'mexico', 'singapore'
         ]
-        if destination.lower() in covered_by_monthly & destination.lower() in covered_by_daily:
-            coverage = "both"
-        elif destination.lower() in covered_by_monthly & destination.lower() not in covered_by_daily:
-            coverage = "monthly_only"
-        elif destination.lower() not in covered_by_monthly & destination.lower() not in covered_by_daily:
+        if destination.lower() in covered_by_monthly and destination.lower() in covered_by_daily:
+            coverage = 'both'
+        elif destination.lower() in covered_by_monthly and destination.lower() not in covered_by_daily:
+            coverage = 'monthly_only'
+        elif destination.lower() not in covered_by_monthly and destination.lower() not in covered_by_daily:
             coverage = 'neither'
         else:
             # This should never happen, because covered_by_daily is a subset of
@@ -208,15 +208,15 @@ def cxPrebuiltAgentsTelecom(request):
         # When trip is <= 30 days, but greater than 6 days, calculate monthly
         # plan cost and daily plan cost. Suggest monthly b/c it is the cheaper
         # one.
-        elif trip_duration <= 30 & trip_duration > 6:
+        elif trip_duration <= 30 and trip_duration > 6:
             monthly_cost = 70
             daily_cost = trip_duration * 10
             suggested_plan = 'monthly'
 
         # When trip is <= 6 days, calculate daily plan cost. Suggest daily
         # plan.
-        elif trip_duration <= 6 & trip_duration > 0:
-            monthly_cost = (int(trip_duration / 30)) * 70
+        elif trip_duration <= 6 and trip_duration > 0:
+            monthly_cost = 70
             daily_cost = trip_duration * 10
             suggested_plan = 'daily'
 
@@ -237,6 +237,7 @@ def cxPrebuiltAgentsTelecom(request):
 
     # Default Case
     else:
+        res = None
         print(f'{"default case called"}')
 
     # Returns json
