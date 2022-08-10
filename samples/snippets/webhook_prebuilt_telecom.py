@@ -15,6 +15,7 @@
 # [START dialogflow_cx_v3_webhook_prebuilt_telecom]
 import copy
 
+
 def cxPrebuiltAgentsTelecom(request):
     print('Cloud Function:' + 'Invoked cloud function from Dialogflow')
     request_dict = request.get_json()
@@ -51,7 +52,7 @@ def cxPrebuiltAgentsTelecom(request):
         # For example, if the current month is December, we get the values as
         # December, December 1st, November
 
-        # Only 999999 will have anomaly detection 
+        # Only 999999 will have anomaly detection
         if phone_number.toString() == '999999':
             anomaly_detect = "true"
             product_line = "phone"
@@ -79,7 +80,7 @@ def cxPrebuiltAgentsTelecom(request):
                 "parameters": updated_parameters
             }
         }
-    
+
     # BEGIN validatePhoneLine
     elif tag == 'validatePhoneLine':
         print(tag + ' was triggered.')
@@ -102,7 +103,7 @@ def cxPrebuiltAgentsTelecom(request):
             phone_line_verified = 'false'
         else:
             phone_line_verified = 'true'
-        
+
         # Only 1234 will have domestic coverage
         if line_index == 2:
             domestic_coverage = 'true'
@@ -134,12 +135,12 @@ def cxPrebuiltAgentsTelecom(request):
             port_is_covered = 'true'
         else:
             port_is_covered = 'false'
-        
+
         res = {
-            "sessionInfo": { 
-                "parameters": { 
-                    "port_is_covered": port_is_covered 
-                    } 
+            "sessionInfo": {
+                "parameters": {
+                    "port_is_covered": port_is_covered,
+                    }
                 }
             }
 
@@ -178,12 +179,12 @@ def cxPrebuiltAgentsTelecom(request):
             # This should never happen, because covered_by_daily is a subset of
             # covered_by_monthly
             coverage = 'daily_only'
-        
+
         res = {
-            "sessionInfo": { 
-                "parameters": { 
-                    "coverage": coverage 
-                    } 
+            "sessionInfo": {
+                "parameters": {
+                    "coverage": coverage,
+                    }
                 }
             }
 
@@ -203,7 +204,7 @@ def cxPrebuiltAgentsTelecom(request):
             monthly_cost = (int(trip_duration / 30)) * 70
             daily_cost = trip_duration * 10
             suggested_plan = 'monthly'
-    
+
         # When trip is <= 30 days, but greater than 6 days, calculate monthly
         # plan cost and daily plan cost. Suggest monthly b/c it is the cheaper
         # one.
@@ -225,19 +226,19 @@ def cxPrebuiltAgentsTelecom(request):
             suggested_plan = 'null'
 
         res = {
-            "sessionInfo": { 
-                "parameters": { 
+            "sessionInfo": {
+                "parameters": {
                         "monthly_cost": monthly_cost,
                         "daily_cost": daily_cost,
-                        "suggested_plan": suggested_plan
-                    } 
+                        "suggested_plan": suggested_plan,
+                    }
                 }
             }
 
     # Default Case
     else:
-       print(f"default case called")
- 
+        print(f'{"default case called"}')
+
     # Returns json
     return res
 
@@ -248,5 +249,4 @@ def get_date_details(bill_month):
     first_of_month = "13"
     last_month_name = "Jun"
     return month_name, first_of_month, last_month_name
-
 # [END dialogflow_cx_v3_webhook_prebuilt_telecom]

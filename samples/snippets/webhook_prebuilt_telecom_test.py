@@ -35,9 +35,9 @@ def test_validate_phoneline(app):
         res = cxPrebuiltAgentsTelecom(flask.request)
         print(res)
         assert (
-            res["sessionInfo"]["parameters"]["phone_line_verified"]
-            == 'true'
+            res["sessionInfo"]["parameters"]["phone_line_verified"] == 'true'
         )
+
 
 def test_validate_cruiseplan(app):
     """Parameterized test for validate form parameter webhook snippet."""
@@ -49,6 +49,5 @@ def test_validate_cruiseplan(app):
         res = cxPrebuiltAgentsTelecom(flask.request)
         print(res)
         assert (
-            res["sessionInfo"]["parameters"]["port_is_covered"]
-            == 'true'
+            res["sessionInfo"]["parameters"]["port_is_covered"] == 'true'
         )
