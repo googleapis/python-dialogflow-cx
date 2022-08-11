@@ -1,4 +1,4 @@
-# Copyright 2021, Google LLC
+# Copyright 2022, Google LLC
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -11,13 +11,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-""" handle_webhook will return the correct fullfilment response dependong the tag that is sent in the request"""
+""" handle_webhook will return the correct fullfilment response depending on the tag that is sent in the request"""
 # [START dialogflow_cx_v3_webhook_prebuilt_telecom]
 import copy
+import logging
 
 
 def cxPrebuiltAgentsTelecom(request):
-    print('Cloud Function:' + 'Invoked cloud function from Dialogflow')
+    logging.info('Cloud Function:' + 'Invoked cloud function from Dialogflow')
     request_dict = request.get_json()
 
     # Get the parameters in current page
@@ -32,9 +33,9 @@ def cxPrebuiltAgentsTelecom(request):
 
     # BEGIN detectCustomerAnomaly
     if tag == 'detectCustomerAnomaly':
-        print(tag + ' was triggered.')
+        logging.info(tag + ' was triggered.')
         phone_number = parameter_dict["phone_number"]
-        bill_month = parameter_dict["bill_state"]
+        bill_state = parameter_dict["bill_state"]
         parameters = copy.deepcopy(parameter_dict)
         bill_amount = None
         product_line = None
@@ -45,8 +46,8 @@ def cxPrebuiltAgentsTelecom(request):
         bill_without_purchase = 54.34
         updated_parameters = {}
 
-        month_name, first_of_month, last_month_name = get_date_details(bill_month)
-        print(month_name, first_of_month, last_month_name)
+        month_name, first_of_month, last_month_name = get_date_details(bill_state)
+        logging.info(month_name, first_of_month, last_month_name)
 
         # Getting the month name based on the bill state - current or previous
         # For example, if the current month is December, we get the values as
@@ -83,7 +84,7 @@ def cxPrebuiltAgentsTelecom(request):
 
     # BEGIN validatePhoneLine
     elif tag == 'validatePhoneLine':
-        print(tag + ' was triggered.')
+        logging.info(tag + ' was triggered.')
         phone = parameter_dict["phone_number"]
         phone_line_verified = 'false'
         line_index = None
@@ -96,7 +97,7 @@ def cxPrebuiltAgentsTelecom(request):
             # included in the string. when true, update the line_index variable
             if phone == line:
                 line_index = index
-                print('This is the index ' + str(line_index))
+                logging.info('This is the index ' + str(line_index))
 
         # Only 9999999999 will fail
         if line_index == 3:
@@ -121,7 +122,7 @@ def cxPrebuiltAgentsTelecom(request):
 
     # BEGIN cruisePlanCoverage
     elif tag == 'cruisePlanCoverage':
-        print(tag + ' was triggered.')
+        logging.info(tag + ' was triggered.')
         port = parameter_dict["destination"]
         port_is_covered = None
         # Sample list of covered cruise ports.
@@ -146,7 +147,7 @@ def cxPrebuiltAgentsTelecom(request):
 
     # BEGIN internationalCoverage
     elif tag == 'internationalCoverage':
-        print(tag + ' was triggered.')
+        logging.info(tag + ' was triggered.')
         destination = parameter_dict["destination"]
         coverage = None
         # Sample list of covered international monthly destinations.
@@ -190,7 +191,7 @@ def cxPrebuiltAgentsTelecom(request):
 
     # BEGIN cheapestPlan
     elif tag == 'cheapestPlan':
-        print(tag + ' was triggered.')
+        logging.info(tag + ' was triggered.')
         trip_duration = parameter_dict["trip_duration"]
         monthly_cost = None
         daily_cost = None
@@ -238,16 +239,30 @@ def cxPrebuiltAgentsTelecom(request):
     # Default Case
     else:
         res = None
-        print(f'{"default case called"}')
+        logging.info(f'{"default case called"}')
 
     # Returns json
     return res
 
 
-# Dummy helper function
-def get_date_details(bill_month):
-    month_name = "Jan"
-    first_of_month = "13"
-    last_month_name = "Jun"
-    return month_name, first_of_month, last_month_name
+# Get the current month, first day of current month and last month values
+# based on today's date
+def get_date_details(bill_state):
+    from datetime import date
+
+    monthNames = ["January", "February", "March", "April", "May", "June", 
+    "July", "August", "September", "October", "November", "December"]
+    today = date.today()
+    # index starts with 0
+    first_month_name = monthNames[today.month - 1]
+    firstDay = today.replace(day = 1)
+    first_day_str = str(firstDay)
+
+    last_month_name = monthNames[today.month - 2]
+    last_month_first_day_str = str(today.replace(day = 1, month = (today.month - 1)))
+    second_last_month_name = monthNames[today.month - 3]
+    if bill_state == 'current':
+        return [first_month_name, first_day_str, last_month_name]
+    else:
+        return [last_month_name, last_month_first_day_str, second_last_month_name]
 # [END dialogflow_cx_v3_webhook_prebuilt_telecom]

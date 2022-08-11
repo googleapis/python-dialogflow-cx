@@ -25,13 +25,15 @@ def fixture_app():
     return flask.Flask(__name__)
 
 
-def test_detect_customeranomaly(app):
+def test_detect_customeranomaly_current(app):
     """Parameterized test for detecting customer anomaly webhook snippet."""
+
+    from datetime import date
 
     request = {"fulfillmentInfo": {"tag": "detectCustomerAnomaly"},
                "pageInfo": {"formInfo": {"parameterInfo": [
                 {"displayName": "phone_number", "value": 999999},
-                {"displayName": "bill_state", "value": "July"},
+                {"displayName": "bill_state", "value": "current"},
                 {"displayName": "bill_amount", "value": {"amount": 1000}},
                 ]}}}
 
@@ -40,6 +42,28 @@ def test_detect_customeranomaly(app):
         print(res)
         assert res["sessionInfo"]["parameters"]["anomaly_detect"] == 'true'
         assert res["sessionInfo"]["parameters"]["total_bill"] == 1054.34
+        assert res["sessionInfo"]["parameters"]["first_month"] == str(date.today().replace(day=1))
+
+
+def test_detect_customeranomaly_other(app):
+    """Parameterized test for detecting customer anomaly webhook snippet."""
+
+    from datetime import date
+
+    request = {"fulfillmentInfo": {"tag": "detectCustomerAnomaly"},
+               "pageInfo": {"formInfo": {"parameterInfo": [
+                {"displayName": "phone_number", "value": 8231234789},
+                {"displayName": "bill_state", "value": "other situation"},
+                {"displayName": "bill_amount", "value": {"amount": 1000}},
+                ]}}}
+
+    with app.test_request_context(json=request):
+        res = cxPrebuiltAgentsTelecom(flask.request)
+        print(res)
+        today = date.today()
+        assert res["sessionInfo"]["parameters"]["anomaly_detect"] == 'false'
+        assert res["sessionInfo"]["parameters"]["total_bill"] == 1054.34
+        assert res["sessionInfo"]["parameters"]["first_month"] == str(today.replace(day = 1, month = (today.month - 1)))
 
 
 def test_validate_phoneline(app):
@@ -180,8 +204,20 @@ def test_cheapest_plan3(app):
         assert res["sessionInfo"]["parameters"]["suggested_plan"] == 'daily'
 
 
+def test_cheapest_plan4(app):
+    """Invalid Case: This happens only when customer enters a negative number"""
+
+    request = {"fulfillmentInfo": {"tag": "cheapestPlan"},
+               "pageInfo": {"formInfo": {"parameterInfo": [{"displayName": "trip_duration", "value": -1}]}}}
+
+    with app.test_request_context(json=request):
+        res = cxPrebuiltAgentsTelecom(flask.request)
+        print(res)
+        assert res["sessionInfo"]["parameters"]["suggested_plan"] == 'null'
+
+
 def test_default_tag(app):
-    """Parameterized test for default tag webhook snippet."""
+    """Default Case."""
 
     request = {"fulfillmentInfo": {"tag": None},
                "pageInfo": {"formInfo": {"parameterInfo": [{"displayName": None, "value": None}]}}}
