@@ -32,7 +32,7 @@ def test_detect_customeranomaly(app):
                "pageInfo": {"formInfo": {"parameterInfo": [
                 {"displayName": "phone_number", "value": 999999},
                 {"displayName": "bill_state", "value": "July"},
-                {"displayName": "bill_amount", "value": {"amount":1000}},
+                {"displayName": "bill_amount", "value": {"amount": 1000}},
                 ]}}}
 
     with app.test_request_context(json=request):
@@ -188,4 +188,4 @@ def test_default_tag(app):
 
     with app.test_request_context(json=request):
         res = cxPrebuiltAgentsTelecom(flask.request)
-        assert res == None
+        assert res is None
