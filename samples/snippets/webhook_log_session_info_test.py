@@ -24,28 +24,48 @@ def fixture_app():
     return flask.Flask(__name__)
 
 
-def test_log_session_info_for_troubleshooting(app):
-    """Parameterized test for validate form parameter webhook snippet."""
+@pytest.fixture
+def agent_id():
+    return "000000f0-f000-00b0-0000-af00d0e00000"
 
-    # session components
-    project = "test_project"
-    location = "us-central1"
-    agent_id = "000000f0-f000-00b0-0000-af00d0e00000"
-    session_id = "d0bdaa0c-0d00-0000-b0eb-b00b0db000b0"
-    environment = "0d0000f0-0aac-0d0c-0a00-b00b0000a000"
 
-    # build session uris
-    session_prefix = f"projects/{project}/locations/{location}/agents/{agent_id}"
-    session = f"{session_prefix}/sessions/{session_id}"
-    env_session = f"{session_prefix}/environments/{environment}/sessions/{session_id}"
+@pytest.fixture
+def session_id():
+    return "d0bdaa0c-0d00-0000-b0eb-b00b0db000b0"
 
-    # session without environment path
+
+@pytest.fixture
+def environment():
+    return "0d0000f0-0aac-0d0c-0a00-b00b0000a000"
+
+
+@pytest.fixture
+def session_prefix(agent_id):
+    return f"projects/test_project/locations/us-central1/agents/{agent_id}"
+
+
+@pytest.fixture
+def session(session_prefix, session_id):
+    """Session string without environment path"""
+    return f"{session_prefix}/sessions/{session_id}"
+
+
+@pytest.fixture
+def env_session(session_prefix, environment, session_id):
+    """Session string with environment path"""
+    return f"{session_prefix}/environments/{environment}/sessions/{session_id}"
+
+
+def test_logging_session_info(app, session, session_id):
+    """Parameterized test for regular session string."""
     request = {"sessionInfo": {"session": session}}
     with app.test_request_context(json=request):
         res = log_session_info_for_troubleshooting(flask.request)
         assert session_id in str(res)
 
-    # session with environment path
+
+def test_logging_session_info_with_env_path(app, env_session, session_id):
+    """Parameterized test for session string with environment path."""
     request = {"sessionInfo": {"session": env_session}}
     with app.test_request_context(json=request):
         res = log_session_info_for_troubleshooting(flask.request)
