@@ -10,14 +10,14 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-""" DialogFlow CX: webhook to log session info for each request."""
+""" DialogFlow CX: webhook to log session ID for each request."""
 
-# [START dialogflow_cx_v3_webhook_log_session_info]
+# [START dialogflow_cx_v3_webhook_log_session_id]
 
 import re
 
 
-def log_session_info_for_troubleshooting(request):
+def log_session_id_for_troubleshooting(request):
     """Webhook will log session id corresponding to request."""
 
     req = request.get_json()
@@ -46,4 +46,4 @@ def log_session_info_for_troubleshooting(request):
     return res
 
 
-# [END dialogflow_cx_v3_webhook_log_session_info]
+# [END dialogflow_cx_v3_webhook_log_session_id]
