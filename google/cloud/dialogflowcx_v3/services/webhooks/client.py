@@ -16,7 +16,18 @@
 from collections import OrderedDict
 import os
 import re
-from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union, cast
+from typing import (
+    Dict,
+    Mapping,
+    MutableMapping,
+    MutableSequence,
+    Optional,
+    Sequence,
+    Tuple,
+    Type,
+    Union,
+    cast,
+)
 import pkg_resources
 
 from google.api_core import client_options as client_options_lib
@@ -60,7 +71,7 @@ class WebhooksClientMeta(type):
 
     def get_transport_class(
         cls,
-        label: str = None,
+        label: Optional[str] = None,
     ) -> Type[WebhooksTransport]:
         """Returns an appropriate transport class.
 
@@ -363,7 +374,7 @@ class WebhooksClient(metaclass=WebhooksClientMeta):
         self,
         *,
         credentials: Optional[ga_credentials.Credentials] = None,
-        transport: Union[str, WebhooksTransport, None] = None,
+        transport: Optional[Union[str, WebhooksTransport]] = None,
         client_options: Optional[Union[client_options_lib.ClientOptions, dict]] = None,
         client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
     ) -> None:
@@ -461,11 +472,11 @@ class WebhooksClient(metaclass=WebhooksClientMeta):
 
     def list_webhooks(
         self,
-        request: Union[webhook.ListWebhooksRequest, dict] = None,
+        request: Optional[Union[webhook.ListWebhooksRequest, dict]] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListWebhooksPager:
         r"""Returns the list of all webhooks in the specified
@@ -577,11 +588,11 @@ class WebhooksClient(metaclass=WebhooksClientMeta):
 
     def get_webhook(
         self,
-        request: Union[webhook.GetWebhookRequest, dict] = None,
+        request: Optional[Union[webhook.GetWebhookRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> webhook.Webhook:
         r"""Retrieves the specified webhook.
@@ -684,12 +695,12 @@ class WebhooksClient(metaclass=WebhooksClientMeta):
 
     def create_webhook(
         self,
-        request: Union[gcdc_webhook.CreateWebhookRequest, dict] = None,
+        request: Optional[Union[gcdc_webhook.CreateWebhookRequest, dict]] = None,
         *,
-        parent: str = None,
-        webhook: gcdc_webhook.Webhook = None,
+        parent: Optional[str] = None,
+        webhook: Optional[gcdc_webhook.Webhook] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> gcdc_webhook.Webhook:
         r"""Creates a webhook in the specified agent.
@@ -804,12 +815,12 @@ class WebhooksClient(metaclass=WebhooksClientMeta):
 
     def update_webhook(
         self,
-        request: Union[gcdc_webhook.UpdateWebhookRequest, dict] = None,
+        request: Optional[Union[gcdc_webhook.UpdateWebhookRequest, dict]] = None,
         *,
-        webhook: gcdc_webhook.Webhook = None,
-        update_mask: field_mask_pb2.FieldMask = None,
+        webhook: Optional[gcdc_webhook.Webhook] = None,
+        update_mask: Optional[field_mask_pb2.FieldMask] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> gcdc_webhook.Webhook:
         r"""Updates the specified webhook.
@@ -926,11 +937,11 @@ class WebhooksClient(metaclass=WebhooksClientMeta):
 
     def delete_webhook(
         self,
-        request: Union[webhook.DeleteWebhookRequest, dict] = None,
+        request: Optional[Union[webhook.DeleteWebhookRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Deletes the specified webhook.
@@ -1029,10 +1040,10 @@ class WebhooksClient(metaclass=WebhooksClientMeta):
 
     def list_operations(
         self,
-        request: operations_pb2.ListOperationsRequest = None,
+        request: Optional[operations_pb2.ListOperationsRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operations_pb2.ListOperationsResponse:
         r"""Lists operations that match the specified filter in the request.
@@ -1083,10 +1094,10 @@ class WebhooksClient(metaclass=WebhooksClientMeta):
 
     def get_operation(
         self,
-        request: operations_pb2.GetOperationRequest = None,
+        request: Optional[operations_pb2.GetOperationRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operations_pb2.Operation:
         r"""Gets the latest state of a long-running operation.
@@ -1137,10 +1148,10 @@ class WebhooksClient(metaclass=WebhooksClientMeta):
 
     def cancel_operation(
         self,
-        request: operations_pb2.CancelOperationRequest = None,
+        request: Optional[operations_pb2.CancelOperationRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Starts asynchronous cancellation on a long-running operation.
@@ -1191,10 +1202,10 @@ class WebhooksClient(metaclass=WebhooksClientMeta):
 
     def get_location(
         self,
-        request: locations_pb2.GetLocationRequest = None,
+        request: Optional[locations_pb2.GetLocationRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> locations_pb2.Location:
         r"""Gets information about a location.
@@ -1245,10 +1256,10 @@ class WebhooksClient(metaclass=WebhooksClientMeta):
 
     def list_locations(
         self,
-        request: locations_pb2.ListLocationsRequest = None,
+        request: Optional[locations_pb2.ListLocationsRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> locations_pb2.ListLocationsResponse:
         r"""Lists information about the supported locations for this service.

@@ -16,7 +16,17 @@
 from collections import OrderedDict
 import functools
 import re
-from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union
+from typing import (
+    Dict,
+    Mapping,
+    MutableMapping,
+    MutableSequence,
+    Optional,
+    Sequence,
+    Tuple,
+    Type,
+    Union,
+)
 import pkg_resources
 
 from google.api_core.client_options import ClientOptions
@@ -172,9 +182,9 @@ class SessionEntityTypesAsyncClient:
     def __init__(
         self,
         *,
-        credentials: ga_credentials.Credentials = None,
+        credentials: Optional[ga_credentials.Credentials] = None,
         transport: Union[str, SessionEntityTypesTransport] = "grpc_asyncio",
-        client_options: ClientOptions = None,
+        client_options: Optional[ClientOptions] = None,
         client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
     ) -> None:
         """Instantiates the session entity types client.
@@ -218,11 +228,13 @@ class SessionEntityTypesAsyncClient:
 
     async def list_session_entity_types(
         self,
-        request: Union[session_entity_type.ListSessionEntityTypesRequest, dict] = None,
+        request: Optional[
+            Union[session_entity_type.ListSessionEntityTypesRequest, dict]
+        ] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListSessionEntityTypesAsyncPager:
         r"""Returns the list of all session entity types in the
@@ -256,7 +268,7 @@ class SessionEntityTypesAsyncClient:
                     print(response)
 
         Args:
-            request (Union[google.cloud.dialogflowcx_v3beta1.types.ListSessionEntityTypesRequest, dict]):
+            request (Optional[Union[google.cloud.dialogflowcx_v3beta1.types.ListSessionEntityTypesRequest, dict]]):
                 The request object. The request message for
                 [SessionEntityTypes.ListSessionEntityTypes][google.cloud.dialogflow.cx.v3beta1.SessionEntityTypes.ListSessionEntityTypes].
             parent (:class:`str`):
@@ -339,11 +351,13 @@ class SessionEntityTypesAsyncClient:
 
     async def get_session_entity_type(
         self,
-        request: Union[session_entity_type.GetSessionEntityTypeRequest, dict] = None,
+        request: Optional[
+            Union[session_entity_type.GetSessionEntityTypeRequest, dict]
+        ] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> session_entity_type.SessionEntityType:
         r"""Retrieves the specified session entity type.
@@ -375,7 +389,7 @@ class SessionEntityTypesAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.dialogflowcx_v3beta1.types.GetSessionEntityTypeRequest, dict]):
+            request (Optional[Union[google.cloud.dialogflowcx_v3beta1.types.GetSessionEntityTypeRequest, dict]]):
                 The request object. The request message for
                 [SessionEntityTypes.GetSessionEntityType][google.cloud.dialogflow.cx.v3beta1.SessionEntityTypes.GetSessionEntityType].
             name (:class:`str`):
@@ -460,14 +474,16 @@ class SessionEntityTypesAsyncClient:
 
     async def create_session_entity_type(
         self,
-        request: Union[
-            gcdc_session_entity_type.CreateSessionEntityTypeRequest, dict
+        request: Optional[
+            Union[gcdc_session_entity_type.CreateSessionEntityTypeRequest, dict]
         ] = None,
         *,
-        parent: str = None,
-        session_entity_type: gcdc_session_entity_type.SessionEntityType = None,
+        parent: Optional[str] = None,
+        session_entity_type: Optional[
+            gcdc_session_entity_type.SessionEntityType
+        ] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> gcdc_session_entity_type.SessionEntityType:
         r"""Creates a session entity type.
@@ -506,7 +522,7 @@ class SessionEntityTypesAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.dialogflowcx_v3beta1.types.CreateSessionEntityTypeRequest, dict]):
+            request (Optional[Union[google.cloud.dialogflowcx_v3beta1.types.CreateSessionEntityTypeRequest, dict]]):
                 The request object. The request message for
                 [SessionEntityTypes.CreateSessionEntityType][google.cloud.dialogflow.cx.v3beta1.SessionEntityTypes.CreateSessionEntityType].
             parent (:class:`str`):
@@ -601,14 +617,16 @@ class SessionEntityTypesAsyncClient:
 
     async def update_session_entity_type(
         self,
-        request: Union[
-            gcdc_session_entity_type.UpdateSessionEntityTypeRequest, dict
+        request: Optional[
+            Union[gcdc_session_entity_type.UpdateSessionEntityTypeRequest, dict]
         ] = None,
         *,
-        session_entity_type: gcdc_session_entity_type.SessionEntityType = None,
-        update_mask: field_mask_pb2.FieldMask = None,
+        session_entity_type: Optional[
+            gcdc_session_entity_type.SessionEntityType
+        ] = None,
+        update_mask: Optional[field_mask_pb2.FieldMask] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> gcdc_session_entity_type.SessionEntityType:
         r"""Updates the specified session entity type.
@@ -646,7 +664,7 @@ class SessionEntityTypesAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.dialogflowcx_v3beta1.types.UpdateSessionEntityTypeRequest, dict]):
+            request (Optional[Union[google.cloud.dialogflowcx_v3beta1.types.UpdateSessionEntityTypeRequest, dict]]):
                 The request object. The request message for
                 [SessionEntityTypes.UpdateSessionEntityType][google.cloud.dialogflow.cx.v3beta1.SessionEntityTypes.UpdateSessionEntityType].
             session_entity_type (:class:`google.cloud.dialogflowcx_v3beta1.types.SessionEntityType`):
@@ -742,11 +760,13 @@ class SessionEntityTypesAsyncClient:
 
     async def delete_session_entity_type(
         self,
-        request: Union[session_entity_type.DeleteSessionEntityTypeRequest, dict] = None,
+        request: Optional[
+            Union[session_entity_type.DeleteSessionEntityTypeRequest, dict]
+        ] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Deletes the specified session entity type.
@@ -775,7 +795,7 @@ class SessionEntityTypesAsyncClient:
                 await client.delete_session_entity_type(request=request)
 
         Args:
-            request (Union[google.cloud.dialogflowcx_v3beta1.types.DeleteSessionEntityTypeRequest, dict]):
+            request (Optional[Union[google.cloud.dialogflowcx_v3beta1.types.DeleteSessionEntityTypeRequest, dict]]):
                 The request object. The request message for
                 [SessionEntityTypes.DeleteSessionEntityType][google.cloud.dialogflow.cx.v3beta1.SessionEntityTypes.DeleteSessionEntityType].
             name (:class:`str`):
@@ -837,10 +857,10 @@ class SessionEntityTypesAsyncClient:
 
     async def list_operations(
         self,
-        request: operations_pb2.ListOperationsRequest = None,
+        request: Optional[operations_pb2.ListOperationsRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operations_pb2.ListOperationsResponse:
         r"""Lists operations that match the specified filter in the request.
@@ -891,10 +911,10 @@ class SessionEntityTypesAsyncClient:
 
     async def get_operation(
         self,
-        request: operations_pb2.GetOperationRequest = None,
+        request: Optional[operations_pb2.GetOperationRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operations_pb2.Operation:
         r"""Gets the latest state of a long-running operation.
@@ -945,10 +965,10 @@ class SessionEntityTypesAsyncClient:
 
     async def cancel_operation(
         self,
-        request: operations_pb2.CancelOperationRequest = None,
+        request: Optional[operations_pb2.CancelOperationRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Starts asynchronous cancellation on a long-running operation.
@@ -999,10 +1019,10 @@ class SessionEntityTypesAsyncClient:
 
     async def get_location(
         self,
-        request: locations_pb2.GetLocationRequest = None,
+        request: Optional[locations_pb2.GetLocationRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> locations_pb2.Location:
         r"""Gets information about a location.
@@ -1053,10 +1073,10 @@ class SessionEntityTypesAsyncClient:
 
     async def list_locations(
         self,
-        request: locations_pb2.ListLocationsRequest = None,
+        request: Optional[locations_pb2.ListLocationsRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> locations_pb2.ListLocationsResponse:
         r"""Lists information about the supported locations for this service.

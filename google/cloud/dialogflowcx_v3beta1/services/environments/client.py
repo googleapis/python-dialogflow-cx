@@ -16,7 +16,18 @@
 from collections import OrderedDict
 import os
 import re
-from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union, cast
+from typing import (
+    Dict,
+    Mapping,
+    MutableMapping,
+    MutableSequence,
+    Optional,
+    Sequence,
+    Tuple,
+    Type,
+    Union,
+    cast,
+)
 import pkg_resources
 
 from google.api_core import client_options as client_options_lib
@@ -63,7 +74,7 @@ class EnvironmentsClientMeta(type):
 
     def get_transport_class(
         cls,
-        label: str = None,
+        label: Optional[str] = None,
     ) -> Type[EnvironmentsTransport]:
         """Returns an appropriate transport class.
 
@@ -492,7 +503,7 @@ class EnvironmentsClient(metaclass=EnvironmentsClientMeta):
         self,
         *,
         credentials: Optional[ga_credentials.Credentials] = None,
-        transport: Union[str, EnvironmentsTransport, None] = None,
+        transport: Optional[Union[str, EnvironmentsTransport]] = None,
         client_options: Optional[Union[client_options_lib.ClientOptions, dict]] = None,
         client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
     ) -> None:
@@ -590,11 +601,11 @@ class EnvironmentsClient(metaclass=EnvironmentsClientMeta):
 
     def list_environments(
         self,
-        request: Union[environment.ListEnvironmentsRequest, dict] = None,
+        request: Optional[Union[environment.ListEnvironmentsRequest, dict]] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListEnvironmentsPager:
         r"""Returns the list of all environments in the specified
@@ -708,11 +719,11 @@ class EnvironmentsClient(metaclass=EnvironmentsClientMeta):
 
     def get_environment(
         self,
-        request: Union[environment.GetEnvironmentRequest, dict] = None,
+        request: Optional[Union[environment.GetEnvironmentRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> environment.Environment:
         r"""Retrieves the specified
@@ -826,12 +837,14 @@ class EnvironmentsClient(metaclass=EnvironmentsClientMeta):
 
     def create_environment(
         self,
-        request: Union[gcdc_environment.CreateEnvironmentRequest, dict] = None,
+        request: Optional[
+            Union[gcdc_environment.CreateEnvironmentRequest, dict]
+        ] = None,
         *,
-        parent: str = None,
-        environment: gcdc_environment.Environment = None,
+        parent: Optional[str] = None,
+        environment: Optional[gcdc_environment.Environment] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Creates an
@@ -980,12 +993,14 @@ class EnvironmentsClient(metaclass=EnvironmentsClientMeta):
 
     def update_environment(
         self,
-        request: Union[gcdc_environment.UpdateEnvironmentRequest, dict] = None,
+        request: Optional[
+            Union[gcdc_environment.UpdateEnvironmentRequest, dict]
+        ] = None,
         *,
-        environment: gcdc_environment.Environment = None,
-        update_mask: field_mask_pb2.FieldMask = None,
+        environment: Optional[gcdc_environment.Environment] = None,
+        update_mask: Optional[field_mask_pb2.FieldMask] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Updates the specified
@@ -1130,11 +1145,11 @@ class EnvironmentsClient(metaclass=EnvironmentsClientMeta):
 
     def delete_environment(
         self,
-        request: Union[environment.DeleteEnvironmentRequest, dict] = None,
+        request: Optional[Union[environment.DeleteEnvironmentRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Deletes the specified
@@ -1223,11 +1238,13 @@ class EnvironmentsClient(metaclass=EnvironmentsClientMeta):
 
     def lookup_environment_history(
         self,
-        request: Union[environment.LookupEnvironmentHistoryRequest, dict] = None,
+        request: Optional[
+            Union[environment.LookupEnvironmentHistoryRequest, dict]
+        ] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.LookupEnvironmentHistoryPager:
         r"""Looks up the history of the specified
@@ -1342,10 +1359,10 @@ class EnvironmentsClient(metaclass=EnvironmentsClientMeta):
 
     def run_continuous_test(
         self,
-        request: Union[environment.RunContinuousTestRequest, dict] = None,
+        request: Optional[Union[environment.RunContinuousTestRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Kicks off a continuous test under the specified
@@ -1452,11 +1469,13 @@ class EnvironmentsClient(metaclass=EnvironmentsClientMeta):
 
     def list_continuous_test_results(
         self,
-        request: Union[environment.ListContinuousTestResultsRequest, dict] = None,
+        request: Optional[
+            Union[environment.ListContinuousTestResultsRequest, dict]
+        ] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListContinuousTestResultsPager:
         r"""Fetches a list of continuous test results for a given
@@ -1570,10 +1589,10 @@ class EnvironmentsClient(metaclass=EnvironmentsClientMeta):
 
     def deploy_flow(
         self,
-        request: Union[environment.DeployFlowRequest, dict] = None,
+        request: Optional[Union[environment.DeployFlowRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Deploys a flow to the specified
@@ -1694,10 +1713,10 @@ class EnvironmentsClient(metaclass=EnvironmentsClientMeta):
 
     def list_operations(
         self,
-        request: operations_pb2.ListOperationsRequest = None,
+        request: Optional[operations_pb2.ListOperationsRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operations_pb2.ListOperationsResponse:
         r"""Lists operations that match the specified filter in the request.
@@ -1748,10 +1767,10 @@ class EnvironmentsClient(metaclass=EnvironmentsClientMeta):
 
     def get_operation(
         self,
-        request: operations_pb2.GetOperationRequest = None,
+        request: Optional[operations_pb2.GetOperationRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operations_pb2.Operation:
         r"""Gets the latest state of a long-running operation.
@@ -1802,10 +1821,10 @@ class EnvironmentsClient(metaclass=EnvironmentsClientMeta):
 
     def cancel_operation(
         self,
-        request: operations_pb2.CancelOperationRequest = None,
+        request: Optional[operations_pb2.CancelOperationRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Starts asynchronous cancellation on a long-running operation.
@@ -1856,10 +1875,10 @@ class EnvironmentsClient(metaclass=EnvironmentsClientMeta):
 
     def get_location(
         self,
-        request: locations_pb2.GetLocationRequest = None,
+        request: Optional[locations_pb2.GetLocationRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> locations_pb2.Location:
         r"""Gets information about a location.
@@ -1910,10 +1929,10 @@ class EnvironmentsClient(metaclass=EnvironmentsClientMeta):
 
     def list_locations(
         self,
-        request: locations_pb2.ListLocationsRequest = None,
+        request: Optional[locations_pb2.ListLocationsRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> locations_pb2.ListLocationsResponse:
         r"""Lists information about the supported locations for this service.

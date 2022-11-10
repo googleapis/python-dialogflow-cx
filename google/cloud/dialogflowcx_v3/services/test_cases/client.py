@@ -16,7 +16,18 @@
 from collections import OrderedDict
 import os
 import re
-from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union, cast
+from typing import (
+    Dict,
+    Mapping,
+    MutableMapping,
+    MutableSequence,
+    Optional,
+    Sequence,
+    Tuple,
+    Type,
+    Union,
+    cast,
+)
 import pkg_resources
 
 from google.api_core import client_options as client_options_lib
@@ -62,7 +73,7 @@ class TestCasesClientMeta(type):
 
     def get_transport_class(
         cls,
-        label: str = None,
+        label: Optional[str] = None,
     ) -> Type[TestCasesTransport]:
         """Returns an appropriate transport class.
 
@@ -562,7 +573,7 @@ class TestCasesClient(metaclass=TestCasesClientMeta):
         self,
         *,
         credentials: Optional[ga_credentials.Credentials] = None,
-        transport: Union[str, TestCasesTransport, None] = None,
+        transport: Optional[Union[str, TestCasesTransport]] = None,
         client_options: Optional[Union[client_options_lib.ClientOptions, dict]] = None,
         client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
     ) -> None:
@@ -660,11 +671,11 @@ class TestCasesClient(metaclass=TestCasesClientMeta):
 
     def list_test_cases(
         self,
-        request: Union[test_case.ListTestCasesRequest, dict] = None,
+        request: Optional[Union[test_case.ListTestCasesRequest, dict]] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListTestCasesPager:
         r"""Fetches a list of test cases for a given agent.
@@ -775,11 +786,11 @@ class TestCasesClient(metaclass=TestCasesClientMeta):
 
     def batch_delete_test_cases(
         self,
-        request: Union[test_case.BatchDeleteTestCasesRequest, dict] = None,
+        request: Optional[Union[test_case.BatchDeleteTestCasesRequest, dict]] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Batch deletes test cases.
@@ -866,11 +877,11 @@ class TestCasesClient(metaclass=TestCasesClientMeta):
 
     def get_test_case(
         self,
-        request: Union[test_case.GetTestCaseRequest, dict] = None,
+        request: Optional[Union[test_case.GetTestCaseRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> test_case.TestCase:
         r"""Gets a test case.
@@ -966,12 +977,12 @@ class TestCasesClient(metaclass=TestCasesClientMeta):
 
     def create_test_case(
         self,
-        request: Union[gcdc_test_case.CreateTestCaseRequest, dict] = None,
+        request: Optional[Union[gcdc_test_case.CreateTestCaseRequest, dict]] = None,
         *,
-        parent: str = None,
-        test_case: gcdc_test_case.TestCase = None,
+        parent: Optional[str] = None,
+        test_case: Optional[gcdc_test_case.TestCase] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> gcdc_test_case.TestCase:
         r"""Creates a test case for the given agent.
@@ -1078,12 +1089,12 @@ class TestCasesClient(metaclass=TestCasesClientMeta):
 
     def update_test_case(
         self,
-        request: Union[gcdc_test_case.UpdateTestCaseRequest, dict] = None,
+        request: Optional[Union[gcdc_test_case.UpdateTestCaseRequest, dict]] = None,
         *,
-        test_case: gcdc_test_case.TestCase = None,
-        update_mask: field_mask_pb2.FieldMask = None,
+        test_case: Optional[gcdc_test_case.TestCase] = None,
+        update_mask: Optional[field_mask_pb2.FieldMask] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> gcdc_test_case.TestCase:
         r"""Updates the specified test case.
@@ -1195,10 +1206,10 @@ class TestCasesClient(metaclass=TestCasesClientMeta):
 
     def run_test_case(
         self,
-        request: Union[test_case.RunTestCaseRequest, dict] = None,
+        request: Optional[Union[test_case.RunTestCaseRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Kicks off a test case run.
@@ -1302,10 +1313,10 @@ class TestCasesClient(metaclass=TestCasesClientMeta):
 
     def batch_run_test_cases(
         self,
-        request: Union[test_case.BatchRunTestCasesRequest, dict] = None,
+        request: Optional[Union[test_case.BatchRunTestCasesRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Kicks off a batch run of test cases.
@@ -1410,10 +1421,10 @@ class TestCasesClient(metaclass=TestCasesClientMeta):
 
     def calculate_coverage(
         self,
-        request: Union[test_case.CalculateCoverageRequest, dict] = None,
+        request: Optional[Union[test_case.CalculateCoverageRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> test_case.CalculateCoverageResponse:
         r"""Calculates the test coverage for an agent.
@@ -1492,10 +1503,10 @@ class TestCasesClient(metaclass=TestCasesClientMeta):
 
     def import_test_cases(
         self,
-        request: Union[test_case.ImportTestCasesRequest, dict] = None,
+        request: Optional[Union[test_case.ImportTestCasesRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Imports the test cases from a Cloud Storage bucket or a local
@@ -1603,10 +1614,10 @@ class TestCasesClient(metaclass=TestCasesClientMeta):
 
     def export_test_cases(
         self,
-        request: Union[test_case.ExportTestCasesRequest, dict] = None,
+        request: Optional[Union[test_case.ExportTestCasesRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Exports the test cases under the agent to a Cloud Storage bucket
@@ -1713,11 +1724,11 @@ class TestCasesClient(metaclass=TestCasesClientMeta):
 
     def list_test_case_results(
         self,
-        request: Union[test_case.ListTestCaseResultsRequest, dict] = None,
+        request: Optional[Union[test_case.ListTestCaseResultsRequest, dict]] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListTestCaseResultsPager:
         r"""Fetches a list of results for a given test case.
@@ -1830,11 +1841,11 @@ class TestCasesClient(metaclass=TestCasesClientMeta):
 
     def get_test_case_result(
         self,
-        request: Union[test_case.GetTestCaseResultRequest, dict] = None,
+        request: Optional[Union[test_case.GetTestCaseResultRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> test_case.TestCaseResult:
         r"""Gets a test case result.
@@ -1945,10 +1956,10 @@ class TestCasesClient(metaclass=TestCasesClientMeta):
 
     def list_operations(
         self,
-        request: operations_pb2.ListOperationsRequest = None,
+        request: Optional[operations_pb2.ListOperationsRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operations_pb2.ListOperationsResponse:
         r"""Lists operations that match the specified filter in the request.
@@ -1999,10 +2010,10 @@ class TestCasesClient(metaclass=TestCasesClientMeta):
 
     def get_operation(
         self,
-        request: operations_pb2.GetOperationRequest = None,
+        request: Optional[operations_pb2.GetOperationRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operations_pb2.Operation:
         r"""Gets the latest state of a long-running operation.
@@ -2053,10 +2064,10 @@ class TestCasesClient(metaclass=TestCasesClientMeta):
 
     def cancel_operation(
         self,
-        request: operations_pb2.CancelOperationRequest = None,
+        request: Optional[operations_pb2.CancelOperationRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Starts asynchronous cancellation on a long-running operation.
@@ -2107,10 +2118,10 @@ class TestCasesClient(metaclass=TestCasesClientMeta):
 
     def get_location(
         self,
-        request: locations_pb2.GetLocationRequest = None,
+        request: Optional[locations_pb2.GetLocationRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> locations_pb2.Location:
         r"""Gets information about a location.
@@ -2161,10 +2172,10 @@ class TestCasesClient(metaclass=TestCasesClientMeta):
 
     def list_locations(
         self,
-        request: locations_pb2.ListLocationsRequest = None,
+        request: Optional[locations_pb2.ListLocationsRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> locations_pb2.ListLocationsResponse:
         r"""Lists information about the supported locations for this service.

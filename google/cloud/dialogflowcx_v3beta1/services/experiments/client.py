@@ -16,7 +16,18 @@
 from collections import OrderedDict
 import os
 import re
-from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union, cast
+from typing import (
+    Dict,
+    Mapping,
+    MutableMapping,
+    MutableSequence,
+    Optional,
+    Sequence,
+    Tuple,
+    Type,
+    Union,
+    cast,
+)
 import pkg_resources
 
 from google.api_core import client_options as client_options_lib
@@ -61,7 +72,7 @@ class ExperimentsClientMeta(type):
 
     def get_transport_class(
         cls,
-        label: str = None,
+        label: Optional[str] = None,
     ) -> Type[ExperimentsTransport]:
         """Returns an appropriate transport class.
 
@@ -368,7 +379,7 @@ class ExperimentsClient(metaclass=ExperimentsClientMeta):
         self,
         *,
         credentials: Optional[ga_credentials.Credentials] = None,
-        transport: Union[str, ExperimentsTransport, None] = None,
+        transport: Optional[Union[str, ExperimentsTransport]] = None,
         client_options: Optional[Union[client_options_lib.ClientOptions, dict]] = None,
         client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
     ) -> None:
@@ -466,11 +477,11 @@ class ExperimentsClient(metaclass=ExperimentsClientMeta):
 
     def list_experiments(
         self,
-        request: Union[experiment.ListExperimentsRequest, dict] = None,
+        request: Optional[Union[experiment.ListExperimentsRequest, dict]] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListExperimentsPager:
         r"""Returns the list of all experiments in the specified
@@ -584,11 +595,11 @@ class ExperimentsClient(metaclass=ExperimentsClientMeta):
 
     def get_experiment(
         self,
-        request: Union[experiment.GetExperimentRequest, dict] = None,
+        request: Optional[Union[experiment.GetExperimentRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> experiment.Experiment:
         r"""Retrieves the specified
@@ -689,12 +700,12 @@ class ExperimentsClient(metaclass=ExperimentsClientMeta):
 
     def create_experiment(
         self,
-        request: Union[gcdc_experiment.CreateExperimentRequest, dict] = None,
+        request: Optional[Union[gcdc_experiment.CreateExperimentRequest, dict]] = None,
         *,
-        parent: str = None,
-        experiment: gcdc_experiment.Experiment = None,
+        parent: Optional[str] = None,
+        experiment: Optional[gcdc_experiment.Experiment] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> gcdc_experiment.Experiment:
         r"""Creates an
@@ -810,12 +821,12 @@ class ExperimentsClient(metaclass=ExperimentsClientMeta):
 
     def update_experiment(
         self,
-        request: Union[gcdc_experiment.UpdateExperimentRequest, dict] = None,
+        request: Optional[Union[gcdc_experiment.UpdateExperimentRequest, dict]] = None,
         *,
-        experiment: gcdc_experiment.Experiment = None,
-        update_mask: field_mask_pb2.FieldMask = None,
+        experiment: Optional[gcdc_experiment.Experiment] = None,
+        update_mask: Optional[field_mask_pb2.FieldMask] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> gcdc_experiment.Experiment:
         r"""Updates the specified
@@ -926,11 +937,11 @@ class ExperimentsClient(metaclass=ExperimentsClientMeta):
 
     def delete_experiment(
         self,
-        request: Union[experiment.DeleteExperimentRequest, dict] = None,
+        request: Optional[Union[experiment.DeleteExperimentRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Deletes the specified
@@ -1019,11 +1030,11 @@ class ExperimentsClient(metaclass=ExperimentsClientMeta):
 
     def start_experiment(
         self,
-        request: Union[experiment.StartExperimentRequest, dict] = None,
+        request: Optional[Union[experiment.StartExperimentRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> experiment.Experiment:
         r"""Starts the specified
@@ -1125,11 +1136,11 @@ class ExperimentsClient(metaclass=ExperimentsClientMeta):
 
     def stop_experiment(
         self,
-        request: Union[experiment.StopExperimentRequest, dict] = None,
+        request: Optional[Union[experiment.StopExperimentRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> experiment.Experiment:
         r"""Stops the specified
@@ -1244,10 +1255,10 @@ class ExperimentsClient(metaclass=ExperimentsClientMeta):
 
     def list_operations(
         self,
-        request: operations_pb2.ListOperationsRequest = None,
+        request: Optional[operations_pb2.ListOperationsRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operations_pb2.ListOperationsResponse:
         r"""Lists operations that match the specified filter in the request.
@@ -1298,10 +1309,10 @@ class ExperimentsClient(metaclass=ExperimentsClientMeta):
 
     def get_operation(
         self,
-        request: operations_pb2.GetOperationRequest = None,
+        request: Optional[operations_pb2.GetOperationRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operations_pb2.Operation:
         r"""Gets the latest state of a long-running operation.
@@ -1352,10 +1363,10 @@ class ExperimentsClient(metaclass=ExperimentsClientMeta):
 
     def cancel_operation(
         self,
-        request: operations_pb2.CancelOperationRequest = None,
+        request: Optional[operations_pb2.CancelOperationRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Starts asynchronous cancellation on a long-running operation.
@@ -1406,10 +1417,10 @@ class ExperimentsClient(metaclass=ExperimentsClientMeta):
 
     def get_location(
         self,
-        request: locations_pb2.GetLocationRequest = None,
+        request: Optional[locations_pb2.GetLocationRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> locations_pb2.Location:
         r"""Gets information about a location.
@@ -1460,10 +1471,10 @@ class ExperimentsClient(metaclass=ExperimentsClientMeta):
 
     def list_locations(
         self,
-        request: locations_pb2.ListLocationsRequest = None,
+        request: Optional[locations_pb2.ListLocationsRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> locations_pb2.ListLocationsResponse:
         r"""Lists information about the supported locations for this service.

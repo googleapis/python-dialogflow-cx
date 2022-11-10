@@ -16,7 +16,17 @@
 from collections import OrderedDict
 import functools
 import re
-from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union
+from typing import (
+    Dict,
+    Mapping,
+    MutableMapping,
+    MutableSequence,
+    Optional,
+    Sequence,
+    Tuple,
+    Type,
+    Union,
+)
 import pkg_resources
 
 from google.api_core.client_options import ClientOptions
@@ -159,9 +169,9 @@ class WebhooksAsyncClient:
     def __init__(
         self,
         *,
-        credentials: ga_credentials.Credentials = None,
+        credentials: Optional[ga_credentials.Credentials] = None,
         transport: Union[str, WebhooksTransport] = "grpc_asyncio",
-        client_options: ClientOptions = None,
+        client_options: Optional[ClientOptions] = None,
         client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
     ) -> None:
         """Instantiates the webhooks client.
@@ -205,11 +215,11 @@ class WebhooksAsyncClient:
 
     async def list_webhooks(
         self,
-        request: Union[webhook.ListWebhooksRequest, dict] = None,
+        request: Optional[Union[webhook.ListWebhooksRequest, dict]] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListWebhooksAsyncPager:
         r"""Returns the list of all webhooks in the specified
@@ -243,7 +253,7 @@ class WebhooksAsyncClient:
                     print(response)
 
         Args:
-            request (Union[google.cloud.dialogflowcx_v3beta1.types.ListWebhooksRequest, dict]):
+            request (Optional[Union[google.cloud.dialogflowcx_v3beta1.types.ListWebhooksRequest, dict]]):
                 The request object. The request message for
                 [Webhooks.ListWebhooks][google.cloud.dialogflow.cx.v3beta1.Webhooks.ListWebhooks].
             parent (:class:`str`):
@@ -321,11 +331,11 @@ class WebhooksAsyncClient:
 
     async def get_webhook(
         self,
-        request: Union[webhook.GetWebhookRequest, dict] = None,
+        request: Optional[Union[webhook.GetWebhookRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> webhook.Webhook:
         r"""Retrieves the specified webhook.
@@ -357,7 +367,7 @@ class WebhooksAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.dialogflowcx_v3beta1.types.GetWebhookRequest, dict]):
+            request (Optional[Union[google.cloud.dialogflowcx_v3beta1.types.GetWebhookRequest, dict]]):
                 The request object. The request message for
                 [Webhooks.GetWebhook][google.cloud.dialogflow.cx.v3beta1.Webhooks.GetWebhook].
             name (:class:`str`):
@@ -428,12 +438,12 @@ class WebhooksAsyncClient:
 
     async def create_webhook(
         self,
-        request: Union[gcdc_webhook.CreateWebhookRequest, dict] = None,
+        request: Optional[Union[gcdc_webhook.CreateWebhookRequest, dict]] = None,
         *,
-        parent: str = None,
-        webhook: gcdc_webhook.Webhook = None,
+        parent: Optional[str] = None,
+        webhook: Optional[gcdc_webhook.Webhook] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> gcdc_webhook.Webhook:
         r"""Creates a webhook in the specified agent.
@@ -470,7 +480,7 @@ class WebhooksAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.dialogflowcx_v3beta1.types.CreateWebhookRequest, dict]):
+            request (Optional[Union[google.cloud.dialogflowcx_v3beta1.types.CreateWebhookRequest, dict]]):
                 The request object. The request message for
                 [Webhooks.CreateWebhook][google.cloud.dialogflow.cx.v3beta1.Webhooks.CreateWebhook].
             parent (:class:`str`):
@@ -548,12 +558,12 @@ class WebhooksAsyncClient:
 
     async def update_webhook(
         self,
-        request: Union[gcdc_webhook.UpdateWebhookRequest, dict] = None,
+        request: Optional[Union[gcdc_webhook.UpdateWebhookRequest, dict]] = None,
         *,
-        webhook: gcdc_webhook.Webhook = None,
-        update_mask: field_mask_pb2.FieldMask = None,
+        webhook: Optional[gcdc_webhook.Webhook] = None,
+        update_mask: Optional[field_mask_pb2.FieldMask] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> gcdc_webhook.Webhook:
         r"""Updates the specified webhook.
@@ -589,7 +599,7 @@ class WebhooksAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.dialogflowcx_v3beta1.types.UpdateWebhookRequest, dict]):
+            request (Optional[Union[google.cloud.dialogflowcx_v3beta1.types.UpdateWebhookRequest, dict]]):
                 The request object. The request message for
                 [Webhooks.UpdateWebhook][google.cloud.dialogflow.cx.v3beta1.Webhooks.UpdateWebhook].
             webhook (:class:`google.cloud.dialogflowcx_v3beta1.types.Webhook`):
@@ -670,11 +680,11 @@ class WebhooksAsyncClient:
 
     async def delete_webhook(
         self,
-        request: Union[webhook.DeleteWebhookRequest, dict] = None,
+        request: Optional[Union[webhook.DeleteWebhookRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Deletes the specified webhook.
@@ -703,7 +713,7 @@ class WebhooksAsyncClient:
                 await client.delete_webhook(request=request)
 
         Args:
-            request (Union[google.cloud.dialogflowcx_v3beta1.types.DeleteWebhookRequest, dict]):
+            request (Optional[Union[google.cloud.dialogflowcx_v3beta1.types.DeleteWebhookRequest, dict]]):
                 The request object. The request message for
                 [Webhooks.DeleteWebhook][google.cloud.dialogflow.cx.v3beta1.Webhooks.DeleteWebhook].
             name (:class:`str`):
@@ -760,10 +770,10 @@ class WebhooksAsyncClient:
 
     async def list_operations(
         self,
-        request: operations_pb2.ListOperationsRequest = None,
+        request: Optional[operations_pb2.ListOperationsRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operations_pb2.ListOperationsResponse:
         r"""Lists operations that match the specified filter in the request.
@@ -814,10 +824,10 @@ class WebhooksAsyncClient:
 
     async def get_operation(
         self,
-        request: operations_pb2.GetOperationRequest = None,
+        request: Optional[operations_pb2.GetOperationRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operations_pb2.Operation:
         r"""Gets the latest state of a long-running operation.
@@ -868,10 +878,10 @@ class WebhooksAsyncClient:
 
     async def cancel_operation(
         self,
-        request: operations_pb2.CancelOperationRequest = None,
+        request: Optional[operations_pb2.CancelOperationRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Starts asynchronous cancellation on a long-running operation.
@@ -922,10 +932,10 @@ class WebhooksAsyncClient:
 
     async def get_location(
         self,
-        request: locations_pb2.GetLocationRequest = None,
+        request: Optional[locations_pb2.GetLocationRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> locations_pb2.Location:
         r"""Gets information about a location.
@@ -976,10 +986,10 @@ class WebhooksAsyncClient:
 
     async def list_locations(
         self,
-        request: locations_pb2.ListLocationsRequest = None,
+        request: Optional[locations_pb2.ListLocationsRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> locations_pb2.ListLocationsResponse:
         r"""Lists information about the supported locations for this service.

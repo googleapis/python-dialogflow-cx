@@ -16,7 +16,18 @@
 from collections import OrderedDict
 import os
 import re
-from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union, cast
+from typing import (
+    Dict,
+    Mapping,
+    MutableMapping,
+    MutableSequence,
+    Optional,
+    Sequence,
+    Tuple,
+    Type,
+    Union,
+    cast,
+)
 import pkg_resources
 
 from google.api_core import client_options as client_options_lib
@@ -64,7 +75,7 @@ class TransitionRouteGroupsClientMeta(type):
 
     def get_transport_class(
         cls,
-        label: str = None,
+        label: Optional[str] = None,
     ) -> Type[TransitionRouteGroupsTransport]:
         """Returns an appropriate transport class.
 
@@ -443,7 +454,7 @@ class TransitionRouteGroupsClient(metaclass=TransitionRouteGroupsClientMeta):
         self,
         *,
         credentials: Optional[ga_credentials.Credentials] = None,
-        transport: Union[str, TransitionRouteGroupsTransport, None] = None,
+        transport: Optional[Union[str, TransitionRouteGroupsTransport]] = None,
         client_options: Optional[Union[client_options_lib.ClientOptions, dict]] = None,
         client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
     ) -> None:
@@ -541,13 +552,13 @@ class TransitionRouteGroupsClient(metaclass=TransitionRouteGroupsClientMeta):
 
     def list_transition_route_groups(
         self,
-        request: Union[
-            transition_route_group.ListTransitionRouteGroupsRequest, dict
+        request: Optional[
+            Union[transition_route_group.ListTransitionRouteGroupsRequest, dict]
         ] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListTransitionRouteGroupsPager:
         r"""Returns the list of all transition route groups in
@@ -664,13 +675,13 @@ class TransitionRouteGroupsClient(metaclass=TransitionRouteGroupsClientMeta):
 
     def get_transition_route_group(
         self,
-        request: Union[
-            transition_route_group.GetTransitionRouteGroupRequest, dict
+        request: Optional[
+            Union[transition_route_group.GetTransitionRouteGroupRequest, dict]
         ] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> transition_route_group.TransitionRouteGroup:
         r"""Retrieves the specified
@@ -777,14 +788,16 @@ class TransitionRouteGroupsClient(metaclass=TransitionRouteGroupsClientMeta):
 
     def create_transition_route_group(
         self,
-        request: Union[
-            gcdc_transition_route_group.CreateTransitionRouteGroupRequest, dict
+        request: Optional[
+            Union[gcdc_transition_route_group.CreateTransitionRouteGroupRequest, dict]
         ] = None,
         *,
-        parent: str = None,
-        transition_route_group: gcdc_transition_route_group.TransitionRouteGroup = None,
+        parent: Optional[str] = None,
+        transition_route_group: Optional[
+            gcdc_transition_route_group.TransitionRouteGroup
+        ] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> gcdc_transition_route_group.TransitionRouteGroup:
         r"""Creates an
@@ -911,14 +924,16 @@ class TransitionRouteGroupsClient(metaclass=TransitionRouteGroupsClientMeta):
 
     def update_transition_route_group(
         self,
-        request: Union[
-            gcdc_transition_route_group.UpdateTransitionRouteGroupRequest, dict
+        request: Optional[
+            Union[gcdc_transition_route_group.UpdateTransitionRouteGroupRequest, dict]
         ] = None,
         *,
-        transition_route_group: gcdc_transition_route_group.TransitionRouteGroup = None,
-        update_mask: field_mask_pb2.FieldMask = None,
+        transition_route_group: Optional[
+            gcdc_transition_route_group.TransitionRouteGroup
+        ] = None,
+        update_mask: Optional[field_mask_pb2.FieldMask] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> gcdc_transition_route_group.TransitionRouteGroup:
         r"""Updates the specified
@@ -1043,13 +1058,13 @@ class TransitionRouteGroupsClient(metaclass=TransitionRouteGroupsClientMeta):
 
     def delete_transition_route_group(
         self,
-        request: Union[
-            transition_route_group.DeleteTransitionRouteGroupRequest, dict
+        request: Optional[
+            Union[transition_route_group.DeleteTransitionRouteGroupRequest, dict]
         ] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Deletes the specified
@@ -1159,10 +1174,10 @@ class TransitionRouteGroupsClient(metaclass=TransitionRouteGroupsClientMeta):
 
     def list_operations(
         self,
-        request: operations_pb2.ListOperationsRequest = None,
+        request: Optional[operations_pb2.ListOperationsRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operations_pb2.ListOperationsResponse:
         r"""Lists operations that match the specified filter in the request.
@@ -1213,10 +1228,10 @@ class TransitionRouteGroupsClient(metaclass=TransitionRouteGroupsClientMeta):
 
     def get_operation(
         self,
-        request: operations_pb2.GetOperationRequest = None,
+        request: Optional[operations_pb2.GetOperationRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operations_pb2.Operation:
         r"""Gets the latest state of a long-running operation.
@@ -1267,10 +1282,10 @@ class TransitionRouteGroupsClient(metaclass=TransitionRouteGroupsClientMeta):
 
     def cancel_operation(
         self,
-        request: operations_pb2.CancelOperationRequest = None,
+        request: Optional[operations_pb2.CancelOperationRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Starts asynchronous cancellation on a long-running operation.
@@ -1321,10 +1336,10 @@ class TransitionRouteGroupsClient(metaclass=TransitionRouteGroupsClientMeta):
 
     def get_location(
         self,
-        request: locations_pb2.GetLocationRequest = None,
+        request: Optional[locations_pb2.GetLocationRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> locations_pb2.Location:
         r"""Gets information about a location.
@@ -1375,10 +1390,10 @@ class TransitionRouteGroupsClient(metaclass=TransitionRouteGroupsClientMeta):
 
     def list_locations(
         self,
-        request: locations_pb2.ListLocationsRequest = None,
+        request: Optional[locations_pb2.ListLocationsRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> locations_pb2.ListLocationsResponse:
         r"""Lists information about the supported locations for this service.
