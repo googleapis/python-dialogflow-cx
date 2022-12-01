@@ -729,7 +729,7 @@ class DeploymentsAsyncClient:
 try:
     DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo(
         gapic_version=pkg_resources.get_distribution(
-            "google-cloud-dialogflowcx",
+            "google-cloud-dialogflow-cx",
         ).version,
     )
 except pkg_resources.DistributionNotFound:
