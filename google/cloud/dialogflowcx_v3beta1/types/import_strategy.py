@@ -21,9 +21,9 @@ import proto  # type: ignore
 
 
 __protobuf__ = proto.module(
-    package='google.cloud.dialogflow.cx.v3beta1',
+    package="google.cloud.dialogflow.cx.v3beta1",
     manifest={
-        'ImportStrategy',
+        "ImportStrategy",
     },
 )
 
